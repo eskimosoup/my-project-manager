@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem "autoprefixer-rails"
+# gem "autoprefixer-rails"
 gem "normalize-rails", "~> 3.0.0"
 
 

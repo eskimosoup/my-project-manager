@@ -1,0 +1,28 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/james/Projects/my-project-manager/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/james/Projects/my-project-manager/app/controllers/homes_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/james/Projects/my-project-manager/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/james/Projects/my-project-manager/app/jobs/application_job.rb": [
+        0,
+        0
+      ]
+    },
+    "timestamp": 1450186788
+  }
+}

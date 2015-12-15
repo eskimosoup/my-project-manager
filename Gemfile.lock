@@ -130,7 +130,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 4c5a94e7ebc1cf8f36cc708e330815d13cf1e05c
+  revision: 024cf44b81448445971e5741799f129c23adc3e9
   branch: rails-5-support-patches
   specs:
     rspec-rails (3.5.0.pre)
@@ -153,9 +153,6 @@ GEM
   specs:
     addressable (2.4.0)
     ast (2.1.0)
-    autoprefixer-rails (6.1.2)
-      execjs
-      json
     awesome_print (1.6.1)
     builder (3.2.2)
     bullet (4.14.10)
@@ -310,7 +307,6 @@ PLATFORMS
 
 DEPENDENCIES
   arel!
-  autoprefixer-rails
   awesome_print
   bullet
   bundler-audit
