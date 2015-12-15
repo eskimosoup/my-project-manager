@@ -11,8 +11,6 @@ gem 'rack', github: "rack/rack"
 gem 'pg', '~> 0.18'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', github: "rails/coffee-rails"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -29,12 +27,24 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem "autoprefixer-rails"
+gem "normalize-rails", "~> 3.0.0"
+
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem "awesome_print"
+  gem "bullet"
+  gem "bundler-audit", require: false
+  gem "dotenv-rails"
+  gem "factory_girl_rails"
+  gem "i18n-tasks"
+  gem "pry-byebug"
+  gem "pry-rails"
+  gem "rspec-rails", github: "rspec/rspec-rails", branch: "rails-5-support-patches"
+  gem "rspec-core", github: "rspec/rspec-core"
+  gem "rspec-expectations", github: "rspec/rspec-expectations"
+  gem "rspec-mocks", github: "rspec/rspec-mocks"
+  gem "rspec-support", github: "rspec/rspec-support"
 end
 
 group :development do
@@ -42,6 +52,19 @@ group :development do
   gem 'web-console', github: 'rails/web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "quiet_assets"
+  gem "spring-commands-rspec"  
+end
+
+group :test do
+  gem "capybara-webkit"
+  gem "database_cleaner"
+  gem "formulaic"
+  gem "launchy"
+  gem "shoulda-matchers"
+  gem "simplecov", require: false
+  gem "timecop"
+  gem "webmock"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
