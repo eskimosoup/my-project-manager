@@ -27,6 +27,8 @@ gem "autoprefixer-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "simple_form"
 gem "administrate", "~> 0.1.2"
+gem "clearance", "~> 1.12.0"
+gem "email_validator", "~> 1.6.0"
 
 group :development, :test do
   gem "awesome_print"
