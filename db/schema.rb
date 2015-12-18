@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217124210) do
+ActiveRecord::Schema.define(version: 20151218105559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,33 @@ ActiveRecord::Schema.define(version: 20151217124210) do
     t.datetime "updated_at",                                           null: false
   end
 
+  create_table "project_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "project_id"
+    t.decimal  "size",        precision: 7, scale: 2, null: false
+    t.string   "description"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "project_items", ["product_id"], name: "index_project_items_on_product_id", using: :btree
+  add_index "project_items", ["project_id"], name: "index_project_items_on_project_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.string   "name",                    null: false
+    t.text     "description"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["status"], name: "completed", where: "(status = 2)", using: :btree
+  add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
+  add_index "projects", ["status"], name: "quoted", where: "(status = 0)", using: :btree
+  add_index "projects", ["status"], name: "sold", where: "(status = 1)", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email",                                          null: false
@@ -78,4 +105,7 @@ ActiveRecord::Schema.define(version: 20151217124210) do
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   add_foreign_key "contacts", "customers", on_delete: :cascade
+  add_foreign_key "project_items", "products"
+  add_foreign_key "project_items", "projects", on_delete: :cascade
+  add_foreign_key "projects", "customers", on_delete: :cascade
 end

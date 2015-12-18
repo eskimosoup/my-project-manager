@@ -29,6 +29,7 @@ gem "simple_form"
 gem "administrate", "~> 0.1.2"
 gem "clearance", "~> 1.12.0"
 gem "email_validator", "~> 1.6.0"
+gem 'lograge', '~> 0.3.5'
 
 group :development, :test do
   gem "awesome_print"

@@ -1,0 +1,6 @@
+<%= simple_form_for [@project, @project_item] do |f| %>
+  <%= f.association :product %>
+  <%= f.input :size, as: :decimal %>
+  <%= f.input :description, hint: "To help identify the item in larger orders e.g. Room 1" %>
+  <%= f.button :submit %>
+<% end %>

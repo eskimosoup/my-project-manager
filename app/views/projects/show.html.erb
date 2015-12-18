@@ -1,0 +1,8 @@
+<h1><%= @project.name %></h1>
+
+<%= @project.description %>
+
+<h3>Products</h3>
+<%= render @project.project_items %>
+
+<%= link_to "Add Product To Project", new_project_project_item_path(@project) %>

@@ -9,7 +9,8 @@ RSpec.describe Customer, type: :model do
   end
 
   describe "associations", :association do
-    it { should have_many(:contacts) }
     it { should have_one(:main_contact).class_name('Contact') }
+    it { should have_many(:contacts) }
+    it { should have_many(:projects) }
   end
 end
