@@ -9,11 +9,14 @@ RSpec.describe Product, type: :model do
     it { should validate_numericality_of(:ink_cost).is_greater_than(0).allow_nil }
     it { should validate_numericality_of(:printer_cost).is_greater_than(0).allow_nil }
     it { should validate_presence_of(:mark_up) }
-#    it { should validate_numericality_of(:mark_up).only_integer.is_greater_than(0) }
+    skip { should validate_numericality_of(:mark_up).only_integer.is_greater_than(0) }
     #  currently fails - see https://github.com/thoughtbot/shoulda-matchers/pull/800
+    describe "uniqueness" do
+      subject { create(:product) }
+      it { should validate_uniqueness_of(:name) }
+    end
   end
 
   describe "associations", :association do
-    it { should have_many(:project_items) }
   end
 end
