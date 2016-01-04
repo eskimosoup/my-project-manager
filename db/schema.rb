@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217124210) do
+ActiveRecord::Schema.define(version: 20151218140733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,19 @@ ActiveRecord::Schema.define(version: 20151217124210) do
 
   add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
 
+  create_table "labours", force: :cascade do |t|
+    t.string   "name",                                              null: false
+    t.text     "description"
+    t.decimal  "per_hour",    precision: 5, scale: 2,               null: false
+    t.integer  "mark_up",                             default: 100, null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "labours", ["name"], name: "index_labours_on_name", unique: true, using: :btree
+
   create_table "products", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                                                 null: false
     t.text     "description"
     t.decimal  "substrate_cost", precision: 5, scale: 2,               null: false
     t.decimal  "hardware_cost",  precision: 5, scale: 2
@@ -61,6 +72,36 @@ ActiveRecord::Schema.define(version: 20151217124210) do
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
   end
+
+  add_index "products", ["name"], name: "index_products_on_name", unique: true, using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "brand_id"
+    t.string   "name",                    null: false
+    t.text     "description"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "projects", ["brand_id"], name: "index_projects_on_brand_id", using: :btree
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["status"], name: "completed", where: "(status = 2)", using: :btree
+  add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
+  add_index "projects", ["status"], name: "quoted", where: "(status = 0)", using: :btree
+  add_index "projects", ["status"], name: "sold", where: "(status = 1)", using: :btree
+
+  create_table "supporting_products", force: :cascade do |t|
+    t.string   "name",                                                 null: false
+    t.text     "description"
+    t.decimal  "substrate_cost", precision: 7, scale: 2,               null: false
+    t.integer  "mark_up",                                default: 100, null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+  end
+
+  add_index "supporting_products", ["name"], name: "index_supporting_products_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -73,9 +114,11 @@ ActiveRecord::Schema.define(version: 20151217124210) do
     t.string   "remember_token",     limit: 128
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "contacts", "customers", on_delete: :cascade
+  add_foreign_key "projects", "brands", on_delete: :cascade
+  add_foreign_key "projects", "customers", on_delete: :cascade
 end

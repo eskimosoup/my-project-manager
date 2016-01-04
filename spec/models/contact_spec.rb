@@ -6,10 +6,11 @@ RSpec.describe Contact, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:role) }
 
-    it do
-      subject = create(:contact)
-      should validate_uniqueness_of(:name)
+    describe "uniqueness" do
+      subject { build(:contact) }
+      it { should validate_uniqueness_of(:name) }
     end
+
     context "no email" do
       subject { Contact.new(phone: "01482 833694") }
 

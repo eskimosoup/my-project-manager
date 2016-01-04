@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class BrandDashboard < Administrate::BaseDashboard
+class LabourDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,7 +10,13 @@ class BrandDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    display: Field::Boolean,
+    description: Field::Text,
+    per_hour: Field::Number.with_options(
+      prefix: "£",
+      multiplier: 0.01,
+      decimals: 2
+    ),
+    mark_up: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }
@@ -22,8 +28,9 @@ class BrandDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :display,
-    :created_at,
+    :description,
+    :per_hour,
+    :mark_up,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,13 +42,15 @@ class BrandDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :display,
+    :description,
+    :per_hour,
+    :mark_up,
   ]
 
-  # Overwrite this method to customize how brands are displayed
+  # Overwrite this method to customize how labours are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(brand)
-  #   "Brand ##{brand.id}"
+  # def display_resource(labour)
+  #   "Labour ##{labour.id}"
   # end
 end

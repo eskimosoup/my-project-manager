@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :customer_registrations, only: [:new, :create] 
   resources :customers, only: [:show]
+  resources :projects, only: [:new, :create, :show] do
+    resources :items, only: [:new, :create]
+  end
 
   # Clearance
   namespace :admin do

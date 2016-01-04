@@ -11,6 +11,8 @@ class DashboardManifest
   # to work correctly.
   DASHBOARDS = [
     :products,
+    :supporting_products,
+    :labours,
     :brands
   ]
 
