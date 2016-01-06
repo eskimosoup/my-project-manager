@@ -1,0 +1,11 @@
+<div class="supporting-products">
+  <h3>Supporting Products</h3>
+  <% if @print_job.supporting_product_items.any? %>
+    <%= render(
+      partial: "supporting_product_items/supporting_product_item",
+      collection: @print_job.supporting_product_items,
+      as: :supporting_product_item
+    ) %>
+  <% end %>
+  <%= link_to "Add Supporting Product", new_print_job_supporting_product_item_path(@print_job) %>
+</div>

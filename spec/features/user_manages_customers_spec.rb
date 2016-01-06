@@ -1,7 +1,7 @@
 require "rails_helper"
 
-feature "User creates a customer do", type: :feature do
-  scenario "successfully" do
+feature "User manages customers", type: :feature do
+  scenario "creates customer" do
     user = create(:user)
     visit new_customer_registration_path
 
@@ -13,4 +13,16 @@ feature "User creates a customer do", type: :feature do
 
     expect(page).to have_css "h1", text: "Customer name"
   end
+
+  scenario "viewing customers" do
+    customer = create(:customer)
+
+    visit customers_path
+
+    within "#customer_#{ customer.id }" do
+      expect(page).to have_content(customer.name)
+      expect(page).to have_link("View", href: customer_path(customer))
+    end    
+  end
+
 end

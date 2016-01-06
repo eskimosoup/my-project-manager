@@ -1,0 +1,6 @@
+<%= div_for job_specification, class: "job-specification" do %>
+  <%= pluralize(job_specification.hours, 'hour') %>
+  <%= link_to "Edit", edit_job_specification_path(job_specification) %>
+  <%= button_to "Remove", job_specification_path(job_specification), method: :delete,
+    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+<% end %>
