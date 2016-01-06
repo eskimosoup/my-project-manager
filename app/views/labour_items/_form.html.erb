@@ -1,0 +1,5 @@
+<%= simple_form_for [@print_job, @labour_item] do |f| %>
+  <%= f.input :hours %>
+  <%= f.association :labour %>
+  <%= f.button :submit %>
+<% end %>

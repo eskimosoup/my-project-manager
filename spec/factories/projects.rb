@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :project do
-    customer 
+    customer
+    brand
     name "MyString"
     description "MyText"
     

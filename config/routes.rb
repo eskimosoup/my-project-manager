@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   root to: "homes#show"
 
   resources :customer_registrations, only: [:new, :create] 
-  resources :customers, only: [:show]
-  resources :projects, only: [:new, :create, :show] do
-    resources :items, only: [:new, :create]
+  resources :customers, only: [:index, :show]
+  resources :projects, only: [:new, :create, :index, :show] do
+    resources :print_jobs, except: [:index], shallow: true do
+      resources :job_specifications, except: [:index, :show]
+      resources :labour_items, except: [:index, :show]
+      resources :product_items, except: [:index, :show]
+      resources :sundry_items, except: [:index, :show]
+      resources :supporting_product_items, except: [:index, :show]
+    end
   end
 
   # Clearance

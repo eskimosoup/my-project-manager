@@ -1,0 +1,5 @@
+<%= simple_form_for [@print_job, @supporting_product_item] do |f| %>
+  <%= f.input :area %>
+  <%= f.association :supporting_product %>
+  <%= f.button :submit %>
+<% end %>

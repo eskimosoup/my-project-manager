@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails/web-console.git
-  revision: 685962ebe4874a12c1e472807917b66867f42636
+  revision: 579bd0f8539e76116c983538781621b8ca275250
   specs:
     web-console (3.0.0)
       activemodel (>= 4.2)
@@ -45,7 +45,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.3.8)
     administrate (0.1.2)
       autoprefixer-rails (~> 6.0)
       datetime_picker_rails (~> 0.0.6)
@@ -59,8 +59,8 @@ GEM
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
     arel (6.0.3)
-    ast (2.1.0)
-    autoprefixer-rails (6.1.2)
+    ast (2.2.0)
+    autoprefixer-rails (6.2.3)
       execjs
       json
     awesome_print (1.6.1)
@@ -90,9 +90,9 @@ GEM
       email_validator (~> 1.4)
       rails (>= 3.1)
     coderay (1.1.0)
-    coffee-rails (4.1.0)
+    coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
+      railties (>= 4.0.0, < 5.1.x)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -146,8 +146,8 @@ GEM
       activesupport (>= 4.0.4)
       loofah (>= 2.0)
       nokogiri (~> 1.6)
-    jbuilder (2.3.2)
-      activesupport (>= 3.0.0, < 5)
+    jbuilder (2.4.0)
+      activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
@@ -250,16 +250,16 @@ GEM
     selectize-rails (0.12.1)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
-    simple_form (3.2.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     simplecov (0.11.1)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.6.0)
+    spring (1.6.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -275,7 +275,7 @@ GEM
     thor (0.19.1)
     thread (0.2.2)
     thread_safe (0.3.5)
-    tilt (2.0.1)
+    tilt (2.0.2)
     timecop (0.8.0)
     tins (1.8.1)
     turbolinks (2.5.3)
@@ -286,8 +286,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uniform_notifier (1.9.0)
-    webmock (1.22.3)
-      addressable (>= 2.3.6)
+    webmock (1.22.5)
+      addressable (< 2.4.0)
       crack (>= 0.3.2)
       hashdiff
     xpath (2.0.0)
@@ -335,4 +335,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

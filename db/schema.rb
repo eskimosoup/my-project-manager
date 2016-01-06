@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218140733) do
+ActiveRecord::Schema.define(version: 20160105125049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(version: 20151218140733) do
 
   add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
 
+  create_table "job_specifications", force: :cascade do |t|
+    t.decimal  "hours",        precision: 15, scale: 2, null: false
+    t.integer  "print_job_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "job_specifications", ["print_job_id"], name: "index_job_specifications_on_print_job_id", using: :btree
+
+  create_table "labour_items", force: :cascade do |t|
+    t.integer  "print_job_id",                          null: false
+    t.integer  "labour_id",                             null: false
+    t.decimal  "hours",        precision: 15, scale: 2, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "labour_items", ["labour_id"], name: "index_labour_items_on_labour_id", using: :btree
+  add_index "labour_items", ["print_job_id"], name: "index_labour_items_on_print_job_id", using: :btree
+
   create_table "labours", force: :cascade do |t|
     t.string   "name",                                              null: false
     t.text     "description"
@@ -60,6 +80,27 @@ ActiveRecord::Schema.define(version: 20151218140733) do
   end
 
   add_index "labours", ["name"], name: "index_labours_on_name", unique: true, using: :btree
+
+  create_table "print_jobs", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "print_jobs", ["project_id", "name"], name: "index_print_jobs_on_project_id_and_name", unique: true, using: :btree
+  add_index "print_jobs", ["project_id"], name: "index_print_jobs_on_project_id", using: :btree
+
+  create_table "product_items", force: :cascade do |t|
+    t.decimal  "area",         precision: 15, scale: 3, null: false
+    t.integer  "print_job_id",                          null: false
+    t.integer  "product_id",                            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "product_items", ["print_job_id"], name: "index_product_items_on_print_job_id", using: :btree
+  add_index "product_items", ["product_id"], name: "index_product_items_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name",                                                 null: false
@@ -92,6 +133,27 @@ ActiveRecord::Schema.define(version: 20151218140733) do
   add_index "projects", ["status"], name: "quoted", where: "(status = 0)", using: :btree
   add_index "projects", ["status"], name: "sold", where: "(status = 1)", using: :btree
 
+  create_table "sundry_items", force: :cascade do |t|
+    t.string   "name",                                  null: false
+    t.decimal  "cost",         precision: 15, scale: 2, null: false
+    t.integer  "print_job_id",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "sundry_items", ["print_job_id"], name: "index_sundry_items_on_print_job_id", using: :btree
+
+  create_table "supporting_product_items", force: :cascade do |t|
+    t.decimal  "area",                  precision: 15, scale: 3, null: false
+    t.integer  "supporting_product_id",                          null: false
+    t.integer  "print_job_id",                                   null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "supporting_product_items", ["print_job_id"], name: "index_supporting_product_items_on_print_job_id", using: :btree
+  add_index "supporting_product_items", ["supporting_product_id"], name: "index_supporting_product_items_on_supporting_product_id", using: :btree
+
   create_table "supporting_products", force: :cascade do |t|
     t.string   "name",                                                 null: false
     t.text     "description"
@@ -119,6 +181,15 @@ ActiveRecord::Schema.define(version: 20151218140733) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "contacts", "customers", on_delete: :cascade
+  add_foreign_key "job_specifications", "print_jobs", on_delete: :cascade
+  add_foreign_key "labour_items", "labours"
+  add_foreign_key "labour_items", "print_jobs", on_delete: :cascade
+  add_foreign_key "print_jobs", "projects", on_delete: :cascade
+  add_foreign_key "product_items", "print_jobs", on_delete: :cascade
+  add_foreign_key "product_items", "products"
   add_foreign_key "projects", "brands", on_delete: :cascade
   add_foreign_key "projects", "customers", on_delete: :cascade
+  add_foreign_key "sundry_items", "print_jobs", on_delete: :cascade
+  add_foreign_key "supporting_product_items", "print_jobs"
+  add_foreign_key "supporting_product_items", "supporting_products", on_delete: :cascade
 end
