@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105125049) do
+ActiveRecord::Schema.define(version: 20160106141214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 20160105125049) do
   end
 
   add_index "labours", ["name"], name: "index_labours_on_name", unique: true, using: :btree
+
+  create_table "mileages", force: :cascade do |t|
+    t.decimal  "miles",        precision: 15, scale: 2, null: false
+    t.integer  "print_job_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "mileages", ["print_job_id"], name: "index_mileages_on_print_job_id", using: :btree
 
   create_table "print_jobs", force: :cascade do |t|
     t.integer  "project_id"
@@ -184,6 +193,7 @@ ActiveRecord::Schema.define(version: 20160105125049) do
   add_foreign_key "job_specifications", "print_jobs", on_delete: :cascade
   add_foreign_key "labour_items", "labours"
   add_foreign_key "labour_items", "print_jobs", on_delete: :cascade
+  add_foreign_key "mileages", "print_jobs", on_delete: :cascade
   add_foreign_key "print_jobs", "projects", on_delete: :cascade
   add_foreign_key "product_items", "print_jobs", on_delete: :cascade
   add_foreign_key "product_items", "products"

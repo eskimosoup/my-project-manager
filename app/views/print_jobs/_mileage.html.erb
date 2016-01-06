@@ -1,0 +1,12 @@
+<div class="mileages">
+  <h3>Mileage</h3>
+
+  <% if @print_job.mileages.any? %>
+    <%= render(
+      partial: "mileages/mileage",
+      collection: @print_job.mileages,
+      as: :mileage
+    ) %>
+  <% end %>
+  <%= link_to "Add Mileage", new_print_job_mileage_path(@print_job) %>
+</div>

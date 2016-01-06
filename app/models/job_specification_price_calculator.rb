@@ -10,8 +10,15 @@ class JobSpecificationPriceCalculator
     15.00.to_d
   end
 
-  def price
+  def decimal_mark_up
+    2.0.to_d
+  end
+
+  def cost
     (cost_per_hour * hours).round(2)
   end
-  alias_method :cost, :price
+
+  def price
+    (cost * decimal_mark_up).round(2)
+  end
 end

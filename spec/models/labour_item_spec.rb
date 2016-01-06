@@ -13,7 +13,17 @@ RSpec.describe LabourItem, type: :model do
     it { should belong_to(:print_job) }
   end
 
-  describe "delegations", :delegation do
+  describe "labour" do
     it { should delegate_method(:name).to(:labour) }
+  end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      labour_item = build_stubbed(:labour_item)
+      expect(labour_item.price_calculator).to be_an_instance_of(LabourPriceCalculator)
+    end
+
+    it { should delegate_method(:total_cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
   end
 end

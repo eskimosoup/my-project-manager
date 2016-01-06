@@ -11,4 +11,13 @@ RSpec.describe SundryItem, type: :model do
   describe "associations", :association do
     it { should belong_to(:print_job) }
   end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      sundry_item = build_stubbed(:sundry_item)
+      expect(sundry_item.price_calculator).to be_an_instance_of(SundryItemPriceCalculator)
+    end
+
+    it { should delegate_method(:price).to(:price_calculator) }
+  end
 end

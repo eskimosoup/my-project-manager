@@ -10,6 +10,7 @@ RSpec.describe PrintJob, type: :model do
   describe "associations", :association do
     it { should have_many(:job_specifications) }
     it { should have_many(:labour_items) }
+    it { should have_many(:mileages) }
     it { should belong_to(:project) }
     it { should have_many(:product_items) }
     it { should have_many(:sundry_items) }
