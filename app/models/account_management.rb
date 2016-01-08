@@ -1,8 +1,8 @@
 class AccountManagement < ActiveRecord::Base
-  belongs_to :project
+  belongs_to :print_job
 
   validates :hours, presence: true, numericality: { greater_than: 0.0 }
-  validates :project, presence: true
+  validates :print_job, presence: true
 
   delegate :price, to: :price_calculator
 

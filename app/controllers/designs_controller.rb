@@ -1,5 +1,5 @@
 class DesignsController < ApplicationController
-  before_action :set_project, only: [:new, :create]
+  before_action :set_print_job, only: [:new, :create]
   before_action :set_design, except: [:new, :create]
 
   def new
@@ -7,9 +7,9 @@ class DesignsController < ApplicationController
   end
 
   def create
-    @design = @project.designs.new(design_params)
+    @design = @print_job.designs.new(design_params)
     if @design.save
-      redirect_to @project, notice: "Design successfully created"
+      redirect_to @print_job, notice: "Design successfully created"
     else
       render :new
     end
@@ -20,7 +20,7 @@ class DesignsController < ApplicationController
 
   def update
     if @design.update(design_params)
-      redirect_to @design.project, notice: "Design successfully updated"
+      redirect_to @design.print_job, notice: "Design successfully updated"
     else
       render :edit
     end
@@ -28,13 +28,13 @@ class DesignsController < ApplicationController
 
   def destroy
     @design.destroy
-    redirect_to @design.project, notice: "Design successfully destroyed"
+    redirect_to @design.print_job, notice: "Design successfully destroyed"
   end
 
   private
 
-  def set_project
-    @project = Project.find(params[:project_id])
+  def set_print_job
+    @print_job = PrintJob.find(params[:print_job_id])
   end
 
   def set_design

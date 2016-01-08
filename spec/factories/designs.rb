@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :design do
-    project 
+    print_job 
     hours 5.50 
   end
 

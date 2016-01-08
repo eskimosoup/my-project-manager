@@ -2,9 +2,9 @@ require "rails_helper"
 
 describe "User manages design", type: :feature do
   it "creates design" do
-    project = create(:project)
+    print_job = create(:print_job)
 
-    visit project_path(project)
+    visit print_job_path(print_job)
     click_on "Add Design"
 
     fill_form(:design, { hours: 5 })
@@ -16,7 +16,7 @@ describe "User manages design", type: :feature do
   it "edits design" do
     design = create(:design)
 
-    visit project_path(design.project)
+    visit print_job_path(design.print_job)
     edit_design(design)
 
     fill_in "Hours", with: 3
@@ -28,7 +28,7 @@ describe "User manages design", type: :feature do
   it "removes design" do
     design = create(:design)
 
-    visit project_path(design.project)
+    visit print_job_path(design.print_job)
     destroy_design(design)
 
     expect(page).not_to have_css "#design_#{ design.id }"
