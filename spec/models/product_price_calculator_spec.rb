@@ -11,7 +11,7 @@ describe ProductPriceCalculator, type: :model do
     it { should delegate_method(:mark_up).to(:product) }
   end
 
-  describe "calculating variable costs" do
+  describe "#variable_costs" do
     it "correctly" do
       product = instance_double("product", substrate_cost: 5.50, hardware_cost: 1.50, ink_cost: 2.50)
       calc = ProductPriceCalculator.new(product: product, area: 1)
@@ -34,7 +34,7 @@ describe ProductPriceCalculator, type: :model do
     end
   end
 
-  describe "calculating fixed costs" do
+  describe "#fixed_cost" do
     it "correctly when printer cost is nil" do
       product = instance_double("product", printer_cost: nil)
       calc = ProductPriceCalculator.new(product: product, area: 1)
@@ -57,23 +57,23 @@ describe ProductPriceCalculator, type: :model do
     end
   end
 
-  describe "calculating the total cost" do
+  describe "#cost" do
     it "correctly" do
       calc = ProductPriceCalculator.new(product: nil, area: nil)
       allow(calc).to receive(:variable_cost).and_return(5.50)
       allow(calc).to receive(:fixed_cost).and_return(2.50)
 
-      expect(calc.total_cost).to eq(8.00)
+      expect(calc.cost).to eq(8.00)
       expect(calc).to have_received(:variable_cost)
       expect(calc).to have_received(:fixed_cost)
     end
   end
   
-  describe "calculating price" do
+  describe "#price" do
     it "correctly" do
       product = instance_double("product", mark_up: 250)
       calc = ProductPriceCalculator.new(product: product, area: nil)
-      allow(calc).to receive(:total_cost).and_return(2.50)
+      allow(calc).to receive(:cost).and_return(2.50)
 
       expect(calc.price).to eq(6.25)
     end
@@ -81,13 +81,13 @@ describe ProductPriceCalculator, type: :model do
     it "correctly and rounds decimals" do
       product = instance_double("product", mark_up: 250)
       calc = ProductPriceCalculator.new(product: product, area: nil)
-      allow(calc).to receive(:total_cost).and_return(3.23)
+      allow(calc).to receive(:cost).and_return(3.23)
 
       expect(calc.price).to eq(8.08)
     end
   end
  
-  it "calculates the decimal mark up" do
+  it "#decimal_mark_up" do
     product = instance_double("product", mark_up: 250)
     calc = ProductPriceCalculator.new(product: product, area: nil)
 

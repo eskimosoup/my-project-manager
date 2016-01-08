@@ -1,0 +1,10 @@
+<div class="account-managements">
+  <% if @project.account_managements.any? %>
+    <%= render(
+      partial: "account_managements/account_management",
+      collection: @project.account_managements,
+      as: :account_management
+    ) %>
+  <% end %>
+  <%= link_to "Add Account Management", new_project_account_management_path(@project) %>
+</div>

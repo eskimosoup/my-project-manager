@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106141214) do
+ActiveRecord::Schema.define(version: 20160108102857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_managements", force: :cascade do |t|
+    t.integer  "project_id",                          null: false
+    t.decimal  "hours",      precision: 15, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "account_managements", ["project_id"], name: "index_account_managements_on_project_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -49,6 +58,15 @@ ActiveRecord::Schema.define(version: 20160106141214) do
   end
 
   add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
+
+  create_table "designs", force: :cascade do |t|
+    t.integer  "project_id",                          null: false
+    t.decimal  "hours",      precision: 15, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "designs", ["project_id"], name: "index_designs_on_project_id", using: :btree
 
   create_table "job_specifications", force: :cascade do |t|
     t.decimal  "hours",        precision: 15, scale: 2, null: false
@@ -189,7 +207,9 @@ ActiveRecord::Schema.define(version: 20160106141214) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "account_managements", "projects", on_delete: :cascade
   add_foreign_key "contacts", "customers", on_delete: :cascade
+  add_foreign_key "designs", "projects", on_delete: :cascade
   add_foreign_key "job_specifications", "print_jobs", on_delete: :cascade
   add_foreign_key "labour_items", "labours"
   add_foreign_key "labour_items", "print_jobs", on_delete: :cascade

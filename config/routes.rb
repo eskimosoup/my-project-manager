@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :customer_registrations, only: [:new, :create] 
   resources :customers, only: [:index, :show]
   resources :projects, only: [:new, :create, :index, :show] do
+    resources :account_managements, except: [:index, :show], shallow: true
+    resources :designs, except: [:index, :show], shallow: true
     resources :print_jobs, except: [:index], shallow: true do
       resources :job_specifications, except: [:index, :show]
       resources :labour_items, except: [:index, :show]
