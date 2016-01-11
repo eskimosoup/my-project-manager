@@ -1,5 +1,6 @@
 <%= div_for print_job, class: "print-job" do %>
   <%= print_job.name %>
+  <%= render(partial: 'print_jobs/prices', locals: { print_job: print_job }) %>
   <%= link_to "View", print_job_path(print_job) %>
   <%= button_to "Remove", print_job_path(print_job), method: :delete,
     data: { confirm: "Are you sure?", disable_with: "Processing" } %>

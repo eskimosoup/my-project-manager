@@ -12,6 +12,7 @@ RSpec.describe Project, type: :model do
     it { should belong_to(:brand) }
     it { should have_many(:print_jobs) }
   end
+  it { should delegate_method(:brand_type).to(:brand) }
 
   describe "price calculator" do
     it "#price_calculator" do
