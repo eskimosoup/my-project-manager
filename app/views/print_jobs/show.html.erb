@@ -11,4 +11,4 @@
 <%= render "print_jobs/account_management", print_job: @print_job %>
 <%= render "print_jobs/design", print_job: @print_job %>
 <%= render "print_jobs/prices", print_job: @print_job %>
-
+<%= link_to "Back To Project", project_path(@print_job.project_id) %>
