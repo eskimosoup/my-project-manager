@@ -9,7 +9,7 @@ gem 'pg', '~> 0.18'
 gem 'uglifier', '>= 1.3.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,14 +40,14 @@ group :development, :test do
   gem "i18n-tasks"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", '~> 3.4' 
+  gem "rspec-rails", '~> 3.4'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', github: 'rails/web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
   gem "quiet_assets"
   gem "spring-commands-rspec"
 end
