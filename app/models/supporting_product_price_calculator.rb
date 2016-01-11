@@ -8,12 +8,12 @@ class SupportingProductPriceCalculator
     @area = area
   end
 
-  def total_cost
+  def cost
     (substrate_cost * area.to_d).round(2)
   end
 
   def price
-    (total_cost * decimal_mark_up).round(2)
+    (cost * decimal_mark_up).round(2)
   end
 
   def decimal_mark_up

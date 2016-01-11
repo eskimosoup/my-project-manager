@@ -12,4 +12,21 @@ RSpec.describe Project, type: :model do
     it { should belong_to(:brand) }
     it { should have_many(:print_jobs) }
   end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      project = build_stubbed(:project)
+
+      expect(project.price_calculator).to be_an_instance_of(ProjectPriceCalculator)
+    end
+
+    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:rush_job_price).to(:price_calculator) }
+    it { should delegate_method(:trade_price).to(:price_calculator) }
+    it { should delegate_method(:trade_rush_job_price).to(:price_calculator) }
+    it { should delegate_method(:my_price).to(:price_calculator) }
+    it { should delegate_method(:my_rush_job_price).to(:price_calculator) }
+    it { should delegate_method(:my_customer_price).to(:price_calculator) }
+    it { should delegate_method(:my_customer_rush_job_price).to(:price_calculator) }
+  end
 end

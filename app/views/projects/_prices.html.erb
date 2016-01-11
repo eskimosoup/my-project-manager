@@ -1,0 +1,25 @@
+<div class="prices">
+  <div>
+    <h6>Envisage Customer</h6>
+    Standard: <%= number_to_currency @project.price %>
+    Rush Job: <%= number_to_currency @project.rush_job_price %>
+  </div>
+
+  <div>
+    <h6>Envisage Trade</h6>
+    Standard: <%= number_to_currency @project.trade_price %>
+    Rush Job: <%= number_to_currency @project.trade_rush_job_price %>
+  </div>
+  
+  <div>
+    <h6>To My</h6>
+    Standard: <%= number_to_currency @project.my_price %>
+    Rush Job: <%= number_to_currency @project.my_rush_job_price %>
+  </div>
+
+  <div>
+    <h6>To My Customer</h6>
+    Standard: <%= number_to_currency @project.my_customer_price %>
+    Rush Job: <%= number_to_currency @project.my_customer_rush_job_price %>
+  </div>
+</div>

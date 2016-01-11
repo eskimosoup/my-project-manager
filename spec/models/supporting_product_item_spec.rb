@@ -13,7 +13,19 @@ RSpec.describe SupportingProductItem, type: :model do
     it { should belong_to(:supporting_product) }
   end
 
-  describe "delegations", :delegation do
+  describe "supporting product" do
     it { should delegate_method(:name).to(:supporting_product) }
+  end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      supporting_product_item = build_stubbed(:supporting_product_item)
+      expect(supporting_product_item.price_calculator).to be_an_instance_of(SupportingProductPriceCalculator)
+    end
+
+    it { should delegate_method(:variable_cost).to(:price_calculator) }
+    it { should delegate_method(:fixed_cost).to(:price_calculator) }
+    it { should delegate_method(:total_cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
   end
 end

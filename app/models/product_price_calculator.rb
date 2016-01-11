@@ -18,12 +18,12 @@ class ProductPriceCalculator
     cost.round(2)
   end
 
-  def total_cost
+  def cost
     (variable_cost + fixed_cost).round(2)
   end
 
   def price
-    (total_cost * decimal_mark_up).round(2)
+    (cost * decimal_mark_up).round(2)
   end
 
   def decimal_mark_up
