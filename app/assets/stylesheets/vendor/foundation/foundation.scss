@@ -1,0 +1,26 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.1.1
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+
+// Sass utilities
+@import 'util/util';
+
+// Global variables and styles
+@import 'global';
+
+@import 'settings/settings';
+
+// Components
+@import 'grid/flex-grid';
+@import 'components/visibility';
+@import 'components/flex-video';
+
+@mixin foundation-everything {
+  @include foundation-global-styles;
+  @include foundation-flex-grid;
+  @include foundation-visibility-classes;
+  @include foundation-flex-video;
+}

@@ -1,0 +1,17 @@
+<h1>New Customer</h1>
+
+<%= simple_form_for @customer_registration do |f| %>
+  <%= field_set_tag "Customer" do %>
+    <%= f.input :customer_name %>
+    <%= f.input :customer_credit_limit, as: :decimal %> 
+  <% end %>
+
+  <%= field_set_tag "Main Contact" do %>
+    <%= f.input :contact_name %>
+    <%= f.input :contact_email, as: :email %>
+    <%= f.input :contact_phone, as: :tel %>
+    <%= f.input :contact_role %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>

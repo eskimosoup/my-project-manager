@@ -1,0 +1,9 @@
+<%= simple_form_for [@print_job, @multiple_product_addition] do |f| %>
+  <%= f.simple_fields_for :product_items do |pi| %>
+    <%= pi.input :print_job_id, as: :hidden %>
+    <%= pi.input :product_id, as: :hidden %>
+    <%= pi.input :area, label: [pi.object.product.name, "Area"].join(" ") %>
+  <% end %>
+
+  <%= f.button :submit, "Add Products" %>
+<% end %>

@@ -1,0 +1,10 @@
+<h3>Print Jobs</h3>
+
+<% if @project.print_jobs.any? %>
+  <%= render(
+    partial: "print_jobs/print_job",
+    collection: @project.print_jobs,
+    as: :print_job
+  ) %>
+<% end %>
+<%= link_to "Add Print Job", new_project_print_job_path(@project) %>

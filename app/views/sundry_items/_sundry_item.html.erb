@@ -1,0 +1,7 @@
+<%= div_for sundry_item, class: "sundry-item" do %>
+  <%= sundry_item.name %>
+  <%= sundry_item.cost %>
+  <%= link_to "Edit", edit_sundry_item_path(sundry_item) %>
+  <%= button_to "Remove", sundry_item_path(sundry_item), method: :delete,
+    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+<% end %>

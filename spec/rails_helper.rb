@@ -1,11 +1,17 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../../config/environment", __FILE__)
 abort("DATABASE_URL environment variable is set") if ENV["DATABASE_URL"]
 
 require "rspec/rails"
+require "capybara/rspec"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each do |file|
+  require file 
+end
 
 module Features
   # Extend this module in spec/support/features/*.rb

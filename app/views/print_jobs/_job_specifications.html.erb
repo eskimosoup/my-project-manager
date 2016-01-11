@@ -1,0 +1,11 @@
+<div class="job-specifications">
+  <h3>Job Specifications</h3>
+  <% if @print_job.job_specifications.any? %>
+    <%= render(
+      partial: "job_specifications/job_specification",
+      collection: @print_job.job_specifications,
+      as: :job_specification
+    ) %>
+  <% end %>
+  <%= link_to "Add Job Specification", new_print_job_job_specification_path(@print_job) %>
+</div>

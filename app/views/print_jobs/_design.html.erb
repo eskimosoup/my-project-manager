@@ -1,0 +1,11 @@
+<div class="designs">
+  <h3>Design</h3>
+  <% if @print_job.designs.any? %>
+    <%= render(
+      partial: "designs/design",
+      collection: @print_job.designs,
+      as: :design
+    ) %>
+  <% end %>
+  <%= link_to "Add Design", new_print_job_design_path(@print_job) %>
+</div>

@@ -1,0 +1,12 @@
+<div class="products">
+  <h3>Products</h3>
+  <% if @print_job.product_items.any? %>
+    <%= render(
+      partial: "product_items/product_item",
+      collection: @print_job.product_items,
+      as: :product_item
+    ) %>
+  <% end %>
+  <%= link_to "Add Product", new_print_job_product_item_path(@print_job) %>
+  <%= link_to "Add Multiple Products", new_print_job_multiple_product_addition_path(@print_job) %>
+</div>

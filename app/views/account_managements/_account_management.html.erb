@@ -1,0 +1,6 @@
+<%= div_for account_management, class: "account-management" do %>
+  <%= pluralize account_management.hours, "hour" %>
+  <%= link_to "Edit", edit_account_management_path(account_management) %>
+  <%= button_to "Remove", account_management_path(account_management), method: :delete,
+    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+<% end %>
