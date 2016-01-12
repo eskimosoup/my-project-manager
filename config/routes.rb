@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :sundry_items, except: [:index, :show]
       resources :supporting_product_items, except: [:index, :show]
     end
+    resource :downloads, only: [:show]
   end
 
   # Clearance

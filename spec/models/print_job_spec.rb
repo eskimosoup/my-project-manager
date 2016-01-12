@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PrintJob, type: :model do
   describe "validations", :validation do
+    subject{ build(:print_job) }
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).scoped_to(:project_id) }
     it { should validate_presence_of(:project) }
