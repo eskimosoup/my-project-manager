@@ -3,6 +3,7 @@
   <head>
     <title>My Project Manager</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Lato' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -10,11 +11,7 @@
   <body>
     <%= render "layouts/header" %>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+    <%= render 'shared/flash_messages' %>
 
     <%= yield %>
   </body>
