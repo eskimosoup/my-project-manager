@@ -1,4 +1,20 @@
-<%= div_for(customer, class: "customer") do %>
-  <%= customer.name %>
-  <%= link_to "View", customer %>
+<%= div_for(customer, class: cycle('odd', 'even')) do %>
+  <div class="customer-name">
+    <%= link_to customer do %>
+      <%= octicon('eye') %>
+      <%= customer.name %>
+    <% end %>
+  </div>
+
+  <div class="customer-quoted">
+    <%= customer.projects.quoted.size %> quoted
+  </div>
+
+  <div class="customer-sold">
+    <%= customer.projects.sold.size %> sold
+  </div>
+
+  <div class="customer-completed">
+    <%= customer.projects.completed.size %> completed
+  </div>
 <% end %>

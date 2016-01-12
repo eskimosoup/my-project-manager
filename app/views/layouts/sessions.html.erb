@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/shared/head' %>
+
+  <body class="sessions">
+    <%= render "layouts/header" %>
+
+    <div class="content">
+      <div class="user-form">
+        <%= render 'shared/flash_messages' %>
+
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

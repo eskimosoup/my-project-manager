@@ -1,0 +1,33 @@
+.primary-header {
+  @include flex-grid-row;
+  @include border-bottom-radius(rem-calc(20));
+  background: $green;
+  margin: 0 auto rem-calc(20);
+}
+
+.primary-title {
+  @include flex-grid-column(2);
+  @include links($white);
+  line-height: 1.1;
+
+  a {
+    display: block;
+    font-size: rem-calc(16px);
+    padding: rem-calc(12px) 0;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  strong {
+    display: block;
+    float: left;
+    font-size: rem-calc(32px);
+    line-height: 1;
+    font-weight: $lato-ultra-bold;
+    margin: 0 rem-calc(6px) 0 0;
+  }
+}

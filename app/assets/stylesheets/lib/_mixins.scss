@@ -65,7 +65,7 @@
 }
 
 // https://css-tricks.com/snippets/sass/sass-things-links/
-@mixin links ($link, $visit, $hover, $active) {
+@mixin links ($link, $visit: $link, $hover: $link, $active: $link) {
   a {
     color: $link;
 
