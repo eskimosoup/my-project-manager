@@ -1,14 +1,13 @@
-<%= div_for(customer, class: cycle('odd', 'even')) do %>
+<%= link_to customer.link, class: "customer #{cycle('odd', 'even')}" do %>
   <div class="customer-name">
-    <%= link_to customer do %>
-      <%= octicon('eye') %>
-      <%= customer.name %>
-    <% end %>
+    <%= octicon('eye') %>
+    <%= customer.name %>
+
     <div class="customer-credit">
       Credit limit
-      <%= number_to_currency customer.credit_limit %>
+      <%= customer.credit_limit_currency %>
       Amount on credit
-      <%= number_to_currency customer.amount_on_credit %>
+      <%= customer.amount_on_credit_currency %>
     </div>
   </div>
 

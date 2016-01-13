@@ -1,5 +1,7 @@
 .customer {
   @include grid-row;
+  border: 1px solid $white;
+  display: block;
   margin: rem-calc(5px) auto;
   padding: rem-calc(5px) 0;
 
@@ -13,19 +15,19 @@
 
   &:hover {
     background: lighten($dark-grey, 75%);
-    border: 1px solid $dark-grey;
+    border-color: $dark-grey;
   }
 }
 
 .customer-name {
   font-weight: $lato-bold;
-  @include grid-column(3);
+  @include grid-column(6);
 }
 
 .customer-quoted,
 .customer-sold,
 .customer-completed {
-  @include grid-column(3);
+  @include grid-column(2);
 }
 
 .customer-credit {
