@@ -1,4 +1,4 @@
-<%= link_to project.link, class: "project #{cycle('odd', 'even')}" do %>
+<%= link_to project.link, class: "project #{cycle('odd', 'even')}", id: project.dom_id do %>
   <div class="project-name">
     <%= octicon('eye') %>
     <%= project.name %>

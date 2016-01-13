@@ -1,0 +1,11 @@
+<% if customer.projects.any? %>
+  <div class="projects">
+    <h3>Projects</h3>
+
+    <%= render(
+      partial: "projects/project",
+      collection: BaseCollectionPresenter.new(collection: customer.projects, presenter: ProjectPresenter, view_template: self),
+      as: :project
+    ) %>
+  </div>
+<% end %>
