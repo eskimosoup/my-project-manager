@@ -20,6 +20,10 @@
 
     <%= link_to 'New customer', new_customer_registration_path %>
 
+    <%#= form_tag '', method: :get do %>
+      <%#= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], params[:per_page]), class: 'on-change-submit', prompt: 'Results per page' %>
+    <%# end %>
+
     <%= form_tag '', method: :get do %>
       <%= label_tag :name_search %>
       <%= text_field_tag :name_search, params[:name_search], class: 'autocomplete', data: { path: "#{autocomplete_path(model: 'Customer', field: 'name')}", select: 'log' } %>
@@ -34,6 +38,8 @@
         <%= check_box_tag "project_type", Project.statuses[:completed], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:completed]), id: 'project_type_only_completed' %>
         <%= label_tag :project_type_only_completed, "Only customers with completed projects" %>
       </div>
+
+      <%= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], (params[:per_page] || '25')) %>
 
       <%= submit_tag 'Search' %>
     <% end %>
