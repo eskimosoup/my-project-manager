@@ -19,4 +19,25 @@ RSpec.describe CustomersController, type: :controller do
     end
   end
 
+  describe "#show" do
+    it "assigns @customer" do
+      customer = create(:customer)
+      get :show, id: customer.id
+      expect(assigns(:customer)).to eq(customer)
+    end
+
+    it "renders the :show view" do
+      customer = create(:customer)
+      get :show, id: customer.id
+
+      expect(response).to render_template :show
+    end
+
+    it "responds with success" do
+      customer = create(:customer)
+      get :show, id: customer.id
+
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
