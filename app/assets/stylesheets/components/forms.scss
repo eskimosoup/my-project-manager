@@ -1,3 +1,7 @@
+label {
+  cursor: pointer;
+}
+
 .user-form {
   @include flex-grid-column(6);
   background: $white;
@@ -10,6 +14,66 @@
   background: image-url('layout/fur-background.jpg') center no-repeat;
 }
 
-.inline-label {
+.inline-block {
   display: inline-block;
+  width: auto;
+}
+
+.index-form {
+  background: $pink;
+  padding: rem-calc(15px);
+  margin: rem-calc(15px) 0 0;
+
+  label {
+    color: $white;
+  }
+}
+
+.index-search-item {
+  display: inline-block;
+  width: 94%;
+}
+
+.index-search-pagination {
+  display: inline-block;
+  width: 5%;
+}
+
+.index-search-filters {
+  @extend %clearfix;
+
+  div {
+    float: left;
+    width: 33%;
+  }
+}
+
+.submit-button,
+.action-button {
+  @include border-radius(4px);
+  background: $orange;
+  border: 1px solid $orange;
+  color: $white;
+  display: inline-block;
+  font-size: rem-calc(17px);
+  padding: rem-calc(5px) rem-calc(12px);
+  text-decoration: none;
+
+  &:focus {
+    border-color: $slate-grey;
+    outline: none;
+  }
+
+  &:hover {
+    background: lighten($pink, 15%);
+  }
+}
+
+.action-button {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $white;
+  }
 }

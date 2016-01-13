@@ -21,6 +21,7 @@
 
 .customer-name {
   font-weight: $lato-bold;
+  font-size: rem-calc(22px);
   @include grid-column(6);
 }
 

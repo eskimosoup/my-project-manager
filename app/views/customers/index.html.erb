@@ -18,33 +18,48 @@
   <div class="index">
     <h1>Customers</h1>
 
-    <%= link_to 'New customer', new_customer_registration_path %>
+    <%= link_to 'New customer', new_customer_registration_path, class: 'action-button' %>
 
     <%#= form_tag '', method: :get do %>
       <%#= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], params[:per_page]), class: 'on-change-submit', prompt: 'Results per page' %>
     <%# end %>
 
-    <%= form_tag '', method: :get do %>
-      <%= label_tag :name_search %>
-      <%= text_field_tag :name_search, params[:name_search], class: 'autocomplete', data: { path: "#{autocomplete_path(model: 'Customer', field: 'name')}", select: 'log' } %>
+    <%= form_tag '', method: :get, class: 'index-form' do %>
+      <div class="index-search-terms">
+        <div class="index-search-item">
+          <%= label_tag :name_search, 'Customer name search' %>
+          <%= text_field_tag :name_search, params[:name_search], class: 'autocomplete', placeholder: 'Enter customer name', data: { path: "#{autocomplete_path(model: 'Customer', field: 'name')}", select: 'log' } %>
+        </div>
 
-      <div>
-        <%= check_box_tag "project_type", Project.statuses[:quoted], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:quoted]), id: 'project_type_only_quote' %>
-        <%= label_tag :project_type_only_quote, "Only customers with quoted projects" %>
-
-        <%= check_box_tag "project_type", Project.statuses[:sold], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:sold]), id: 'project_type_only_sold' %>
-        <%= label_tag :project_type_only_sold, "Only customers with sold projects" %>
-
-        <%= check_box_tag "project_type", Project.statuses[:completed], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:completed]), id: 'project_type_only_completed' %>
-        <%= label_tag :project_type_only_completed, "Only customers with completed projects" %>
+        <div class="index-search-pagination">
+          <%= label_tag :per_page, 'Per page' %>
+          <%= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], (params[:per_page] || '25')), class: 'inline-block' %>
+        </div>
       </div>
 
-      <%= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], (params[:per_page] || '25')) %>
+      <div class="index-search-filters">
+        <div>
+          <%= check_box_tag "project_type", Project.statuses[:quoted], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:quoted]), id: 'project_type_only_quote' %>
+          <%= label_tag :project_type_only_quote, "Only customers with quoted projects" %>
+        </div>
 
-      <%= submit_tag 'Search' %>
+        <div>
+          <%= check_box_tag "project_type", Project.statuses[:sold], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:sold]), id: 'project_type_only_sold' %>
+          <%= label_tag :project_type_only_sold, "Only customers with sold projects" %>
+        </div>
+
+        <div>
+          <%= check_box_tag "project_type", Project.statuses[:completed], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:completed]), id: 'project_type_only_completed' %>
+          <%= label_tag :project_type_only_completed, "Only customers with completed projects" %>
+        </div>
+      </div>
+
+      <%= submit_tag 'Search', class: 'submit-button' %>
     <% end %>
 
-    <%= render @presented_customers %>
+    <div class="index-items">
+      <%= render @presented_customers %>
+    </div>
 
     <%= paginate @presented_customers %>
 
