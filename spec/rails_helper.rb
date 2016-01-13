@@ -10,7 +10,7 @@ require "rspec/rails"
 require "capybara/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each do |file|
-  require file 
+  require file
 end
 
 module Features
@@ -20,6 +20,7 @@ end
 
 RSpec.configure do |config|
   config.include Features, type: :feature
+  config.include ActionView::TestCase::Behavior, type: :presenter
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false

@@ -1,0 +1,50 @@
+.primary-navigation {
+  @include flex-grid-column(6);
+}
+
+.primary-navigation-links {
+  @include links($white, $white, $blue, $blue);
+  list-style: none;
+
+  a {
+    display: block;
+    font-size: rem-calc(14);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 rem-calc(10);
+  }
+}
+
+.user-navigation {
+  @include flex-grid-column(4);
+  text-align: right;
+  margin: em(7px) 0;
+
+  .button_to {
+    display: inline;
+  }
+}
+
+.user-information {
+  color: $white;
+  display: inline-block;
+  font-size: rem-calc(12px);
+}
+
+.logout-button,
+.login-button {
+  background: $white;
+  border: 0;
+  box-shadow: 0 0 5px 0 rgba($dark-green, .75);
+  color: $dark-grey;
+  display: inline-block;
+  font-size: rem-calc(14px);
+  margin: rem-calc(5px) 0;
+  padding: rem-calc(5px);
+  text-decoration: none;
+  text-transform: uppercase;
+}

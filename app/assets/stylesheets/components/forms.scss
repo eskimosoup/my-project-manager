@@ -1,0 +1,15 @@
+.user-form {
+  @include flex-grid-column(6);
+  background: $white;
+  box-shadow: 0 0 5px 0 rgba($white, 0.75);
+  margin: 0 auto;
+  padding: rem-calc(20px);
+}
+
+.sessions {
+  background: image-url('layout/fur-background.jpg') center no-repeat;
+}
+
+.inline-label {
+  display: inline-block;
+}

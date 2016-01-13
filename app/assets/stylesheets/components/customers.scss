@@ -1,0 +1,36 @@
+.customer {
+  @include grid-row;
+  border: 1px solid $white;
+  display: block;
+  margin: rem-calc(5px) auto;
+  padding: rem-calc(5px) 0;
+
+  &.odd {
+    background: lighten($brown, 33%);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: lighten($dark-grey, 75%);
+    border-color: $dark-grey;
+  }
+}
+
+.customer-name {
+  font-weight: $lato-bold;
+  @include grid-column(6);
+}
+
+.customer-quoted,
+.customer-sold,
+.customer-completed {
+  @include grid-column(2);
+}
+
+.customer-credit {
+  font-size: rem-calc(12px);
+  font-weight: normal;
+}

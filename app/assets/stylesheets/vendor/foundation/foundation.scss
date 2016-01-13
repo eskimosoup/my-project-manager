@@ -1,6 +1,6 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.1.1
+ * Version 6.1.0
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -11,16 +11,28 @@
 // Global variables and styles
 @import 'global';
 
-@import 'settings/settings';
-
 // Components
-@import 'grid/flex-grid';
+@import 'grid/grid';
+@import 'typography/typography';
+@import 'forms/forms';
 @import 'components/visibility';
+@import 'components/float';
 @import 'components/flex-video';
 
-@mixin foundation-everything {
+@mixin foundation-everything($flex: false) {
   @include foundation-global-styles;
-  @include foundation-flex-grid;
+  @if not $flex {
+    @include foundation-grid;
+  } @else {
+    @include foundation-flex-grid;
+  }
+  @include foundation-typography;
+  @include foundation-forms;
+  @include foundation-button;
   @include foundation-visibility-classes;
+  @include foundation-float-classes;
   @include foundation-flex-video;
 }
+
+@include foundation-global-styles;
+@include foundation-forms;

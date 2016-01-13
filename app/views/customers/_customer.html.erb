@@ -1,4 +1,25 @@
-<%= div_for(customer, class: "customer") do %>
-  <%= customer.name %>
-  <%= link_to "View", customer %>
+<%= link_to customer.link, class: "customer #{cycle('odd', 'even')}" do %>
+  <div class="customer-name">
+    <%= octicon('eye') %>
+    <%= customer.name %>
+
+    <div class="customer-credit">
+      Credit limit
+      <%= customer.credit_limit_currency %>
+      Amount on credit
+      <%= customer.amount_on_credit_currency %>
+    </div>
+  </div>
+
+  <div class="customer-quoted">
+    <%= customer.projects.quoted.size %> quoted
+  </div>
+
+  <div class="customer-sold">
+    <%= customer.projects.sold.size %> sold
+  </div>
+
+  <div class="customer-completed">
+    <%= customer.projects.completed.size %> completed
+  </div>
 <% end %>

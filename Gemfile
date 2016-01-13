@@ -9,7 +9,7 @@ gem 'pg', '~> 0.18'
 gem 'uglifier', '>= 1.3.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -42,7 +42,7 @@ group :development, :test do
   gem "i18n-tasks"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", '~> 3.4' 
+  gem "rspec-rails", '~> 3.4'
 end
 
 group :development do
@@ -68,3 +68,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'jquery-ui-rails'
+gem 'kaminari'
