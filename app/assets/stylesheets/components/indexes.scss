@@ -1,3 +1,7 @@
 .index {
   @include grid-column(12);
 }
+
+.index-items {
+  margin: rem-calc(15px) 0;
+}

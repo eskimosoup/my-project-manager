@@ -1,9 +1,9 @@
-.customer {
+.project {
   @include grid-row;
   border: 1px solid $white;
   display: block;
   margin: rem-calc(5px) auto;
-  padding: rem-calc(5px) 0;
+  padding: rem-calc(7px) 0;
 
   &.odd {
     background: lighten($brown, 33%);
@@ -19,19 +19,17 @@
   }
 }
 
-.customer-name {
+.project-name {
   font-weight: $lato-bold;
-  font-size: rem-calc(22px);
-  @include grid-column(6);
+  @include grid-column(4);
 }
 
-.customer-quoted,
-.customer-sold,
-.customer-completed {
-  @include grid-column(2);
+.project-customer-name,
+.project-status {
+  @include grid-column(4);
 }
 
-.customer-credit {
+.project-print-jobs-count {
   font-size: rem-calc(12px);
   font-weight: normal;
 }

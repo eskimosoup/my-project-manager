@@ -1,16 +1,20 @@
 class Project < ActiveRecord::Base
-
-  include BrandPriceable
+  include BrandPriceable, Filterable
 
   belongs_to :brand
-  belongs_to :customer  
+  belongs_to :customer
   has_many :print_jobs
-  
+
   enum status: %w( quoted sold completed )
 
   validates :brand, presence: true
   validates :customer, presence: true
   validates :name, presence: true
+
+  scope :alphabetical, -> { order(name: :asc) }
+  scope :name_search, ->(keywords) { where('projects.name ILIKE ?', "%#{keywords}%").alphabetical if keywords.present? }
+  scope :project_type, ->(value) { where(status: value) }
+  scope :customer_id, ->(value) { where(customer_id: value) }
 
   delegate :brand_type, to: :brand
   delegate :price, :rush_job_price, :trade_price, :trade_rush_job_price,

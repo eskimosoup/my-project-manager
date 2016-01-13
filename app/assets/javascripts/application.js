@@ -67,4 +67,8 @@ $(function() {
       }
     });
   });
-})
+});
+
+$(document).on('change', '.on-change-submit', function() {
+  $(this).parent().submit();
+});
