@@ -10,6 +10,11 @@
   a {
     text-decoration: none;
   }
+
+  &:hover {
+    background: lighten($dark-grey, 75%);
+    border: 1px solid $dark-grey;
+  }
 }
 
 .customer-name {
@@ -21,4 +26,9 @@
 .customer-sold,
 .customer-completed {
   @include grid-column(3);
+}
+
+.customer-credit {
+  font-size: rem-calc(12px);
+  font-weight: normal;
 }

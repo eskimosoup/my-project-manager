@@ -4,6 +4,12 @@
       <%= octicon('eye') %>
       <%= customer.name %>
     <% end %>
+    <div class="customer-credit">
+      Credit limit
+      <%= number_to_currency customer.credit_limit %>
+      Amount on credit
+      <%= number_to_currency customer.amount_on_credit %>
+    </div>
   </div>
 
   <div class="customer-quoted">

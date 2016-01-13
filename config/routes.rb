@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "homes#show"
 
-  resources :customer_registrations, only: [:new, :create] 
+  get '/autocomplete', to: 'utilities#autocomplete'
+
+  resources :customer_registrations, only: [:new, :create]
   resources :customers, only: [:index, :show]
   resources :projects, only: [:new, :create, :index, :show] do
     resources :print_jobs, except: [:index], shallow: true do
