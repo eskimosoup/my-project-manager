@@ -1,0 +1,35 @@
+.project {
+  @include grid-row;
+  border: 1px solid $white;
+  display: block;
+  margin: rem-calc(5px) auto;
+  padding: rem-calc(7px) 0;
+
+  &.odd {
+    background: lighten($brown, 33%);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: lighten($dark-grey, 75%);
+    border-color: $dark-grey;
+  }
+}
+
+.project-name {
+  font-weight: $lato-bold;
+  @include grid-column(4);
+}
+
+.project-customer-name,
+.project-status {
+  @include grid-column(4);
+}
+
+.project-print-jobs-count {
+  font-size: rem-calc(12px);
+  font-weight: normal;
+}

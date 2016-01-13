@@ -11,6 +11,10 @@ RSpec.describe CustomerPresenter, type: :presenter, customer_presenter: true do
   end
 
   describe 'standard customer' do
+    it 'returns the link' do
+      expect(customer_presenter.link).to eq(customer)
+    end
+
     it 'returns the linked customer name' do
       expect(customer_presenter.linked_content).to eq(link_to customer.name, customer)
     end

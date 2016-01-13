@@ -11,9 +11,10 @@ class ProjectsController < ApplicationController
       render :new
     end
   end
-  
+
   def index
-    @projects = Project.all
+    @projects = Project.filter(params.slice(:name_search, :customer_id, :project_type)).page(params[:page]).per(params[:per_page] || 15)
+    @presented_projects = collection_presenter(@projects)
   end
 
   def show

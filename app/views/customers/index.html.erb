@@ -20,10 +20,6 @@
 
     <%= link_to 'New customer', new_customer_registration_path, class: 'action-button' %>
 
-    <%#= form_tag '', method: :get do %>
-      <%#= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], params[:per_page]), class: 'on-change-submit', prompt: 'Results per page' %>
-    <%# end %>
-
     <%= form_tag '', method: :get, class: 'index-form' do %>
       <div class="index-search-terms">
         <div class="index-search-item">
