@@ -1,0 +1,11 @@
+<% if customer.projects.any? %>
+  <div class="projects">
+    <h3>Projects</h3>
+
+    <%= render(
+      partial: "projects/project",
+      collection: customer.projects,
+      as: :project
+    ) %>
+  </div>
+<% end %>

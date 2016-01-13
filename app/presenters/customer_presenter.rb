@@ -21,4 +21,5 @@ class CustomerPresenter < BasePresenter
   def projects
     customer.projects
   end
+
 end

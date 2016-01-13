@@ -13,6 +13,10 @@ class BasePresenter
     object.id
   end
 
+  def dom_id
+    h.dom_id(customer)
+  end
+
   def self.presents(name)
     define_method(name) do
       @object
