@@ -4,3 +4,5 @@
 
 <%= render "projects/print_jobs", project: @project %>
 <%= render "projects/prices", project: @project %>
+<%= link_to "Download PDF", project_downloads_path(@project, format: "pdf"),
+    target: "_blank", class: "download" %>

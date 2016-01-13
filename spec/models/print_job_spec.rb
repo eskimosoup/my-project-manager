@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PrintJob, type: :model do
   describe "validations", :validation do
+    subject{ build(:print_job) }
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).scoped_to(:project_id) }
     it { should validate_presence_of(:project) }
@@ -70,7 +71,7 @@ RSpec.describe PrintJob, type: :model do
   describe "brand is envisage trade" do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
-      allow(print_job).to receive(:brand_type).and_return('envisage')
+      allow(print_job).to receive(:brand_type).and_return('envisage_trade')
       allow(print_job).to receive(:trade_price).and_return(0.0)
 
       print_job.brand_price
@@ -81,7 +82,7 @@ RSpec.describe PrintJob, type: :model do
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
-      allow(print_job).to receive(:brand_type).and_return('envisage')
+      allow(print_job).to receive(:brand_type).and_return('envisage_trade')
       allow(print_job).to receive(:trade_rush_job_price).and_return(0.0)
 
       print_job.brand_rush_job_price

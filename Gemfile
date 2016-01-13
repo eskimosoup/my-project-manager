@@ -30,6 +30,8 @@ gem "administrate", "~> 0.1.2"
 gem "clearance", "~> 1.12.0"
 gem "email_validator", "~> 1.6.0"
 gem 'lograge', '~> 0.3.5'
+gem 'pdfkit', '~> 0.8.2'
+gem 'render_anywhere', '~> 0.0.12', require: false
 
 group :development, :test do
   gem "awesome_print"
@@ -61,6 +63,7 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+  gem "pdf-reader"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
