@@ -10,7 +10,7 @@ class PrintJobPresenter < BasePresenter
     h.link_to content, link, options
   end
 
-  def delete_job
+  def delete_link
     h.button_to "Remove", print_job, method: :delete,
       data: { confirm: "Are you sure?", disable_with: "Processing" }, class: 'secondary-action-button delete-job'
     end

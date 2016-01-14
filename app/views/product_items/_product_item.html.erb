@@ -1,4 +1,4 @@
-<%= div_for product_item, class: "product-item" do %>
+<%= link_to product_item.edit_link, class: "product-item", id: product_item.dom_id do %>
   <%= product_item.name %>
   <%= format_area(product_item.area) %>
   <%= link_to "Edit", edit_product_item_path(product_item) %>

@@ -32,7 +32,7 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
     end
 
     it 'returns the delete button' do
-      expect(print_job_presenter.delete_job).to eq(button_to 'Remove', print_job, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Processing' })
+      expect(print_job_presenter.delete_link).to eq(button_to 'Remove', print_job, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Processing' })
     end
   end
 end
