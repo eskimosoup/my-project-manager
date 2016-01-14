@@ -1,8 +1,18 @@
-<h1><%= @project.name %></h1>
+<div class="content">
+  <div class="main">
+    <h1><%= @presented_project.name %></h1>
 
-<%= @project.description %>
+    <div>
+      <%= @presented_project.description %>
+    </div>
 
-<%= render "projects/print_jobs", project: @project %>
-<%= render "projects/prices", project: @project %>
-<%= link_to "Download PDF", project_downloads_path(@project, format: "pdf"),
-    target: "_blank", class: "download" %>
+    <div class="project-menu">
+      <%= @presented_project.new_print_job_link %>
+      <%= @presented_project.download_pdf_link %>
+    </div>
+
+    <%= render "projects/print_jobs", project: @project %>
+
+    <%= render "projects/prices", project: @project %>
+  </div>
+</div>
