@@ -1,4 +1,4 @@
-<header>
+<header class="clearfix">
   <%= image_tag project.logo, class: "logo" %>
   <%= render(
     partial: "addresses/address",
@@ -6,8 +6,6 @@
     as: :address
   ) %>
 </header>
-
-<div class="clear"></div>
 
 <h1>
   <% if project.quoted? %>

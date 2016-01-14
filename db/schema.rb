@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111142010) do
+ActiveRecord::Schema.define(version: 20160114093940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,27 @@ ActiveRecord::Schema.define(version: 20160111142010) do
   end
 
   add_index "account_managements", ["print_job_id"], name: "index_account_managements_on_print_job_id", using: :btree
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "line_1",     null: false
+    t.string   "line_2"
+    t.string   "line_3"
+    t.string   "city",       null: false
+    t.string   "postcode",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "brand_addresses", force: :cascade do |t|
+    t.integer  "brand_id"
+    t.integer  "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "brand_addresses", ["address_id"], name: "index_brand_addresses_on_address_id", using: :btree
+  add_index "brand_addresses", ["brand_id"], name: "index_brand_addresses_on_brand_id", unique: true, using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -209,6 +230,8 @@ ActiveRecord::Schema.define(version: 20160111142010) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "account_managements", "print_jobs", on_delete: :cascade
+  add_foreign_key "brand_addresses", "addresses", on_delete: :cascade
+  add_foreign_key "brand_addresses", "brands", on_delete: :cascade
   add_foreign_key "contacts", "customers", on_delete: :cascade
   add_foreign_key "designs", "print_jobs", on_delete: :cascade
   add_foreign_key "job_specifications", "print_jobs", on_delete: :cascade

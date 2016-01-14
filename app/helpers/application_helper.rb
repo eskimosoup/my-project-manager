@@ -9,11 +9,13 @@ module ApplicationHelper
 
   def presenter(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize if object.present?
-    klass.new(object: object, view_template: view_context)
+    presenter = klass.new(object: object, view_template: self)
+    yield presenter if block_given?
+    presenter
   end
 
   def collection_presenter(object, klass = nil)
     klass ||= "#{object.first.class}Presenter".constantize if object.present?
-    BaseCollectionPresenter.new(collection: object, view_template: view_context, presenter: klass)
+    BaseCollectionPresenter.new(collection: object, view_template: self, presenter: klass)
   end
 end

@@ -10,9 +10,14 @@ RSpec.describe Project, type: :model do
   describe "associations", :association do
     it { should belong_to(:customer) }
     it { should belong_to(:brand) }
+    it { should have_one(:business_address).through(:brand).class_name("Address") }
     it { should have_many(:print_jobs) }
   end
-  it { should delegate_method(:brand_type).to(:brand) }
+
+  describe "#brand" do
+    it { should delegate_method(:brand_type).to(:brand) }
+    it { should delegate_method(:logo).to(:brand) }
+  end
 
   describe "price calculator" do
     it "#price_calculator" do
