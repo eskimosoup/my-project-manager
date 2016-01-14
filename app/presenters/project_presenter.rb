@@ -6,6 +6,20 @@ class ProjectPresenter < BasePresenter
     project
   end
 
+  def description
+    h.simple_format project.description
+  end
+
+  def download_pdf_link(content = 'Download PDF')
+    h.link_to content, h.project_downloads_path(project, format: 'pdf'),
+              target: '_blank', class: 'action-button download'
+  end
+
+  def new_print_job_link(content = 'Add Print Item')
+    h.link_to content, h.new_project_print_job_path(project),
+              class: 'action-button'
+  end
+
   def status
     project.status.humanize
   end
