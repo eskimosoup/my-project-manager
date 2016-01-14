@@ -1,17 +1,11 @@
 .customer {
   @include grid-row;
-  border: 1px solid $white;
-  display: block;
-  margin: rem-calc(5px) auto;
-  padding: rem-calc(5px) 0;
-
-  &.odd {
-    background: lighten($brown, 33%);
-  }
+  @include listing;
 
   a {
     text-decoration: none;
   }
+
 
   &:hover {
     background: lighten($dark-grey, 75%);
@@ -20,9 +14,9 @@
 }
 
 .customer-name {
+  @include grid-column(6);
   font-weight: $lato-bold;
   font-size: rem-calc(22px);
-  @include grid-column(6);
 }
 
 .customer-quoted,

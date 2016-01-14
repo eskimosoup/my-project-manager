@@ -34,17 +34,21 @@
       </div>
 
       <div class="index-search-filters">
-        <div>
+        <div class="quarters">
+          <%= select_tag :customer_id, options_for_select(Customer.pluck(:name, :id), params[:customer_id]), class: 'inline-block', prompt: 'All customers' %>
+        </div>
+
+        <div class="quarters">
           <%= check_box_tag "project_type", Project.statuses[:quoted], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:quoted]), id: 'project_type_only_quote' %>
           <%= label_tag :project_type_only_quote, "Only quoted projects" %>
         </div>
 
-        <div>
+        <div class="quarters">
           <%= check_box_tag "project_type", Project.statuses[:sold], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:sold]), id: 'project_type_only_sold' %>
           <%= label_tag :project_type_only_sold, "Only sold projects" %>
         </div>
 
-        <div>
+        <div class="quarters">
           <%= check_box_tag "project_type", Project.statuses[:completed], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:completed]), id: 'project_type_only_completed' %>
           <%= label_tag :project_type_only_completed, "Only completed projects" %>
         </div>

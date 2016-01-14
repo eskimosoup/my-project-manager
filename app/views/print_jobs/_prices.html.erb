@@ -1,5 +1,9 @@
-<div class="prices">
-  <h4>Prices</h4>
-  Standard: <%= number_to_currency print_job.brand_price %>
-  Rush job: <%= number_to_currency print_job.brand_rush_job_price %>
+<div class="print-job-prices project-prices">
+  <div class="print-job-standard-price">
+    Standard: <span class="project-price"><%= print_job.brand_price_currency %></span>
+  </div>
+
+  <div class="print-job-rush-job-price">
+    Rush job: <span class="project-price"><%= print_job.brand_rush_job_price_currency %></span>
+  </div>
 </div>

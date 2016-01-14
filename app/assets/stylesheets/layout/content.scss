@@ -1,9 +1,9 @@
 .content {
-  @include flex-grid-row;
+  @include grid-row;
 }
 
 .main {
-  @include flex-grid-column(12);
+  @include grid-column(12);
 }
 
 body {

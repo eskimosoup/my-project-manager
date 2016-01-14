@@ -1,10 +1,11 @@
 FactoryGirl.define do
   factory :project do
+    sequence(:id){ |n| n }
     customer
     brand
     name "MyString"
     description "MyText"
-    
+
     trait :quoted do
       status 0
     end

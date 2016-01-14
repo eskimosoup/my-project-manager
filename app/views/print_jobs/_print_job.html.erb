@@ -1,7 +1,11 @@
-<%= div_for print_job, class: "print-job" do %>
-  <%= print_job.name %>
-  <%= render(partial: 'print_jobs/prices', locals: { print_job: print_job }) %>
-  <%= link_to "View", print_job_path(print_job) %>
-  <%= button_to "Remove", print_job_path(print_job), method: :delete,
-    data: { confirm: "Are you sure?", disable_with: "Processing" } %>
+<%= content_tag :div, class: "print-job  #{cycle('odd', 'even')}", id: print_job.dom_id do %>
+  <div class="print-job-name">
+    <%= print_job.linked_content("#{octicon('eye')} #{print_job.name}".html_safe, class: 'print-job-view-link') %>
+  </div>
+
+  <div class="print-job-prices-overview">
+      <%= render(partial: 'print_jobs/prices', locals: { print_job: print_job }) %>
+  </div>
+
+  <%= print_job.delete_job %>
 <% end %>

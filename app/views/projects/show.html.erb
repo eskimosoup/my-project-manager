@@ -10,9 +10,9 @@
       <%= @presented_project.new_print_job_link %>
       <%= @presented_project.download_pdf_link %>
     </div>
-
-    <%= render "projects/print_jobs", project: @project %>
-
-    <%= render "projects/prices", project: @project %>
   </div>
 </div>
+
+<%= render "projects/prices", project: @project %>
+
+<%= render "projects/print_jobs" %>

@@ -1,4 +1,8 @@
-<div class="prices">
-  Standard: <%= number_to_currency @project.brand_price %>
-  Rush Job: <%= number_to_currency @project.brand_rush_job_price %>
+<div class="content">
+  <div class="main">
+    <div class="project-prices">
+      Standard: <span class="project-price"><%= @presented_project.brand_price_currency %></span>
+      Rush Job: <span class="project-price"><%= @presented_project.brand_rush_job_price_currency %></span>
+    </div>
+  </div>
 </div>

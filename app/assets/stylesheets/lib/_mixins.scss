@@ -139,3 +139,14 @@
     border-top: 1 / 2 * $size solid transparent;
   }
 }
+
+@mixin listing {
+  border: 1px solid $white;
+  display: block;
+  margin: rem-calc(5px) auto;
+  padding: rem-calc(5px) 0;
+
+  &.odd {
+    background: lighten($brown, 33%);
+  }
+}
