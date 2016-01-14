@@ -12,6 +12,6 @@ class ProductItemPresenter < BasePresenter
 
   def delete_link
     h.button_to 'Remove', product_item, method: :delete,
-                data: { confirm: 'Are you sure?', disable_with: 'processing...' }
+                data: { confirm: 'Are you sure?', disable_with: 'processing...' }, class: 'secondary-action-button'
   end
 end

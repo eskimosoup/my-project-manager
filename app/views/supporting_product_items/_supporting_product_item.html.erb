@@ -1,7 +1,7 @@
-<%= div_for supporting_product_item, class: "supporting-product-item" do %>
+<%= div_for supporting_product_item, class: "basic-listing supporting-product-item #{cycle('odd', 'even')}" do %>
   <%= format_area(supporting_product_item.area) %>
   <%= supporting_product_item.name %>
   <%= link_to "Edit", edit_supporting_product_item_path(supporting_product_item) %>
-  <%= button_to "Remove", supporting_product_item_path(supporting_product_item), method: :delete, 
-    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+  <%= button_to "Remove", supporting_product_item_path(supporting_product_item), method: :delete,
+    data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
 <% end %>

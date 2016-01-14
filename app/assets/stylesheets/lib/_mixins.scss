@@ -141,12 +141,14 @@
 }
 
 @mixin listing {
-  border: 1px solid $white;
+  $color: lighten($brown, 33%);
+  border: 1px solid $color;
   display: block;
   margin: rem-calc(5px) auto;
   padding: rem-calc(5px) 0;
 
   &.odd {
-    background: lighten($brown, 33%);
+    background: $color;
+    border-color: $white;
   }
 }
