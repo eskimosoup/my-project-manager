@@ -1,12 +1,12 @@
 .primary-header {
-  @include flex-grid-row;
+  @include grid-row;
   @include border-bottom-radius(rem-calc(20));
   background: $green;
   margin: 0 auto rem-calc(20);
 }
 
 .primary-title {
-  @include flex-grid-column(2);
+  @include grid-column(2);
   @include links($white);
   line-height: 1.1;
 

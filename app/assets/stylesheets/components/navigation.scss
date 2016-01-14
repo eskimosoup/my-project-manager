@@ -1,5 +1,5 @@
 .primary-navigation {
-  @include flex-grid-column(6);
+  @include grid-column(6);
 }
 
 .primary-navigation-links {
@@ -20,7 +20,7 @@
 }
 
 .user-navigation {
-  @include flex-grid-column(4);
+  @include grid-column(4);
   text-align: right;
   margin: em(7px) 0;
 

@@ -1,0 +1,27 @@
+.print-job {
+  @include grid-row;
+  @include listing;
+}
+
+.print-job-name {
+  @include grid-column(4);
+}
+
+.print-job-prices-overview {
+  @include grid-column(6);
+}
+
+.print-job-prices {
+  @include grid-row;
+  margin: 0 auto;
+
+  .print-job-standard-price,
+  .print-job-rush-job-price, {
+    @include grid-column(6);
+  }
+}
+
+.print-job-view-link {
+  display: block;
+  text-decoration: none;
+}

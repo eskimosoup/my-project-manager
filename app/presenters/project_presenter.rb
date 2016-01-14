@@ -1,6 +1,6 @@
 class ProjectPresenter < BasePresenter
   presents :project
-  delegate :name, to: :project
+  delegate :name, :brand_price, :brand_rush_job_price, to: :project
 
   def link
     project
@@ -34,5 +34,13 @@ class ProjectPresenter < BasePresenter
 
   def customer_name
     project.customer.name
+  end
+
+  def brand_price_currency
+    h.number_to_currency brand_price
+  end
+
+  def brand_rush_job_price_currency
+    h.number_to_currency brand_rush_job_price
   end
 end

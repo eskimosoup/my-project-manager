@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @presented_project = presenter(@project)
+    @presented_print_jobs = collection_presenter(@project.print_jobs, PrintJobPresenter) if @project.print_jobs.present?
   end
 
   private

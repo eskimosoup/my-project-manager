@@ -1,13 +1,6 @@
 .project {
   @include grid-row;
-  border: 1px solid $white;
-  display: block;
-  margin: rem-calc(5px) auto;
-  padding: rem-calc(7px) 0;
-
-  &.odd {
-    background: lighten($brown, 33%);
-  }
+  @include listing;
 
   a {
     text-decoration: none;
@@ -32,4 +25,17 @@
 .project-print-jobs-count {
   font-size: rem-calc(12px);
   font-weight: normal;
+}
+
+.project-prices {
+  color: $dark-grey;
+  font-size: rem-calc(14px);
+  margin: rem-calc(4px) 0;
+  text-transform: uppercase;
+}
+
+.project-price {
+  color: $offset-black;
+  font-size: rem-calc(20px);
+  font-weight: $lato-bold;
 }
