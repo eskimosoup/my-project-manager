@@ -1,4 +1,4 @@
-<%= content_tag :div, class: "basic-listing  #{cycle('odd', 'even')}", id: print_job.dom_id do %>
+<%= content_tag :div, class: "basic-listing  #{cycle('odd', 'even', name: 'print_job')}", id: print_job.dom_id do %>
   <div class="print-job-name">
     <%= print_job.linked_content("#{octicon('eye')} #{print_job.name}".html_safe, class: 'print-job-view-link') %>
   </div>

@@ -6,6 +6,10 @@
   @include grid-column(6);
 }
 
+.print-job-inline-navigation {
+  @include grid-column(6, $gutter: 0);
+}
+
 .print-job-prices {
   @include grid-row;
   margin: 0 auto;

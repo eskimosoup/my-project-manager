@@ -1,4 +1,4 @@
-<%= div_for labour_item, class: "basic-listing labour-item #{cycle('odd', 'even')}" do %>
+<%= div_for labour_item, class: "basic-listing labour-item #{cycle('odd', 'even', name:  'labour_item')}" do %>
   <%= labour_item.name %>
   <%= pluralize(labour_item.hours, "hour") %>
   <%= link_to "Edit", edit_labour_item_path(labour_item) %>

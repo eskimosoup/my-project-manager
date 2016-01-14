@@ -1,11 +1,19 @@
+<div class="content">
+  <div class="main print-job-section" id="account-managements">
+    <h3>Account Management</h3>
+
+    <%= link_to "Add Account Management", new_print_job_account_management_path(@print_job), class: 'action-button' %>
+
+    <% if @print_job.account_managements.any? %>
+      <%= render(
+        partial: "account_managements/account_management",
+        collection: @print_job.account_managements,
+        as: :account_management
+      ) %>
+    <% end %>
+  </div>
+</div>
+
 <div class="account-managements">
-  <h3>Account Management</h3>
-  <% if @print_job.account_managements.any? %>
-    <%= render(
-      partial: "account_managements/account_management",
-      collection: @print_job.account_managements,
-      as: :account_management
-    ) %>
-  <% end %>
-  <%= link_to "Add Account Management", new_print_job_account_management_path(@print_job) %>
+
 </div>

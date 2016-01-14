@@ -1,4 +1,4 @@
-<%= content_tag :div, class: "basic-listing #{cycle('odd', 'even')}", id: product_item.dom_id do %>
+<%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'product_item')}", id: product_item.dom_id do %>
   <div class="product-item-details">
     <%= product_item.edit_link_content("#{octicon('pencil')} #{product_item.name} #{format_area(product_item.area)}".html_safe, class: 'product-item-link') %>
   </div>

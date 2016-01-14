@@ -1,4 +1,4 @@
-<%= div_for supporting_product_item, class: "basic-listing supporting-product-item #{cycle('odd', 'even')}" do %>
+<%= div_for supporting_product_item, class: "basic-listing supporting-product-item #{cycle('odd', 'even', class: 'supporting_item')}" do %>
   <%= format_area(supporting_product_item.area) %>
   <%= supporting_product_item.name %>
   <%= link_to "Edit", edit_supporting_product_item_path(supporting_product_item) %>
