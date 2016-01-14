@@ -2,7 +2,8 @@ class Project < ActiveRecord::Base
   include BrandPriceable, Filterable
 
   belongs_to :brand
-  belongs_to :customer
+  belongs_to :customer  
+  has_one :business_address, through: :brand, source: :address
   has_many :print_jobs
 
   enum status: %w( quoted sold completed )
@@ -16,7 +17,7 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) }
   scope :customer_id, ->(value) { where(customer_id: value) }
 
-  delegate :brand_type, to: :brand
+  delegate :brand_type, :logo, to: :brand
   delegate :price, :rush_job_price, :trade_price, :trade_rush_job_price,
     :my_price, :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price,
     to: :price_calculator

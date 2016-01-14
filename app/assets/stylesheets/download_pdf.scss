@@ -8,6 +8,19 @@ $light-grey: #ddd;
   max-width: 980px;
 }
 
+.clear {
+  clear: both;
+}
+
+header {
+  .address {
+    float: left;
+  }
+  .logo {
+    float: right;
+  }
+}
+
 table {
   margin-bottom: 20px;
   width: 100%;
