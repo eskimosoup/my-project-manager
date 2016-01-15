@@ -1,7 +1,7 @@
-<%= div_for sundry_item, class: "sundry-item" do %>
+<%= div_for sundry_item, class: "basic-listing sundry-item #{cycle('odd', 'even', class: 'sundry_item')}" do %>
   <%= sundry_item.name %>
   <%= sundry_item.cost %>
   <%= link_to "Edit", edit_sundry_item_path(sundry_item) %>
   <%= button_to "Remove", sundry_item_path(sundry_item), method: :delete,
-    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+    data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
 <% end %>

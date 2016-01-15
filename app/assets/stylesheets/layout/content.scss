@@ -1,4 +1,5 @@
-.content {
+.content,
+.summarised-content {
   @include grid-row;
 }
 

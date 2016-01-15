@@ -1,11 +1,15 @@
-<div class="designs">
-  <h3>Design</h3>
-  <% if @print_job.designs.any? %>
-    <%= render(
-      partial: "designs/design",
-      collection: @print_job.designs,
-      as: :design
-    ) %>
-  <% end %>
-  <%= link_to "Add Design", new_print_job_design_path(@print_job) %>
+<div class="content">
+  <div class="main print-job-section" id="designs">
+    <h3>Design</h3>
+
+    <%= link_to "Add Design", new_print_job_design_path(@print_job), class: 'action-button' %>
+
+    <% if @print_job.designs.any? %>
+      <%= render(
+        partial: "designs/design",
+        collection: @print_job.designs,
+        as: :design
+      ) %>
+    <% end %>
+  </div>
 </div>

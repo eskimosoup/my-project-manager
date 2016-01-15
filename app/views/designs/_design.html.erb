@@ -1,4 +1,4 @@
-<%= div_for design, class: "design" do %>
+<%= div_for design, class: "basic-listing design #{cycle('odd', 'even', name: 'job_specification')}" do %>
   <%= pluralize design.hours, "hour" %>
   <%= link_to "Edit", edit_design_path(design) %>
   <%= button_to "Remove", design_path(design), method: :delete,

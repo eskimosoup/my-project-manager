@@ -1,6 +1,6 @@
-<%= div_for mileage, class: "mileage" do %>
+<%= div_for mileage, class: "basic-listing mileage" do %>
   <%= pluralize(mileage.miles, "mile") %>
   <%= link_to "Edit", edit_mileage_path(mileage) %>
   <%= button_to "Remove", mileage_path(mileage), method: :delete,
-    data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+    data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
 <% end %>

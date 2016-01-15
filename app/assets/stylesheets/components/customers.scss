@@ -1,12 +1,8 @@
 .customer {
-  @include grid-row;
-  @include listing;
-
   a {
     text-decoration: none;
   }
-
-
+  
   &:hover {
     background: lighten($dark-grey, 75%);
     border-color: $dark-grey;

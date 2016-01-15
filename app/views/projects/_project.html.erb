@@ -1,18 +1,18 @@
-<%= link_to project.link, class: "project #{cycle('odd', 'even')}", id: project.dom_id do %>
+<%= link_to project.link, class: "basic-listing project #{cycle('odd', 'even', class: 'project')}", id: project.dom_id do %>
   <div class="project-name">
     <%= octicon('eye') %>
     <%= project.name %>
 
     <div class="project-print-jobs-count">
-      There are <%= project.print_jobs_count %> print items for this project.
+      <%= project.customer_name %>: <%= project.print_jobs_count %> print items.
     </div>
+  </div>
+
+  <div class="project-prices-summary">
+    <%= render 'projects/prices', presented_project: project %>
   </div>
 
   <div class="project-status">
     <%= project.status %>
-  </div>
-
-  <div class="project-customer-name">
-    <%= project.customer_name %>
   </div>
 <% end %>

@@ -1,7 +1,4 @@
 .project {
-  @include grid-row;
-  @include listing;
-
   a {
     text-decoration: none;
   }
@@ -17,9 +14,12 @@
   @include grid-column(4);
 }
 
-.project-customer-name,
+.project-prices-summary {
+  @include grid-column(6);
+}
+
 .project-status {
-  @include grid-column(4);
+  @include grid-column(2);
 }
 
 .project-print-jobs-count {

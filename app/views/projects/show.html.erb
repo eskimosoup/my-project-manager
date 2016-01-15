@@ -6,13 +6,15 @@
       <%= @presented_project.description %>
     </div>
 
+
     <div class="project-menu">
       <%= @presented_project.new_print_job_link %>
       <%= @presented_project.download_pdf_link %>
     </div>
+
+    <%= render "projects/prices", presented_project: @presented_project %>
   </div>
 </div>
 
-<%= render "projects/prices", project: @project %>
 
 <%= render "projects/print_jobs" %>
