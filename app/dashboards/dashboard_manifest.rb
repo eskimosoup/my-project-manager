@@ -13,7 +13,8 @@ class DashboardManifest
     :products,
     :supporting_products,
     :labours,
-    :brands
+    :brands,
+    :addresses
   ]
 
   # `ROOT_DASHBOARD`

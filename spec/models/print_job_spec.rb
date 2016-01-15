@@ -95,7 +95,7 @@ RSpec.describe PrintJob, type: :model do
   describe "brand is my" do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
-      allow(print_job).to receive(:brand_type).and_return('my')
+      allow(print_job).to receive(:brand_type).and_return('my_office_branding')
       allow(print_job).to receive(:my_price).and_return(0.0)
 
       print_job.brand_price
@@ -106,7 +106,7 @@ RSpec.describe PrintJob, type: :model do
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
-      allow(print_job).to receive(:brand_type).and_return('my')
+      allow(print_job).to receive(:brand_type).and_return('my_office_branding')
       allow(print_job).to receive(:my_rush_job_price).and_return(0.0)
 
       print_job.brand_rush_job_price
