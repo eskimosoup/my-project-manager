@@ -4,7 +4,7 @@ describe "customers/show.html.erb" do
   context "customer has projects" do
     it "displays the projects info" do
       projects = [build_stubbed(:project)]
-      assign(:customer, instance_double("Customer", name: "Blah", projects: projects))
+      assign(:customer, instance_double("Customer", name: "Blah", projects: projects, addresses: []))
 
       render
 
@@ -14,7 +14,7 @@ describe "customers/show.html.erb" do
 
   context "customer has no projects" do
     it "doesn't display projects info" do
-      assign(:customer, instance_double("Customer", name: "Blah", projects: []))
+      assign(:customer, instance_double("Customer", name: "Blah", projects: [], addresses: []))
 
       render
 

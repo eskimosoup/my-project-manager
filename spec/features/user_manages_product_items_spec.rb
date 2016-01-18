@@ -12,7 +12,7 @@ describe "User manages a print job's product items", type: :feature do
     click_on "Create Product item"
 
     expect(current_path).to eq(print_job_path(print_job))
-    expect(page).to have_css ".product-item", text: product.name
+    expect(page).to have_css ".product-item-link", text: product.name
   end
 
   scenario "edits a product item" do
@@ -24,7 +24,7 @@ describe "User manages a print job's product items", type: :feature do
     fill_in "Area", with: 8
     click_on "Update Product item"
 
-    expect(page).to have_css ".product-item", text: "8.0m"
+    expect(page).to have_css ".product-item-link", text: "8.0m"
   end
 
   scenario "removes a product item", js: true do
@@ -38,7 +38,7 @@ describe "User manages a print job's product items", type: :feature do
 
   def edit_product_item(product_item)
     within "#product_item_#{ product_item.id }" do
-      click_on "Edit"
+      click_link_by_href(edit_product_item_path(product_item))
     end
   end
 

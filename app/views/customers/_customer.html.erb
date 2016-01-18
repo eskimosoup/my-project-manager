@@ -1,25 +1,27 @@
-<%= link_to customer.link, class: "basic-listing customer #{cycle('odd', 'even', name: 'customer')}", id: customer.dom_id do %>
-  <div class="customer-name">
-    <%= octicon('eye') %>
-    <%= customer.name %>
+<% present customer do |customer_presenter| %>
+  <%= link_to customer_presenter.link, class: "basic-listing customer #{cycle('odd', 'even', name: 'customer')}", id: customer_presenter.dom_id do %>
+    <div class="customer-name">
+      <%= octicon('eye') %>
+      <%= customer_presenter.name %>
 
-    <div class="customer-credit">
-      Credit limit
-      <%= customer.credit_limit_currency %>
-      Amount on credit
-      <%= customer.amount_on_credit_currency %>
+      <div class="customer-credit">
+        Credit limit
+        <%= customer_presenter.credit_limit_currency %>
+        Amount on credit
+        <%= customer_presenter.amount_on_credit_currency %>
+      </div>
     </div>
-  </div>
 
-  <div class="customer-quoted">
-    <%= customer.projects.quoted.size %> quoted
-  </div>
+    <div class="customer-quoted">
+      <%= customer_presenter.projects.quoted.size %> quoted
+    </div>
 
-  <div class="customer-sold">
-    <%= customer.projects.sold.size %> sold
-  </div>
+    <div class="customer-sold">
+      <%= customer_presenter.projects.sold.size %> sold
+    </div>
 
-  <div class="customer-completed">
-    <%= customer.projects.completed.size %> completed
-  </div>
+    <div class="customer-completed">
+      <%= customer_presenter.projects.completed.size %> completed
+    </div>
+  <% end %>
 <% end %>

@@ -1,0 +1,15 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag "shipping_addresses" %>
+<% end %>
+<%= simple_form_for [@project, @shipping_address], url: project_shipping_address_path(@project) do |f| %>
+  <%= render(
+    partial: "shipping_addresses/shipping_address",
+    collection: @addresses,
+    as: :shipping_address,
+    locals: { current_address_id: @shipping_address.shipping_address_id }
+  ) %>
+
+  <%= f.input :shipping_address_id, as: :hidden, error: false %>
+  <%= f.full_error :shipping_address_id %>
+  <%= f.button :submit, "Set Shipping Address" %>
+<% end %>

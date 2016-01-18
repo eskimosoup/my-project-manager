@@ -58,10 +58,10 @@
     <% end %>
 
     <div class="index-items">
-      <%= render @presented_projects %>
+      <%= render @projects %>
     </div>
 
-    <%= paginate @presented_projects %>
+    <%= paginate @projects %>
 
     <div class="pagination-summary">
       <%= page_entries_info @projects, entry_name: 'projects' %>

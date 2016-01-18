@@ -1,20 +1,42 @@
-<div class="content">
-  <div class="main">
-    <h1><%= @presented_project.name %></h1>
+<% present @project do |presented_project| %>
+  <div class="content">
+    <div class="main">
+      <h1><%= presented_project.name %></h1>
 
-    <div>
-      <%= @presented_project.description %>
+      <div>
+        <%= presented_project.description %>
+      </div>
+
+
+      <div class="project-menu">
+        <%= presented_project.new_print_job_link %>
+        <%= presented_project.download_pdf_link %>
+      </div>
+
+      <div>
+        <div id="shipping-address-details">
+          <% if @project.shipping_address %>
+            <%= render(
+              partial: "shipping_addresses/show_shipping_address",
+              object: @project.shipping_address,
+              as: :shipping_address,
+              locals: {
+                project: @project
+              }
+            ) %>
+          <% else %>
+            <%= link_to "Set Shipping Address", new_project_shipping_address_path(@project) %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= render(
+        partial: "projects/prices", 
+        locals: { project: @project }
+      ) %>
     </div>
-
-
-    <div class="project-menu">
-      <%= @presented_project.new_print_job_link %>
-      <%= @presented_project.download_pdf_link %>
-    </div>
-
-    <%= render "projects/prices", presented_project: @presented_project %>
   </div>
-</div>
 
 
-<%= render "projects/print_jobs" %>
+  <%= render "projects/print_jobs", project: @project %>
+<% end %>

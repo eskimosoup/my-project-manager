@@ -1,6 +1,7 @@
-class CreateAddresses < ActiveRecord::Migration
+class CreateBrandAddresses < ActiveRecord::Migration
   def change
-    create_table :addresses do |t|
+    create_table :brand_addresses do |t|
+      t.references :brand, index: { unique: true }, foreign_key: { on_delete: :cascade }
       t.string :name
       t.string :line_1, null: false
       t.string :line_2

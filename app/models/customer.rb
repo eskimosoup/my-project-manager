@@ -2,6 +2,7 @@ class Customer < ActiveRecord::Base
   include Filterable
 
   has_one :main_contact, ->{ order(made_main_contact_at: :desc).first }, class_name: 'Contact'
+  has_many :addresses
   has_many :contacts
   has_many :projects
 

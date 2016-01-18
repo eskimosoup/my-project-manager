@@ -1,14 +1,14 @@
-class AddressPresenter < BasePresenter
+class ShippingAddressPresenter < BasePresenter
   presents :address
 
-  def edit_link
-    h.link_to "Edit", h.edit_address_path(address)
+  def div_id
+    "shipping-address-#{ address.id }"
   end
 
-  def delete_link
-    h.button_to "Remove", h.address_path(address), method: :delete,
-      data: { confirm: "Are you sure?", disable_with: "processing" }, 
-      class: "secondary-action-button delete-address"
+  def div_classes(current_address_id)
+    classes = ["shipping-address"]
+    classes << "current"
+    classes.join(" ")
   end
 
   def name

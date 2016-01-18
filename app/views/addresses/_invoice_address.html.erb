@@ -1,12 +1,9 @@
 <div class="address">
   <% present address do |address_presenter| %>
-    <%= address_presenter.edit_link %>
-    <%= address_presenter.name %>
     <%= address_presenter.line_1 %>
     <%= address_presenter.line_2 %>
     <%= address_presenter.line_3 %>
     <%= address_presenter.city %>
     <%= address_presenter.postcode %>
-    <%= address_presenter.delete_link %>
   <% end %>
 </div>

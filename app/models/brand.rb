@@ -1,7 +1,6 @@
 class Brand < ActiveRecord::Base
 
   has_one :brand_address
-  has_one :address, through: :brand_address
 
   enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap]
   validates :name, presence: true

@@ -1,10 +1,10 @@
 <header>
   <%= image_tag project.logo, class: "logo" %>
   <%= render(
-    partial: "addresses/address",
+    partial: "addresses/invoice_address",
     object: project.business_address,
     as: :address
-  ) %>
+  ) if project.business_address %>
 </header>
 
 <div class="clear"></div>

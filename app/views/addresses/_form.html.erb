@@ -1,0 +1,9 @@
+<%= simple_form_for([@customer, @address]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :line_1 %>
+  <%= f.input :line_2 %>
+  <%= f.input :line_3 %>
+  <%= f.input :city %>
+  <%= f.input :postcode %>
+  <%= f.button :submit %>
+<% end %>

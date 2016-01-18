@@ -38,7 +38,6 @@ class PrintJobsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
-    @presented_project = presenter(@project)
   end
 
   def print_job_params
@@ -47,7 +46,5 @@ class PrintJobsController < ApplicationController
 
   def set_print_job
     @print_job = PrintJob.find(params[:id])
-    @presented_print_job = presenter(@print_job)
-    @presented_project = presenter(@print_job.project)
   end
 end
