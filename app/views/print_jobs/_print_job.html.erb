@@ -1,11 +1,13 @@
-<%= content_tag :div, class: "basic-listing  #{cycle('odd', 'even', name: 'print_job')}", id: print_job.dom_id do %>
-  <div class="print-job-name">
-    <%= print_job.linked_content("#{octicon('eye')} #{print_job.name}".html_safe, class: 'print-job-view-link') %>
-  </div>
+<% present print_job do |print_job_presenter| %>
+  <%= content_tag :div, class: "basic-listing  #{cycle('odd', 'even', name: 'print_job')}", id: print_job_presenter.dom_id do %>
+    <div class="print-job-name">
+      <%= print_job_presenter.linked_content("#{octicon('eye')} #{print_job_presenter.name}".html_safe, class: 'print-job-view-link') %>
+    </div>
 
-  <div class="print-job-prices-overview">
-      <%= render(partial: 'print_jobs/prices', locals: { print_job: print_job }) %>
-  </div>
+    <div class="print-job-prices-overview">
+        <%= render(partial: 'print_jobs/prices', locals: { print_job: print_job }) %>
+    </div>
 
-  <%= print_job.delete_link %>
+    <%= print_job_presenter.delete_link %>
+  <% end %>
 <% end %>

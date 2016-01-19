@@ -2,10 +2,10 @@
   <div class="index">
     <h3>Print Items</h3>
 
-    <% if @presented_print_jobs.present? %>
+    <% if project.print_jobs.any? %>
       <%= render(
         partial: "print_jobs/print_job",
-        collection: @presented_print_jobs,
+        collection: project.print_jobs,
         as: :print_job
       ) %>
     <% end %>

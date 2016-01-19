@@ -1,9 +1,8 @@
 class Address < ActiveRecord::Base
 
-  has_many :brand_addresses
-  has_many :brands, through: :brand_addresses
-
-  validates :line_1, presence: true
+  belongs_to :customer
+  validates :customer, presence: true
   validates :city, presence: true
+  validates :line_1, presence: true
   validates :postcode, presence: true
 end

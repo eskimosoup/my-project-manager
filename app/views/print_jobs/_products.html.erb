@@ -9,7 +9,7 @@
     <% if @print_job.product_items.any? %>
       <%= render(
         partial: "product_items/product_item",
-        collection: BaseCollectionPresenter.new(collection: @print_job.product_items, view_template: self, presenter: ProductItemPresenter),
+        collection: @print_job.product_items,
         as: :product_item
       ) %>
     <% end %>

@@ -1,6 +1,20 @@
 class AddressPresenter < BasePresenter
   presents :address
 
+  def edit_link
+    h.link_to "Edit", h.edit_address_path(address)
+  end
+
+  def delete_link
+    h.button_to "Remove", h.address_path(address), method: :delete,
+      data: { confirm: "Are you sure?", disable_with: "processing" }, 
+      class: "secondary-action-button delete-address"
+  end
+
+  def name
+    address.name if address.name.present?
+  end
+
   def line_1
     format_line(address.line_1) if address.line_1.present?
   end
@@ -20,6 +34,7 @@ class AddressPresenter < BasePresenter
   def postcode
     format_line(address.postcode) if address.postcode.present?
   end
+
   private
 
   def format_line(line)

@@ -14,7 +14,7 @@ class BasePresenter
   end
 
   def dom_id
-    h.dom_id(@object)
+    ActionView::RecordIdentifier.dom_id(@object)
   end
 
   def self.presents(name)

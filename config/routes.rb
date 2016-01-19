@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   get '/autocomplete', to: 'utilities#autocomplete'
 
   resources :customer_registrations, only: [:new, :create]
-  resources :customers, only: [:index, :show]
+  resources :customers, only: [:index, :show] do
+    resources :addresses, shallow: true
+  end
   resources :projects, only: [:new, :create, :index, :show] do
+    resource :billing_address, only: [:new, :create, :edit, :update]
+    resource :shipping_address, only: [:new, :create, :edit, :update]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
       resources :account_managements, except: [:index, :show]

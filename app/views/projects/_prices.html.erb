@@ -1,20 +1,11 @@
-<!--
-<div class="content">
-  <div class="main">
-    <div class="project-prices">
+<% present project do |presented_project| %>
+  <div class="print-job-prices project-prices">
+    <div class="print-job-standard-price">
       Standard: <span class="project-price"><%= presented_project.brand_price_currency %></span>
-      Rush Job: <span class="project-price"><%= presented_project.brand_rush_job_price_currency %></span>
+    </div>
+
+    <div class="print-job-rush-job-price">
+      Rush job: <span class="project-price"><%= presented_project.brand_rush_job_price_currency %></span>
     </div>
   </div>
-</div>
--->
-
-<div class="print-job-prices project-prices">
-  <div class="print-job-standard-price">
-    Standard: <span class="project-price"><%= presented_project.brand_price_currency %></span>
-  </div>
-
-  <div class="print-job-rush-job-price">
-    Rush job: <span class="project-price"><%= presented_project.brand_rush_job_price_currency %></span>
-  </div>
-</div>
+<% end %>

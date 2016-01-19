@@ -3,7 +3,9 @@ class Project < ActiveRecord::Base
 
   belongs_to :brand
   belongs_to :customer  
-  has_one :business_address, through: :brand, source: :address
+  belongs_to :shipping_address, class_name: "Address"
+  belongs_to :billing_address, class_name: "Address"
+  has_one :business_address, through: :brand, source: :brand_address
   has_many :print_jobs
 
   enum status: %w( quoted sold completed )

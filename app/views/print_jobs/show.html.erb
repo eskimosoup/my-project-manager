@@ -6,7 +6,9 @@
     </h1>
 
 
-    <%= @presented_project.description %>
+    <% present @print_job.project do |project_presenter| %>
+      <%= project_presenter.description %>
+    <% end %>
 
     <div class="summarised-content">
       <div class="print-job-inline-navigation">
@@ -39,7 +41,7 @@
       </div>
 
       <div class="print-job-prices-overview">
-        <%= render "print_jobs/prices", print_job: @presented_print_job %>
+        <%= render "print_jobs/prices", print_job: @print_job %>
       </div>
   </div>
 

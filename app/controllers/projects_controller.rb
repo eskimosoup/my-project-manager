@@ -14,13 +14,10 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.filter(params.slice(:name_search, :customer_id, :project_type)).page(params[:page]).per(params[:per_page] || 15)
-    @presented_projects = collection_presenter(@projects)
   end
 
   def show
     @project = Project.find(params[:id])
-    @presented_project = presenter(@project)
-    @presented_print_jobs = collection_presenter(@project.print_jobs, PrintJobPresenter) if @project.print_jobs.present?
   end
 
   private
