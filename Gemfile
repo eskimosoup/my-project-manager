@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem "sprockets-rails", "2.2.3"
 gem "autoprefixer-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "simple_form"
