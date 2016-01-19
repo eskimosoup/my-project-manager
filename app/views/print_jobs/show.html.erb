@@ -1,0 +1,59 @@
+<div class="content">
+  <div class="main">
+    <h1>
+      <%= @print_job.name %>
+      <%= link_to octicon('pencil'), edit_print_job_path(@print_job) %>
+    </h1>
+
+
+    <% present @print_job.project do |project_presenter| %>
+      <%= project_presenter.description %>
+    <% end %>
+
+    <div class="summarised-content">
+      <div class="print-job-inline-navigation">
+        <ul class="internal-navigation">
+          <li>
+            <%= link_to 'Products', '#products', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Supporting products', '#supporting-products', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Labour', '#labours', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Sundry items', '#sundry-items', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Job specifications', '#job-specifications', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Mileage', '#mileages', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Account management', '#account-managements', class: 'smooth-scroll' %>
+          </li>
+          <li>
+            <%= link_to 'Design', '#designs', class: 'smooth-scroll' %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="print-job-prices-overview">
+        <%= render "print_jobs/prices", print_job: @print_job %>
+      </div>
+  </div>
+
+  <%= link_to "Back To Project", project_path(@print_job.project_id) %>
+</div>
+
+
+<%= render "print_jobs/products", print_job: @presented_print_job %>
+<%= render "print_jobs/supporting_products", print_job: @presented_print_job %>
+<%= render "print_jobs/labour", print_job: @presented_print_job %>
+<%= render "print_jobs/sundry_items", print_job: @presented_print_job %>
+<%= render "print_jobs/job_specifications", print_job: @presented_print_job %>
+<%= render "print_jobs/mileage", print_job: @presented_print_job %>
+<%= render "print_jobs/account_management", print_job: @presented_print_job %>
+<%= render "print_jobs/design", print_job: @presented_print_job %>

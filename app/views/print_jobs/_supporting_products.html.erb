@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main print-job-section" id="supporting-products">
+    <h3>Supporting Products</h3>
+
+    <%= link_to "Add Supporting Product", new_print_job_supporting_product_item_path(@print_job), class: 'action-button' %>
+
+    <% if @print_job.supporting_product_items.any? %>
+      <%= render(
+        partial: "supporting_product_items/supporting_product_item",
+        collection: BaseCollectionPresenter.new(collection: @print_job.supporting_product_items, view_template: self, presenter: SupportingProductItemPresenter),
+        as: :supporting_product_item
+      ) %>
+    <% end %>
+  </div>
+</div>

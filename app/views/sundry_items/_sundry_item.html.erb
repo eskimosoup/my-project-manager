@@ -1,0 +1,12 @@
+<%= div_for sundry_item, class: "basic-listing sundry-item #{cycle('odd', 'even', class: 'sundry_item')}" do %>
+  <div class="basic-listing-details basic-listing-link">
+    <%= sundry_item.name %>
+    <%= sundry_item.cost %>
+    <%= link_to "Edit", edit_sundry_item_path(sundry_item) %>
+  </div>
+
+  <div class="basic-listing-navigation basic-listing-delete-link">
+    <%= button_to "Remove", sundry_item_path(sundry_item), method: :delete,
+      data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
+  </div>
+<% end %>

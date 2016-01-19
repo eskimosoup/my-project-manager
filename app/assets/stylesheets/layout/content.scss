@@ -1,0 +1,29 @@
+.content,
+.summarised-content {
+  @include grid-row;
+}
+
+.main {
+  @include grid-column(12);
+}
+
+body {
+  font-family: $lato;
+  font-size: rem-calc(16px);
+  line-height: 1.5;
+}
+
+@include links($dark-grey, $dark-grey, $dark-green, $blue);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $lato-bold;
+  color: $green;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 rem-calc(8px);
+}

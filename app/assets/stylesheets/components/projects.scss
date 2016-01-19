@@ -1,0 +1,41 @@
+.project {
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: lighten($dark-grey, 75%);
+    border-color: $dark-grey;
+  }
+}
+
+.project-name {
+  font-weight: $lato-bold;
+  @include grid-column(4);
+}
+
+.project-prices-summary {
+  @include grid-column(6);
+}
+
+.project-status {
+  @include grid-column(2);
+}
+
+.project-print-jobs-count {
+  font-size: rem-calc(12px);
+  font-weight: normal;
+}
+
+.project-prices {
+  color: $dark-grey;
+  font-size: rem-calc(14px);
+  margin: rem-calc(4px) 0;
+  text-transform: uppercase;
+}
+
+.project-price {
+  color: $offset-black;
+  font-size: rem-calc(20px);
+  font-weight: $lato-bold;
+}

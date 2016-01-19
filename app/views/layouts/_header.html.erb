@@ -1,0 +1,30 @@
+<header class="primary-header">
+  <div class="primary-title">
+    <%= link_to root_url do %>
+      <strong>My</strong>
+      Project Manager
+    <% end %>
+  </div>
+
+  <nav class="primary-navigation">
+    <ul class="primary-navigation-links">
+      <li>
+        <%= link_to "Customers", customers_path %>
+      </li>
+      <li>
+        <%= link_to "Projects", projects_path %>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="user-navigation">
+    <div class="user-information">
+      <% if signed_in? %>
+        <strong><%= current_user.email %></strong>
+        <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'logout-button' %>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path, class: 'login-button' %>
+      <% end %>
+    </div>
+  </div>
+</header>

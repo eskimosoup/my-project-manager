@@ -1,0 +1,9 @@
+<%= content_tag :div, class: "basic-listing supporting-product-item #{cycle('odd', 'even', class: 'supporting_item')}", id: supporting_product_item.dom_id do %>
+  <div class="basic-listing-details">
+    <%= supporting_product_item.edit_link_content("#{octicon('pencil')} #{supporting_product_item.name} #{format_area(supporting_product_item.area)}".html_safe, class: 'basic-listing-link') %>
+  </div>
+
+  <div class="basic-listing-navigation basic-listing-delete-link">
+    <%= supporting_product_item.delete_link %>
+  </div>
+<% end %>

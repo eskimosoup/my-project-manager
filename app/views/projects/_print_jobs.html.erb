@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="index">
+    <h3>Print Items</h3>
+
+    <% if project.print_jobs.any? %>
+      <%= render(
+        partial: "print_jobs/print_job",
+        collection: project.print_jobs,
+        as: :print_job
+      ) %>
+    <% end %>
+  </div>
+</div>

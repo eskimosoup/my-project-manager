@@ -1,0 +1,11 @@
+<div class="address">
+  <%= link_to "Change", edit_project_billing_address_path(@project) %> 
+  <% present billing_address do |address_presenter| %>
+    <%= address_presenter.name %>
+    <%= address_presenter.line_1 %>
+    <%= address_presenter.line_2 %>
+    <%= address_presenter.line_3 %>
+    <%= address_presenter.city %>
+    <%= address_presenter.postcode %>
+  <% end %>
+</div>

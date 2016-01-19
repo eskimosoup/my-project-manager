@@ -1,0 +1,27 @@
+.pagination {
+  @include links($white, $white, $blue, $blue);
+
+  a,
+  .current {
+    @include border-radius(4px);
+    display: inline-block;
+    font-size: rem-calc(18px);
+    padding: rem-calc(4px) rem-calc(8px);
+    text-decoration: none;
+  }
+
+  a {
+    background: $green;
+  }
+
+  .current {
+    background: $blue;
+    color: $white;
+    display: inline-block;
+  }
+}
+
+.pagination-summary {
+  font-size: rem-calc(12px);
+  margin: rem-calc(6px) 0;
+}

@@ -1,0 +1,8 @@
+<div class="content">
+  <div class="index">
+    <h1><%= @customer.name %></h1>
+
+    <%= render "customers/projects", customer: @customer %>
+    <%= render "customers/addresses", customer: @customer %>
+  </div>
+</div>
