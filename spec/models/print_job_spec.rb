@@ -96,23 +96,23 @@ RSpec.describe PrintJob, type: :model do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
       allow(print_job).to receive(:brand_type).and_return('my_office_branding')
-      allow(print_job).to receive(:my_price).and_return(0.0)
+      allow(print_job).to receive(:my_customer_price).and_return(0.0)
 
       print_job.brand_price
 
       expect(print_job).to have_received(:brand_type)
-      expect(print_job).to have_received(:my_price)
+      expect(print_job).to have_received(:my_customer_price)
     end
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
       allow(print_job).to receive(:brand_type).and_return('my_office_branding')
-      allow(print_job).to receive(:my_rush_job_price).and_return(0.0)
+      allow(print_job).to receive(:my_customer_rush_job_price).and_return(0.0)
 
       print_job.brand_rush_job_price
 
       expect(print_job).to have_received(:brand_type)
-      expect(print_job).to have_received(:my_rush_job_price)
+      expect(print_job).to have_received(:my_customer_rush_job_price)
     end
   end
 end

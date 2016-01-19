@@ -7,7 +7,7 @@
     <% if @print_job.labour_items.any? %>
       <%= render(
         partial: "labour_items/labour_item",
-        collection: BaseCollectionPresenter.new(collection: @print_job.labour_items, view_template: self, presenter: LabourItemPresenter),
+        collection: @print_job.labour_items,
         as: :labour_item
       ) %>
     <% end %>

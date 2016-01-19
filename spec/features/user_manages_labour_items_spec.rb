@@ -2,10 +2,11 @@ require "rails_helper"
 
 describe "User manages a print job's labour items", type: :feature do
   scenario "adds labour item" do
+    user = create(:user)
     print_job = create(:print_job)
     labour = create(:labour)
 
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Labour"
 
     fill_form(:labour_item, { hours: 2, labour_id: labour.name })
@@ -16,9 +17,10 @@ describe "User manages a print job's labour items", type: :feature do
   end
 
   scenario "edits labour item" do
+    user = create(:user)
     labour_item = create(:labour_item)
 
-    visit print_job_path(labour_item.print_job)
+    visit print_job_path(labour_item.print_job, as: user)
     edit_labour_item(labour_item)
 
     fill_in "Hours", with: 3
@@ -28,9 +30,10 @@ describe "User manages a print job's labour items", type: :feature do
   end
 
   scenario "destroys labour item" do
+    user = create(:user)
     labour_item = create(:labour_item)
 
-    visit print_job_path(labour_item.print_job)
+    visit print_job_path(labour_item.print_job, as: user)
     destroy_labour_item(labour_item)
 
     expect(page).not_to have_css "#labour_item_#{ labour_item.id }"
@@ -38,7 +41,7 @@ describe "User manages a print job's labour items", type: :feature do
 
   def edit_labour_item(labour_item)
     within "#labour_item_#{ labour_item.id }" do
-      click_on "Edit"
+      click_link_by_href edit_labour_item_path(labour_item)
     end
   end
 

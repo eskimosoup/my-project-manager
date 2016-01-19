@@ -1,9 +1,11 @@
-<%= content_tag :div, class: "basic-listing labour-item #{cycle('odd', 'even', name:  'labour_item')}" do %>
-  <div class="basic-listing-details">
-    <%= labour_item.edit_link_content("#{octicon('pencil')} #{labour_item.name} #{labour_item.time}".html_safe, class: 'basic-listing-link') %>
-  </div>
+<% present labour_item do |labour_item_presenter| %>
+  <%= content_tag :div, id: dom_id(labour_item), class: "basic-listing labour-item #{cycle('odd', 'even', name:  'labour_item')}" do %>
+    <div class="basic-listing-details">
+      <%= labour_item_presenter.edit_link_content("#{octicon('pencil')} #{labour_item_presenter.name} #{labour_item_presenter.time}".html_safe, class: 'basic-listing-link') %>
+    </div>
 
-  <div class="basic-listing-navigation basic-listing-delete-link">
-    <%= labour_item.delete_link %>
-  </div>
+    <div class="basic-listing-navigation basic-listing-delete-link">
+      <%= labour_item_presenter.delete_link %>
+    </div>
+  <% end %>
 <% end %>

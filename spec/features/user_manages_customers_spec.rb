@@ -3,7 +3,7 @@ require "rails_helper"
 feature "User manages customers", type: :feature do
   scenario "creates customer" do
     user = create(:user)
-    visit new_customer_registration_path
+    visit new_customer_registration_path(as: user)
 
     fill_form(:customer_registration, { customer_name: "Customer name", 
                                         customer_credit_limit: 500.00,
@@ -19,9 +19,10 @@ feature "User manages customers", type: :feature do
   end
 
   scenario "viewing customers" do
+    user = create(:user)
     customer = create(:customer)
 
-    visit customers_path
+    visit customers_path(as: user)
 
     within "#customer_#{ customer.id }" do
       expect(page).to have_content(customer.name)
