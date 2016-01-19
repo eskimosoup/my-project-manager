@@ -1,0 +1,32 @@
+.print-job-name {
+  @include grid-column(4);
+}
+
+.print-job-prices-overview {
+  @include grid-column(6);
+}
+
+.print-job-inline-navigation {
+  @include grid-column(6, $gutter: 0);
+}
+
+.print-job-prices {
+  @include grid-row;
+  margin: 0 auto;
+
+  .print-job-standard-price,
+  .print-job-rush-job-price, {
+    @include grid-column(6);
+  }
+}
+
+.print-job-view-link {
+  display: block;
+  text-decoration: none;
+}
+
+.print-job-section {
+  border-bottom: 1px solid $blue;
+  padding-top: rem-calc(5px);
+  padding-bottom: rem-calc(5px);
+}

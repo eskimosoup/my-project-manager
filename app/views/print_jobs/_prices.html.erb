@@ -1,0 +1,11 @@
+<% present print_job do |print_job_presenter| %>
+  <div class="print-job-prices project-prices">
+    <div class="print-job-standard-price">
+      Standard: <span class="project-price"><%= print_job_presenter.brand_price_currency %></span>
+    </div>
+
+    <div class="print-job-rush-job-price">
+      Rush job: <span class="project-price"><%= print_job_presenter.brand_rush_job_price_currency %></span>
+    </div>
+  </div>
+<% end %>

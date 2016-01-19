@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: "rails/rails"
-gem 'sprockets-rails', github: "rails/sprockets-rails"
-gem 'sprockets', github: "rails/sprockets"
-gem 'sass-rails', github: "rails/sass-rails"
-gem 'arel', github: "rails/arel"
-gem 'rack', github: "rack/rack"
+gem 'rails', '~> 4.2', '>= 4.2.5'
+gem 'sass-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -13,7 +9,7 @@ gem 'pg', '~> 0.18'
 gem 'uglifier', '>= 1.3.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -29,7 +25,13 @@ gem 'jbuilder', '~> 2.0'
 
 gem "autoprefixer-rails"
 gem "normalize-rails", "~> 3.0.0"
-
+gem "simple_form"
+gem "administrate", "~> 0.1.2"
+gem "clearance", "~> 1.12.0"
+gem "email_validator", "~> 1.6.0"
+gem 'lograge', '~> 0.3.5'
+gem 'pdfkit', '~> 0.8.2'
+gem 'render_anywhere', '~> 0.0.12', require: false
 
 group :development, :test do
   gem "awesome_print"
@@ -40,11 +42,7 @@ group :development, :test do
   gem "i18n-tasks"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", github: "rspec/rspec-rails", branch: "rails-5-support-patches"
-  gem "rspec-core", github: "rspec/rspec-core"
-  gem "rspec-expectations", github: "rspec/rspec-expectations"
-  gem "rspec-mocks", github: "rspec/rspec-mocks"
-  gem "rspec-support", github: "rspec/rspec-support"
+  gem "rspec-rails", '~> 3.4'
 end
 
 group :development do
@@ -53,7 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem "quiet_assets"
-  gem "spring-commands-rspec"  
+  gem "spring-commands-rspec"
 end
 
 group :test do
@@ -65,7 +63,10 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+  gem "pdf-reader"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'jquery-ui-rails'
+gem 'kaminari'

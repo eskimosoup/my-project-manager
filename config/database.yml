@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  host: 192.168.0.41
-  user: postgres
-  password: tmedia
 
 development:
   <<: *default
   database: my_project_manager_development
+  host: 192.168.0.41
+  username: postgres
+  password: tmedia
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,6 +61,9 @@ development:
 test:
   <<: *default
   database: my_project_manager_test
+  host: 192.168.0.41
+  username: postgres
+  password: tmedia
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

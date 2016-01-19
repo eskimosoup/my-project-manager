@@ -1,0 +1,48 @@
+class ProductItemsController < ApplicationController
+
+  before_action :set_print_job, only: [:new, :create]
+  before_action :set_product_item, only: [:edit, :update, :destroy]
+
+  def new
+    @product_item = ProductItem.new
+  end
+
+  def create
+    @product_item = @print_job.product_items.new(product_item_params)
+    if @product_item.save
+      redirect_to @print_job, notice: "Added product successfully"
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product_item.update(product_item_params)
+      redirect_to @product_item.print_job, notice: "Product updated successfully"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @product_item.destroy
+    redirect_to @product_item.print_job, notice: "Product removed successfully"
+  end
+
+  private
+
+  def set_print_job
+    @print_job = PrintJob.find(params[:print_job_id])
+  end
+
+  def set_product_item
+    @product_item = ProductItem.find(params[:id])
+  end
+
+  def product_item_params
+    params.require(:product_item).permit(:area, :product_id)
+  end
+end

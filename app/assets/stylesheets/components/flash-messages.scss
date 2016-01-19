@@ -1,0 +1,56 @@
+$notice: $dark-green;
+$error: $pink;
+$alert: $error;
+$text-color: $white;
+$border-color: $brown;
+
+%flash-heading {
+  font-weight: normal;
+}
+
+.flash-wrap {
+  @include grid-row;
+}
+
+.flash-message {
+  border-radius: 2px;
+  border: 1px solid $border-color;
+  color: $text-color;
+  font-size: rem-calc(16px);
+  padding: rem-calc(5px);
+  margin: rem-calc(5px) 0;
+
+  h2 {
+    @extend %flash-heading;
+  }
+
+  ul {
+    font-weight: normal;
+  }
+
+  &.notice {
+    background: $dark-green;
+    font-weight: bold;
+  }
+
+  &.error {
+    background: $pink;
+    font-weight: bold;
+  }
+
+  &.alert {
+    background: $orange;
+    font-weight: bold;
+  }
+}
+
+.error_messages,
+#error_explanation {
+  h2 {
+    @extend %flash-heading;
+  }
+
+  ul {
+    font-weight: normal;
+  }
+}

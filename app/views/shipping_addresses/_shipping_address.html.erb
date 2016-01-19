@@ -1,0 +1,13 @@
+<% present shipping_address, ShippingAddressPresenter do |shipping_address_presenter| %>
+  <%= content_tag :div, { id: shipping_address_presenter.div_id,
+   class: shipping_address_presenter.div_classes(current_address_id) } do %>
+    <%= shipping_address_presenter.name %>
+    <%= shipping_address_presenter.line_1 %>
+    <%= shipping_address_presenter.line_2 %>
+    <%= shipping_address_presenter.line_3 %>
+    <%= shipping_address_presenter.city %>
+    <%= shipping_address_presenter.postcode %>
+
+    <%= link_to "Use", "#", class: "secondary-action-button", onclick: "setShippingAddress(#{ shipping_address.id })" %>
+  <% end %>
+<% end %>

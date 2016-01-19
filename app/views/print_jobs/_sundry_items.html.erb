@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main print-job-section" id="sundry-items">
+    <h3>Sundry Items</h3>
+
+    <%= link_to "Add Sundry Item", new_print_job_sundry_item_path(@print_job), class: 'action-button' %>
+
+    <% if @print_job.sundry_items.any? %>
+      <%= render(
+        partial: "sundry_items/sundry_item",
+        collection: @print_job.sundry_items,
+        as: :sundry_item
+      ) %>
+    <% end %>
+  </div>
+</div>

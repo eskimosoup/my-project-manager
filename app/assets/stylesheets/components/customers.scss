@@ -1,0 +1,27 @@
+.customer {
+  a {
+    text-decoration: none;
+  }
+  
+  &:hover {
+    background: lighten($dark-grey, 75%);
+    border-color: $dark-grey;
+  }
+}
+
+.customer-name {
+  @include grid-column(6);
+  font-weight: $lato-bold;
+  font-size: rem-calc(22px);
+}
+
+.customer-quoted,
+.customer-sold,
+.customer-completed {
+  @include grid-column(2);
+}
+
+.customer-credit {
+  font-size: rem-calc(12px);
+  font-weight: normal;
+}

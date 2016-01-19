@@ -1,0 +1,46 @@
+<header>
+  <%= image_tag project.logo, class: "logo" %>
+  <%= render(
+    partial: "addresses/invoice_address",
+    object: project.business_address,
+    as: :address
+  ) if project.business_address %>
+</header>
+
+<div class="clear"></div>
+
+<h1>
+  <% if project.quoted? %>
+    Quote
+  <% else %>
+    Invoice
+  <% end %>
+</h1>
+
+<table class="print-jobs">
+  <thead>
+    <tr>
+      <th class="item">Item Name</th>
+      <th class="price">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% project.print_jobs.each do |print_job| %>
+      <tr>
+        <td><%= print_job.name %></td>
+        <td><%= number_to_currency print_job.brand_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="total">
+  <tr>
+    <th class="label">
+      Total
+    </th>
+    <td class="price">
+      <%= number_to_currency project.brand_price %>
+    </td>
+  </tr>
+</div>

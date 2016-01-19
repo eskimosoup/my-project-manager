@@ -1,0 +1,16 @@
+.product-item-details {
+  @include grid-column(9);
+}
+
+.product-item-navigation {
+  @include grid-column(3);
+}
+
+.product-item-link {
+  display: block;
+  text-decoration: none;
+}
+
+.product-item-delete-link {
+  text-align: right;
+}
