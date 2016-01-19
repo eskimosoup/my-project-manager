@@ -10,7 +10,7 @@ module BrandPriceable
     when 'envisage_trade'
       trade_price
     when 'my_office_branding', 'my_vehicle_wrap'
-      my_price
+      my_customer_price
     end
   end
 
@@ -21,7 +21,7 @@ module BrandPriceable
     when 'envisage_trade'
       trade_rush_job_price
     when 'my_office_branding', 'my_vehicle_wrap'
-      my_rush_job_price
+      my_customer_rush_job_price
     end
   end
 end
