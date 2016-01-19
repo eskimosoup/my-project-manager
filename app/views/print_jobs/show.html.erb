@@ -12,28 +12,28 @@
       <div class="print-job-inline-navigation">
         <ul class="internal-navigation">
           <li>
-            <%= link_to 'Products', '#products' %>
+            <%= link_to 'Products', '#products', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Supporting products', '#supporting-products' %>
+            <%= link_to 'Supporting products', '#supporting-products', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Labour', '#labours' %>
+            <%= link_to 'Labour', '#labours', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Sundry items', '#sundry-items' %>
+            <%= link_to 'Sundry items', '#sundry-items', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Job specifications', '#job-specifications' %>
+            <%= link_to 'Job specifications', '#job-specifications', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Mileage', '#mileages' %>
+            <%= link_to 'Mileage', '#mileages', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Account management', '#account-managements' %>
+            <%= link_to 'Account management', '#account-managements', class: 'smooth-scroll' %>
           </li>
           <li>
-            <%= link_to 'Design', '#designs' %>
+            <%= link_to 'Design', '#designs', class: 'smooth-scroll' %>
           </li>
         </ul>
       </div>
@@ -42,6 +42,8 @@
         <%= render "print_jobs/prices", print_job: @presented_print_job %>
       </div>
   </div>
+
+  <%= link_to "Back To Project", project_path(@print_job.project_id) %>
 </div>
 
 
@@ -53,4 +55,3 @@
 <%= render "print_jobs/mileage", print_job: @presented_print_job %>
 <%= render "print_jobs/account_management", print_job: @presented_print_job %>
 <%= render "print_jobs/design", print_job: @presented_print_job %>
-<%= link_to "Back To Project", project_path(@print_job.project_id) %>

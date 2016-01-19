@@ -1,7 +1,9 @@
-<%= div_for labour_item, class: "basic-listing labour-item #{cycle('odd', 'even', name:  'labour_item')}" do %>
-  <%= labour_item.name %>
-  <%= pluralize(labour_item.hours, "hour") %>
-  <%= link_to "Edit", edit_labour_item_path(labour_item) %>
-  <%= button_to "Remove", labour_item_path(labour_item), method: :delete,
-    data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
+<%= content_tag :div, class: "basic-listing labour-item #{cycle('odd', 'even', name:  'labour_item')}" do %>
+  <div class="basic-listing-details">
+    <%= labour_item.edit_link_content("#{octicon('pencil')} #{labour_item.name} #{labour_item.time}".html_safe, class: 'basic-listing-link') %>
+  </div>
+
+  <div class="basic-listing-navigation basic-listing-delete-link">
+    <%= labour_item.delete_link %>
+  </div>
 <% end %>
