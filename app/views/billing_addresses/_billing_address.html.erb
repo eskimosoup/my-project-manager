@@ -1,0 +1,13 @@
+<% present billing_address, BillingAddressPresenter do |billing_address_presenter| %>
+  <%= content_tag :div, { id: billing_address_presenter.div_id,
+   class: billing_address_presenter.div_classes(current_address_id) } do %>
+    <%= billing_address_presenter.name %>
+    <%= billing_address_presenter.line_1 %>
+    <%= billing_address_presenter.line_2 %>
+    <%= billing_address_presenter.line_3 %>
+    <%= billing_address_presenter.city %>
+    <%= billing_address_presenter.postcode %>
+
+    <%= link_to "Use", "#", class: "secondary-action-button", onclick: "setBillingAddress(#{ billing_address.id })" %>
+  <% end %>
+<% end %>

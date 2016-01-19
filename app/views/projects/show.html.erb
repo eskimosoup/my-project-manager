@@ -28,6 +28,20 @@
             <%= link_to "Set Shipping Address", new_project_shipping_address_path(@project) %>
           <% end %>
         </div>
+        <div id="billing-address-details">
+          <% if @project.billing_address %>
+            <%= render(
+              partial: "billing_addresses/show_billing_address",
+              object: @project.billing_address,
+              as: :billing_address,
+              locals: {
+                project: @project
+              }
+            ) %>
+          <% else %>
+            <%= link_to "Set Billing Address", new_project_billing_address_path(@project) %>
+          <% end %>
+        </div>
       </div>
 
       <%= render(
