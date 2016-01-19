@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class AddressDashboard < Administrate::BaseDashboard
+class BrandAddressDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,7 +8,7 @@ class AddressDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    brands: Field::HasMany,
+    brand: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
     line_1: Field::String,
@@ -26,7 +26,7 @@ class AddressDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :brands,
+    :brand,
     :id,
     :name,
   ]
@@ -39,7 +39,7 @@ class AddressDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :brands,
+    :brand,
     :name,
     :line_1,
     :line_2,
