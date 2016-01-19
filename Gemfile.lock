@@ -351,7 +351,6 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov
-  spring
   spring-commands-rspec
   sprockets-rails (= 2.2.3)
   therubyracer
