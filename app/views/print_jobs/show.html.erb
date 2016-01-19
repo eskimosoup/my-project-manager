@@ -6,7 +6,9 @@
     </h1>
 
 
-    <%= @presented_project.description %>
+    <% present @print_job.project do |project_presenter| %>
+      <%= project_presenter.description %>
+    <% end %>
 
     <div class="summarised-content">
       <div class="print-job-inline-navigation">
@@ -39,18 +41,18 @@
       </div>
 
       <div class="print-job-prices-overview">
-        <%= render "print_jobs/prices", print_job: @presented_print_job %>
+        <%= render "print_jobs/prices", print_job: @print_job %>
       </div>
   </div>
 </div>
 
 
-<%= render "print_jobs/products", print_job: @presented_print_job %>
-<%= render "print_jobs/supporting_products", print_job: @presented_print_job %>
-<%= render "print_jobs/labour", print_job: @presented_print_job %>
-<%= render "print_jobs/sundry_items", print_job: @presented_print_job %>
-<%= render "print_jobs/job_specifications", print_job: @presented_print_job %>
-<%= render "print_jobs/mileage", print_job: @presented_print_job %>
-<%= render "print_jobs/account_management", print_job: @presented_print_job %>
-<%= render "print_jobs/design", print_job: @presented_print_job %>
+<%= render "print_jobs/products", print_job: @print_job %>
+<%= render "print_jobs/supporting_products", print_job: @print_job %>
+<%= render "print_jobs/labour", print_job: @print_job %>
+<%= render "print_jobs/sundry_items", print_job: @print_job %>
+<%= render "print_jobs/job_specifications", print_job: @print_job %>
+<%= render "print_jobs/mileage", print_job: @print_job %>
+<%= render "print_jobs/account_management", print_job: @print_job %>
+<%= render "print_jobs/design", print_job: @print_job %>
 <%= link_to "Back To Project", project_path(@print_job.project_id) %>

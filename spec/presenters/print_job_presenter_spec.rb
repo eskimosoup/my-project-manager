@@ -1,7 +1,7 @@
 require 'rails_helper'
 #  rspec --tag 'print_job'
 RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
-  let(:print_job) { build(:print_job) }
+  let(:print_job) { build_stubbed(:print_job) }
   subject(:print_job_presenter) { PrintJobPresenter.new(object: print_job, view_template: view) }
 
   describe 'delegations', :delegation do
@@ -12,10 +12,12 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
 
   describe 'standard print job' do
     it 'returns the brand price currency' do
+      allow(print_job).to receive(:brand_price).and_return(12.00)
       expect(print_job_presenter.brand_price_currency).to eq(number_to_currency print_job.brand_price)
     end
 
     it 'returns the brand rush job price currency' do
+      allow(print_job).to receive(:brand_rush_job_price).and_return(12.00)
       expect(print_job_presenter.brand_rush_job_price_currency).to eq(number_to_currency print_job.brand_rush_job_price)
     end
 
@@ -32,7 +34,7 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
     end
 
     it 'returns the delete button' do
-      expect(print_job_presenter.delete_link).to eq(button_to 'Remove', print_job, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Processing' })
+      expect(print_job_presenter.delete_link).to eq(button_to 'Remove', print_job, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Processing' }, class: "secondary-action-button delete-job")
     end
   end
 end

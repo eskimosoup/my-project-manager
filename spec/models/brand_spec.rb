@@ -8,7 +8,6 @@ RSpec.describe Brand, type: :model do
 
   describe "associations", :association do
     it { should have_one(:brand_address) }
-    it { should have_one(:address).through(:brand_address) }
   end
 
   describe "#logo" do

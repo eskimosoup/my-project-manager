@@ -12,7 +12,7 @@ feature "User adds many products" do
     "#{ product2.name } Area" => 5 })
     click_on "Add Products"
 
-    expect(page).to have_css ".product_item", text: product1.name
-    expect(page).to have_css ".product_item", text: product2.name
+    expect(page).to have_css ".product-item-link", text: product1.name
+    expect(page).to have_css ".product-item-link", text: product2.name
   end
 end

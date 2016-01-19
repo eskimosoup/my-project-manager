@@ -54,10 +54,10 @@
     <% end %>
 
     <div class="index-items">
-      <%= render @presented_customers %>
+      <%= render @customers %>
     </div>
 
-    <%= paginate @presented_customers %>
+    <%= paginate @customers %>
 
     <div class="pagination-summary">
       <%= page_entries_info @customers, entry_name: 'customers' %>

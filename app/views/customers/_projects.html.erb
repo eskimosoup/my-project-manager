@@ -4,7 +4,7 @@
 
     <%= render(
       partial: "projects/project",
-      collection: BaseCollectionPresenter.new(collection: customer.projects, presenter: ProjectPresenter, view_template: self),
+      collection: customer.projects,
       as: :project
     ) %>
   </div>

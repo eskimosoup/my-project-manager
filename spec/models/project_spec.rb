@@ -10,7 +10,9 @@ RSpec.describe Project, type: :model do
   describe "associations", :association do
     it { should belong_to(:customer) }
     it { should belong_to(:brand) }
-    it { should have_one(:business_address).through(:brand).class_name("Address") }
+    it { should belong_to(:shipping_address).class_name("Address") }
+    it { should belong_to(:billing_address).class_name("Address") }
+    it { should have_one(:business_address).through(:brand) }
     it { should have_many(:print_jobs) }
   end
 

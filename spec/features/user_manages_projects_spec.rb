@@ -22,7 +22,6 @@ feature "User manages projects" do
     expect(page).to have_link("New Project", href: new_project_path)
     within "#project_#{ project.id }" do
       expect(page).to have_content(project.name)
-      expect(page).to have_link("View", href: project_path(project))
     end
   end
 
@@ -34,8 +33,7 @@ feature "User manages projects" do
 
     within "#print_job_#{ print_job.id }" do
       expect(page).to have_content(print_job.name)
-      expect(page).to have_link("View", href: print_job_path(print_job))
     end
-    expect(page).to have_link("Add Print Job", href: new_project_print_job_path(project))
+    expect(page).to have_link("Add Print Item", href: new_project_print_job_path(project))
   end
 end

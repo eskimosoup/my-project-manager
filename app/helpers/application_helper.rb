@@ -7,7 +7,7 @@ module ApplicationHelper
     content_tag :span, '', class: "octicon octicon-#{code.to_s.dasherize}"
   end
 
-  def presenter(object, klass = nil)
+  def present(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize if object.present?
     presenter = klass.new(object: object, view_template: self)
     yield presenter if block_given?
