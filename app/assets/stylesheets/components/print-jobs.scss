@@ -8,6 +8,16 @@
 
 .print-job-inline-navigation {
   @include grid-column(6, $gutter: 0);
+
+  &.scroll {
+    background: $white;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    padding: rem-calc(10px) 0;
+    top: 0;
+    width: 100%;
+  }
 }
 
 .print-job-prices {

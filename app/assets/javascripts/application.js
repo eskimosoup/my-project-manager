@@ -53,6 +53,7 @@
 // require jquery-ui/effect-size
 // require jquery-ui/effect-slide
 // require jquery-ui/effect-transfer
+//= require components/sticky-internal-navigation
 // require_tree .
 
 $(function() {

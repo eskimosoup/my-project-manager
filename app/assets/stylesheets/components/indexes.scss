@@ -10,3 +10,20 @@
 .index-items {
   margin: rem-calc(15px) 0;
 }
+
+.basic-listing-details {
+  @include grid-column(9);
+}
+
+.basic-listing-navigation {
+  @include grid-column(3);
+}
+
+.basic-listing-delete-link {
+  text-align: right;
+}
+
+.basic-listing-link {
+  display: block;
+  text-decoration: none;
+}
