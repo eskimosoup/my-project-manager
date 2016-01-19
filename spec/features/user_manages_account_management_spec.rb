@@ -2,9 +2,10 @@ require "rails_helper"
 
 describe "User manages account management", type: :feature do
   it "creates account management" do
+    user = create(:user)
     print_job = create(:print_job)
 
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Account Management"
 
     fill_form(:account_management, { hours: 5 })
@@ -14,9 +15,10 @@ describe "User manages account management", type: :feature do
   end
 
   it "edits account management" do
+    user = create(:user)
     account_management = create(:account_management)
 
-    visit print_job_path(account_management.print_job)
+    visit print_job_path(account_management.print_job, as: user)
     edit_account_management(account_management)
 
     fill_in "Hours", with: 8.50
@@ -26,9 +28,10 @@ describe "User manages account management", type: :feature do
   end
 
   it "removes account management" do
+    user = create(:user)
     account_management = create(:account_management)
 
-    visit print_job_path(account_management.print_job)
+    visit print_job_path(account_management.print_job, as: user)
     destroy_account_management(account_management)
 
     expect(page).not_to have_css "#account_management_#{ account_management.id }"

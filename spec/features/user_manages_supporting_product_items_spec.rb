@@ -2,10 +2,11 @@ require "rails_helper"
 
 describe "User manages a print job's supporting product items", type: :feature do
   scenario "adds a supporting product item" do
+    user = create(:user)
     print_job = create(:print_job)
     supporting_product = create(:supporting_product)
 
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Supporting Product"
 
     fill_form(:supporting_product_item, { area: 5, supporting_product_id: supporting_product.name })
@@ -16,9 +17,10 @@ describe "User manages a print job's supporting product items", type: :feature d
   end
 
   scenario "edits a supporting product item" do
+    user = create(:user)
     supporting_product_item = create(:supporting_product_item)
 
-    visit print_job_path(supporting_product_item.print_job)
+    visit print_job_path(supporting_product_item.print_job, as: user)
     edit_supporting_product_item(supporting_product_item)
 
     fill_in "Area", with: 5
@@ -28,9 +30,10 @@ describe "User manages a print job's supporting product items", type: :feature d
   end
   
   scenario "removes a supporting product item" do
+    user = create(:user)
     supporting_product_item = create(:supporting_product_item)
 
-    visit print_job_path(supporting_product_item.print_job)
+    visit print_job_path(supporting_product_item.print_job, as: user)
     destroy_supporting_product_item(supporting_product_item)
 
     expect(page).not_to have_css "#supporting_product_item_#{ supporting_product_item.id }"
@@ -38,7 +41,7 @@ describe "User manages a print job's supporting product items", type: :feature d
 
   def edit_supporting_product_item(supporting_product_item)
     within "#supporting_product_item_#{ supporting_product_item.id }" do
-      click_on "Edit"
+      click_link_by_href edit_supporting_product_item_path(supporting_product_item)
     end
   end
 

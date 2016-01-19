@@ -2,10 +2,11 @@ require "rails_helper"
 
 describe "User manages a print job's product items", type: :feature do
   scenario "adds a product item" do
+    user = create(:user)
     print_job = create(:print_job)
     product = create(:product)
     
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Product"
 
     fill_form(:product_item, { area: 5, product_id: product.name })
@@ -16,9 +17,10 @@ describe "User manages a print job's product items", type: :feature do
   end
 
   scenario "edits a product item" do
+    user = create(:user)
     product_item = create(:product_item)
 
-    visit print_job_path(product_item.print_job)
+    visit print_job_path(product_item.print_job, as: user)
     edit_product_item(product_item)
 
     fill_in "Area", with: 8
@@ -28,8 +30,9 @@ describe "User manages a print job's product items", type: :feature do
   end
 
   scenario "removes a product item", js: true do
+    user = create(:user)
     product_item = create(:product_item)
-    visit print_job_path(product_item.print_job)
+    visit print_job_path(product_item.print_job, as: user)
 
     destroy_product_item(product_item)
 
