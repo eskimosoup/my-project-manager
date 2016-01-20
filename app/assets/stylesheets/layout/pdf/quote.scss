@@ -1,0 +1,162 @@
+$row-stripe: #d2d2d2;
+$light-grey: #ddd;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+header {
+  margin: 0 0 rem-calc(12px);
+}
+
+h1 {
+  font-size: rem-calc(24px);
+
+  &.quote-title {
+    margin: 0;
+  }
+}
+
+h2 {
+  font-size: rem-calc(17px);
+
+  &.quote-date {
+    margin: rem-calc(12px) 0;
+  }
+}
+
+p {
+  font-size: rem-calc(12px);
+}
+
+.quote-details {
+  overflow: hidden;
+}
+
+.quote-title {
+  float: left;
+}
+
+.quote-reference {
+  float: right;
+  font-size: rem-calc(12px);
+  text-transform: uppercase;
+  text-align: right;
+  margin: rem-calc(8px) 0 0;
+}
+
+.account-manager {
+  font-size: rem-calc(14px);
+}
+
+.account-manager-name {
+  font-size: rem-calc(16px);
+  font-weight: bold;
+  margin: rem-calc(6px) 0;
+}
+
+header {
+  overflow: hidden;
+}
+
+
+.brand-contact-details {
+  float: left;
+  list-style: none;
+  font-size: rem-calc(12px);
+  margin: 0;
+  padding: 0;
+  line-height: 1.25;
+  width: 75%;
+  padding-right: rem-calc(60px);
+
+  li {
+    overflow: hidden;
+    margin: 0 0 rem-calc(2px);
+  }
+
+  strong {
+    float: left;
+    width: 94%;
+  }
+}
+
+.brand-contact-type {
+  float: left;
+  width: 6%;
+}
+
+.brand-logo {
+  float: right;
+  width: 25%;
+}
+
+.address {
+  display: inline;
+  font-weight: bold;
+}
+
+table {
+  border: 1px solid $black;
+  margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: rem-calc(14px);
+
+  th, td {
+    padding: 0.6em 0;
+  }
+
+  tr, td, th {
+    vertical-align: middle;
+  }
+}
+
+thead {
+  background: $black;
+  color: $white;
+  line-height: 1;
+
+  th {
+    padding: rem-calc(5px);
+  }
+}
+
+.print-jobs {
+  th {
+    border-bottom: 1px solid $black;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  td {
+    border-bottom: 1px solid $black;
+    padding: rem-calc(5px);
+
+    &:last-of-type {
+      border-left: 1px solid $black;
+    }
+  }
+
+  .item {
+    width: 85%;
+  }
+
+  .price {
+    width: 15%;
+  }
+}
+
+.quote-validity {
+  font-size: rem-calc(16px);
+  font-weight: bold;
+  font-style: italic;
+}

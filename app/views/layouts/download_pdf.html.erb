@@ -3,9 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
+  <meta name="pdfkit-margin_top" content="0.5in"/>
+  <meta name="pdfkit-margin_right" content="0.5in"/>
+  <meta name="pdfkit-margin_bottom" content="0.5in"/>
+  <meta name="pdfkit-margin_left" content="0.5in"/>
   <style>
     <%= Rails.application.assets.find_asset('download_pdf').to_s %>
+    .account-manager-name,
+    a,
+    .accent {
+      color: <%= colour.present? ? colour : '#000' %>;
+    }
   </style>
 </head>
 <body>
