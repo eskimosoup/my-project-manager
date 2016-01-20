@@ -12,7 +12,7 @@ feature "Visitor signs up" do
 
   scenario "with valid email and password" do
     sign_up_with "valid@example.com", "password"
-
+    
     expect_user_to_be_signed_in
   end
 

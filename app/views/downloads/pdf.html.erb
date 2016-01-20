@@ -8,7 +8,7 @@
       <div class="brand-contact-type">A:</div>
 
       <strong class="accent">
-        <%= project.business_address.single_line %>
+        <%= project.business_address.single_line if project.business_address.present? %>
       </strong>
     </li>
     <li>
