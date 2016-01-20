@@ -34,7 +34,7 @@ feature "Visitor signs in" do
   private
 
   def create_user(email, password)
-    FactoryGirl.create(:user, email: email, password: password)
+    FactoryGirl.create(:user, email: email, password: password, first_name: "First", last_name: "Last")
   end
 
   def expect_page_to_display_sign_in_error

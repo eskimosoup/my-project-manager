@@ -14,6 +14,7 @@ describe "User downloads PDF" do
     expect(download_filename).to include(project.id.to_s)
     expect(pdf_body).to have_content("Quote")
     expect(pdf_body).to have_content(print_job.name)
+    expect(pdf_body).to have_content(user.full_name)
   end
 
   def content_type
