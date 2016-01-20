@@ -7,23 +7,21 @@
     <li>
       <div class="brand-contact-type">A:</div>
 
-      <span class="accent"><%= render(
-        partial: "addresses/invoice_address",
-        object: project.business_address,
-        as: :address
-        ) if project.business_address %></span>
+      <strong class="accent">
+        <%= project.business_address.single_line %>
+      </strong>
     </li>
     <li>
       <div class="brand-contact-type">T:</div>
-      <strong class="accent">01482 <!-- TODO: Brand telephone --></strong>
+      <strong class="accent"><%= project.brand.telephone %></strong>
     </li>
     <li>
       <div class="brand-contact-type">E:</div>
-      <strong class="accent"><!-- TODO: Brand email --></strong>
+      <strong class="accent"><%= project.brand.email %></strong>
     </li>
     <li>
       <div class="brand-contact-type">W:</div>
-      <strong class="accent"><!-- TODO: Brand website --></strong>
+      <strong class="accent"><%= project.brand.website %></strong>
     </li>
   </ul>
 
@@ -32,7 +30,7 @@
 <div class="clear"></div>
 
 <% if project.quoted? %>
-  <%= render 'downloads/shared/quote', project: project %>
+  <%= render partial: 'downloads/shared/quote', locals: { project: project, current_user: user } %>
 <% else %>
-  <%= render 'downloads/shared/invoice', project: project %>
+  <%= render partial: 'downloads/shared/invoice', project: project %>
 <% end %>

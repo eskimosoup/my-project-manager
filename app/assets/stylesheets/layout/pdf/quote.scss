@@ -1,18 +1,26 @@
 $row-stripe: #d2d2d2;
 $light-grey: #ddd;
 
-$accent-colour: $green;
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .container {
-  margin: 30px auto;
-  max-width: 980px;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+header {
+  margin: 0 0 rem-calc(12px);
 }
 
 h1 {
   font-size: rem-calc(24px);
 
   &.quote-title {
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 
@@ -25,23 +33,33 @@ h2 {
 }
 
 p {
-  font-size: rem-calc(14px);
+  font-size: rem-calc(12px);
+}
+
+.quote-details {
+  overflow: hidden;
+}
+
+.quote-title {
+  float: left;
 }
 
 .quote-reference {
+  float: right;
   font-size: rem-calc(12px);
   text-transform: uppercase;
+  text-align: right;
+  margin: rem-calc(8px) 0 0;
+}
+
+.account-manager {
+  font-size: rem-calc(14px);
 }
 
 .account-manager-name {
+  font-size: rem-calc(16px);
   font-weight: bold;
   margin: rem-calc(6px) 0;
-}
-
-.account-manager-name,
-a,
-.accent {
-  color: $accent-colour;
 }
 
 header {
@@ -49,22 +67,35 @@ header {
 }
 
 
-
 .brand-contact-details {
   float: left;
   list-style: none;
+  font-size: rem-calc(12px);
   margin: 0;
   padding: 0;
   line-height: 1.25;
+  width: 75%;
+  padding-right: rem-calc(60px);
+
+  li {
+    overflow: hidden;
+    margin: 0 0 rem-calc(2px);
+  }
+
+  strong {
+    float: left;
+    width: 94%;
+  }
 }
 
 .brand-contact-type {
-  display: inline-block;
-  width: 20px;
+  float: left;
+  width: 6%;
 }
 
 .brand-logo {
   float: right;
+  width: 25%;
 }
 
 .address {

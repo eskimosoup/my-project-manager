@@ -16,4 +16,13 @@ class Brand < ActiveRecord::Base
       "logos/my-vehicle-wrap.jpg"
     end
   end
+
+  def colour
+    case brand_type
+    when "envisage", "envisage_trade"
+      "#56331a"
+    else
+      "#1cdbc8"
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118144808) do
+ActiveRecord::Schema.define(version: 20160120142927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,15 @@ ActiveRecord::Schema.define(version: 20160118144808) do
   add_index "brand_addresses", ["brand_id"], name: "index_brand_addresses_on_brand_id", unique: true, using: :btree
 
   create_table "brands", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "brand_type", default: 0,    null: false
+    t.string   "name",                                 null: false
+    t.boolean  "display",               default: true
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "brand_type",            default: 0,    null: false
+    t.string   "telephone"
+    t.string   "email"
+    t.string   "website"
+    t.string   "terms_conditions_link"
   end
 
   add_index "brands", ["name"], name: "index_brands_on_name", unique: true, using: :btree
@@ -234,6 +238,8 @@ ActiveRecord::Schema.define(version: 20160118144808) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

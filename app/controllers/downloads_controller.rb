@@ -16,7 +16,7 @@ class DownloadsController < ApplicationController
   end
 
   def download
-    Download.new(project)
+    Download.new(project, current_user)
   end
 
   def send_pdf

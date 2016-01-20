@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "homes#show"
 
   get '/autocomplete', to: 'utilities#autocomplete'
-
+  resources :users, controller: :users, only: :create
   resources :customer_registrations, only: [:new, :create]
   resources :customers, only: [:index, :show] do
     resources :addresses, shallow: true

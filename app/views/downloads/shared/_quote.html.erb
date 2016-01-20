@@ -1,9 +1,11 @@
-<h1 class="quote-title">
-  Quote
-</h1>
+<div class="quote-details">
+  <h1 class="quote-title">
+    Quote
+  </h1>
 
-<div class="quote-reference">
-  Quote ref: <%= project.customer.id %>-<%= project.id + 100 %>
+  <div class="quote-reference">
+    Quote ref: <%= project.customer.id %>-<%= project.id + 100 %>
+  </div>
 </div>
 
 <h2 class="quote-date">
@@ -85,15 +87,15 @@
 
 <div class="account-manager">
   <div class="account-manager-name">
-    <!-- TODO: Account manager name -->
+    <%= current_user.full_name %>
   </div>
 
   <div class="account-manager-contact-detail">
-    <span class="accent">T:</span> 01482 <!-- TODO: Account manager telephone -->
+    <span class="accent">T:</span> <%= project.brand.telephone %>
   </div>
 
   <div class="account-manager-contact-detail">
-    <span class="accent">E:</span> <!-- TODO: Account manager email -->
+    <span class="accent">E:</span> <%= current_user.email %>
   </div>
 </div>
 
@@ -118,11 +120,13 @@
   ahead/purchase order number with the other 50% to be invoiced after 30 days.
 </p>
 
-<p>
-  For full terms and conditions, please visit
-  <%= link_to 'www.myofficebranding.co.uk/terms-conditions',
-      'http://www.myofficebranding.co.uk/terms-conditions' %>.
-</p>
+<% if project.brand.terms_conditions_link.present? %>
+  <p>
+    For full terms and conditions, please visit
+    <%= link_to project.brand.terms_conditions_link,
+        project.brand.terms_conditions_link %>.
+  </p>
+<% end %>
 
 <p>
   <%= project.brand.name %> is a trading name of Ludo Studio Ltd. Ludo Studio Ltd is

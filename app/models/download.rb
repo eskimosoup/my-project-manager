@@ -3,12 +3,14 @@ require "render_anywhere"
 class Download
   include RenderAnywhere
 
-  def initialize(project)
+  def initialize(project, user)
     @project = project
+    @user = user
+    @colour = project.brand.colour if project.present? && project.brand.present?
   end
 
   def to_pdf
-    kit = PDFKit.new(as_html)
+    kit = PDFKit.new(as_html, page_size: 'A4')
     kit.to_file("tmp/download.pdf")
   end
 
@@ -20,7 +22,7 @@ class Download
     {
       template: "downloads/pdf",
       layout: "download_pdf",
-      locals: { project: project }
+      locals: { project: @project, user: @user, colour: @colour }
     }
   end
 
