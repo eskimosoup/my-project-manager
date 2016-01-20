@@ -2,9 +2,10 @@ require "rails_helper"
 
 describe "User manages mileage", type: :feature do
   scenario "adds mileage" do
+    user = create(:user)
     print_job = create(:print_job)
 
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Mileage"
 
     fill_form(:mileage, { miles: 10 })
@@ -15,9 +16,10 @@ describe "User manages mileage", type: :feature do
   end
 
   scenario "edit mileage" do
+    user = create(:user)
     mileage = create(:mileage)
 
-    visit print_job_path(mileage.print_job)
+    visit print_job_path(mileage.print_job, as: user)
     edit_mileage(mileage)
 
     fill_in "Miles", with: 3.0
@@ -27,9 +29,10 @@ describe "User manages mileage", type: :feature do
   end
 
   scenario "remove mileage" do
+    user = create(:user)
     mileage = create(:mileage)
 
-    visit print_job_path(mileage.print_job)
+    visit print_job_path(mileage.print_job, as: user)
     destroy_mileage(mileage)
 
     expect(page).not_to have_css ".mileage", text: mileage.miles

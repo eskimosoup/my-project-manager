@@ -1,11 +1,11 @@
 module Admin
-  class AddressesController < Admin::ApplicationController
+  class BrandAddressesController < Admin::ApplicationController
     # To customize the behavior of this controller,
     # simply overwrite any of the RESTful actions. For example:
     #
     def index
       super
-      @resources = Address.joins(:brands).page(params[:page]).per(10)
+      @resources = BrandAddress.joins(:brand).page(params[:page]).per(10)
     end
 
     # Define a custom finder by overriding the `find_resource` method:

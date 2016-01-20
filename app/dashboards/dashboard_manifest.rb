@@ -14,7 +14,7 @@ class DashboardManifest
     :supporting_products,
     :labours,
     :brands,
-    :addresses
+    :brand_addresses
   ]
 
   # `ROOT_DASHBOARD`

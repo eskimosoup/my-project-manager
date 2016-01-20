@@ -2,9 +2,10 @@ require "rails_helper"
 
 describe "User manages a print job's sundry items" do
   scenario "add a sundry item" do
+    user = create(:user)
     print_job = create(:print_job)
 
-    visit print_job_path(print_job)
+    visit print_job_path(print_job, as: user)
     click_on "Add Sundry Item"
 
     fill_form(:sundry_item, { name: "Acryllic", cost: 5.00 })
@@ -15,9 +16,10 @@ describe "User manages a print job's sundry items" do
   end
 
   scenario "edit sundry item" do
+    user = create(:user)
     sundry_item = create(:sundry_item)
 
-    visit print_job_path(sundry_item.print_job)
+    visit print_job_path(sundry_item.print_job, as: user)
     edit_sundry_item(sundry_item)
 
     fill_in "Name", with: "New name"
@@ -27,9 +29,10 @@ describe "User manages a print job's sundry items" do
   end
 
   scenario "remove sundry item" do
+    user = create(:user)
     sundry_item = create(:sundry_item)
 
-    visit print_job_path(sundry_item.print_job)
+    visit print_job_path(sundry_item.print_job, as: user)
     destroy_sundry_item(sundry_item)
 
     expect(page).not_to have_css ".sundry-item", text: sundry_item.name
