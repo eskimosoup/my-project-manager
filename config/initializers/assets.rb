@@ -13,4 +13,6 @@ Rails.application.config.assets.precompile += %w(
   shipping_addresses.js
   billing_addresses.js
   jquery-ui/*
+  bootstrap/*
+  administrate/*
 )
