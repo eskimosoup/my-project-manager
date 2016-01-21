@@ -11,6 +11,7 @@ RSpec.describe PrintJob, type: :model do
   describe "associations", :association do
     it { should belong_to(:project) }
     it { should have_one(:brand).through(:project) }
+    it { should have_one(:product_cost) }
     it { should have_many(:account_managements) }
     it { should have_many(:designs) }
     it { should have_many(:job_specifications) }
@@ -20,6 +21,8 @@ RSpec.describe PrintJob, type: :model do
     it { should have_many(:sundry_items) }
     it { should have_many(:supporting_product_items) }
   end
+
+  it { should delegate_method(:rush_job?).to(:project) }
 
   describe "price calculator" do
     it "#price_calculator" do
@@ -47,6 +50,7 @@ RSpec.describe PrintJob, type: :model do
   describe "brand is envisage" do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(false)
       allow(print_job).to receive(:brand_type).and_return('envisage')
       allow(print_job).to receive(:price).and_return(0.0)
 
@@ -54,23 +58,27 @@ RSpec.describe PrintJob, type: :model do
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:price)
+      expect(print_job).to have_received(:rush_job?)
     end
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(true)
       allow(print_job).to receive(:brand_type).and_return('envisage')
       allow(print_job).to receive(:rush_job_price).and_return(0.0)
 
-      print_job.brand_rush_job_price
+      print_job.brand_price
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:rush_job_price)
+      expect(print_job).to have_received(:rush_job?)
     end
   end
   
   describe "brand is envisage trade" do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(false)
       allow(print_job).to receive(:brand_type).and_return('envisage_trade')
       allow(print_job).to receive(:trade_price).and_return(0.0)
 
@@ -78,23 +86,27 @@ RSpec.describe PrintJob, type: :model do
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:trade_price)
+      expect(print_job).to have_received(:rush_job?)
     end
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(true)
       allow(print_job).to receive(:brand_type).and_return('envisage_trade')
       allow(print_job).to receive(:trade_rush_job_price).and_return(0.0)
 
-      print_job.brand_rush_job_price
+      print_job.brand_price
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:trade_rush_job_price)
+      expect(print_job).to have_received(:rush_job?)
     end
   end
 
   describe "brand is my" do
     it "#brand_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(false)
       allow(print_job).to receive(:brand_type).and_return('my_office_branding')
       allow(print_job).to receive(:my_customer_price).and_return(0.0)
 
@@ -102,17 +114,40 @@ RSpec.describe PrintJob, type: :model do
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:my_customer_price)
+      expect(print_job).to have_received(:rush_job?)
     end
 
     it "#brand_rush_job_price" do
       print_job = build_stubbed(:print_job)
+      allow(print_job).to receive(:rush_job?).and_return(true)
       allow(print_job).to receive(:brand_type).and_return('my_office_branding')
       allow(print_job).to receive(:my_customer_rush_job_price).and_return(0.0)
 
-      print_job.brand_rush_job_price
+      print_job.brand_price
 
       expect(print_job).to have_received(:brand_type)
       expect(print_job).to have_received(:my_customer_rush_job_price)
+      expect(print_job).to have_received(:rush_job?)
+    end
+
+    it "#set_prices" do
+      project = create(:quoted_project, rush_job: false)
+      print_job = create(:print_job)
+      allow(print_job).to receive(:price).and_return(25.00)
+      allow(print_job).to receive(:trade_price).and_return(27.00)
+      allow(print_job).to receive(:my_price).and_return(29.50)
+      allow(print_job).to receive(:my_customer_price).and_return(34.57)
+
+      print_job.set_prices!
+
+      expect(print_job).to have_received(:price)
+      expect(print_job).to have_received(:trade_price)
+      expect(print_job).to have_received(:my_price)
+      expect(print_job).to have_received(:my_customer_price)
+      expect(print_job.envisage_sale_price).to eq(25.00)
+      expect(print_job.envisage_trade_sale_price).to eq(27.00)
+      expect(print_job.envisage_to_my_sale_price).to eq(29.50)
+      expect(print_job.my_sale_price).to eq(34.57)
     end
   end
 end

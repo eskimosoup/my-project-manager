@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+
+  before_action :set_project, only: [:show, :change_status]
+
   def new
     @project = Project.new
   end
@@ -17,12 +20,21 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+  end
+
+  def change_status
+    status_changer = StatusChanger.klass_for(params[:status]).new(@project)
+    status_changer.save
+    redirect_to @project, notice: "Status changed"
   end
 
   private
 
   def project_params
     params.require(:project).permit(:name, :description, :brand_id, :customer_id)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

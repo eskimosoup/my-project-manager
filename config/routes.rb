@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :addresses, shallow: true
   end
   resources :projects, only: [:new, :create, :index, :show] do
+    member do
+      patch :change_status
+    end
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :shipping_address, only: [:new, :create, :edit, :update]
     resources :print_jobs, except: [:index], shallow: true do

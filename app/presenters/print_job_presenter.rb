@@ -19,7 +19,18 @@ class PrintJobPresenter < BasePresenter
     h.number_to_currency brand_price
   end
 
-  def brand_rush_job_price_currency
-    h.number_to_currency brand_rush_job_price
+  def job_type
+    if rush_job?
+      "Rush Job"
+    else
+      "Standard"
+    end
   end
+
+  private
+
+  def rush_job?
+    print_job.rush_job?
+  end
+
 end

@@ -7,18 +7,12 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
   describe 'delegations', :delegation do
     it { should delegate_method(:name).to(:print_job) }
     it { should delegate_method(:brand_price).to(:print_job) }
-    it { should delegate_method(:brand_rush_job_price).to(:print_job) }
   end
 
   describe 'standard print job' do
     it 'returns the brand price currency' do
       allow(print_job).to receive(:brand_price).and_return(12.00)
       expect(print_job_presenter.brand_price_currency).to eq(number_to_currency print_job.brand_price)
-    end
-
-    it 'returns the brand rush job price currency' do
-      allow(print_job).to receive(:brand_rush_job_price).and_return(12.00)
-      expect(print_job_presenter.brand_rush_job_price_currency).to eq(number_to_currency print_job.brand_rush_job_price)
     end
 
     it 'returns the link' do
@@ -35,6 +29,30 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
 
     it 'returns the delete button' do
       expect(print_job_presenter.delete_link).to eq(button_to 'Remove', print_job, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Processing' }, class: "secondary-action-button delete-job")
+    end
+  end
+
+  context "standard job type" do
+    let(:print_job) { build_stubbed(:print_job) }
+    subject(:print_job_presenter) { PrintJobPresenter.new(object: print_job, view_template: view) }
+
+    it "#job_type" do
+      allow(print_job).to receive(:rush_job?).and_return(false)
+
+      expect(subject.job_type).to eq("Standard")
+      expect(print_job).to have_received(:rush_job?)
+    end
+  end
+
+  context "rush job type" do
+    let(:print_job) { build_stubbed(:print_job) }
+    subject(:print_job_presenter) { PrintJobPresenter.new(object: print_job, view_template: view) }
+
+    it "#job_type" do
+      allow(print_job).to receive(:rush_job?).and_return(true)
+
+      expect(subject.job_type).to eq("Rush Job")
+      expect(print_job).to have_received(:rush_job?)
     end
   end
 end
