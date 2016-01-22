@@ -1,5 +1,5 @@
 require 'rails_helper'
-#  rspec --tag 'supporting_product_item_presenter' 
+#  rspec --tag 'supporting_product_item_presenter'
 RSpec.describe SupportingProductItemPresenter, type: :presenter, supporting_product_item_presenter: true do
   let(:supporting_product_item) { build(:supporting_product_item) }
   subject(:supporting_product_item_presenter) { SupportingProductItemPresenter.new(object: supporting_product_item, view_template: view) }
