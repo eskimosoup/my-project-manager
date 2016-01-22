@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :set_project, only: [:show, :change_status]
+  before_action :set_project, only: [:show]
 
   def new
     @project = Project.new
@@ -20,12 +20,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  end
-
-  def change_status
-    status_changer = StatusChanger.klass_for(params[:status]).new(@project)
-    status_changer.save
-    redirect_to @project, notice: "Status changed"
   end
 
   private

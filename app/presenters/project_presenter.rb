@@ -49,7 +49,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def mark_sold
-    h.button_to "Mark As Sold", h.change_status_project_path(project), method: :patch,
+    h.button_to "Mark As Sold", h.project_status_changer_path(project), method: :post,
           data: { disable_with: "Processing..." }, params: { status: :sold } if project.quoted?
   end
 

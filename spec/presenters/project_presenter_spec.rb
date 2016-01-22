@@ -73,7 +73,7 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
   
       it "#mark_sold" do
-        button = button_to "Mark As Sold", change_status_project_path(project), method: :patch,
+        button = button_to "Mark As Sold", project_status_changer_path(project), method: :post,
           data: { disable_with: "Processing..." }, params: { status: :sold }
         expect(subject.mark_sold).to eq(button)
       end

@@ -11,14 +11,16 @@ RSpec.describe PrintJob, type: :model do
   describe "associations", :association do
     it { should belong_to(:project) }
     it { should have_one(:brand).through(:project) }
-    it { should have_one(:product_cost) }
     it { should have_many(:account_managements) }
     it { should have_many(:designs) }
     it { should have_many(:job_specifications) }
     it { should have_many(:labour_items) }
     it { should have_many(:mileages) }
+    it { should have_many(:product_costs) }
     it { should have_many(:product_items) }
+    it { should have_many(:sundry_costs) }
     it { should have_many(:sundry_items) }
+    it { should have_many(:supporting_product_costs) }
     it { should have_many(:supporting_product_items) }
   end
 

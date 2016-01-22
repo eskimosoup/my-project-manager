@@ -2,14 +2,16 @@ class PrintJob < ActiveRecord::Base
 
   belongs_to :project
   has_one :brand, through: :project
-  has_one :product_cost
   has_many :account_managements
   has_many :designs
   has_many :job_specifications
   has_many :labour_items
   has_many :mileages
+  has_many :product_costs
   has_many :product_items
+  has_many :sundry_costs
   has_many :sundry_items
+  has_many :supporting_product_costs
   has_many :supporting_product_items
 
   validates :name, presence: true, uniqueness: { scope: :project_id }
@@ -43,6 +45,7 @@ class PrintJob < ActiveRecord::Base
   private
 
   def envisage_brand_price
+    return envisage_sale_price if envisage_sale_price.present?
     if rush_job?
       rush_job_price
     else
@@ -51,6 +54,7 @@ class PrintJob < ActiveRecord::Base
   end
 
   def envisage_trade_brand_price
+    return envisage_trade_sale_price if envisage_trade_sale_price.present?
     if rush_job?
       trade_rush_job_price
     else
@@ -59,6 +63,7 @@ class PrintJob < ActiveRecord::Base
   end
 
   def my_brand_price
+    return my_sale_price if my_sale_price.present?
     if rush_job?
       my_customer_rush_job_price
     else

@@ -10,11 +10,10 @@ Rails.application.routes.draw do
     resources :addresses, shallow: true
   end
   resources :projects, only: [:new, :create, :index, :show] do
-    member do
-      patch :change_status
-    end
     resource :billing_address, only: [:new, :create, :edit, :update]
+    resource :downloads, only: [:show]
     resource :shipping_address, only: [:new, :create, :edit, :update]
+    resource :status_changer, only: [:create]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
       resources :account_managements, except: [:index, :show]
@@ -26,7 +25,6 @@ Rails.application.routes.draw do
       resources :sundry_items, except: [:index, :show]
       resources :supporting_product_items, except: [:index, :show]
     end
-    resource :downloads, only: [:show]
   end
 
   # Clearance
