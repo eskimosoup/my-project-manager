@@ -1,11 +1,11 @@
-<%= div_for job_specification, class: "basic-listing job-specification #{cycle('odd', 'even', name: 'job_specification')}" do %>
-  <div class="basic-listing-details basic-listing-link">
-    <%= pluralize(job_specification.hours, 'hour') %>
-    <%= link_to "Edit", edit_job_specification_path(job_specification) %>
-  </div>
+<% present job_specification do |job_specification_presenter| %>
+  <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'job_specification')}", id: job_specification_presenter.dom_id do %>
+    <div class="basic-listing-details">
+      <%= job_specification_presenter.edit_link_content("#{octicon('pencil')} #{job_specification_presenter.time}".html_safe, class: 'basic-listing-link') %>
+    </div>
 
-  <div class="basic-listing-navigation basic-listing-delete-link">
-    <%= button_to "Remove", job_specification_path(job_specification), method: :delete,
-      data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
-  </div>
+    <div class="basic-listing-navigation basic-listing-delete-link">
+      <%= job_specification_presenter.delete_link %>
+    </div>
+  <% end %>
 <% end %>
