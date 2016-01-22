@@ -1,11 +1,12 @@
-<%= div_for account_management, class: "basic-listing account-management #{cycle('odd', 'even', name: 'job_specification')}" do %>
-  <div class="basic-listing-details basic-listing-link">
-    <%= pluralize account_management.hours, "hour" %>
-    <%= link_to "Edit", edit_account_management_path(account_management) %>
-  </div>
 
-  <div class="basic-listing-navigation basic-listing-delete-link">
-    <%= button_to "Remove", account_management_path(account_management), method: :delete,
-      data: { confirm: "Are you sure?", disable_with: "Processing..." }, class: 'secondary-action-button' %>
-  </div>
+<% present account_management do |account_management_presenter| %>
+  <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'job_specification')}", id: account_management_presenter.dom_id do %>
+    <div class="basic-listing-details">
+      <%= account_management_presenter.edit_link_content("#{octicon('pencil')} #{account_management_presenter.time}".html_safe, class: 'basic-listing-link') %>
+    </div>
+
+    <div class="basic-listing-navigation basic-listing-delete-link">
+      <%= account_management_presenter.delete_link %>
+    </div>
+  <% end %>
 <% end %>
