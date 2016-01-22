@@ -25,6 +25,10 @@ RSpec.describe PrintJob, type: :model do
   end
 
   it { should delegate_method(:rush_job?).to(:project) }
+  it { should delegate_method(:quoted?).to(:project) }
+  it { should delegate_method(:sold?).to(:project) }
+  it { should delegate_method(:completed?).to(:project) }
+  it { should delegate_method(:status).to(:project) }
 
   describe "price calculator" do
     it "#price_calculator" do

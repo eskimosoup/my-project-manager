@@ -13,6 +13,8 @@ RSpec.describe LabourItem, type: :model do
     it { should belong_to(:print_job) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "labour" do
     it { should delegate_method(:name).to(:labour) }
   end

@@ -7,6 +7,7 @@ class LabourItem < ActiveRecord::Base
   validates :print_job, presence: true
 
   delegate :name, to: :labour
+  delegate :quoted?, to: :print_job
   delegate :price, :total_cost, to: :price_calculator
 
   def price_calculator

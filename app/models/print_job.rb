@@ -18,7 +18,7 @@ class PrintJob < ActiveRecord::Base
   validates :project, presence: true
 
   delegate :brand_type, to: :brand
-  delegate :rush_job?, to: :project
+  delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
   delegate :cost_without_labour_or_printer, :cost_without_mileage, :cost,
     :price, :rush_job_price, :trade_price, :trade_rush_job_price, :my_price,
     :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price, to: :price_calculator

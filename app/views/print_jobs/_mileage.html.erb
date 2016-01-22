@@ -2,7 +2,7 @@
   <div class="main print-job-section" id="milages">
     <h3>Mileage</h3>
 
-    <%= link_to "Add Mileage", new_print_job_mileage_path(@print_job), class: 'action-button' %>
+    <%= link_to "Add Mileage", new_print_job_mileage_path(@print_job), class: 'action-button' if @print_job.quoted? %>
 
     <% if @print_job.mileages.any? %>
       <%= render(

@@ -13,6 +13,8 @@ RSpec.describe ProductItem, type: :model do
     it { should belong_to(:product) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "product" do
     it { should delegate_method(:name).to(:product) }
   end

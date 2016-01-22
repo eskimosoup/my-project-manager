@@ -7,6 +7,7 @@ RSpec.describe LabourItemPresenter, type: :presenter, labour_item_presenter: tru
   describe 'delegations', :delegation do
     it { should delegate_method(:name).to(:labour_item) }
     it { should delegate_method(:hours).to(:labour_item) }
+    it { should delegate_method(:quoted?).to(:labour_item) }
   end
 
   describe 'standard labour_item' do
@@ -14,8 +15,8 @@ RSpec.describe LabourItemPresenter, type: :presenter, labour_item_presenter: tru
       expect(labour_item_presenter.time).to eq(pluralize(labour_item.hours, "hour"))
     end
 
-    it 'returns the link' do
-      expect(labour_item_presenter.edit_link).to eq(edit_labour_item_path(labour_item))
+    it '#edit_path' do
+      expect(labour_item_presenter.edit_path).to eq(edit_labour_item_path(labour_item))
     end
 
     it 'returns the edit link' do
@@ -24,6 +25,42 @@ RSpec.describe LabourItemPresenter, type: :presenter, labour_item_presenter: tru
 
     it 'returns the edit link with custom text' do
       expect(labour_item_presenter.edit_link_content('Edit this product item')).to eq(link_to 'Edit this product item', view.edit_labour_item_path(labour_item))
+    end
+  end
+
+  context "quoted print job" do
+    it '#octicon_edit_link' do
+      allow(labour_item).to receive(:quoted?).and_return(true)
+
+      link = link_to "#{ view.octicon('pencil') } #{ labour_item.name } #{ pluralize(labour_item.hours, 'hour' ) }".html_safe, edit_labour_item_path(labour_item), class: 'basic-listing-link'
+
+      expect(labour_item_presenter.octicon_edit_link).to eq(link)
+    end
+
+    it "#delete_link" do
+      allow(labour_item).to receive(:quoted?).and_return(true)
+
+      link = button_to 'Remove', labour_item_path(labour_item), method: :delete,
+        data: { confirm: 'Are you sure?', disable_with: 'processing...' },
+        class: 'secondary-action-button'
+
+      expect(labour_item_presenter.delete_link).to eq(link)
+    end
+  end
+
+  context "not quoted print job" do
+    it '#octicon_edit_link' do
+      allow(labour_item).to receive(:quoted?).and_return(false)
+
+      content = "#{ labour_item.name } #{ pluralize(labour_item.hours, 'hour') }".html_safe
+
+      expect(labour_item_presenter.octicon_edit_link).to eq(content)
+    end
+
+    it "#delete_link" do
+      allow(labour_item).to receive(:quoted?).and_return(false)
+
+      expect(labour_item_presenter.delete_link).to eq(nil)
     end
   end
 end

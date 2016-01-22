@@ -2,7 +2,8 @@
   <div class="main print-job-section" id="account-managements">
     <h3>Account Management</h3>
 
-    <%= link_to "Add Account Management", new_print_job_account_management_path(@print_job), class: 'action-button' %>
+    <%= link_to "Add Account Management", new_print_job_account_management_path(@print_job),
+      class: 'action-button' if @print_job.quoted? %>
 
     <% if @print_job.account_managements.any? %>
       <%= render(
@@ -14,6 +15,3 @@
   </div>
 </div>
 
-<div class="account-managements">
-
-</div>

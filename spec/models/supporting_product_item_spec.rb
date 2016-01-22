@@ -13,6 +13,8 @@ RSpec.describe SupportingProductItem, type: :model do
     it { should belong_to(:supporting_product) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "supporting product" do
     it { should delegate_method(:name).to(:supporting_product) }
   end
