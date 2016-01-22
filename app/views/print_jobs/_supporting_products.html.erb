@@ -7,7 +7,7 @@
     <% if @print_job.supporting_product_items.any? %>
       <%= render(
         partial: "supporting_product_items/supporting_product_item",
-        collection: BaseCollectionPresenter.new(collection: @print_job.supporting_product_items, view_template: self, presenter: SupportingProductItemPresenter),
+        collection: @print_job.supporting_product_items,
         as: :supporting_product_item
       ) %>
     <% end %>
