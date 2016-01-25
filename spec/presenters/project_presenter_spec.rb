@@ -7,7 +7,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
   describe 'delegations', :delegation do
     it { should delegate_method(:name).to(:project) }
     it { should delegate_method(:brand_price).to(:project) }
-    it { should delegate_method(:brand_rush_job_price).to(:project) }
   end
 
   describe 'standard project' do
@@ -51,8 +50,51 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       expect(project_presenter.brand_price_currency).to eq(number_to_currency project.brand_price)
     end
 
-    it 'returns the brand rush job price currency' do
-      expect(project_presenter.brand_rush_job_price_currency).to eq(number_to_currency project.brand_rush_job_price)
+    context "normal project" do
+      let(:project) { build(:project, rush_job: false) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+
+      it "#project_type" do
+        expect(subject.job_type).to eq("Standard")
+      end
+    end
+
+    context "rush project" do
+      let(:project) { build(:project, rush_job: true) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+
+      it "#project_type" do
+        expect(subject.job_type).to eq("Rush Job")
+      end
+    end
+
+    context "quoted project" do
+      let(:project) { build(:quoted_project) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+  
+      it "#mark_sold" do
+        button = button_to "Mark As Sold", project_status_changer_path(project), method: :post,
+          data: { disable_with: "Processing..." }, params: { status: :sold }
+        expect(subject.mark_sold).to eq(button)
+      end
+    end
+
+    context "sold project" do
+      let(:project) { build(:sold_project) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+  
+      it "#mark_sold" do
+        expect(subject.mark_sold).to eq(nil)
+      end
+    end
+
+    context "completed project" do
+      let(:project) { build(:completed_project) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+  
+      it "#mark_sold" do
+        expect(subject.mark_sold).to eq(nil)
+      end
     end
   end
 end

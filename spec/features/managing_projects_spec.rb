@@ -8,7 +8,7 @@ feature "User manages projects" do
 
     visit new_project_path(as: user)
 
-    fill_form(:project, { name: "My project name", brand_id: brand.name,
+    fill_form(:project, { name: "My project name", brand_id: brand.name, rush_job: true,
                           customer_id: customer.name, description: "Project description" })
     click_on "Create Project"
 

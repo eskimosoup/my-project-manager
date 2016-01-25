@@ -39,7 +39,11 @@ feature "Visitor signs in" do
 
   def expect_page_to_display_sign_in_error
     expect(page.body).to include(
-      I18n.t("flashes.failure_after_create", sign_up_path: sign_up_path)
+      if Clearance.configuration.allow_sign_up?
+        I18n.t("flashes.failure_after_create", sign_up_path: sign_up_path)
+      else
+        I18n.t("flashes.failure_after_create")
+      end
     )
   end
 end

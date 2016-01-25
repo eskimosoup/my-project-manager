@@ -6,8 +6,9 @@ class SupportingProductItem < ActiveRecord::Base
   validates :print_job, presence: true
   validates :supporting_product, presence: true
 
+  delegate :quoted?, to: :print_job
   delegate :name, to: :supporting_product
-  delegate :variable_cost, :fixed_cost, :total_cost, :price, to: :price_calculator
+  delegate :cost, :price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= SupportingProductPriceCalculator.new(supporting_product: supporting_product, area: area)

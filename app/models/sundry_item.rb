@@ -5,6 +5,7 @@ class SundryItem < ActiveRecord::Base
   validates :name, presence: true
   validates :print_job, presence: true
 
+  delegate :quoted?, to: :print_job
   delegate :price, to: :price_calculator
 
   def price_calculator

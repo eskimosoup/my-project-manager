@@ -5,6 +5,7 @@ FactoryGirl.define do
     brand
     name "MyString"
     description "MyText"
+    rush_job false
 
     trait :quoted do
       status 0
@@ -14,17 +15,12 @@ FactoryGirl.define do
       status 1
     end
 
-    trait :invoiced do
-      status 2
-    end
-
     trait :completed do
-      status 3
+      status 2
     end
 
     factory :quoted_project, traits: [:quoted]
     factory :sold_project, traits: [:sold]
-    factory :invoiced_project, traits: [:invoiced]
     factory :completed_project, traits: [:completed]
   end
 

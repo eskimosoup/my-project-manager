@@ -12,7 +12,7 @@ describe "User manages mileage", type: :feature do
     click_on "Create Mileage"
 
     expect(current_path).to eq(print_job_path(print_job))
-    expect(page).to have_css ".mileage", text: "10.0 miles"
+    expect(page).to have_css ".basic-listing-details", text: "10.0 miles"
   end
 
   scenario "edit mileage" do
@@ -25,7 +25,7 @@ describe "User manages mileage", type: :feature do
     fill_in "Miles", with: 3.0
     click_on "Update Mileage"
 
-    expect(page).to have_css ".mileage", text: "3.0 miles"
+    expect(page).to have_css ".basic-listing-details", text: "3.0 miles"
   end
 
   scenario "remove mileage" do
@@ -35,12 +35,12 @@ describe "User manages mileage", type: :feature do
     visit print_job_path(mileage.print_job, as: user)
     destroy_mileage(mileage)
 
-    expect(page).not_to have_css ".mileage", text: mileage.miles
+    expect(page).not_to have_css ".basic-listing-details", text: mileage.miles
   end
 
   def edit_mileage(mileage)
     within "#mileage_#{ mileage.id }" do
-      click_on "Edit"
+      click_link_by_href(edit_mileage_path(mileage))
     end
   end
 

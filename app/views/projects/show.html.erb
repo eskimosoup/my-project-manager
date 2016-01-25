@@ -3,6 +3,11 @@
     <div class="main">
       <h1><%= presented_project.name %></h1>
 
+      <div id="project-status">
+        <%= presented_project.status %>
+        <%= presented_project.mark_sold %>
+      </div>
+
       <div>
         <%= presented_project.description %>
       </div>

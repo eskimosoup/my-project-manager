@@ -1,7 +1,7 @@
 <% present labour_item do |labour_item_presenter| %>
   <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'labour_item')}", id: labour_item_presenter.dom_id do %>
     <div class="basic-listing-details">
-      <%= labour_item_presenter.edit_link_content("#{octicon('pencil')} #{labour_item_presenter.name} #{labour_item_presenter.time}".html_safe, class: 'basic-listing-link') %>
+      <%= labour_item_presenter.octicon_edit_link %>
     </div>
 
     <div class="basic-listing-navigation basic-listing-delete-link">

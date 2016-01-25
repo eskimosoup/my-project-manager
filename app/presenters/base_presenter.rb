@@ -49,4 +49,12 @@ class BasePresenter
   def h
     @view_template
   end
+
+  def format_area(area)
+    "#{ area }m<sup>2</sup>".html_safe
+  end
+  
+  def octicon(code)
+    h.content_tag :span, '', class: "octicon octicon-#{code.to_s.dasherize}"
+  end
 end

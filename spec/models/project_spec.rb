@@ -17,7 +17,6 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#brand" do
-    it { should delegate_method(:brand_type).to(:brand) }
     it { should delegate_method(:logo).to(:brand) }
   end
 
@@ -28,13 +27,6 @@ RSpec.describe Project, type: :model do
       expect(project.price_calculator).to be_an_instance_of(ProjectPriceCalculator)
     end
 
-    it { should delegate_method(:price).to(:price_calculator) }
-    it { should delegate_method(:rush_job_price).to(:price_calculator) }
-    it { should delegate_method(:trade_price).to(:price_calculator) }
-    it { should delegate_method(:trade_rush_job_price).to(:price_calculator) }
-    it { should delegate_method(:my_price).to(:price_calculator) }
-    it { should delegate_method(:my_rush_job_price).to(:price_calculator) }
-    it { should delegate_method(:my_customer_price).to(:price_calculator) }
-    it { should delegate_method(:my_customer_rush_job_price).to(:price_calculator) }
+    it { should delegate_method(:brand_price).to(:price_calculator) }
   end
 end

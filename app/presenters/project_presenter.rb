@@ -21,7 +21,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def status
-    project.status.humanize
+    project_status.humanize
   end
 
   def print_jobs_count
@@ -39,8 +39,27 @@ class ProjectPresenter < BasePresenter
   def brand_price_currency
     h.number_to_currency brand_price
   end
+  
+  def job_type
+    if rush_job?
+      "Rush Job"
+    else
+      "Standard"
+    end
+  end
 
-  def brand_rush_job_price_currency
-    h.number_to_currency brand_rush_job_price
+  def mark_sold
+    h.button_to "Mark As Sold", h.project_status_changer_path(project), method: :post,
+          data: { disable_with: "Processing..." }, params: { status: :sold } if project.quoted?
+  end
+
+  private
+
+  def project_status
+    @project_status ||= project.status
+  end
+
+  def rush_job?
+    project.rush_job?
   end
 end

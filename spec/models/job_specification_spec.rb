@@ -11,6 +11,8 @@ RSpec.describe JobSpecification, type: :model do
     it { should belong_to(:print_job) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "price calculator" do
     it "#price_calculator" do
       job_spec = build_stubbed(:job_specification)

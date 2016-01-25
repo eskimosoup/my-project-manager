@@ -1,7 +1,7 @@
 <% present mileage do |mileage_presenter| %>
   <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'mileage')}", id: mileage_presenter.dom_id do %>
     <div class="basic-listing-details">
-      <%= mileage_presenter.edit_link_content("#{octicon('pencil')} #{mileage_presenter.mileage_text}".html_safe, class: 'basic-listing-link') %>
+      <%= mileage_presenter.octicon_edit_link %>
     </div>
 
     <div class="basic-listing-navigation basic-listing-delete-link">

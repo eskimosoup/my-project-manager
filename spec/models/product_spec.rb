@@ -17,4 +17,8 @@ RSpec.describe Product, type: :model do
     end
   end
 
+  describe "associations", :association do
+    it { should have_many(:product_costs) }
+  end
+
 end

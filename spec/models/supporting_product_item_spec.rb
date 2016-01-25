@@ -13,6 +13,8 @@ RSpec.describe SupportingProductItem, type: :model do
     it { should belong_to(:supporting_product) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "supporting product" do
     it { should delegate_method(:name).to(:supporting_product) }
   end
@@ -23,9 +25,7 @@ RSpec.describe SupportingProductItem, type: :model do
       expect(supporting_product_item.price_calculator).to be_an_instance_of(SupportingProductPriceCalculator)
     end
 
-    it { should delegate_method(:variable_cost).to(:price_calculator) }
-    it { should delegate_method(:fixed_cost).to(:price_calculator) }
-    it { should delegate_method(:total_cost).to(:price_calculator) }
+    it { should delegate_method(:cost).to(:price_calculator) }
     it { should delegate_method(:price).to(:price_calculator) }
   end
 end

@@ -1,13 +1,17 @@
 class PrintJobPresenter < BasePresenter
   presents :print_job
-  delegate :name, :brand_price, :brand_rush_job_price, to: :print_job
+  delegate :name, :rush_job?, :brand_price, :brand_rush_job_price, to: :print_job
 
-  def link
-    print_job
+  def path
+    h.print_job_path(print_job)
   end
 
   def linked_content(content = 'View', options = {})
-    h.link_to content, link, options
+    h.link_to content, path, options
+  end
+
+  def octicon_view_link
+    linked_content(octicon_view_content, class: 'print-job-view-link')
   end
 
   def delete_link
@@ -19,7 +23,18 @@ class PrintJobPresenter < BasePresenter
     h.number_to_currency brand_price
   end
 
-  def brand_rush_job_price_currency
-    h.number_to_currency brand_rush_job_price
+  def job_type
+    if rush_job?
+      "Rush Job"
+    else
+      "Standard"
+    end
   end
+
+  private
+
+  def octicon_view_content
+    [ octicon('eye'), name ].join(" ").html_safe
+  end
+
 end

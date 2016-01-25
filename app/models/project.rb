@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  include BrandPriceable, Filterable
+  include Filterable
 
   belongs_to :brand
   belongs_to :customer  
@@ -19,10 +19,8 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) }
   scope :customer_id, ->(value) { where(customer_id: value) }
 
-  delegate :brand_type, :logo, to: :brand
-  delegate :price, :rush_job_price, :trade_price, :trade_rush_job_price,
-    :my_price, :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price,
-    to: :price_calculator
+  delegate :logo, to: :brand
+  delegate :brand_price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= ProjectPriceCalculator.new(print_jobs: print_jobs)

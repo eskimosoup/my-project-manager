@@ -6,6 +6,7 @@ class ProductItem < ActiveRecord::Base
   validates :print_job, presence: true
   validates :product, presence: true
 
+  delegate :quoted?, to: :print_job
   delegate :name, to: :product
   delegate :variable_cost, :fixed_cost, :total_cost, :price, to: :price_calculator
 

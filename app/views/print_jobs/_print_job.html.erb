@@ -1,7 +1,7 @@
 <% present print_job do |print_job_presenter| %>
   <%= content_tag :div, class: "basic-listing  #{cycle('odd', 'even', name: 'print_job')}", id: print_job_presenter.dom_id do %>
     <div class="print-job-name">
-      <%= print_job_presenter.linked_content("#{octicon('eye')} #{print_job_presenter.name}".html_safe, class: 'print-job-view-link') %>
+      <%= print_job_presenter.octicon_view_link %>
     </div>
 
     <div class="print-job-prices-overview">
