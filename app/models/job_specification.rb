@@ -4,6 +4,7 @@ class JobSpecification < ActiveRecord::Base
   validates :hours, presence: true, numericality: { greater_than_or_equal_to: 0.0 }
   validates :print_job, presence: true
 
+  delegate :quoted?, to: :print_job
   delegate :cost, :price, to: :price_calculator
 
   def price_calculator

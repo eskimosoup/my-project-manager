@@ -11,7 +11,7 @@ describe "User manages design", type: :feature do
     fill_form(:design, { hours: 5 })
     click_on "Create Design"
 
-    expect(page).to have_css ".design", text: "5.0 hours"
+    expect(page).to have_css ".basic-listing-details", text: "5.0 hours"
   end
 
   it "edits design" do
@@ -24,7 +24,7 @@ describe "User manages design", type: :feature do
     fill_in "Hours", with: 3
     click_on "Update Design"
 
-    expect(page).to have_css ".design", text: "3.0 hours"
+    expect(page).to have_css ".basic-listing-details", text: "3.0 hours"
   end
 
   it "removes design" do
@@ -39,7 +39,7 @@ describe "User manages design", type: :feature do
 
   def edit_design(design)
     within("#design_#{ design.id }") do
-      click_on "Edit"
+      click_link_by_href edit_design_path(design)
     end
   end
 

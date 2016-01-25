@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MileageCost, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations", :validation do
+    it { should validate_presence_of(:miles) }
+  end
 end

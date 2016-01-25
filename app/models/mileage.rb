@@ -1,6 +1,7 @@
 class Mileage < ActiveRecord::Base
   belongs_to :print_job
 
+  delegate :quoted?, to: :print_job
   delegate :price, :cost, to: :price_calculator
 
   validates :miles, presence: true, numericality: { greater_than: 0.0 }

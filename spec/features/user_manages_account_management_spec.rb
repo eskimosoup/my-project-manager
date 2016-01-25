@@ -11,7 +11,7 @@ describe "User manages account management", type: :feature do
     fill_form(:account_management, { hours: 5 })
     click_on "Create Account management"
 
-    expect(page).to have_css ".account-management", text: "5.0 hours"
+    expect(page).to have_css ".basic-listing-details", text: "5.0 hours"
   end
 
   it "edits account management" do
@@ -24,7 +24,7 @@ describe "User manages account management", type: :feature do
     fill_in "Hours", with: 8.50
     click_on "Update Account management"
 
-    expect(page).to have_css ".account-management", text: "8.5 hours"
+    expect(page).to have_css ".basic-listing-details", text: "8.5 hours"
   end
 
   it "removes account management" do
@@ -34,12 +34,13 @@ describe "User manages account management", type: :feature do
     visit print_job_path(account_management.print_job, as: user)
     destroy_account_management(account_management)
 
-    expect(page).not_to have_css "#account_management_#{ account_management.id }"
+    expect(page).not_to have_css ".basic-listing-details", 
+      text: "#{ account_management.hours } hours"
   end
 
   def edit_account_management(account_management)
     within("#account_management_#{ account_management.id }") do
-      click_on "Edit"
+      click_link_by_href edit_account_management_path(account_management)
     end
   end
 

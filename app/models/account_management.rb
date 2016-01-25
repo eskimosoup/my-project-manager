@@ -4,6 +4,7 @@ class AccountManagement < ActiveRecord::Base
   validates :hours, presence: true, numericality: { greater_than: 0.0 }
   validates :print_job, presence: true
 
+  delegate :quoted?, to: :print_job
   delegate :price, to: :price_calculator
 
   def price_calculator

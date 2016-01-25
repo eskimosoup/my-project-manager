@@ -7,6 +7,8 @@ RSpec.describe Mileage, type: :model do
     it { should validate_presence_of(:print_job) }
   end
 
+  it { should delegate_method(:quoted?).to(:print_job) }
+
   describe "associations", :association do
     it { should belong_to(:print_job) }
   end

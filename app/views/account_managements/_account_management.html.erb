@@ -2,7 +2,7 @@
 <% present account_management do |account_management_presenter| %>
   <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'job_specification')}", id: account_management_presenter.dom_id do %>
     <div class="basic-listing-details">
-      <%= account_management_presenter.edit_link_content("#{octicon('pencil')} #{account_management_presenter.time}".html_safe, class: 'basic-listing-link') %>
+      <%= account_management_presenter.octicon_edit_link %>
     </div>
 
     <div class="basic-listing-navigation basic-listing-delete-link">
