@@ -27,7 +27,7 @@ gem "sprockets-rails", "2.2.3"
 gem "autoprefixer-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "simple_form"
-gem "administrate", "0.1.2"
+# gem "administrate", " ~> 0.1.2"
 gem "clearance", "~> 1.12.0"
 gem "email_validator", "~> 1.6.0"
 gem 'lograge', '~> 0.3.5'
