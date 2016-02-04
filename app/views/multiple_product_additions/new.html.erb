@@ -1,9 +1,14 @@
-<%= simple_form_for [@print_job, @multiple_product_addition] do |f| %>
-  <%= f.simple_fields_for :product_items do |pi| %>
-    <%= pi.input :print_job_id, as: :hidden %>
-    <%= pi.input :product_id, as: :hidden %>
-    <%= pi.input :area, label: [pi.object.product.name, "Area"].join(" ") %>
-  <% end %>
+<div class="content">
+  <div class="main">
+    <h1>Add Multiple Product Addition</h1>
+    <%= simple_form_for [@print_job, @multiple_product_addition] do |f| %>
+      <%= f.simple_fields_for :product_items do |pi| %>
+        <%= pi.input :print_job_id, as: :hidden %>
+        <%= pi.input :product_id, as: :hidden %>
+        <%= pi.input :area, label: [pi.object.product.name, "Area"].join(" ") %>
+      <% end %>
 
-  <%= f.button :submit, "Add Products" %>
-<% end %>
+      <%= f.button :submit, "Add Products" %>
+    <% end %>
+  </div>
+</div>
