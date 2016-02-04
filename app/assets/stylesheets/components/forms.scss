@@ -146,3 +146,13 @@ label {
     @include grid-column(6);
   }
 }
+
+.new_multiple_product_addition {
+  overflow: hidden;
+
+  .input {
+    float: left;
+    width: 45%;
+    margin: 0 5% 0 0;
+  }
+}
