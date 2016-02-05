@@ -9,13 +9,16 @@ RSpec.describe AccountManagement, type: :model do
 
   describe "associations", :association do
     it { should belong_to(:print_job) }
+    it { should have_one(:brand).through(:print_job) }
   end
 
   it { should delegate_method(:quoted?).to(:print_job) }
+  it { should delegate_method(:account_management_rate).to(:brand) }
 
   describe "price_calculator" do
     it "#price_calculator" do
       account_management = build_stubbed(:account_management)
+      allow(account_management).to receive(:brand).and_return(build_stubbed(:brand))
 
       expect(account_management.price_calculator).to be_an_instance_of(AccountManagementPriceCalculator)
     end

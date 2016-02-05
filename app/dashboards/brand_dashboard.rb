@@ -15,6 +15,7 @@ class BrandDashboard < Administrate::BaseDashboard
     website: Field::String,
     terms_conditions_link: Field::String,
     brand_type: EnumField,
+    account_management_rate: Field::Number,
     display: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -27,6 +28,7 @@ class BrandDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
+    :account_management_rate,
     :display,
     :created_at,
   ]
@@ -45,6 +47,7 @@ class BrandDashboard < Administrate::BaseDashboard
     :website,
     :terms_conditions_link,
     :brand_type,
+    :account_management_rate,
     :display,
   ]
 

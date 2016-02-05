@@ -1,12 +1,13 @@
 class AccountManagementPriceCalculator
 
-  attr_reader :hours
+  attr_reader :hours, :rate
 
-  def initialize(hours:)
+  def initialize(hours:, rate:)
     @hours = hours
+    @rate = rate
   end
 
   def price
-    (hours * 30).round(2)
+    (hours * rate).round(2)
   end
 end
