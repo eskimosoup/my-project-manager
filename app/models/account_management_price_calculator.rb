@@ -7,6 +7,6 @@ class AccountManagementPriceCalculator
   end
 
   def price
-    (hours * 65).round(2)
+    (hours * 30).round(2)
   end
 end
