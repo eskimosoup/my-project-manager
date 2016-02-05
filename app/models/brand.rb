@@ -5,24 +5,11 @@ class Brand < ActiveRecord::Base
   enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap]
   validates :name, presence: true
   validates :brand_type, presence: true
+  validates :account_management_rate, presence: true, numericality: { greater_than_or_equal_to: 0.0 }
 
-  def logo
-    case brand_type
-    when "envisage", "envisage_trade"
-      "logos/envisage.png"
-    when "my_office_branding"
-      "logos/my-office-branding.jpg"
-    when "my_vehicle_wrap"
-      "logos/my-vehicle-wrap.jpg"
-    end
-  end
-
-  def colour
-    case brand_type
-    when "envisage", "envisage_trade"
-      "#56331a"
-    else
-      "#1cdbc8"
-    end
+  delegate :logo, :colour, to: :brand_graphics
+  
+  def brand_graphics
+    @brand_graphics ||= BrandGraphics.klass_for(brand_type).new
   end
 end
