@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_one :business_address, through: :brand, source: :brand_address
   has_many :print_jobs
 
-  enum status: %w( quoted sold completed )
+  enum status: %w( quoted sold finalised completed )
 
   validates :brand, presence: true
   validates :customer, presence: true
