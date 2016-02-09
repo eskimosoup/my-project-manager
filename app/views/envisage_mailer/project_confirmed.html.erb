@@ -1,0 +1,69 @@
+<table width="600" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;">
+  <tr>
+    <td>
+      <%= @project.name %>
+    </td>
+  </tr>
+</table>
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;">
+  <tr>
+    <td align="center">
+      <table width="300" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            Billing Address
+          </td>
+        </tr>
+        <% [:line_1, :line_2, :line_3, :city, :postcode].each do |address_line| %>
+          <% if @billing_address.public_send(address_line) %>
+            <tr>
+              <td>
+                <%= @billing_address.public_send(address_line) %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </td>
+    <td align="center">
+      <table width="300" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            Shipping Address
+          </td>
+        </tr>
+        <% [:line_1, :line_2, :line_3, :city, :postcode].each do |address_line| %>
+          <% if @shipping_address.public_send(address_line) %>
+            <tr>
+              <td>
+                <%= @shipping_address.public_send(address_line) %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;">
+  <tr>
+    <td>
+      Print Items
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% @project.print_jobs.each do |print_job| %>
+        <table width="600" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 20px;">
+          <tr>
+            <td>
+              <%= print_job.name %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </td>
+  </tr>
+</table>

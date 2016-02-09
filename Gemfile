@@ -33,6 +33,7 @@ gem "email_validator", "~> 1.6.0"
 gem 'lograge', '~> 0.3.5'
 gem 'pdfkit', '~> 0.8.2'
 gem 'render_anywhere', '~> 0.0.12', require: false
+gem 'sidekiq', '~> 4.1'
 
 group :development, :test do
   gem "awesome_print"
