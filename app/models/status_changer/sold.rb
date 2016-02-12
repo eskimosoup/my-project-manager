@@ -7,9 +7,10 @@ module StatusChanger
     end
 
     def save
-      case project.status
-      when "quoted"
-        update_quoted_project
+      if project.quoted?
+        update_project
+      else
+      # TODO raise an error if project is not quoted
       end
     rescue ActiveRecord::RecordInvalid => e
       false
@@ -17,7 +18,7 @@ module StatusChanger
 
     private
 
-    def update_quoted_project
+    def update_project
       project.transaction do
         project.sold!
         project.print_jobs.each do |print_job|

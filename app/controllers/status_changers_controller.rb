@@ -3,6 +3,7 @@ class StatusChangersController < ApplicationController
   before_action :set_project
 
   def create
+      # TODO make seperate controllers for each status change due to complicated nature of move to finalised
     status_changer = StatusChanger.klass_for(params[:status]).new(@project)
     if status_changer.save
       redirect_to @project, notice: "Status changed"

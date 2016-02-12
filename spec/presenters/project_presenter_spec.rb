@@ -1,7 +1,7 @@
 require 'rails_helper'
 #  rspec --tag 'project_presenter'
 RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
-  let(:project) { build(:project) }
+  let(:project) { create(:project) }
   subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
   describe 'delegations', :delegation do
@@ -69,7 +69,7 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
     end
 
     context "quoted project" do
-      let(:project) { build(:quoted_project) }
+      let(:project) { create(:quoted_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
   
       it "#mark_sold" do
@@ -77,14 +77,36 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
           data: { disable_with: "Processing..." }, params: { status: :sold }
         expect(subject.mark_sold).to eq(button)
       end
+
+      it "#mark_finalised" do
+        expect(subject.mark_finalised).to eq(nil)
+      end
     end
 
     context "sold project" do
-      let(:project) { build(:sold_project) }
+      let(:project) { create(:sold_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
   
       it "#mark_sold" do
         expect(subject.mark_sold).to eq(nil)
+      end
+
+      it "#mark_finalised" do
+        expect(subject.mark_finalised).to eq(link_to("Finalise Project", new_project_project_finaliser_path(project),
+                                                    data: { disable_with: "Processing..." }))
+      end
+    end
+
+    context "finalised project" do
+      let(:project) { build(:finalised_project) }
+      subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
+  
+      it "#mark_sold" do
+        expect(subject.mark_sold).to eq(nil)
+      end
+
+      it "#mark_finalised" do
+        expect(subject.mark_finalised).to eq(nil)
       end
     end
 
@@ -94,6 +116,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
   
       it "#mark_sold" do
         expect(subject.mark_sold).to eq(nil)
+      end
+
+      it "#mark_finalised" do
+        expect(subject.mark_finalised).to eq(nil)
       end
     end
   end
