@@ -53,6 +53,11 @@ class ProjectPresenter < BasePresenter
           data: { disable_with: "Processing..." }, params: { status: :sold } if project.quoted?
   end
 
+  def mark_finalised
+    h.link_to "Finalise Project", h.new_project_project_finaliser_path(project), 
+      data: { disable_with: "Processing..." } if project.sold?
+  end
+
   private
 
   def project_status

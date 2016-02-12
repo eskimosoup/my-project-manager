@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :project do
-    sequence(:id){ |n| n }
     customer
     brand
     name "MyString"
@@ -15,12 +14,17 @@ FactoryGirl.define do
       status 1
     end
 
-    trait :completed do
+    trait :finalised do
       status 2
+    end
+
+    trait :completed do
+      status 3
     end
 
     factory :quoted_project, traits: [:quoted]
     factory :sold_project, traits: [:sold]
+    factory :finalised_project, traits: [:finalised]
     factory :completed_project, traits: [:completed]
   end
 

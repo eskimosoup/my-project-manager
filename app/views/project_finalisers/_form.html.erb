@@ -1,0 +1,42 @@
+<%= form_for @finalised_status_changer, url: project_project_finaliser_path(@project) do |f| %>
+  <% if @finalised_status_changer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize @finalised_status_changer.errors.count, 'error' %> prevented this project from being finalised</h2>
+      <ul>
+        <% @finalised_status_changer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :purchase_order %>
+    <%= f.text_field :purchase_order %>
+  </div>
+
+  <% @finalised_status_changer.print_jobs.each do |print_job| %>
+    <%= field_set_tag print_job.name do %>
+      <div class="field">
+        <%= f.label "print_job_#{ print_job.id }_envisage_sale_price", "Envisage Sale Price" %>
+        <%= f.number_field "print_job_#{ print_job.id }_envisage_sale_price" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "print_job_#{ print_job.id }_envisage_trade_sale_price", "Envisage Trade Sale Price" %>
+        <%= f.number_field "print_job_#{ print_job.id }_envisage_trade_sale_price" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "print_job_#{ print_job.id }_envisage_to_my_sale_price", "Envisage Selling To My Price" %>
+        <%= f.number_field "print_job_#{ print_job.id }_envisage_to_my_sale_price" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "print_job_#{ print_job.id }_my_sale_price", "My Sale Price" %>
+        <%= f.number_field "print_job_#{ print_job.id }_my_sale_price" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= f.submit "Finalise" %>
+<% end %>

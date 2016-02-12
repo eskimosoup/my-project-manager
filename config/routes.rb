@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :downloads, only: [:show]
     resource :shipping_address, only: [:new, :create, :edit, :update]
+    resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
