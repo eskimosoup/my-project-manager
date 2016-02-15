@@ -1,0 +1,55 @@
+<h3><%= print_job.name %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Cost without labour or printer
+      </th>
+      <th>
+        Cost
+      </th>
+      <th>
+        Price To My
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= number_to_currency print_job.cost_without_labour_or_printer %>
+      </td>
+      <td>
+        <%= number_to_currency print_job.cost %>
+      </td>
+      <td>
+        <%= print_job.envisage_to_my_price %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= render(
+  partial: "envisage_job_sheets/product_items",
+  locals: { print_job: print_job }
+) %>
+
+<%= render(
+  partial: "envisage_job_sheets/supporting_product_items",
+  locals: { print_job: print_job }
+) %>
+
+<%= render(
+  partial: "envisage_job_sheets/sundry_items",
+  locals: { print_job: print_job }
+) %>
+
+<%= render(
+  partial: "envisage_job_sheets/designs",
+  locals: { print_job: print_job }
+) %>
+
+<%= render(
+  partial: "envisage_job_sheets/job_specifications",
+  locals: { print_job: print_job }
+) %>

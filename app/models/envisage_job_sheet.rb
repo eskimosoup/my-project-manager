@@ -1,28 +1,26 @@
 require "render_anywhere"
 
-class Download
+class EnvisageJobSheet
   include RenderAnywhere
 
-  def initialize(project, user)
+  def initialize(project)
     @project = project
-    @user = user
-    @colour = project.colour
   end
 
   def to_pdf
     kit = PDFKit.new(as_html, page_size: 'A4')
-    kit.to_file("tmp/download.pdf")
+    kit.to_file("tmp/envisage_job_sheet.pdf")
   end
 
   def filename
-    "Project #{ project.id }.pdf"
+    "Project #{ project.id } Envisage Job Sheet.pdf"
   end
 
   def render_attributes
     {
-      template: "downloads/pdf",
+      template: "envisage_job_sheets/pdf",
       layout: "pdf",
-      locals: { project: @project, user: @user, colour: @colour }
+      locals: { project: project }
     }
   end
 
@@ -33,4 +31,5 @@ class Download
   def as_html
     render render_attributes
   end
+
 end

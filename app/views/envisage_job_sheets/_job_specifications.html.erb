@@ -1,0 +1,32 @@
+<h3>Job Specifications</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Hours
+      </th>
+      <th>
+        Cost
+      </th>
+      <th>
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% print_job.job_specifications.each do |job_specification| %>
+      <tr>
+        <td>
+          <%= job_specification.hours %>
+        </td>
+        <td>
+          <%= number_to_currency job_specification.cost %>
+        </td>
+        <td>
+          <%= number_to_currency job_specification.price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

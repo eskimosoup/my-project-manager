@@ -19,8 +19,8 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) }
   scope :customer_id, ->(value) { where(customer_id: value) }
 
-  delegate :logo, to: :brand
-  delegate :brand_price, to: :price_calculator
+  delegate :logo, :colour, :my_brand?, to: :brand
+  delegate :brand_price, :envisage_to_my_price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= ProjectPriceCalculator.new(print_jobs: print_jobs)

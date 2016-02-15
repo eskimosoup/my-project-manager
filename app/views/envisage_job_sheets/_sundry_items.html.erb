@@ -1,0 +1,32 @@
+<h3>Sundry Items</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Cost
+      </th>
+      <th>
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% print_job.sundry_items.each do |sundry_item| %>
+      <tr>
+        <td>
+          <%= sundry_item.name %>
+        </td>
+        <td>
+          <%= number_to_currency sundry_item.cost %>
+        </td>
+        <td>
+          <%= number_to_currency sundry_item.price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

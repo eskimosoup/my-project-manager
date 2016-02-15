@@ -1,0 +1,38 @@
+<h3>Products</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Area
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Cost
+      </th>
+      <th>
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% print_job.product_items.each do |product_item| %>
+      <tr>
+        <td>
+          <%= product_item.area %>
+        </td>
+        <td>
+          <%= product_item.name %>
+        </td>
+        <td>
+          <%= number_to_currency product_item.cost %>
+        </td>
+        <td>
+          <%= number_to_currency product_item.price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

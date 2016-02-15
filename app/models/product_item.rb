@@ -8,7 +8,7 @@ class ProductItem < ActiveRecord::Base
 
   delegate :quoted?, to: :print_job
   delegate :name, to: :product
-  delegate :variable_cost, :fixed_cost, :total_cost, :price, to: :price_calculator
+  delegate :variable_cost, :fixed_cost, :cost, :price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= ProductPriceCalculator.new(product: product, area: area)

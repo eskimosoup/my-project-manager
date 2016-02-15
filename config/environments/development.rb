@@ -1,6 +1,7 @@
 Rails.application.configure do
   config.web_console.whitelisted_ips = '192.168.0.0/16'
-
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = { host: "localhost:3000" }
   #config.action_controller.asset_host = "localhost:3000"

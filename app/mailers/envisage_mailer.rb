@@ -12,4 +12,11 @@ class EnvisageMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def project_finalised(project)
+    @project = project
+    envisage_job_sheet = EnvisageJobSheet.new(@project)
+    attachments[envisage_job_sheet.filename] = File.read(envisage_job_sheet.to_pdf)
+    mail to: "james@optimised.today"
+  end
 end

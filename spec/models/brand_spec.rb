@@ -40,4 +40,31 @@ RSpec.describe Brand, type: :model do
       expect(brand.brand_graphics).to be_an_instance_of(MyVehicleWrapBrandGraphics)
     end
   end
+
+  describe "#my_brand?" do
+    it "envisage" do
+      brand = build_stubbed(:envisage_brand)
+
+      expect(brand.my_brand?).to be false
+    end
+
+    it "envisage_trade" do
+      brand = build_stubbed(:envisage_trade_brand)
+
+      expect(brand.my_brand?).to be false
+    end
+
+    it "my_office_branding" do
+      brand = build_stubbed(:my_office_branding_brand)
+
+      expect(brand.my_brand?).to be true
+    end
+
+    it "my_vehicle_wrap" do
+      brand = build_stubbed(:my_vehicle_wrap_brand)
+
+      expect(brand.my_brand?).to be true
+    end
+
+  end
 end

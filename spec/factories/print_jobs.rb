@@ -10,6 +10,7 @@ FactoryGirl.define do
     end
 
     factory :sold_print_job, traits: [:sold]
+    factory :finalised_print_job, traits: [:sold]
   end
 
 end

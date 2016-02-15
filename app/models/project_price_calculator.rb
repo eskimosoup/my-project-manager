@@ -9,6 +9,10 @@ class ProjectPriceCalculator
     sum_array(:brand_price)
   end
 
+  def envisage_to_my_price
+    sum_array(:envisage_to_my_price)
+  end
+
   private
 
   def sum_array(attr)
