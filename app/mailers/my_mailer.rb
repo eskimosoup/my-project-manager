@@ -7,8 +7,9 @@ class MyMailer < ApplicationMailer
   #
   def project_finalised(project)
     @project = project
+    brand = project.brand
     my_job_sheet = MyJobSheet.new(@project)
     attachments[my_job_sheet.filename] = File.read(my_job_sheet.to_pdf)
-    mail to: "james@optimised.today"
+    mail to: brand.email, subject: "A project has been finalised"
   end
 end
