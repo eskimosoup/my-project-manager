@@ -58,6 +58,14 @@ class ProjectPresenter < BasePresenter
       data: { disable_with: "Processing..." } if project.sold?
   end
 
+  def envisage_job_sheet_link
+    h.link_to "Download Envisage Job Sheet", h.project_envisage_job_sheet_path(project, format: 'pdf') if project.finalised?
+  end
+
+  def my_job_sheet_link
+    h.link_to "Download My Job Sheet", h.project_my_job_sheet_path(project, format: 'pdf') if project.finalised?
+  end
+
   private
 
   def project_status

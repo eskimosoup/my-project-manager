@@ -8,7 +8,7 @@ class LabourItem < ActiveRecord::Base
 
   delegate :name, to: :labour
   delegate :quoted?, to: :print_job
-  delegate :price, :total_cost, to: :price_calculator
+  delegate :price, :cost, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= LabourPriceCalculator.new(labour: labour, hours: hours)

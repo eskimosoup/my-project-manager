@@ -1,0 +1,26 @@
+<h3>Designs</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Hours
+      </th>
+      <th>
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% print_job.designs.each do |design| %>
+      <tr>
+        <td>
+          <%= design.hours %>
+        </td>
+        <td>
+          <%= number_to_currency design.price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

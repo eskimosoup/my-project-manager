@@ -1,0 +1,23 @@
+<header>
+  <div class="brand-logo">
+    <%= image_tag "logos/envisage.png" %>
+  </div>
+</header>
+
+<div class="clear"></div>
+
+<h1><%= project.name %> Job Sheet</h1>
+
+<div>
+  Internal ref: <%= project.id %>
+</div>
+
+<h2>
+  Date: <%= l Date.today %>
+</h2>
+
+<%= render(
+  partial: "envisage_job_sheets/print_job",
+  collection: project.print_jobs,
+  as: :print_job
+) %>

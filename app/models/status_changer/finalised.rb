@@ -18,6 +18,7 @@ module StatusChanger
       if project.sold?
         if valid?
           update_project_and_print_jobs
+          send_emails
         end
       else
       # TODO raise an error if project is not sold
@@ -36,6 +37,11 @@ module StatusChanger
           pj.update!(update_hash)
         end
       end
+    end
+
+    def send_emails
+      EnvisageMailer.project_finalised(project).deliver_now
+      MyMailer.project_finalised(project).deliver_now if project.my_brand?
     end
 
     def set_attr_accessors

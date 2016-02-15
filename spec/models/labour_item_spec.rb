@@ -25,7 +25,7 @@ RSpec.describe LabourItem, type: :model do
       expect(labour_item.price_calculator).to be_an_instance_of(LabourPriceCalculator)
     end
 
-    it { should delegate_method(:total_cost).to(:price_calculator) }
+    it { should delegate_method(:cost).to(:price_calculator) }
     it { should delegate_method(:price).to(:price_calculator) }
   end
 end

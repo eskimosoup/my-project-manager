@@ -18,6 +18,8 @@ RSpec.describe Project, type: :model do
 
   describe "#brand" do
     it { should delegate_method(:logo).to(:brand) }
+    it { should delegate_method(:colour).to(:brand) }
+    it { should delegate_method(:my_brand?).to(:brand) }
   end
 
   describe "price calculator" do
@@ -28,5 +30,6 @@ RSpec.describe Project, type: :model do
     end
 
     it { should delegate_method(:brand_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
   end
 end

@@ -1,4 +1,5 @@
 class Brand < ActiveRecord::Base
+  MY_BRANDS = %w( my_office_branding my_vehicle_wrap ).freeze 
 
   has_one :brand_address
 
@@ -11,5 +12,9 @@ class Brand < ActiveRecord::Base
   
   def brand_graphics
     @brand_graphics ||= BrandGraphics.klass_for(brand_type).new
+  end
+
+  def my_brand?
+    MY_BRANDS.include?(brand_type)
   end
 end

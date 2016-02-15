@@ -1,0 +1,34 @@
+<header>
+  <div class="brand-logo">
+    <%= image_tag project.logo %>
+  </div>
+</header>
+
+<div class="clear"></div>
+
+<h1><%= project.name %> Job Sheet</h1>
+
+<div>
+  Internal ref: <%= project.id %>
+</div>
+
+<h2>
+  Date: <%= l Date.today %>
+</h2>
+
+<%= render(
+  partial: "my_job_sheets/print_job",
+  collection: project.print_jobs,
+  as: :print_job
+) %>
+
+<h2>Totals</h2>
+
+<div>
+  Price Paid To Envisage: <%= number_to_currency project.envisage_to_my_price %>
+</div>
+
+<div>
+  Customer Price: <%= number_to_currency project.brand_price %>
+</div>
+

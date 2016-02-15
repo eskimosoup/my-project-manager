@@ -12,7 +12,7 @@
     .account-manager-name,
     a,
     .accent {
-      color: <%= colour.present? ? colour : '#000' %>;
+      color: <%= defined?(colour) ? colour : '#000' %>;
     }
   </style>
 </head>

@@ -12,11 +12,11 @@ class LabourPriceCalculator
     mark_up.to_d / 100
   end
 
-  def total_cost
+  def cost
     (hours.to_d * per_hour).round(2)
   end
 
   def price
-    (decimal_mark_up * total_cost).round(2)
+    (decimal_mark_up * cost).round(2)
   end
 end

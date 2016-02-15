@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :projects, only: [:new, :create, :index, :show] do
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :downloads, only: [:show]
+    resource :envisage_job_sheet, only: [:show]
+    resource :my_job_sheet, only: [:show]
     resource :shipping_address, only: [:new, :create, :edit, :update]
     resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]

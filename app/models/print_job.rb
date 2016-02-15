@@ -33,13 +33,21 @@ class PrintJob < ActiveRecord::Base
       envisage_brand_price
     when 'envisage_trade'
       envisage_trade_brand_price
-    when 'my_office_branding', 'my_vehicle_wrap'
+    when *Brand::MY_BRANDS
       my_brand_price
     end
   end
 
   def set_prices!
     update!(prices_hash)
+  end
+
+  def envisage_to_my_price
+    if rush_job?
+      my_rush_job_price
+    else
+      my_price
+    end
   end
 
   private
