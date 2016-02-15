@@ -11,7 +11,7 @@ class EnvisageMailer < ApplicationMailer
     @billing_address = project.billing_address
     @shipping_address = project.shipping_address
 
-    mail to: brand.email, subject: "A project has been confirmed"
+    mail to: "talkprint@envisageprint.co.uk", subject: "A project has been confirmed"
   end
 
   def project_finalised(project)
@@ -19,6 +19,6 @@ class EnvisageMailer < ApplicationMailer
     brand = project.brand
     envisage_job_sheet = EnvisageJobSheet.new(@project)
     attachments[envisage_job_sheet.filename] = File.read(envisage_job_sheet.to_pdf)
-    mail to: brand.email, subject: "A project has been finalised"
+    mail to: "talkprint@envisageprint.co.uk", subject: "A project has been finalised"
   end
 end
