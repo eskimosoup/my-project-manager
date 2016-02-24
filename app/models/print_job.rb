@@ -1,5 +1,4 @@
 class PrintJob < ActiveRecord::Base
-
   belongs_to :project
   has_one :brand, through: :project
   has_many :account_managements
@@ -20,8 +19,9 @@ class PrintJob < ActiveRecord::Base
   delegate :brand_type, to: :brand
   delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
   delegate :cost_without_labour_or_printer, :cost_without_mileage, :cost,
-    :price, :rush_job_price, :trade_price, :trade_rush_job_price, :my_price,
-    :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price, to: :price_calculator
+           :price, :rush_job_price, :trade_price, :trade_rush_job_price, :my_price,
+           :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price,
+           :brand_profit, :envisage_profit, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PrintJobPriceCalculator.new(print_job: self)
@@ -38,6 +38,14 @@ class PrintJob < ActiveRecord::Base
     end
   end
 
+  def brand_price_profit
+    # TODO
+  end
+
+  def envisage_price
+    # TODO
+  end
+
   def set_prices!
     update!(prices_hash)
   end
@@ -48,6 +56,11 @@ class PrintJob < ActiveRecord::Base
     else
       my_price
     end
+  end
+
+  def envisage_profit
+    # TODO
+    # envisage_brand_price - cost
   end
 
   private
@@ -87,5 +100,4 @@ class PrintJob < ActiveRecord::Base
       my_sale_price: my_customer_price
     }
   end
-
 end

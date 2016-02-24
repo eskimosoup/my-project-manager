@@ -23,49 +23,49 @@ gem 'jbuilder', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem "sprockets-rails", "2.2.3"
-gem "autoprefixer-rails"
-gem "normalize-rails", "~> 3.0.0"
-gem "simple_form"
-gem "administrate", " ~> 0.1.2"
-gem "clearance", "~> 1.12.0"
-gem "email_validator", "~> 1.6.0"
+gem 'sprockets-rails', '2.2.3'
+gem 'autoprefixer-rails'
+gem 'normalize-rails', '~> 3.0.0'
+gem 'simple_form'
+gem 'administrate', ' ~> 0.1.2'
+gem 'clearance', '~> 1.12.0'
+gem 'email_validator', '~> 1.6.0'
 gem 'lograge', '~> 0.3.5'
 gem 'pdfkit', '~> 0.8.2'
 gem 'render_anywhere', '~> 0.0.12', require: false
 gem 'sidekiq', '~> 4.1'
 
 group :development, :test do
-  gem "awesome_print"
-  gem "bullet"
-  gem "bundler-audit", require: false
-  gem "dotenv-rails"
-  gem "factory_girl_rails"
-  gem "i18n-tasks"
-  gem "pry-byebug"
-  gem "pry-rails"
-  gem "rspec-rails", '~> 3.4'
+  gem 'awesome_print'
+  gem 'bullet'
+  gem 'bundler-audit', require: false
+  gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'i18n-tasks'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.4'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', github: 'rails/web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  #gem 'spring'
-  gem "quiet_assets"
-  gem "spring-commands-rspec"
+  # gem 'spring'
+  gem 'quiet_assets'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
-  gem "capybara-webkit"
-  gem "database_cleaner"
-  gem "formulaic"
-  gem "launchy"
-  gem "shoulda-matchers"
-  gem "simplecov", require: false
-  gem "timecop"
-  gem "webmock"
-  gem "pdf-reader"
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'formulaic'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'timecop'
+  gem 'webmock'
+  gem 'pdf-reader'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

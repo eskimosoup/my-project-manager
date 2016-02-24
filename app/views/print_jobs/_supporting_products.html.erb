@@ -1,8 +1,8 @@
 <div class="content">
   <div class="main print-job-section" id="supporting-products">
-    <h3>Supporting Products</h3>
+    <h3><%= SupportingProduct::VIEW_STRING.pluralize %></h3>
 
-    <%= link_to "Add Supporting Product", new_print_job_supporting_product_item_path(@print_job), class: 'action-button' if @print_job.quoted? %>
+    <%= link_to "Add #{SupportingProduct::VIEW_STRING}", new_print_job_supporting_product_item_path(@print_job), class: 'action-button' if @print_job.quoted? %>
 
     <% if @print_job.supporting_product_items.any? %>
       <%= render(

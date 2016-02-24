@@ -1,4 +1,4 @@
-<%= content_for :head do %>
+<%= content_for :javascripts do %>
   <%= javascript_include_tag "shipping_addresses" %>
 <% end %>
 <%= simple_form_for [@project, @shipping_address], url: project_shipping_address_path(@project) do |f| %>

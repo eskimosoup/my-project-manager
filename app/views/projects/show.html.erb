@@ -1,64 +1,134 @@
 <% present @project do |presented_project| %>
   <div class="content">
     <div class="main">
-      <h1><%= presented_project.name %></h1>
+      <h1 class="project-main-title">
+        <%= presented_project.name %>
+        (<%= presented_project.reference_number %>)
+      </h1>
 
-      <div id="project-status">
+      <span id="project-status">
         <%= presented_project.status %>
-        <%= presented_project.mark_sold %>
-        <%= presented_project.mark_finalised %>
-      </div>
-
-      <div>
-        <%= presented_project.description %>
-      </div>
-
+      </span>
 
       <div class="project-menu">
-        <%= presented_project.new_print_job_link %>
-        <%= presented_project.download_pdf_link %>
-        <%= presented_project.envisage_job_sheet_link %>
-        <%= presented_project.my_job_sheet_link %>
-      </div>
+        <%= presented_project.description %>
 
-      <div>
-        <div id="shipping-address-details">
-          <% if @project.shipping_address %>
-            <%= render(
-              partial: "shipping_addresses/show_shipping_address",
-              object: @project.shipping_address,
-              as: :shipping_address,
-              locals: {
-                project: @project
-              }
-            ) %>
-          <% else %>
-            <%= link_to "Set Shipping Address", new_project_shipping_address_path(@project) %>
-          <% end %>
-        </div>
-        <div id="billing-address-details">
-          <% if @project.billing_address %>
-            <%= render(
-              partial: "billing_addresses/show_billing_address",
-              object: @project.billing_address,
-              as: :billing_address,
-              locals: {
-                project: @project
-              }
-            ) %>
-          <% else %>
-            <%= link_to "Set Billing Address", new_project_billing_address_path(@project) %>
-          <% end %>
-        </div>
-      </div>
+        <ul class="project-menu-descriptors">
+          <li>
+            <span class="project-menu-descriptor">
+              Customer:
+            </span>
+            <%= presented_project.customer_name %>
+          </li>
 
-      <%= render(
-        partial: "projects/prices", 
-        locals: { project: @project }
-      ) %>
+          <li>
+            <span class="project-menu-descriptor">
+              Job type:
+            </span>
+            <%= presented_project.job_type %>
+          </li>
+
+          <li>
+            <span class="project-menu-descriptor">
+              Brand:
+            </span>
+            <%= presented_project.brand_name %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-
   <%= render "projects/print_jobs", project: @project %>
+
+
+  <div class="project-summary-details">
+    <div class="project-address">
+      <h5 class="project-address-title">Shipping Address</h5>
+
+      <% if @project.shipping_address %>
+        <%= render(
+          partial: "shipping_addresses/show_shipping_address",
+          object: @project.shipping_address,
+          as: :shipping_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% else %>
+        <%= link_to "Set Shipping Address", new_project_shipping_address_path(@project), class: 'action-button' %>
+      <% end %>
+
+      <h5 class="project-address-title">Billing Address</h5>
+
+      <% if @project.billing_address %>
+        <%= render(
+          partial: "billing_addresses/show_billing_address",
+          object: @project.billing_address,
+          as: :billing_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% else %>
+        <%= link_to "Set Billing Address", new_project_billing_address_path(@project), class: 'action-button' %>
+      <% end %>
+    </div>
+
+    <div class="project-address">
+      <%= render(
+        partial: "projects/prices",
+        locals: { project: @project }
+      ) %>
+
+      <hr />
+    </div>
+
+    <div class="project-confirmation">
+      <% if presented_project.envisage_job_sheet_link.present? || presented_project.my_job_sheet_link.present? %>
+        <div class="project-job-sheets">
+          <%= presented_project.envisage_job_sheet_link('Download Envisage Job Sheet', class: 'action-button') %>
+          <%= presented_project.my_job_sheet_link('Download My Job Sheet', class: 'action-button') %>
+        </div>
+      <% end %>
+
+      <div class="project-brand-prices-breakdown">
+        <ul class="project-menu-brand-prices-breakdown">
+          <li>
+            <span class="project-menu-brand-price-breakdown">
+              Brand Price:
+            </span>
+            <%= presented_project.brand_price_currency %>
+          </li>
+
+          <li>
+            <span class="project-menu-brand-price-breakdown">
+              Brand Profit:
+            </span>
+            <%= presented_project.brand_profit_currency %>
+          </li>
+
+          <li>
+            <span class="project-menu-brand-price-breakdown">
+              Envisage Price:
+            </span>
+            <%= presented_project.envisage_price_currency %>
+          </li>
+
+          <li>
+            <span class="project-menu-brand-price-breakdown">
+              Envisage Profit:
+            </span>
+            <%= presented_project.envisage_profit_currency %>
+          </li>
+        </ul>
+      </div>
+
+      <%= presented_project.download_pdf_link('Download Quote') %>
+
+      <%= presented_project.mark_sold %>
+
+      <%= presented_project.mark_finalised %>
+    </div>
+  </div>
 <% end %>

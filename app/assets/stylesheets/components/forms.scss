@@ -77,7 +77,7 @@ label {
 }
 
 .submit-button,
-.action-button {
+.secondary-action-button {
   @include border-radius(4px);
   background: $orange;
   border: 1px solid $orange;
@@ -86,6 +86,13 @@ label {
   font-size: rem-calc(17px);
   padding: rem-calc(5px) rem-calc(12px);
   text-decoration: none;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $white;
+  }
 
   &:focus {
     border-color: $slate-grey;
@@ -98,15 +105,6 @@ label {
 }
 
 .action-button {
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: $white;
-  }
-}
-
-.secondary-action-button {
   @include border-radius(4px);
   background: $pink;
   border: 1px solid $pink;
@@ -115,6 +113,13 @@ label {
   font-size: rem-calc(14px);
   padding: rem-calc(5px) rem-calc(3px);
   text-decoration: none;
+  
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $white;
+  }
 
   &:focus {
     border-color: $slate-grey;

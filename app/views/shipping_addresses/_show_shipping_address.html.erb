@@ -1,5 +1,4 @@
 <div class="address">
-  <%= link_to "Change", edit_project_shipping_address_path(@project) %> 
   <% present shipping_address do |address_presenter| %>
     <%= address_presenter.name %>
     <%= address_presenter.line_1 %>
@@ -8,4 +7,5 @@
     <%= address_presenter.city %>
     <%= address_presenter.postcode %>
   <% end %>
+  <%= link_to 'Edit', edit_project_shipping_address_path(@project), class: 'action-button' %> 
 </div>

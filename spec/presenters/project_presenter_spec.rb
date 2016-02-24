@@ -14,6 +14,14 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       expect(project_presenter.link).to eq(project)
     end
 
+    it 'returns the reference number' do
+      expect(project_presenter.reference_number).to eq("#{project.customer.id}-#{project.id + 100}")
+    end
+
+    it 'returns the brand name' do
+      expect(project_presenter.brand_name).to eq(project.brand.name)
+    end
+
     it 'returns the linked project name' do
       expect(project_presenter.linked_content).to eq(link_to project.name, project)
     end
@@ -50,107 +58,115 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       expect(project_presenter.brand_price_currency).to eq(number_to_currency project.brand_price)
     end
 
-    context "normal project" do
+    context 'normal project' do
       let(:project) { build(:project, rush_job: false) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
-      it "#project_type" do
-        expect(subject.job_type).to eq("Standard")
+      it '#project_type' do
+        expect(subject.job_type).to eq('Standard')
       end
     end
 
-    context "rush project" do
+    context 'rush project' do
       let(:project) { build(:project, rush_job: true) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
-      it "#project_type" do
-        expect(subject.job_type).to eq("Rush Job")
+      it '#project_type' do
+        expect(subject.job_type).to eq('Rush Job')
       end
     end
 
-    context "quoted project" do
+    context 'quoted project' do
       let(:project) { create(:quoted_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
-  
-      it "#mark_sold" do
-        button = button_to "Mark As Sold", project_status_changer_path(project), method: :post,
-          data: { disable_with: "Processing..." }, params: { status: :sold }
+
+      it '#mark_sold' do
+        button = button_to 'Mark As Sold', project_status_changer_path(project), method: :post,
+                                                                                 data: { disable_with: 'Processing...' }, params: { status: :sold }
         expect(subject.mark_sold).to eq(button)
       end
 
-      it "#mark_finalised" do
+      it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
       end
 
-      it "#envisage_job_sheet_link" do
+      it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(nil)
       end
 
-      it "#my_job_sheet_link" do
+      it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
     end
 
-    context "sold project" do
+    context 'sold project' do
       let(:project) { create(:sold_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
-  
-      it "#mark_sold" do
+
+      it '#mark_sold' do
         expect(subject.mark_sold).to eq(nil)
       end
 
-      it "#mark_finalised" do
-        expect(subject.mark_finalised).to eq(link_to("Finalise Project",
-              new_project_project_finaliser_path(project), data: { disable_with: "Processing..." }))
+      it '#mark_finalised' do
+        expect(subject.mark_finalised).to eq(link_to('Finalise Project',
+                                                     new_project_project_finaliser_path(project), data: { disable_with: 'Processing...' }))
       end
 
-      it "#envisage_job_sheet_link" do
+      it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(nil)
       end
 
-      it "#my_job_sheet_link" do
+      it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
     end
 
-    context "finalised project" do
+    context 'finalised project' do
       let(:project) { create(:finalised_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
-  
-      it "#mark_sold" do
+
+      it '#mark_sold' do
         expect(subject.mark_sold).to eq(nil)
       end
 
-      it "#mark_finalised" do
+      it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
       end
 
-      it "#envisage_job_sheet_link" do
-        expect(subject.envisage_job_sheet_link).to eq(link_to "Download Envisage Job Sheet", project_envisage_job_sheet_path(project, format: 'pdf'))
+      it '#envisage_job_sheet_link' do
+        expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
       end
 
-      it "#my_job_sheet_link" do
-        expect(subject.my_job_sheet_link).to eq(link_to "Download My Job Sheet", project_my_job_sheet_path(project, format: 'pdf'))
+      it '#envisage_job_sheet_link with options' do
+        expect(subject.envisage_job_sheet_link('Envisage Job Sheet', class: 'action-button')).to eq(link_to 'Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'), class: 'action-button')
+      end
+
+      it '#my_job_sheet_link' do
+        expect(subject.my_job_sheet_link).to eq(link_to 'Download My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'))
+      end
+
+      it '#my_job_sheet_link with options' do
+        expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
       end
     end
 
-    context "completed project" do
+    context 'completed project' do
       let(:project) { build(:completed_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
-  
-      it "#mark_sold" do
+
+      it '#mark_sold' do
         expect(subject.mark_sold).to eq(nil)
       end
 
-      it "#mark_finalised" do
+      it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
       end
 
-      it "#envisage_job_sheet_link" do
+      it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(nil)
       end
 
-      it "#my_job_sheet_link" do
+      it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
     end
