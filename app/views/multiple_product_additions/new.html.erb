@@ -1,6 +1,6 @@
 <div class="content">
   <div class="main">
-    <h1>Add Multiple Product Addition</h1>
+    <h1>Add Multiple <%= Product::VIEW_STRING %> Addition</h1>
     <%= simple_form_for [@print_job, @multiple_product_addition] do |f| %>
       <%= f.simple_fields_for :product_items do |pi| %>
         <%= pi.input :print_job_id, as: :hidden %>

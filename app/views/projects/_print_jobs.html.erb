@@ -1,6 +1,9 @@
 <div class="content">
   <div class="index">
-    <h3>Print Items</h3>
+    <h3 class="inline-title">Print Items</h3>
+    <% present @project do |presented_project| %>
+      <%= presented_project.new_print_job_link('Add') %>
+    <% end %>
 
     <% if project.print_jobs.any? %>
       <%= render(

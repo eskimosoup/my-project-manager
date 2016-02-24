@@ -10,8 +10,12 @@
 }
 
 .project-name {
-  font-weight: $lato-bold;
   @include grid-column(4);
+  font-weight: $lato-bold;
+}
+
+.project-main-title {
+  display: inline-block;
 }
 
 .project-prices-summary {
@@ -38,4 +42,55 @@
   color: $offset-black;
   font-size: rem-calc(20px);
   font-weight: $lato-bold;
+}
+
+.project-summary-details {
+  @include grid-row;
+}
+
+.project-address {
+  @include grid-column(4);
+}
+
+.project-confirmation {
+  @include grid-column(3);
+  @include grid-column-offset(1);
+  text-align: left;
+
+  .secondary-action-button {
+    display: inline-block;
+    margin: rem-calc(5px) 0;
+    text-align: center;
+  }
+  
+  .action-button {
+    display: inline-block;
+    margin: rem-calc(5px) 0;
+    text-align: center;
+  }
+}
+
+.project-job-sheets {
+  margin: rem-calc(5px) 0 rem-calc(15px);
+}
+
+.project-menu-descriptors,
+.project-menu-brand-prices-breakdown {
+  list-style: none;
+  margin: 0 0 rem-calc(10px);
+  padding: 0;
+
+  li {
+    margin: rem-calc(7px) 0;
+  }
+}
+
+.project-menu-descriptor,
+.project-menu-brand-price-breakdown {
+  color: $green;
+  display: inline-block;
+}
+
+.project-address-title {
+  margin: rem-calc(10px) 0 0;
 }

@@ -1,4 +1,4 @@
-<%= content_for :head do %>
+<%= content_for :javascripts do %>
   <%= javascript_include_tag "billing_addresses" %>
 <% end %>
 <%= simple_form_for [@project, @billing_address], url: project_billing_address_path(@project) do |f| %>
