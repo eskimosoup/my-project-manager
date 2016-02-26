@@ -14,8 +14,9 @@ class DashboardManifest
     :supporting_products,
     :labours,
     :brands,
-    :brand_addresses
-  ]
+    :brand_addresses,
+    :users
+  ].freeze
 
   # `ROOT_DASHBOARD`
   # the name of the dashboard that will be displayed
