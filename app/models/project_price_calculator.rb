@@ -10,6 +10,7 @@ class ProjectPriceCalculator
   end
 
   def brand_profit
+    return nil unless brand_price.present?
     brand_price - sum_array(:cost)
   end
 
