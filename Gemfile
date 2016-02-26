@@ -36,6 +36,7 @@ gem 'render_anywhere', '~> 0.0.12', require: false
 gem 'sidekiq', '~> 4.1'
 
 group :development, :test do
+  gem 'puma'
   gem 'awesome_print'
   gem 'bullet'
   gem 'bundler-audit', require: false

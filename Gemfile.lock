@@ -202,6 +202,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    puma (3.0.1)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -345,6 +346,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pry-byebug
   pry-rails
+  puma
   quiet_assets
   rails (~> 4.2, >= 4.2.5)
   render_anywhere (~> 0.0.12)
