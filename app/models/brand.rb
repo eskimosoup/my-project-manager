@@ -5,6 +5,7 @@ class Brand < ActiveRecord::Base
 
   enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap]
   validates :name, presence: true
+  validates :email, presence: true
   validates :brand_type, presence: true
   validates :account_management_rate, presence: true, numericality: { greater_than_or_equal_to: 0.0 }
 
