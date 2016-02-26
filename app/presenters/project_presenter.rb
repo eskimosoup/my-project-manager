@@ -49,16 +49,19 @@ class ProjectPresenter < BasePresenter
   end
 
   def brand_profit_currency
+    return "" unless project.brand_profit
     # TODO: ?
     h.number_to_currency project.brand_profit
   end
 
   def envisage_price_currency
+    return "" unless project.envisage_to_my_price
     # TODO: ?
     h.number_to_currency project.envisage_to_my_price
   end
 
   def envisage_profit_currency
+    return "" unless project.envisage_profit
     # TODO: ?
     h.number_to_currency project.envisage_profit
   end
