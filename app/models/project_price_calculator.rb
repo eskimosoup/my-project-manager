@@ -19,6 +19,7 @@ class ProjectPriceCalculator
   end
 
   def envisage_profit
+    return nil unless envisage_to_my_price.present?
     envisage_to_my_price - sum_array(:cost)
   end
 
