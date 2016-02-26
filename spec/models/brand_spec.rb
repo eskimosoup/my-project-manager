@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Brand, type: :model do
   describe "validations", :validation do
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
     it { should validate_presence_of(:brand_type) }
     it { should validate_presence_of(:account_management_rate) }
     it { should validate_numericality_of(:account_management_rate).is_greater_than_or_equal_to(0.0) }
