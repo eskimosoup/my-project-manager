@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212094957) do
+ActiveRecord::Schema.define(version: 20160226160809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -304,7 +304,7 @@ ActiveRecord::Schema.define(version: 20160212094957) do
   add_foreign_key "contacts", "customers", on_delete: :cascade
   add_foreign_key "designs", "print_jobs", on_delete: :cascade
   add_foreign_key "job_specifications", "print_jobs", on_delete: :cascade
-  add_foreign_key "labour_items", "labours"
+  add_foreign_key "labour_items", "labours", on_delete: :cascade
   add_foreign_key "labour_items", "print_jobs", on_delete: :cascade
   add_foreign_key "mileage_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "mileages", "print_jobs", on_delete: :cascade
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20160212094957) do
   add_foreign_key "product_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "product_costs", "products", on_delete: :cascade
   add_foreign_key "product_items", "print_jobs", on_delete: :cascade
-  add_foreign_key "product_items", "products"
+  add_foreign_key "product_items", "products", on_delete: :cascade
   add_foreign_key "projects", "addresses", column: "billing_address_id", on_delete: :cascade
   add_foreign_key "projects", "addresses", column: "shipping_address_id", on_delete: :cascade
   add_foreign_key "projects", "brands", on_delete: :cascade
@@ -321,6 +321,6 @@ ActiveRecord::Schema.define(version: 20160212094957) do
   add_foreign_key "sundry_items", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_costs", "supporting_products", on_delete: :cascade
-  add_foreign_key "supporting_product_items", "print_jobs"
+  add_foreign_key "supporting_product_items", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_items", "supporting_products", on_delete: :cascade
 end
