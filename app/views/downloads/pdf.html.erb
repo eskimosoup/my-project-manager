@@ -32,5 +32,15 @@
 <% if project.quoted? %>
   <%= render partial: 'downloads/shared/quote', locals: { project: project, current_user: user } %>
 <% else %>
-  <%= render partial: 'downloads/shared/invoice', project: project %>
+  <%= render partial: 'downloads/shared/sold', project: project %>
 <% end %>
+
+<%= render(
+  partial: "downloads/account_manager_details",
+  locals: { current_user: current_user, project: project }
+) %>
+
+<%= render(
+  partial: "downloads/footer",
+  locals{ project: project }
+) %>

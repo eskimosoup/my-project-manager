@@ -46,7 +46,7 @@
         Total exc. VAT
       </td>
       <td>
-        <% # TODO: Add price - VAT calculation %>
+        <%= number_to_currency project.brand_price %>
       </td>
     </tr>
 
@@ -55,7 +55,7 @@
         VAT
       </td>
       <td>
-        <% # TODO: Add VAT calculation %>
+        <%= number_to_currency project.vat %>
       </td>
     </tr>
 
@@ -64,7 +64,7 @@
         Total inc. VAT
       </td>
       <td>
-        <strong><%= number_to_currency project.brand_price %></strong>
+        <strong><%= number_to_currency project.brand_price_inc_vat %></strong>
       </td>
     </tr>
   </tbody>
@@ -85,50 +85,3 @@
   be converted for CMYK output.
 </p>
 
-<div class="account-manager">
-  <div class="account-manager-name">
-    <%= current_user.full_name %>
-  </div>
-
-  <div class="account-manager-contact-detail">
-    <span class="accent">T:</span> <%= project.brand.telephone %>
-  </div>
-
-  <div class="account-manager-contact-detail">
-    <span class="accent">E:</span> <%= current_user.email %>
-  </div>
-</div>
-
-<p>
-  All costs are based on the information we receive prior to this quote being
-  given. Costs will be charged in addition to these estimates for time incurred
-  for extra content and/or changes in direction from either the original contact
-  or new decision makers which contradict the initial brief. Our hourly rate is
-  £65 per hour for work outside of these estimates. Our processes are
-  <strong class="accent">efficient</strong> and <strong class="accent">effective</strong>, we will work with
-  you in such a manner that revisions are dealt with in the most efficient way
-  <strong class="accent">keeping within timescales and budgets</strong>. We are proactive with our requests and
-  will work with you and your contributing departments enabling us to keep to
-  the agreed budget and time scales.
-</p>
-
-<p>
-  All jobs up to £500 will be invoiced on receiving the go ahead/purchase order
-  number.
-
-  For payments over £500 a 50% invoice will be issued on receiving the go
-  ahead/purchase order number with the other 50% to be invoiced after 30 days.
-</p>
-
-<% if project.brand.terms_conditions_link.present? %>
-  <p>
-    For full terms and conditions, please visit
-    <%= link_to project.brand.terms_conditions_link,
-        project.brand.terms_conditions_link %>.
-  </p>
-<% end %>
-
-<p>
-  <%= project.brand.name %> is a trading name of Ludo Studio Ltd. Ludo Studio Ltd is
-  registered as a company in England &amp; Wales Company Reg No 6447854
-</p>
