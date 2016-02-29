@@ -1,6 +1,21 @@
 require "rails_helper"
 
 describe ProjectPriceCalculator, type: :model do
+  it do
+    calc = ProjectPriceCalculator.new(print_jobs: [])
+    expect(calc).to delegate_method(:total_discount).to(:discount_assigner)
+  end
+
+  it do
+    calc = ProjectPriceCalculator.new(print_jobs: [])
+    expect(calc).to delegate_method(:envisage_discount).to(:discount_assigner)
+  end
+
+  it do
+    calc = ProjectPriceCalculator.new(print_jobs: [])
+    expect(calc).to delegate_method(:my_discount).to(:discount_assigner)
+  end
+
   it "#brand_price" do
     print_jobs = [
       instance_double("print_job", brand_price: 5.57),

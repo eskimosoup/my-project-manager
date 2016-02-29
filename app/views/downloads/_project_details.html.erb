@@ -1,0 +1,56 @@
+<h2>Job Description:</h2>
+
+<p><%= project.name %></p>
+
+<h3>Costs:</h3>
+
+<table class="print-jobs">
+  <thead>
+    <tr>
+      <th class="item">Item</th>
+      <th class="price">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% project.print_jobs.each do |print_job| %>
+      <tr>
+        <td><%= print_job.name %></td>
+        <td><%= number_to_currency print_job.brand_price %></td>
+      </tr>
+    <% end %>
+    <% project.discounts.each do |discount| %>
+      <tr>
+        <td><%= discount.description %></td>
+        <td><%= number_to_currency -discount.amount %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td>
+        Total exc. VAT
+      </td>
+      <td>
+        <%= number_to_currency project.brand_price %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        VAT
+      </td>
+      <td>
+        <%= number_to_currency project.vat %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Total inc. VAT
+      </td>
+      <td>
+        <strong><%= number_to_currency project.brand_price_inc_vat %></strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

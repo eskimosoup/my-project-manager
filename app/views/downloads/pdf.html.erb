@@ -29,11 +29,25 @@
 
 <div class="clear"></div>
 
-<% if project.quoted? %>
-  <%= render partial: 'downloads/shared/quote', locals: { project: project, current_user: user } %>
-<% else %>
-  <%= render partial: 'downloads/shared/sold', project: project %>
-<% end %>
+<%= render partial: 'downloads/shared/quote', locals: { project: project, current_user: user } %>
+
+<%= render partial: 'downloads/project_details',
+  locals: { project: project } %>
+
+<p class="quote-validity">All quotes are valid for 14 days.</p>
+
+<p>
+  I hope that this quotation meets your requirements and that we are able to
+  provide these services for you. Should you wish to go ahead with this quote
+  our terms are outlined below for you.
+</p>
+
+<p>
+  Prices are exclusive of VAT where applicable. All prices quoted are subject
+  to labour and materials costs ruling at date of order and are EX-WORKS
+  unless otherwise shown. Unless explicitly specified all artwork for print will
+  be converted for CMYK output.
+</p>
 
 <%= render(
   partial: "downloads/account_manager_details",
@@ -42,5 +56,5 @@
 
 <%= render(
   partial: "downloads/footer",
-  locals{ project: project }
+  locals: { project: project }
 ) %>
