@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :brand do
     sequence(:name){ |n| "My Brand #{ n }" }
+    sequence(:email){ |n| "email#{ n }@example.com" }
     display false
 
     trait :my_office_branding do

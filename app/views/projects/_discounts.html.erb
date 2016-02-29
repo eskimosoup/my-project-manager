@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="index">
+    <h3 class="inline-title">Discounts</h3>
+    <%= link_to "Apply Discount", new_project_discount_path(project), class: "action-button" %>
+
+    <% if project.discounts.any? %>
+      <%= render(
+        partial: "discounts/discount",
+        collection: project.discounts,
+        as: :discount
+      ) %>
+    <% end %>
+  </div>
+</div>

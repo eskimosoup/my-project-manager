@@ -1,0 +1,6 @@
+<%= simple_form_for [project, discount] do |f| %>
+  <%= f.input :percentage, as: :decimal %>
+  <%= f.input :amount, as: :decimal %>
+  <%= f.input :description, as: :text %>
+  <%= f.button :submit, "Submit" %>
+<% end %>

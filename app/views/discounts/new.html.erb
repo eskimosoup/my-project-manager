@@ -1,0 +1,6 @@
+<h1>Apply discount to <%= @project.name %></h1>
+
+<%= render(
+  partial: "discounts/form", 
+  locals: { project: @project, discount: @discount } 
+) %>

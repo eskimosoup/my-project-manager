@@ -13,6 +13,7 @@ RSpec.describe Project, type: :model do
     it { should belong_to(:shipping_address).class_name("Address") }
     it { should belong_to(:billing_address).class_name("Address") }
     it { should have_one(:business_address).through(:brand) }
+    it { should have_many(:discounts) }
     it { should have_many(:print_jobs) }
   end
 

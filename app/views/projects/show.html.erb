@@ -40,7 +40,7 @@
   </div>
 
   <%= render "projects/print_jobs", project: @project %>
-
+  <%= render "projects/discounts", project: @project %>
 
   <div class="project-summary-details">
     <div class="project-address">
@@ -123,6 +123,7 @@
           </li>
         </ul>
       </div>
+
 
       <%= presented_project.download_pdf_link('Download Quote') %>
 
