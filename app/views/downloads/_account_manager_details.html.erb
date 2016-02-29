@@ -1,0 +1,13 @@
+<div class="account-manager">
+  <div class="account-manager-name">
+    <%= current_user.full_name %>
+  </div>
+
+  <div class="account-manager-contact-detail">
+    <span class="accent">T:</span> <%= project.brand.telephone %>
+  </div>
+
+  <div class="account-manager-contact-detail">
+    <span class="accent">E:</span> <%= current_user.email %>
+  </div>
+</div>

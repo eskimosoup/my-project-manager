@@ -13,6 +13,7 @@ RSpec.describe Project, type: :model do
     it { should belong_to(:shipping_address).class_name("Address") }
     it { should belong_to(:billing_address).class_name("Address") }
     it { should have_one(:business_address).through(:brand) }
+    it { should have_many(:discounts) }
     it { should have_many(:print_jobs) }
   end
 
@@ -29,7 +30,11 @@ RSpec.describe Project, type: :model do
       expect(project.price_calculator).to be_an_instance_of(ProjectPriceCalculator)
     end
 
+    it { should delegate_method(:vat).to(:price_calculator) }
+    it { should delegate_method(:brand_price_inc_vat).to(:price_calculator) }
     it { should delegate_method(:brand_price).to(:price_calculator) }
     it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
+    it { should delegate_method(:brand_profit).to(:price_calculator) }
+    it { should delegate_method(:envisage_profit).to(:price_calculator) }
   end
 end

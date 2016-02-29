@@ -1,0 +1,12 @@
+<%= content_tag :div, class: "basic-listing #{ cycle('odd', 'even', name: 'discount') }", id: dom_id(discount) do %>
+  <div class="discount-description">
+    <%= discount.description %>
+  </div>
+
+  <div class="discount-amount">
+    <%= number_to_currency discount.amount %>
+  </div>
+
+  <%= link_to "Edit", edit_discount_path(discount), class: "action-button" %>
+  <%= button_to "Delete", discount, method: :delete, class: "action-button" %>
+<% end %>
