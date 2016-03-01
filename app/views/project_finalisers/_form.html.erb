@@ -14,6 +14,7 @@
     <%= f.text_field :purchase_order %>
   </div>
 
+  <% if false %>
   <%= f.fields_for :print_jobs_form_objects do |pj_fields| %>
     <%= field_set_tag pj_fields.object.name do %>
       <div class="field">
@@ -36,6 +37,7 @@
         <%= pj_fields.number_field :my_sale_price, step: "any" %>
       </div>
     <% end %>
+  <% end %>
   <% end %>
 
 
