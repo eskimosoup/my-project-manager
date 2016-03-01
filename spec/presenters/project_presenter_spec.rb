@@ -43,7 +43,7 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
     end
 
     it 'returns the PDF download link with default text' do
-      expect(project_presenter.download_pdf_link).to eq(link_to 'Download PDF', view.project_downloads_path(project.id, format: 'pdf'), target: '_blank', class: 'action-button download')
+      expect(project_presenter.download_pdf_link).to eq(link_to 'Download PDF', view.project_downloads_path(project.id, format: 'pdf'), target: '_blank', class: 'secondary-action-button download')
     end
 
     it 'returns the new print project link with default text' do
@@ -82,7 +82,7 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#mark_sold' do
         button = button_to 'Mark As Sold', project_status_changer_path(project), method: :post,
-                                                                                 data: { disable_with: 'Processing...' }, params: { status: :sold }
+          data: { disable_with: 'Processing...' }, params: { status: :sold }, class: 'secondary-action-button'
         expect(subject.mark_sold).to eq(button)
       end
 
@@ -97,6 +97,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
+
+      it "#invoices_link" do
+        expect(subject.invoices_link).to eq(nil)
+      end
     end
 
     context 'sold project' do
@@ -108,8 +112,9 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       end
 
       it '#mark_finalised' do
-        expect(subject.mark_finalised).to eq(link_to('Finalise Project',
-                                                     new_project_project_finaliser_path(project), data: { disable_with: 'Processing...' }))
+        link = link_to('Finalise Project', new_project_project_finaliser_path(project),
+                       data: { disable_with: 'Processing...' }, class: 'secondary-action-button')
+        expect(subject.mark_finalised).to eq(link)
       end
 
       it '#envisage_job_sheet_link' do
@@ -118,6 +123,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
+      end
+
+      it "#invoices_link" do
+        expect(subject.invoices_link).to eq(nil)
       end
     end
 
@@ -148,10 +157,15 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       it '#my_job_sheet_link with options' do
         expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
       end
+
+      it "#invoices_link" do
+        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
+        expect(subject.invoices_link).to eq(link)
+      end
     end
 
     context 'completed project' do
-      let(:project) { build(:completed_project) }
+      let(:project) { build_stubbed(:completed_project) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
       it '#mark_sold' do
@@ -168,6 +182,11 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
+      end
+
+      it "#invoices_link" do
+        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
+        expect(subject.invoices_link).to eq(link)
       end
     end
   end

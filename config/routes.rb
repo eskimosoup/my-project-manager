@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     resource :shipping_address, only: [:new, :create, :edit, :update]
     resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]
-    resources :discounts, only: [:new, :create, :edit, :update], shallow: true
+    resources :discounts, only: [:new, :create, :edit, :update, :destroy], shallow: true
+    resources :invoices, only: [:index], shallow: true, controller: "project_invoices"
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
       resources :account_managements, except: [:index, :show]

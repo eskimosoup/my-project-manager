@@ -76,9 +76,7 @@ class ProjectPresenter < BasePresenter
 
   def mark_sold
     h.button_to 'Mark As Sold', h.project_status_changer_path(project), method: :post,
-                                                                        data: { disable_with: 'Processing...' },
-                                                                        params: { status: :sold },
-                                                                        class: 'secondary-action-button' if project.quoted?
+      data: { disable_with: 'Processing...' }, params: { status: :sold },                                  class: 'secondary-action-button' if project.quoted?
   end
 
   def mark_finalised
@@ -94,7 +92,16 @@ class ProjectPresenter < BasePresenter
     h.link_to content, h.project_my_job_sheet_path(project, format: 'pdf'), options if project.finalised?
   end
 
+  def invoices_link
+    return unless show_invoices_link?
+    h.link_to "Invoices", h.project_invoices_path(project), class: "action-button"
+  end
+
   private
+
+  def show_invoices_link?
+    project.finalised? || project.completed?
+  end
 
   def project_status
     @project_status ||= project.status

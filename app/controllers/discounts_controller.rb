@@ -27,6 +27,12 @@ class DiscountsController < ApplicationController
     end
   end
 
+  def destroy
+    @discount = find_discount
+    @discount.destroy
+    redirect_to project_path(@discount.project_id), notice: "Discount removed"
+  end
+
   private
 
   def discount_params

@@ -34,6 +34,7 @@ gem 'lograge', '~> 0.3.5'
 gem 'pdfkit', '~> 0.8.2'
 gem 'render_anywhere', '~> 0.0.12', require: false
 gem 'sidekiq', '~> 4.1'
+gem 'friendly_id', '~> 5.1'
 
 group :development, :test do
   gem 'puma'

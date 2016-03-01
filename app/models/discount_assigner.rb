@@ -7,7 +7,7 @@ class DiscountAssigner
   end
 
   def total_discount
-    discounts.map(&:amount).reduce(0, :+)
+    discounts.map(&:amount).compact.reduce(0, :+)
   end
 
   def envisage_discount
