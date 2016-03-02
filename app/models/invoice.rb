@@ -14,5 +14,9 @@ class Invoice < ActiveRecord::Base
     ]
   end
 
+  def unpaid?
+    !paid?
+  end
+
 
 end

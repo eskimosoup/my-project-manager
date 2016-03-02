@@ -19,15 +19,3 @@
   ahead/purchase order number with the other 50% to be invoiced after 30 days.
 </p>
 
-<% if project.brand.terms_conditions_link.present? %>
-  <p>
-    For full terms and conditions, please visit
-    <%= link_to project.brand.terms_conditions_link,
-        project.brand.terms_conditions_link %>.
-  </p>
-<% end %>
-
-<p>
-  <%= project.brand.name %> is a trading name of Ludo Studio Ltd. Ludo Studio Ltd is
-  registered as a company in England &amp; Wales Company Reg No 6447854
-</p>

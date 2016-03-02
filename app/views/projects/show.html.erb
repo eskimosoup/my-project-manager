@@ -94,37 +94,12 @@
         </div>
       <% end %>
 
-      <div class="project-brand-prices-breakdown">
-        <ul class="project-menu-brand-prices-breakdown">
-          <li>
-            <span class="project-menu-brand-price-breakdown">
-              Brand Price:
-            </span>
-            <%= presented_project.brand_price_currency %>
-          </li>
-
-          <li>
-            <span class="project-menu-brand-price-breakdown">
-              Brand Profit:
-            </span>
-            <%= presented_project.brand_profit_currency %>
-          </li>
-
-          <li>
-            <span class="project-menu-brand-price-breakdown">
-              Envisage Price:
-            </span>
-            <%= presented_project.envisage_price_currency %>
-          </li>
-
-          <li>
-            <span class="project-menu-brand-price-breakdown">
-              Envisage Profit:
-            </span>
-            <%= presented_project.envisage_profit_currency %>
-          </li>
-        </ul>
-      </div>
+      <%= render(
+        partial: "projects/price_breakdown",
+        locals: {
+          project: @project
+        }
+      ) %>
 
 
       <%= presented_project.download_pdf_link('Download Quote') %>
