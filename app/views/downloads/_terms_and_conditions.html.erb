@@ -1,0 +1,12 @@
+<% if brand.terms_conditions_link.present? %>
+  <p>
+    For full terms and conditions, please visit
+    <%= link_to brand.terms_conditions_link,
+        brand.terms_conditions_link %>.
+  </p>
+<% end %>
+
+<p>
+  <%= brand.name %> is a trading name of Ludo Studio Ltd. Ludo Studio Ltd is
+  registered as a company in England &amp; Wales Company Reg No 6447854
+</p>

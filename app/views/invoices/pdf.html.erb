@@ -1,0 +1,58 @@
+<%= render(
+  partial: "downloads/header",
+  locals: {
+    project: project
+  }
+) %>
+
+<div class="clear"></div>
+
+<div class="quote-details">
+  <h1 class="quote-title">
+    Invoice
+  </h1>
+
+  <% if project.purchase_order.present? %>
+    <div class="quote-reference">
+      Purchase Order Number: <%= project.purchase_order %>
+    </div>
+  <% end %>
+</div>
+
+<h2 class="quote-date">
+  Date: <%= l invoice.created_at.to_date, format: :default %>
+</h2>
+
+<%= render partial: 'downloads/project_details',
+  locals: { project: project } %>
+
+<% if invoice.percentage < 100 %>
+  <p>
+    <%= number_to_percentage invoice.percentage, precision: 0 %> of total amount <%= number_to_currency project.brand_price %> due now
+  </p>
+<% end %>
+
+<p>
+  <strong>Amount Due</strong> <%= number_to_currency invoice.amount %>
+</p>
+
+<p>
+  Please make all cheques payable to Ludo Studio LTD
+</p>
+
+<p>
+  Bacs Payment<br/>
+  Sort Code: 20-43-47<br/>
+  Account Number - 63034607
+</p>
+
+<p>
+  Payment terms are 30 days net - unless otherwise specified on invoice
+  all goods / services remain the property of Ludo Studio LTD
+  until payment is made in full
+</p>
+
+<%= render(
+  partial: "downloads/terms_and_conditions",
+  locals: { brand: project.brand }
+) %>

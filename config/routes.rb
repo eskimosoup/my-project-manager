@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :show] do
     resources :addresses, shallow: true
   end
+  resources :invoices, only: [:update]
   resources :projects, only: [:new, :create, :index, :show] do
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :downloads, only: [:show]
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
     resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]
     resources :discounts, only: [:new, :create, :edit, :update, :destroy], shallow: true
-    resources :invoices, only: [:index], shallow: true, controller: "project_invoices"
+    resources :invoices, only: [:index], shallow: true, controller: "project_invoices" do
+      resource :invoice_download, only: [:show]
+    end
     resources :percentage_invoices, only: [:new, :create]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
