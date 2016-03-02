@@ -1,0 +1,9 @@
+<div class="invoice">
+  <%= invoice.name %>
+  <div class="percentage">
+    <%= number_to_percentage invoice.percentage, precision: 0 %>
+  </div>
+  <div class="amount">
+    <%= number_to_currency invoice.amount %>
+  </div>
+</div>

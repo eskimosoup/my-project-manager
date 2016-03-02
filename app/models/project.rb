@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
   belongs_to :billing_address, class_name: 'Address'
   has_one :business_address, through: :brand, source: :brand_address
   has_many :discounts
+  has_many :invoices
   has_many :print_jobs
 
   enum status: %w( quoted sold finalised completed )

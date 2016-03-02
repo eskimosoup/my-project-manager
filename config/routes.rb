@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resource :status_changer, only: [:create]
     resources :discounts, only: [:new, :create, :edit, :update, :destroy], shallow: true
     resources :invoices, only: [:index], shallow: true, controller: "project_invoices"
+    resources :percentage_invoices, only: [:new, :create]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]
       resources :account_managements, except: [:index, :show]
