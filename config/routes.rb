@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resource :shipping_address, only: [:new, :create, :edit, :update]
     resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]
-    resources :discounts, only: [:new, :create, :edit, :update, :destroy], shallow: true
+    resources :discounts, only: [:new, :create, :destroy], shallow: true
     resources :invoices, only: [:index], shallow: true, controller: "project_invoices" do
       resource :invoice_download, only: [:show]
     end
