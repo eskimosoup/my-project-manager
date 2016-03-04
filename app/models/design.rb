@@ -5,7 +5,7 @@ class Design < ActiveRecord::Base
   validates :print_job, presence: true
 
   delegate :quoted?, to: :print_job
-  delegate :price, to: :price_calculator
+  delegate :price, :cost, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= DesignPriceCalculator.new(hours: hours)

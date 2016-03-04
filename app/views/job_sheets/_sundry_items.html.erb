@@ -1,0 +1,13 @@
+<% sundry_items.each do |sundry_item| %>
+  <tr>
+    <td colspan="2">
+      <%= sundry_item.name %>
+    </td>
+    <td>
+      <%= number_to_currency sundry_item.cost %>
+    </td>
+    <td>
+      <%= number_to_currency sundry_item.price %>
+    </td>
+  </tr>
+<% end %>

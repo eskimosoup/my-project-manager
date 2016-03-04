@@ -9,4 +9,8 @@ class DesignPriceCalculator
   def price
     (hours * 65).round(2)
   end
+
+  def cost
+    0
+  end
 end

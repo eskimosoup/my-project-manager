@@ -6,7 +6,7 @@ class AccountManagement < ActiveRecord::Base
   validates :print_job, presence: true
 
   delegate :quoted?, to: :print_job
-  delegate :price, to: :price_calculator
+  delegate :price, :cost, to: :price_calculator
   delegate :account_management_rate, to: :brand
 
   def price_calculator

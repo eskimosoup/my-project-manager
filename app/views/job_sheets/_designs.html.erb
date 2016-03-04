@@ -1,0 +1,16 @@
+<% designs.each do |design| %>
+  <tr>
+    <td >
+      <%= design.hours %> hours
+    </td>
+    <td>
+      Design
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      <%= number_to_currency design.price %>
+    </td>
+  </tr>
+<% end %>

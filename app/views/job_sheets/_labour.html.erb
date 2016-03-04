@@ -1,0 +1,14 @@
+<% labour_items.each do |labour_item| %>
+  <%= debug labour_item %>
+  <tr>
+    <td colspan="2">
+      <%= labour_item.name %>
+    </td>
+    <td>
+      <%= number_to_currency labour_item.cost %>
+    </td>
+    <td>
+      <%= number_to_currency labour_item.price %>
+    </td>
+  </tr>
+<% end %>

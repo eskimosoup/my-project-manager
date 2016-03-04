@@ -1,0 +1,13 @@
+<% job_specifications.each do |job_specification| %>
+  <tr>
+    <td colspan="2">
+      <%= job_specification.hours %>
+    </td>
+    <td>
+      <%= number_to_currency job_specification.cost %>
+    </td>
+    <td>
+      <%= number_to_currency job_specification.price %>
+    </td>
+  </tr>
+<% end %>

@@ -23,19 +23,8 @@ class PrintJobPresenter < BasePresenter
     h.number_to_currency brand_price
   end
 
-  def brand_price_profit_currency
-    # TODO: ?
-    h.number_to_currency print_job.brand_price_profit
-  end
-
   def envisage_price_currency
-    # TODO: ?
-    h.number_to_currency print_job.envisage_price
-  end
-
-  def envisage_profit_currency
-    # TODO: ?
-    h.number_to_currency print_job.envisage_profit
+    h.number_to_currency print_job.envisage_to_my_price
   end
 
   def job_type

@@ -6,18 +6,40 @@
 
 <div class="clear"></div>
 
-<h1><%= project.name %> Job Sheet</h1>
+<%= render(
+  partial: "job_sheets/project_details",
+  locals: {
+    project: project
+  }
+) %>
 
 <div>
-  Internal ref: <%= project.id %>
+  Cost: <%= number_to_currency project.cost %>
+</div>
+<div>
+  Price To My: <%= number_to_currency project.envisage_to_my_price %>
+</div>
+<div>
+  Profitability: <%= number_to_currency project.envisage_profit %>
 </div>
 
-<h2>
-  Date: <%= l Date.today %>
-</h2>
+<%= render(
+  partial: "job_sheets/totals",
+  locals: {
+    main_totaliser: Totalisers::Main.new(project: project, for_my: false)
+  }
+) %>
 
 <%= render(
   partial: "envisage_job_sheets/print_job",
   collection: project.print_jobs,
   as: :print_job
+) %>
+
+<%= render(
+  partial: "job_sheets/address_details",
+  locals: {
+    shipping_address: project.shipping_address,
+    billing_address: project.billing_address
+  }
 ) %>

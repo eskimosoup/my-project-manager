@@ -9,6 +9,7 @@ class LabourItemsController < ApplicationController
   def create
     @labour_item = @print_job.labour_items.new(labour_item_params)
     if @labour_item.save
+      @print_job.discounts.delete_all
       redirect_to @print_job, notice: "Labour item successfully added"
     else
       render :new

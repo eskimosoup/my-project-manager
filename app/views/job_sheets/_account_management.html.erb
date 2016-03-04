@@ -1,0 +1,16 @@
+<% account_managements.each do |account_management| %>
+  <tr>
+    <td >
+      <%= account_management.hours %> hours
+    </td>
+    <td>
+      Account management
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      <%= number_to_currency account_management.price %>
+    </td>
+  </tr>
+<% end %>

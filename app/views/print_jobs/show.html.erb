@@ -9,9 +9,7 @@
       <% present @print_job do |print_job_presenter| %>
         <h6><%= print_job_presenter.job_type %></h6>
         Brand price: <span class="project-price"><%= print_job_presenter.brand_price_currency %></span>
-        Brand profitability: <span class="project-price"><%= print_job_presenter.brand_price_profit_currency %></span>
         Envisage price: <span class="project-price"><%= print_job_presenter.envisage_price_currency %></span>
-        Envisage profitability: <span class="project-price"><%= print_job_presenter.envisage_profit_currency %></span>
       <% end %>
 
       <%#= render "print_jobs/prices", print_job: @print_job %>

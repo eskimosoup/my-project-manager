@@ -10,4 +10,8 @@ class AccountManagementPriceCalculator
   def price
     (hours * rate).round(2)
   end
+
+  def cost
+    0
+  end
 end

@@ -1,0 +1,16 @@
+<% mileages.each do |mileage| %>
+  <tr>
+    <td>
+      <%= mileage.miles %>
+    </td>
+    <td>
+      Miles
+    </td>
+    <td>
+      <%= number_to_currency mileage.cost %>
+    </td>
+    <td>
+      <%= number_to_currency mileage.price %>
+    </td>
+  </tr>
+<% end %>

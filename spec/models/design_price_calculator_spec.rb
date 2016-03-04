@@ -15,4 +15,10 @@ describe DesignPriceCalculator, type: :model do
       expect(calc.price).to eq(362.70)
     end
   end
+
+  it "#cost" do
+    calc = DesignPriceCalculator.new(hours: 1.to_d)
+
+    expect(calc.cost).to eq(0)
+  end
 end

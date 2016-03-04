@@ -1,0 +1,13 @@
+<h2>Addresses</h2>
+
+<h3>Delivery Address</h3>
+<%= render(
+  partial: "job_sheets/address",
+  locals: { address: shipping_address }
+) %>
+
+<h3>Billing Address</h3>
+<%= render(
+  partial: "job_sheets/address",
+  locals: { address: billing_address }
+) %>
