@@ -9,7 +9,7 @@ class DesignsController < ApplicationController
   def create
     @design = @print_job.designs.new(design_params)
     if @design.save
-      @print_job.discounts.delete_all
+      Discount.where(id: @print_job.discount_ids).delete_all
       redirect_to @print_job, notice: "Design successfully created"
     else
       render :new

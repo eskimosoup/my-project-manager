@@ -10,7 +10,7 @@ class ProductItemsController < ApplicationController
   def create
     @product_item = @print_job.product_items.new(product_item_params)
     if @product_item.save
-      @print_job.discounts.delete_all
+      Discount.where(id: @print_job.discount_ids).delete_all
       redirect_to @print_job, notice: "Added product successfully"
     else
       render :new

@@ -9,7 +9,7 @@ class SupportingProductItemsController < ApplicationController
   def create
     @supporting_product_item = @print_job.supporting_product_items.new(supporting_product_item_params)
     if @supporting_product_item.save
-      @print_job.discounts.delete_all
+      Discount.where(id: @print_job.discount_ids).delete_all
       redirect_to @print_job, notice: "Supporting product item successfully added"
     else
       render :new
