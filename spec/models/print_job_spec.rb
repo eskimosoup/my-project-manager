@@ -13,6 +13,7 @@ RSpec.describe PrintJob, type: :model do
     it { should have_one(:brand).through(:project) }
     it { should have_many(:account_managements) }
     it { should have_many(:designs) }
+    it { should have_many(:discounts).through(:project) }
     it { should have_many(:job_specifications) }
     it { should have_many(:labour_items) }
     it { should have_many(:mileages) }

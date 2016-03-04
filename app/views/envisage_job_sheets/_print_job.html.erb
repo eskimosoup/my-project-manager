@@ -4,52 +4,49 @@
   <thead>
     <tr>
       <th>
-        Cost without labour or printer
+        Unit
+      </th>
+      <th>
+        Name
       </th>
       <th>
         Cost
       </th>
       <th>
-        Price To My
+        Price
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        <%= number_to_currency print_job.cost_without_labour_or_printer %>
-      </td>
-      <td>
-        <%= number_to_currency print_job.cost %>
-      </td>
-      <td>
-        <%= print_job.envisage_to_my_price %>
-      </td>
-    </tr>
+    <%= render(
+      partial: "job_sheets/product_items",
+      locals: { product_items: print_job.product_items }
+    ) %>
+
+    <%= render(
+      partial: "job_sheets/supporting_product_items",
+      locals: { supporting_product_items: print_job.supporting_product_items }
+    ) %>
+
+    <%= render(
+      partial: "job_sheets/sundry_items",
+      locals: { sundry_items: print_job.sundry_items }
+    ) %>
+
+    <%= render(
+      partial: "job_sheets/job_specifications",
+      locals: { job_specifications: print_job.job_specifications }
+    ) %>
+
+    <%= render(
+      partial: "job_sheets/labour",
+      locals: { labour_items: print_job.labour_items }
+    ) %>
+
+    <%= render(
+      partial: "job_sheets/mileage",
+      locals: { mileages: print_job.mileages }
+    ) %>
   </tbody>
 </table>
 
-<%= render(
-  partial: "envisage_job_sheets/product_items",
-  locals: { print_job: print_job }
-) %>
-
-<%= render(
-  partial: "envisage_job_sheets/supporting_product_items",
-  locals: { print_job: print_job }
-) %>
-
-<%= render(
-  partial: "envisage_job_sheets/sundry_items",
-  locals: { print_job: print_job }
-) %>
-
-<%= render(
-  partial: "envisage_job_sheets/designs",
-  locals: { print_job: print_job }
-) %>
-
-<%= render(
-  partial: "envisage_job_sheets/job_specifications",
-  locals: { print_job: print_job }
-) %>

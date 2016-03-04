@@ -9,6 +9,7 @@ class SundryItemsController < ApplicationController
   def create
     @sundry_item = @print_job.sundry_items.new(sundry_item_params)
     if @sundry_item.save
+      @print_job.discounts.delete_all
       redirect_to @print_job, notice: "Sundry item successfully added"
     else
       render :new

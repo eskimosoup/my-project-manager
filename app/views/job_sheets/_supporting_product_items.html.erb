@@ -1,0 +1,16 @@
+<% supporting_product_items.each do |supporting_product_item| %>
+  <tr>
+    <td>
+      <%= supporting_product_item.area %> sqm
+    </td>
+    <td>
+      <%= supporting_product_item.name %>
+    </td>
+    <td>
+      <%= number_to_currency supporting_product_item.cost %>
+    </td>
+    <td>
+      <%= number_to_currency supporting_product_item.price %>
+    </td>
+  </tr>
+<% end %>

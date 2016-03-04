@@ -9,6 +9,7 @@ class MileagesController < ApplicationController
   def create
     @mileage = @print_job.mileages.new(mileage_params)
     if @mileage.save
+      @print_job.discounts.delete_all
       redirect_to @mileage.print_job, notice: "Mileage successfully created"
     else
       render :new

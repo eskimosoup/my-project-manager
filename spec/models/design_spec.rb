@@ -21,5 +21,6 @@ RSpec.describe Design, type: :model do
     end
 
     it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:cost).to(:price_calculator) }
   end
 end

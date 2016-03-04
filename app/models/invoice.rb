@@ -18,5 +18,13 @@ class Invoice < ActiveRecord::Base
     !paid?
   end
 
+  def vat
+    @vat ||= amount * 0.2
+  end
+
+  def total_inc_vat
+    amount + vat
+  end
+
 
 end

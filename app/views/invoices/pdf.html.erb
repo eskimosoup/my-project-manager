@@ -12,29 +12,33 @@
     Invoice
   </h1>
 
-  <% if project.purchase_order.present? %>
-    <div class="quote-reference">
-      Purchase Order Number: <%= project.purchase_order %>
-    </div>
-  <% end %>
+  <div class="quote-reference">
+    Invoice Number: <%= invoice.id + 500 %><br />
+    <% if project.purchase_order.present? %>
+      Purchase Order Number: <%= project.purchase_order %><br />
+    <% end %>
+    Date: <%= l invoice.created_at.to_date %>
+  </div>
 </div>
 
-<h2 class="quote-date">
-  Date: <%= l invoice.created_at.to_date, format: :default %>
+<h2>
+  <%= project.customer_name %>
 </h2>
 
-<%= render partial: 'downloads/project_details',
-  locals: { project: project } %>
+<%= render(
+  partial: 'job_sheets/address',
+  locals: {
+    address: project.billing_address
+  }
+) %>
 
-<% if invoice.percentage < 100 %>
-  <p>
-    <%= number_to_percentage invoice.percentage, precision: 0 %> of total amount <%= number_to_currency project.brand_price %> due now
-  </p>
-<% end %>
-
-<p>
-  <strong>Amount Due</strong> <%= number_to_currency invoice.amount %>
-</p>
+<%= render(
+  partial: 'invoices/project_details',
+  locals: { 
+  project: project, 
+  invoice: invoice
+  }
+) %>
 
 <p>
   Please make all cheques payable to Ludo Studio LTD

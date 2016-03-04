@@ -14,19 +14,6 @@ class DiscountsController < ApplicationController
     end
   end
 
-  def edit
-    @discount = find_discount
-  end
-
-  def update
-    @discount = find_discount
-    if @discount.update(discount_params)
-      redirect_to project_path(@discount.project_id), notice: "Discount updated"
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @discount = find_discount
     @discount.destroy

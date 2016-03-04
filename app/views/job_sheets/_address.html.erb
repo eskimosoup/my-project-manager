@@ -1,0 +1,5 @@
+<p>
+  <% [address.line_1, address.line_2, address.line_3, address.city, address.postcode].reject(&:blank?).each do |line| %>
+    <%= line %><br />
+  <% end%>
+</p>
