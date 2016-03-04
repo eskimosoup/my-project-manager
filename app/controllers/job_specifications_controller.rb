@@ -9,7 +9,7 @@ class JobSpecificationsController < ApplicationController
   def create
     @job_specification = @print_job.job_specifications.new(job_specification_params)
     if @job_specification.save
-      @print_job.discounts.delete_all
+      Discount.where(id: @print_job.discount_ids).delete_all
       redirect_to @print_job, notice: "Job specification successfully added"
     else
       render :new
