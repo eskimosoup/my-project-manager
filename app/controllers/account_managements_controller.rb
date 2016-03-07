@@ -9,7 +9,7 @@ class AccountManagementsController < ApplicationController
   def create
     @account_management = @print_job.account_managements.new(account_management_params)
     if @account_management.save
-      @print_job.discounts.delete_all
+      Discount.where(id: @print_job.discount_ids).delete_all
       redirect_to @print_job, notice: "Account management successfully added"
     else
       render :new
