@@ -30,6 +30,7 @@ RSpec.describe Project, type: :model do
 
   describe "#brand" do
     it { should delegate_method(:logo).to(:brand) }
+    it { should delegate_method(:name).to(:brand).with_prefix }
     it { should delegate_method(:colour).to(:brand) }
     it { should delegate_method(:my_brand?).to(:brand) }
   end

@@ -15,20 +15,20 @@ class Download
   end
 
   def filename
-    "Project #{ project.id }.pdf"
+    "Quote-#{ project.brand_name }-#{ project.id + 100 }-#{ Date.today.to_s }.pdf"
   end
 
   def render_attributes
     {
       template: "downloads/pdf",
       layout: "pdf",
-      locals: { project: @project, user: @user, colour: @colour }
+      locals: { project: project, user: user, colour: colour }
     }
   end
 
   private
 
-  attr_reader :project
+  attr_reader :project, :user, :colour
 
   def as_html
     render render_attributes

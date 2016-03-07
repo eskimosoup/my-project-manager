@@ -7,7 +7,7 @@ describe "User downloads PDF" do
     print_job = create(:print_job, project: project)
 
     visit project_path(project, as: user)
-    click_on "Download PDF"
+    click_on "Download Quote"
 
     expect(content_type).to eq("application/pdf")
     expect(content_disposition).to include("inline")
