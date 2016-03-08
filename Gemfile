@@ -36,6 +36,7 @@ gem 'render_anywhere', '~> 0.0.12', require: false
 gem 'sidekiq', '~> 4.1'
 gem 'friendly_id', '~> 5.1'
 gem 'active_attr', '~> 0.9.0'
+gem 'stripe', '~> 1.36', '>= 1.36.1'
 
 group :development, :test do
   gem 'puma'
@@ -69,6 +70,7 @@ group :test do
   gem 'timecop'
   gem 'webmock'
   gem 'pdf-reader'
+  gem 'puffing-billy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

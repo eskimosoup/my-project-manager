@@ -68,4 +68,22 @@ RSpec.describe Brand, type: :model do
     end
 
   end
+
+  context "my brand" do
+    it "#prefix" do
+      brand = Brand.new
+      allow(brand).to receive(:my_brand?).and_return(true)
+
+      expect(brand.prefix).to eq("MY")
+    end
+  end
+
+  context "envisage brand" do
+    it "#prefix" do
+      brand = Brand.new
+      allow(brand).to receive(:my_brand?).and_return(false)
+
+      expect(brand.prefix).to eq("EN")
+    end
+  end
 end

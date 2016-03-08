@@ -36,6 +36,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :customer do
+    resources :invoices, only: [:show] do
+      resource :payment, only: [:new, :create]
+    end
+  end
+
   # Clearance
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|

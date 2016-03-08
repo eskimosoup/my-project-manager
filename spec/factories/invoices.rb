@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :invoice do
     project nil
-    slug "MyString"
+    name "Invoice name"
     amount "9.99"
+    percentage 100
     paid false
   end
 end

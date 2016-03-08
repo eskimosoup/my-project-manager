@@ -1,0 +1,9 @@
+<h1>Invoice: <%= @invoice.number %></h1>
+
+<% if @invoice.paid? %>
+  <div id="paid-notice">
+    This invoice has been paid
+  </div>
+<% else %>
+  <%= link_to "Pay Invoice", new_customer_invoice_payment_path(@invoice), class: "action-button" %>
+<% end %>

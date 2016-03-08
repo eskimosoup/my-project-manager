@@ -18,4 +18,12 @@ class Brand < ActiveRecord::Base
   def my_brand?
     MY_BRANDS.include?(brand_type)
   end
+
+  def prefix
+    if my_brand?
+      "MY"
+    else
+      "EN"
+    end
+  end
 end
