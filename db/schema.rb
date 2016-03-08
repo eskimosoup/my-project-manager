@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229131256) do
+ActiveRecord::Schema.define(version: 20160308115211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,18 +112,34 @@ ActiveRecord::Schema.define(version: 20160229131256) do
 
   add_index "discounts", ["project_id"], name: "index_discounts_on_project_id", using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "invoices", force: :cascade do |t|
-    t.integer  "project_id",                                          null: false
+    t.integer  "project_id",                                                null: false
     t.string   "slug"
-    t.string   "name",                                                null: false
-    t.integer  "percentage",                                          null: false
-    t.decimal  "amount",     precision: 10, scale: 2,                 null: false
-    t.boolean  "paid",                                default: false, null: false
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.string   "name",                                                      null: false
+    t.integer  "percentage",                                                null: false
+    t.decimal  "amount",           precision: 10, scale: 2,                 null: false
+    t.boolean  "paid",                                      default: false, null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.string   "stripe_charge_id"
   end
 
   add_index "invoices", ["project_id"], name: "index_invoices_on_project_id", using: :btree
+  add_index "invoices", ["slug"], name: "index_invoices_on_slug", unique: true, using: :btree
+  add_index "invoices", ["stripe_charge_id"], name: "index_invoices_on_stripe_charge_id", using: :btree
 
   create_table "job_specifications", force: :cascade do |t|
     t.decimal  "hours",        precision: 15, scale: 2, null: false

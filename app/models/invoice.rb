@@ -9,11 +9,16 @@ class Invoice < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
+  after_create :save! # to generate slug, bleugh!
 
   def slug_candidates
     [
       :number
     ]
+  end
+
+  def should_generate_new_friendly_id?
+    !new_record? && slug.nil?
   end
 
   def unpaid?
