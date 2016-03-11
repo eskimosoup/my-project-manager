@@ -9,7 +9,7 @@ describe "print_jobs/_supporting_products.html.erb" do
 
       render
 
-      expect(rendered).to have_content("Add Supporting Product")
+      expect(rendered).to have_content("Add Supporting Material")
     end
   end
 
@@ -21,7 +21,7 @@ describe "print_jobs/_supporting_products.html.erb" do
 
       render
 
-      expect(rendered).not_to have_content("Add Supporting Product")
+      expect(rendered).not_to have_content("Add Supporting Material")
     end
   end
 end

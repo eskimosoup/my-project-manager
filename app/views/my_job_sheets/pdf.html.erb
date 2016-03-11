@@ -36,13 +36,16 @@
   as: :print_job
 ) %>
 
-<%= render(
-  partial: "job_sheets/address_details",
-  locals: {
-    shipping_address: project.shipping_address,
-    billing_address: project.billing_address
-  }
-) %>
+<% if project.shipping_address && project.billing_address %>
+  <%= render(
+    partial: "job_sheets/address_details",
+    locals: {
+      shipping_address: project.shipping_address,
+      billing_address: project.billing_address
+    }
+  ) %>
+<% end %>
+
 <%= render(
   partial: "my_job_sheets/print_job",
   collection: project.print_jobs,

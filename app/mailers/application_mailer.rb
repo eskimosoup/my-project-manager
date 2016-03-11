@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "support@optimised.todaY"
+  default from: "support@optimised.today"
   layout 'mailer'
 end

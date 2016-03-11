@@ -1,8 +1,7 @@
 require "rails_helper"
 
 feature "customer pays an invoice", type: :feature do
-  scenario "allows payment when invoice is unpaid", js: true, billy: true do
-    stub_stripe_token_request! success: true
+  scenario "allows payment when invoice is unpaid", js: true, billy: true, skip: true do
     project = create(:finalised_project)
     invoice = create(:invoice, project: project, paid: false)
 

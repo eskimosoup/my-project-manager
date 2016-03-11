@@ -22,6 +22,7 @@ describe ProjectPriceCalculator, type: :model do
       instance_double("print_job", brand_price: 10.0)
     ]
     calc = ProjectPriceCalculator.new(print_jobs: print_jobs)
+    allow(calc).to receive(:total_discount).and_return(0)
 
     expect(calc.brand_price).to eq(15.57)
   end
@@ -32,15 +33,14 @@ describe ProjectPriceCalculator, type: :model do
       instance_double("print_job", envisage_to_my_price: 10.0)
     ]
     calc = ProjectPriceCalculator.new(print_jobs: print_jobs)
+    allow(calc).to receive(:envisage_discount).and_return(0)
 
     expect(calc.envisage_to_my_price).to eq(15.57)
   end
 
   it "#vat" do
-    print_jobs = [
-      instance_double("print_job", brand_price: 10.0)
-    ]
-    calc = ProjectPriceCalculator.new(print_jobs: print_jobs)
+    calc = ProjectPriceCalculator.new(print_jobs: [])
+    allow(calc).to receive(:brand_price).and_return(10.0)
 
     expect(calc.vat).to eq(2.00)
   end
@@ -50,6 +50,7 @@ describe ProjectPriceCalculator, type: :model do
       instance_double("print_job", brand_price: 10.0)
     ]
     calc = ProjectPriceCalculator.new(print_jobs: print_jobs)
+    allow(calc).to receive(:total_discount).and_return(0)
 
     expect(calc.brand_price_inc_vat).to eq(12.00)
   end

@@ -25,7 +25,7 @@ feature "User sets project addresses" do
 
     visit project_path(project, as: user)
     within "#shipping-address-details" do
-      click_on "Change"
+      click_on "Edit"
     end
     within "#shipping-address-#{ second_address.id }" do
       click_on "Use"
@@ -59,7 +59,7 @@ feature "User sets project addresses" do
 
     visit project_path(project, as: user)
     within "#billing-address-details" do
-      click_on "Change"
+      click_on "Edit"
     end
     within "#billing-address-#{ second_address.id }" do
       click_on "Use"

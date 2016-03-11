@@ -7,7 +7,7 @@ describe "User manages a print job's supporting product items", type: :feature d
     supporting_product = create(:supporting_product)
 
     visit print_job_path(print_job, as: user)
-    click_on "Add Supporting Product"
+    click_on "Add Supporting Material"
 
     fill_form(:supporting_product_item, { area: 5, supporting_product_id: supporting_product.name })
     click_on "Create Supporting product item"

@@ -9,8 +9,8 @@ describe "print_jobs/_products.html.erb" do
 
       render
 
-      expect(rendered).to have_content("Add Product")
-      expect(rendered).to have_content("Add Multiple Products")
+      expect(rendered).to have_content("Add Material")
+      expect(rendered).to have_content("Add Multiple Materials")
     end
   end
 
@@ -22,8 +22,8 @@ describe "print_jobs/_products.html.erb" do
 
       render
 
-      expect(rendered).not_to have_content("Add Product")
-      expect(rendered).not_to have_content("Add Multiple Products")
+      expect(rendered).not_to have_content("Add Material")
+      expect(rendered).not_to have_content("Add Multiple Materials")
     end
   end
 

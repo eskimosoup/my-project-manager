@@ -11,9 +11,9 @@ RSpec.describe EnvisageMailer, type: :mailer do
 
       mail = EnvisageMailer.project_confirmed(project)
 
-      expect(mail.subject).to eq("Project confirmed")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.subject).to eq("A project has been confirmed")
+      expect(mail.to).to eq(["talkprint@envisageprint.co.uk"])
+      expect(mail.from).to eq(["support@optimised.today"])
     end
 
     it "renders the body" do
