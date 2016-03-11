@@ -37,6 +37,6 @@ feature "User manages projects" do
     within "#print_job_#{ print_job.id }" do
       expect(page).to have_content(print_job.name)
     end
-    expect(page).to have_link("Add Print Item", href: new_project_print_job_path(project))
+    expect(page).to have_link("Add", href: new_project_print_job_path(project))
   end
 end

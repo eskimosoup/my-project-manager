@@ -7,7 +7,7 @@ describe "User manages a print job's product items", type: :feature do
     product = create(:product)
     
     visit print_job_path(print_job, as: user)
-    click_on "Add Product"
+    click_on "Add Material"
 
     fill_form(:product_item, { area: 5, product_id: product.name })
     click_on "Create Product item"

@@ -9,7 +9,7 @@ feature "Admin creates a brand", type: :feature do
     click_on "Brands"
     click_on "New brand"
 
-    fill_form(:brand, { name: "My new brand" })
+    fill_form(:brand, { name: "My new brand", email: "test@example.com" })
 
     click_on "Create Brand"
 

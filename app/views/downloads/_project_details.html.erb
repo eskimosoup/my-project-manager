@@ -16,7 +16,7 @@
   <tbody>
     <% project.print_jobs.each do |print_job| %>
       <tr>
-        <td><%= print_job.name %></td>
+        <td><%= simple_format print_job.name %></td>
         <td><%= number_to_currency print_job.brand_price %></td>
       </tr>
     <% end %>

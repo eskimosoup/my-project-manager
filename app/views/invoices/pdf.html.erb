@@ -25,12 +25,14 @@
   <%= project.customer_name %>
 </h2>
 
-<%= render(
-  partial: 'job_sheets/address',
-  locals: {
-    address: project.billing_address
-  }
-) %>
+<% if project.billing_address %>
+  <%= render(
+    partial: 'job_sheets/address',
+    locals: {
+      address: project.billing_address
+    }
+  ) %>
+<% end %>
 
 <%= render(
   partial: 'invoices/project_details',

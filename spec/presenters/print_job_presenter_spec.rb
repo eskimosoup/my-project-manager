@@ -33,7 +33,7 @@ RSpec.describe PrintJobPresenter, type: :presenter, print_job_presenter: true do
   end
 
   it '#octicon_view_link' do
-    view_link = link_to "#{view.octicon('eye')} #{print_job.name}".html_safe, print_job_path(print_job),
+    view_link = link_to "#{view.octicon('eye')} #{simple_format print_job.name}".html_safe, print_job_path(print_job),
                         class: 'print-job-view-link'
     expect(print_job_presenter.octicon_view_link).to eq(view_link)
   end

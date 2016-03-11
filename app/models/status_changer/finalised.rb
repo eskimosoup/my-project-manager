@@ -51,6 +51,7 @@ module StatusChanger
     end
 
     def send_emails
+      return unless Rails.env.production?
       EnvisageMailer.project_finalised(project).deliver_now
       MyMailer.project_finalised(project).deliver_now if project.my_brand?
     end

@@ -38,6 +38,10 @@ class PrintJobPresenter < BasePresenter
   private
 
   def octicon_view_content
-    [octicon('eye'), name].join(' ').html_safe
+    [octicon('eye'), formatted_name].join(' ').html_safe
+  end
+
+  def formatted_name
+    h.simple_format name
   end
 end

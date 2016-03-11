@@ -7,7 +7,7 @@ describe "User manages a print job", type: :feature do
 
     visit project_path(project, as: user)
 
-    click_on "Add Print Item"
+    click_on "Add"
 
     fill_form(:print_job, { name: "My print job" })
     click_on "Create Print job"
