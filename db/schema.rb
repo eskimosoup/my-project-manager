@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311091134) do
+ActiveRecord::Schema.define(version: 20160311104706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -255,6 +255,8 @@ ActiveRecord::Schema.define(version: 20160311091134) do
     t.integer  "billing_address_id"
     t.boolean  "rush_job",            default: false
     t.string   "purchase_order"
+    t.date     "delivery_deadline"
+    t.text     "notes"
   end
 
   add_index "projects", ["billing_address_id"], name: "index_projects_on_billing_address_id", using: :btree

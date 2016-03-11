@@ -10,8 +10,33 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
     <%= f.label :purchase_order %>
     <%= f.text_field :purchase_order %>
+  </div>
+
+  <div class="field">
+    <%= f.label :delivery_deadline %>
+    <%= f.date_select :delivery_deadline %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rush_job %>
+    <%= f.check_box :rush_job %>
   </div>
 
   <% if false %>

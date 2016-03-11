@@ -1,4 +1,4 @@
-<h1><%= project.name %> Job Sheet (<%= project.id %>)</h1>
+<h1><%= project.name %> Job Sheet (<%= "#{ project.customer_id }-#{ project.id + 100 }" %>)</h1>
 <%= project.description %>
 
 <h2>
@@ -7,3 +7,14 @@
 <h2>
   Date of sale: <%= l project.updated_at.to_date %>
 </h2>
+
+<h2>
+  Delivery Date: <%= project.delivery_date.present? ? l(project.delivery_date) : "None" %>
+</h2>
+
+<% if project.notes.present? %>
+  <div>
+    <h2>Notes</h2>
+    <%= simple_format project.notes %>
+  </div>
+<% end %>
