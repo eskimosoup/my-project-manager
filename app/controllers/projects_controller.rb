@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :set_project, only: [:show]
+  before_action :set_project, only: [:edit, :update, :show]
 
   def new
     @project = Project.new
@@ -15,6 +15,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @project.update(project_params)
+      redirect_to @project, notice: "Updated project"
+    else
+      render :edit
+    end
+  end
+
   def index
     @projects = Project.filter(params.slice(:name_search, :customer_id, :project_type)).page(params[:page]).per(params[:per_page] || 15)
   end
@@ -25,7 +36,8 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :brand_id, :customer_id)
+    params.require(:project).permit(:name, :description, :brand_id, :customer_id,
+                                   :delivery_deadline, :notes)
   end
 
   def set_project

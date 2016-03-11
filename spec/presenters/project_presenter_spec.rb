@@ -190,4 +190,27 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       end
     end
   end
+
+  describe "#delivery_deadline" do
+    it "has deadline" do
+      project = build(:project)
+      project_presenter = ProjectPresenter.new(object: project, view_template: view)
+
+      expect(project_presenter.delivery_deadline).to eq(l project.delivery_deadline)
+    end
+
+    it "has no deadline" do
+      project = build(:project, delivery_deadline: nil)
+      project_presenter = ProjectPresenter.new(object: project, view_template: view)
+
+      expect(project_presenter.delivery_deadline).to eq("No deadline")
+    end
+  end
+
+  it "#notes" do
+    project = build(:project, notes: "Some notes")
+    project_presenter = ProjectPresenter.new(object: project, view_template: view)
+
+    expect(project_presenter.notes).to eq(simple_format("Some notes"))
+  end
 end

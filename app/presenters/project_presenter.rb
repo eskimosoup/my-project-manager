@@ -3,7 +3,7 @@ class ProjectPresenter < BasePresenter
   delegate :name, :brand_price, :brand_rush_job_price, to: :project
 
   def reference_number
-    "#{project.customer.id}-#{project.id + 100}"
+    "#{project.customer_id}-#{project.id + 100}"
   end
 
   def brand_name
@@ -16,6 +16,15 @@ class ProjectPresenter < BasePresenter
 
   def description
     h.simple_format project.description
+  end
+
+  def delivery_deadline
+    return "No deadline" unless project.delivery_deadline
+    h.l project.delivery_deadline
+  end
+
+  def notes
+    h.simple_format project.notes
   end
 
   def download_pdf_link(content = 'Download PDF')

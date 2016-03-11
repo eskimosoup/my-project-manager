@@ -4,6 +4,8 @@ FactoryGirl.define do
     brand
     name "MyString"
     description "MyText"
+    delivery_deadline Date.today
+    notes "My Text"
     rush_job false
 
     trait :quoted do

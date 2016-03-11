@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :addresses, shallow: true
   end
   resources :invoices, only: [:update]
-  resources :projects, only: [:new, :create, :index, :show] do
+  resources :projects, only: [:new, :create, :edit, :update, :index, :show] do
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :downloads, only: [:show]
     resource :envisage_job_sheet, only: [:show]
