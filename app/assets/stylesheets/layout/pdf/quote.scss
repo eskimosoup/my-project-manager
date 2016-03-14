@@ -12,10 +12,6 @@ body {
   overflow: hidden;
 }
 
-header {
-  margin: 0 0 rem-calc(12px);
-}
-
 h1 {
   font-size: rem-calc(24px);
 
@@ -60,42 +56,6 @@ p {
   font-size: rem-calc(16px);
   font-weight: bold;
   margin: rem-calc(6px) 0;
-}
-
-header {
-  overflow: hidden;
-}
-
-
-.brand-contact-details {
-  float: left;
-  list-style: none;
-  font-size: rem-calc(12px);
-  margin: 0;
-  padding: 0;
-  line-height: 1.25;
-  width: 75%;
-  padding-right: rem-calc(60px);
-
-  li {
-    overflow: hidden;
-    margin: 0 0 rem-calc(2px);
-  }
-
-  strong {
-    float: left;
-    width: 94%;
-  }
-}
-
-.brand-contact-type {
-  float: left;
-  width: 6%;
-}
-
-.brand-logo {
-  float: right;
-  width: 25%;
 }
 
 .address {

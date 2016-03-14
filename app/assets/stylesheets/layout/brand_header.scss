@@ -1,0 +1,38 @@
+header.customer-header {
+  @include grid-row;
+  @include border-bottom-radius(rem-calc(20));
+  margin: 0 auto rem-calc(12px);
+  overflow: hidden;
+}
+
+.brand-contact-details {
+  @include grid-column(8);
+  list-style: none;
+  font-size: rem-calc(12px);
+  margin: 0;
+  padding: 0;
+  line-height: 1.25;
+  width: 75%;
+  padding-right: rem-calc(60px);
+
+  li {
+    overflow: hidden;
+    margin: 0 0 rem-calc(2px);
+  }
+
+  strong {
+    float: left;
+    width: 94%;
+  }
+}
+
+.brand-contact-type {
+  float: left;
+  width: 6%;
+}
+
+.brand-logo {
+  @include grid-column(4);
+  width: 25%;
+}
+
