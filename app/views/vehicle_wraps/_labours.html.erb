@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main vehicle-wrap-section" id="materials">
+    <h3>Labour</h3>
+
+    <%= link_to "Add Labour", new_vehicle_wrap_vehicle_wraps_labour_path(vehicle_wrap) %>
+
+    <% if vehicle_wrap.labours.any? %>
+      <%= render(
+        partial: "vehicle_wraps/labours/labour",
+        collection: vehicle_wrap.labours,
+        as: :labour
+      ) %>
+    <% end %>
+  </div>
+</div>
