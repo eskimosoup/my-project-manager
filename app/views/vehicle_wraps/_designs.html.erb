@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main vehicle-wrap-section" id="design">
+    <h3>Design</h3>
+
+    <%= link_to "Add Design", new_vehicle_wrap_vehicle_wraps_design_path(vehicle_wrap) %>
+
+    <% if vehicle_wrap.designs.any? %>
+      <%= render(
+        partial: "vehicle_wraps/designs/design",
+        collection: vehicle_wrap.designs,
+        as: :design
+      ) %>
+    <% end %>
+  </div>
+</div>

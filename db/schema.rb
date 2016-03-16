@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316153206) do
+ActiveRecord::Schema.define(version: 20160316155202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -370,6 +370,15 @@ ActiveRecord::Schema.define(version: 20160316153206) do
 
   add_index "vehicle_wraps_account_managements", ["vehicle_wrap_id"], name: "index_vehicle_wraps_account_managements_on_vehicle_wrap_id", using: :btree
 
+  create_table "vehicle_wraps_designs", force: :cascade do |t|
+    t.decimal  "hours",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_designs", ["vehicle_wrap_id"], name: "index_vehicle_wraps_designs_on_vehicle_wrap_id", using: :btree
+
   create_table "vehicle_wraps_job_specifications", force: :cascade do |t|
     t.decimal  "hours",           precision: 15, scale: 2, null: false
     t.integer  "vehicle_wrap_id"
@@ -460,6 +469,7 @@ ActiveRecord::Schema.define(version: 20160316153206) do
   add_foreign_key "supporting_product_items", "supporting_products", on_delete: :cascade
   add_foreign_key "vehicle_wraps", "vehicle_types", on_delete: :cascade
   add_foreign_key "vehicle_wraps_account_managements", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_designs", "vehicle_wraps", on_delete: :cascade
   add_foreign_key "vehicle_wraps_job_specifications", "vehicle_wraps", on_delete: :cascade
   add_foreign_key "vehicle_wraps_labours", "labours"
   add_foreign_key "vehicle_wraps_labours", "vehicle_wraps", on_delete: :cascade

@@ -1,6 +1,7 @@
 class VehicleWrap < ActiveRecord::Base
   belongs_to :vehicle_type
   has_many :account_managements, class_name: "VehicleWraps::AccountManagement"
+  has_many :designs, class_name: "VehicleWraps::Design"
   has_many :job_specifications, class_name: "VehicleWraps::JobSpecification"
   has_many :labours, class_name: "VehicleWraps::Labour"
   has_many :materials, class_name: "VehicleWraps::Material"

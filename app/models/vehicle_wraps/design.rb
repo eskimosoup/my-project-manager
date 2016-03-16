@@ -1,4 +1,4 @@
-class VehicleWraps::AccountManagement < ActiveRecord::Base
+class VehicleWraps::Design < ActiveRecord::Base
   belongs_to :vehicle_wrap
 
   validates :hours, presence: true, numericality: { greater_than: 0.0 }
