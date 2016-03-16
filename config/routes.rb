@@ -35,6 +35,16 @@ Rails.application.routes.draw do
       resources :supporting_product_items, except: [:index, :show]
     end
   end
+  resources :vehicle_wraps, shallow: true do
+    resources :vehicle_wraps_account_managements, except: [:show, :index], controller: "vehicle_wraps/account_managements"
+    resources :vehicle_wraps_designs, except: [:show, :index], controller: "vehicle_wraps/designs"
+    resources :vehicle_wraps_job_specifications, except: [:show, :index], controller: "vehicle_wraps/job_specifications"
+    resources :vehicle_wraps_labours, except: [:show, :index], controller: "vehicle_wraps/labours"
+    resources :vehicle_wraps_materials, except: [:show, :index], controller: "vehicle_wraps/materials"
+    resources :vehicle_wraps_mileages, except: [:show, :index], controller: "vehicle_wraps/mileages"
+    resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: "vehicle_wraps/supporting_materials"
+    resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: "vehicle_wraps/sundry_items"
+  end
 
   namespace :customer do
     resources :invoices, only: [:show] do
@@ -42,7 +52,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # Clearance
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -50,6 +59,7 @@ Rails.application.routes.draw do
 
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
+  # Clearance
   resources :passwords,
       controller: 'clearance/passwords',
       only: [:create, :new]

@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main vehicle-wrap-section" id="supporting-materials">
+    <h3>Supporting Materials</h3>
+
+    <%= link_to "Add Supporting Material", new_vehicle_wrap_vehicle_wraps_supporting_material_path(vehicle_wrap) %>
+
+    <% if vehicle_wrap.supporting_materials.any? %>
+      <%= render(
+        partial: "vehicle_wraps/supporting_materials/supporting_material",
+        collection: vehicle_wrap.supporting_materials,
+        as: :supporting_material
+      ) %>
+    <% end %>
+  </div>
+</div>

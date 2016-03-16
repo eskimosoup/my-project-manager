@@ -1,0 +1,6 @@
+<%= simple_form_for @vehicle_wrap do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.association :vehicle_type %>
+  <%= f.button :submit %>
+<% end %>

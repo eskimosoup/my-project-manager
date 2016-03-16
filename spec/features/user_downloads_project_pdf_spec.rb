@@ -11,8 +11,7 @@ describe "User downloads PDF" do
 
     expect(content_type).to eq("application/pdf")
     expect(content_disposition).to include("inline")
-    expect(download_filename).to include(project.id.to_s)
-    expect(pdf_body).to have_content("Quote")
+    expect(download_filename).to include((project.id + 100).to_s)
     expect(pdf_body).to have_content(print_job.name)
     expect(pdf_body).to have_content(user.full_name)
   end

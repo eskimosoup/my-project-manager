@@ -9,7 +9,7 @@
 </h2>
 
 <h2>
-  Delivery Date: <%= project.delivery_date.present? ? l(project.delivery_date) : "None" %>
+  Delivery Date: <%= project.delivery_deadline.present? ? l(project.delivery_deadline) : "None" %>
 </h2>
 
 <% if project.notes.present? %>

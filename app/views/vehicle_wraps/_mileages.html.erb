@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main vehicle-wrap-section" id="mileage">
+    <h3>Mileage</h3>
+
+    <%= link_to "Add Mileage", new_vehicle_wrap_vehicle_wraps_mileage_path(vehicle_wrap) %>
+
+    <% if vehicle_wrap.mileages.any? %>
+      <%= render(
+        partial: "vehicle_wraps/mileages/mileage",
+        collection: vehicle_wrap.mileages,
+        as: :mileage
+      ) %>
+    <% end %>
+  </div>
+</div>

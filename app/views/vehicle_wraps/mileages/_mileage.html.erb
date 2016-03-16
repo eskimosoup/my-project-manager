@@ -1,0 +1,13 @@
+<%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'vehicle-wraps-mileage')}", id: dom_id(mileage) do %>
+  <div class="vehicle-wraps-mileage-details">
+    <%= link_to edit_vehicle_wraps_mileage_path(mileage) do %>
+      <%= [octicon('pencil'), pluralize(mileage.miles, 'mile')].join(" ") %>
+    <% end %>
+  </div>
+
+  <div class="vehicle-wraps-mileage-navigation vehicle-wraps-mileage-delete-link">
+    <%= button_to 'Remove', vehicle_wraps_mileage_path(mileage), method: :delete,
+                data: { confirm: 'Are you sure?', disable_with: 'processing...' },
+                class: 'secondary-action-button' %>
+  </div>
+<% end %>

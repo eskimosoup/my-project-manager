@@ -19,7 +19,6 @@ describe "User downloads invoice PDF" do
     expect(content_type).to eq("application/pdf")
     expect(content_disposition).to include("inline")
     expect(download_filename).to include("Invoice")
-    expect(pdf_body).to have_content("Invoice")
     expect(pdf_body).to have_content(print_job.name)
     expect(pdf_body).to have_content(print_job.envisage_to_my_price)
     expect(pdf_body).to have_content(print_job.brand_price)

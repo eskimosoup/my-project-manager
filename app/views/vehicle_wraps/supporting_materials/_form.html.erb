@@ -1,0 +1,5 @@
+<%= simple_form_for [@vehicle_wrap, @supporting_material] do |f| %>
+  <%= f.input :area, as: :decimal %>
+  <%= f.association :supporting_product %>
+  <%= f.button :submit %>
+<% end %>

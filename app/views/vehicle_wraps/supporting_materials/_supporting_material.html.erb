@@ -1,0 +1,14 @@
+<%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'vehicle-wraps-supporting-material')}", id: dom_id(supporting_material) do %>
+  <div class="vehicle-wraps-supporting-material-details">
+    <%= link_to edit_vehicle_wraps_supporting_material_path(supporting_material) do %>
+      <%= [octicon('pencil'), supporting_material.name, format_area(supporting_material.area)].join(" ") %>
+    <% end %>
+  </div>
+
+  <div class="vehicle-wraps-supporting-material-navigation vehicle-wraps-supporting-material-delete-link">
+    <%= button_to 'Remove', vehicle_wraps_supporting_material_path(supporting_material), method: :delete,
+                data: { confirm: 'Are you sure?', disable_with: 'processing...' },
+                class: 'secondary-action-button' %>
+  </div>
+<% end %>
+

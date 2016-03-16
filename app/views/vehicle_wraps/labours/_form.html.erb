@@ -1,0 +1,5 @@
+<%= simple_form_for [@vehicle_wrap, @labour] do |f| %>
+  <%= f.input :hours, as: :decimal %>
+  <%= f.association :labour %>
+  <%= f.button :submit %>
+<% end %>

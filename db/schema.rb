@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311104706) do
+ActiveRecord::Schema.define(version: 20160316155202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -339,6 +339,107 @@ ActiveRecord::Schema.define(version: 20160311104706) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  create_table "vehicle_types", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "vehicle_types", ["name"], name: "index_vehicle_types_on_name", unique: true, using: :btree
+
+  create_table "vehicle_wraps", force: :cascade do |t|
+    t.string   "name",                                                   null: false
+    t.text     "description",                                            null: false
+    t.decimal  "envisage_override_price",       precision: 10, scale: 2
+    t.decimal  "envisage_trade_override_price", precision: 10, scale: 2
+    t.decimal  "envisage_to_my_override_price", precision: 10, scale: 2
+    t.decimal  "my_override_price",             precision: 10, scale: 2
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.integer  "vehicle_type_id"
+  end
+
+  add_index "vehicle_wraps", ["vehicle_type_id"], name: "index_vehicle_wraps_on_vehicle_type_id", using: :btree
+
+  create_table "vehicle_wraps_account_managements", force: :cascade do |t|
+    t.decimal  "hours",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_account_managements", ["vehicle_wrap_id"], name: "index_vehicle_wraps_account_managements_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_designs", force: :cascade do |t|
+    t.decimal  "hours",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_designs", ["vehicle_wrap_id"], name: "index_vehicle_wraps_designs_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_job_specifications", force: :cascade do |t|
+    t.decimal  "hours",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_job_specifications", ["vehicle_wrap_id"], name: "index_vehicle_wraps_job_specifications_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_labours", force: :cascade do |t|
+    t.decimal  "hours",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id"
+    t.integer  "labour_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_labours", ["labour_id"], name: "index_vehicle_wraps_labours_on_labour_id", using: :btree
+  add_index "vehicle_wraps_labours", ["vehicle_wrap_id"], name: "index_vehicle_wraps_labours_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_materials", force: :cascade do |t|
+    t.decimal  "area",            precision: 15, scale: 3, null: false
+    t.integer  "vehicle_wrap_id"
+    t.integer  "product_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_materials", ["product_id"], name: "index_vehicle_wraps_materials_on_product_id", using: :btree
+  add_index "vehicle_wraps_materials", ["vehicle_wrap_id"], name: "index_vehicle_wraps_materials_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_mileages", force: :cascade do |t|
+    t.decimal  "miles",           precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_mileages", ["vehicle_wrap_id"], name: "index_vehicle_wraps_mileages_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_sundry_items", force: :cascade do |t|
+    t.decimal  "cost",            precision: 15, scale: 2, null: false
+    t.integer  "vehicle_wrap_id"
+    t.string   "name",                                     null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "vehicle_wraps_sundry_items", ["vehicle_wrap_id"], name: "index_vehicle_wraps_sundry_items_on_vehicle_wrap_id", using: :btree
+
+  create_table "vehicle_wraps_supporting_materials", force: :cascade do |t|
+    t.decimal  "area",                  precision: 15, scale: 3, null: false
+    t.integer  "vehicle_wrap_id"
+    t.integer  "supporting_product_id"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "vehicle_wraps_supporting_materials", ["supporting_product_id"], name: "supporting_product_supporting_materials", using: :btree
+  add_index "vehicle_wraps_supporting_materials", ["vehicle_wrap_id"], name: "vehicle_wrap_supporting materials", using: :btree
+
   add_foreign_key "account_managements", "print_jobs", on_delete: :cascade
   add_foreign_key "addresses", "customers", on_delete: :cascade
   add_foreign_key "brand_addresses", "brands", on_delete: :cascade
@@ -366,4 +467,16 @@ ActiveRecord::Schema.define(version: 20160311104706) do
   add_foreign_key "supporting_product_costs", "supporting_products", on_delete: :cascade
   add_foreign_key "supporting_product_items", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_items", "supporting_products", on_delete: :cascade
+  add_foreign_key "vehicle_wraps", "vehicle_types", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_account_managements", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_designs", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_job_specifications", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_labours", "labours"
+  add_foreign_key "vehicle_wraps_labours", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_materials", "products"
+  add_foreign_key "vehicle_wraps_materials", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_mileages", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_sundry_items", "vehicle_wraps", on_delete: :cascade
+  add_foreign_key "vehicle_wraps_supporting_materials", "supporting_products"
+  add_foreign_key "vehicle_wraps_supporting_materials", "vehicle_wraps", on_delete: :cascade
 end

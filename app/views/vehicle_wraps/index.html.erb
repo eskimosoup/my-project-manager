@@ -1,0 +1,20 @@
+<div class="content">
+  <div class="index">
+    <h1>Vehicle Wraps</h1>
+
+    <%= link_to "New Vehicle Wrap", new_vehicle_wrap_path %>
+
+    <div class="index-items">
+      <%= render(
+        partial: "vehicle_wraps/vehicle_wrap",
+        collection: @vehicle_wraps,
+        as: :vehicle_wrap
+      ) %>
+    </div>
+
+    <%= paginate @vehicle_wraps %>
+    <div class="pagination-summary">
+      <%= page_entries_info @vehicle_wraps, entry_name: 'vehicle_wraps' %>
+    </div>
+  </div>
+</div>

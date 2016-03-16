@@ -1,0 +1,5 @@
+<%= simple_form_for [@vehicle_wrap, @sundry_item] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :cost, as: :decimal %>
+  <%= f.button :submit %>
+<% end %>
