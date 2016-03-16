@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="main vehicle-wrap-section" id="job-specification">
+    <h3>Job Specification</h3>
+
+    <%= link_to "Add Job Specification", new_vehicle_wrap_vehicle_wraps_job_specification_path(vehicle_wrap) %>
+
+    <% if vehicle_wrap.job_specifications.any? %>
+      <%= render(
+        partial: "vehicle_wraps/job_specifications/job_specification",
+        collection: vehicle_wrap.job_specifications,
+        as: :job_specification
+      ) %>
+    <% end %>
+  </div>
+</div>

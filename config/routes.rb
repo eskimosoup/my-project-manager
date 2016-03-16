@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: "vehicle_wraps/supporting_materials"
     resources :vehicle_wraps_labours, except: [:show, :index], controller: "vehicle_wraps/labours"
     resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: "vehicle_wraps/sundry_items"
+    resources :vehicle_wraps_job_specifications, except: [:show, :index], controller: "vehicle_wraps/job_specifications"
   end
 
   namespace :customer do

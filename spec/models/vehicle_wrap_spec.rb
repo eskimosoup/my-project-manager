@@ -13,6 +13,7 @@ RSpec.describe VehicleWrap, type: :model do
     it { should have_many(:supporting_materials).class_name("VehicleWraps::SupportingMaterial") }
     it { should have_many(:labours).class_name("VehicleWraps::Labour") }
     it { should have_many(:sundry_items).class_name("VehicleWraps::SundryItem") }
+    it { should have_many(:job_specifications).class_name("VehicleWraps::JobSpecification") }
   end
 
   it { should delegate_method(:name).to(:vehicle_type).with_prefix }

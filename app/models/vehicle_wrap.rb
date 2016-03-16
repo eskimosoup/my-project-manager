@@ -4,6 +4,7 @@ class VehicleWrap < ActiveRecord::Base
   has_many :supporting_materials, class_name: "VehicleWraps::SupportingMaterial"
   has_many :labours, class_name: "VehicleWraps::Labour"
   has_many :sundry_items, class_name: "VehicleWraps::SundryItem"
+  has_many :job_specifications, class_name: "VehicleWraps::JobSpecification"
 
   validates :description, presence: true
   validates :name, presence: true
