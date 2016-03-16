@@ -10,6 +10,7 @@ RSpec.describe VehicleWrap, type: :model do
   describe "associations", :association do
     it { should belong_to(:vehicle_type) }
     it { should have_many(:materials).class_name("VehicleWraps::Material") }
+    it { should have_many(:supporting_materials).class_name("VehicleWraps::SupportingMaterial") }
   end
 
   it { should delegate_method(:name).to(:vehicle_type).with_prefix }
