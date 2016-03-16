@@ -15,7 +15,8 @@ class DashboardManifest
     :labours,
     :brands,
     :brand_addresses,
-    :users
+    :users,
+    :vehicle_types
   ].freeze
 
   # `ROOT_DASHBOARD`

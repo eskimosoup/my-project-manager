@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="main">
+    <h1 class="vehicle-wrap-name">
+      <%= link_to "Edit", edit_vehicle_wrap_path(@vehicle_wrap), class: "action-button" %>
+      <%= @vehicle_wrap.name %>
+    </h1>
+
+    <div class="vehicle-wrap-vehicle-type">
+      <%= @vehicle_wrap.vehicle_type_name %>
+    </div>
+
+    <div id="vehicle-wrap-description">
+      <%= simple_format @vehicle_wrap.description %>
+    </div>
+  </div>
+</div>

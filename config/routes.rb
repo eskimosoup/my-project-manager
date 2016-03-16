@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       resources :supporting_product_items, except: [:index, :show]
     end
   end
+  resources :vehicle_wraps
 
   namespace :customer do
     resources :invoices, only: [:show] do
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # Clearance
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
+  # Clearance
   resources :passwords,
       controller: 'clearance/passwords',
       only: [:create, :new]
