@@ -24,7 +24,6 @@ feature "User manages a vehicle wrap", type: :feature do
     vehicle_wrap = create(:vehicle_wrap, vehicle_type: vehicle_type)
 
     visit root_path(as: user)
-
     click_on "Preset Vehicle Wraps"
     click_link_by_href vehicle_wrap_path(vehicle_wrap)
     click_on "Edit"

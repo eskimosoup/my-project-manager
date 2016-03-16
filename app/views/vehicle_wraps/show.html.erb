@@ -12,5 +12,12 @@
     <div id="vehicle-wrap-description">
       <%= simple_format @vehicle_wrap.description %>
     </div>
+
+    <%= render(
+      partial: "vehicle_wraps/materials",
+      locals: { 
+        vehicle_wrap: @vehicle_wrap
+      }
+    ) %>
   </div>
 </div>

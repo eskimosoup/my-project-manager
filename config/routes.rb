@@ -35,7 +35,9 @@ Rails.application.routes.draw do
       resources :supporting_product_items, except: [:index, :show]
     end
   end
-  resources :vehicle_wraps
+  resources :vehicle_wraps, shallow: true do
+    resources :vehicle_wraps_materials, except: [:show, :index], controller: "vehicle_wraps/materials"
+  end
 
   namespace :customer do
     resources :invoices, only: [:show] do
