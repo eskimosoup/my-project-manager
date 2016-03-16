@@ -15,6 +15,7 @@ RSpec.describe VehicleWrap, type: :model do
     it { should have_many(:sundry_items).class_name("VehicleWraps::SundryItem") }
     it { should have_many(:job_specifications).class_name("VehicleWraps::JobSpecification") }
     it { should have_many(:mileages).class_name("VehicleWraps::Mileage") }
+    it { should have_many(:account_managements).class_name("VehicleWraps::AccountManagement") }
   end
 
   it { should delegate_method(:name).to(:vehicle_type).with_prefix }

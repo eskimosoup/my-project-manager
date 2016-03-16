@@ -36,12 +36,13 @@ Rails.application.routes.draw do
     end
   end
   resources :vehicle_wraps, shallow: true do
-    resources :vehicle_wraps_materials, except: [:show, :index], controller: "vehicle_wraps/materials"
-    resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: "vehicle_wraps/supporting_materials"
-    resources :vehicle_wraps_labours, except: [:show, :index], controller: "vehicle_wraps/labours"
-    resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: "vehicle_wraps/sundry_items"
+    resources :vehicle_wraps_account_managements, except: [:show, :index], controller: "vehicle_wraps/account_managements"
     resources :vehicle_wraps_job_specifications, except: [:show, :index], controller: "vehicle_wraps/job_specifications"
+    resources :vehicle_wraps_labours, except: [:show, :index], controller: "vehicle_wraps/labours"
+    resources :vehicle_wraps_materials, except: [:show, :index], controller: "vehicle_wraps/materials"
     resources :vehicle_wraps_mileages, except: [:show, :index], controller: "vehicle_wraps/mileages"
+    resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: "vehicle_wraps/supporting_materials"
+    resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: "vehicle_wraps/sundry_items"
   end
 
   namespace :customer do
