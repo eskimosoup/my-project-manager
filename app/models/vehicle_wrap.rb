@@ -5,6 +5,7 @@ class VehicleWrap < ActiveRecord::Base
   has_many :labours, class_name: "VehicleWraps::Labour"
   has_many :sundry_items, class_name: "VehicleWraps::SundryItem"
   has_many :job_specifications, class_name: "VehicleWraps::JobSpecification"
+  has_many :mileages, class_name: "VehicleWraps::Mileage"
 
   validates :description, presence: true
   validates :name, presence: true
