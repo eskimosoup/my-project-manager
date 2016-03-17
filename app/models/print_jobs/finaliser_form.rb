@@ -18,7 +18,7 @@ class PrintJobs::FinaliserForm
     print_job.name
   end
 
-  def save
+  def save!
     print_job.update!({
       envisage_sale_price: envisage_sale_price,
       envisage_trade_sale_price: envisage_trade_sale_price,
