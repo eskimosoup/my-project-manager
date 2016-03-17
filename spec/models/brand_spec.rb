@@ -16,6 +16,20 @@ RSpec.describe Brand, type: :model do
   it { should delegate_method(:logo).to(:brand_graphics) }
   it { should delegate_method(:colour).to(:brand_graphics) }
 
+  describe "#vehicle_brand?" do
+    it "vehicle brand" do
+      brand = build_stubbed(:my_vehicle_wrap_brand)
+
+      expect(brand.vehicle_brand?).to eq(true)
+    end
+
+    it "non vehicle brand" do
+      brand = build_stubbed(:envisage_brand)
+
+      expect(brand.vehicle_brand?).to eq(false)
+    end
+  end
+
   describe "#brand_graphics" do
     it "envisage" do
       brand = build_stubbed(:envisage_brand)

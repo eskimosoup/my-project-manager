@@ -1,0 +1,24 @@
+<div class="basic-listing vehicle-wrap <%= cycle('odd', 'even', class: 'project-vehicle-wrap') %>" id="<%= dom_id(project_vehicle_wrap) %>">
+  <div class="vehicle-wrap-name">
+    <%= project_vehicle_wrap.name %>
+  </div>
+
+  <div class="vehicle-wrap-description">
+    <%= simple_format project_vehicle_wrap.description %>
+  </div>
+
+  <div class="vehicle-wrap-vehicle-type">
+    <%= project_vehicle_wrap.vehicle_type_name %>
+  </div>
+
+  <div class="vehicle-wrap-override-prices">
+    <%= render(
+      partial: "vehicle_wraps/override_prices",
+      locals: {
+        vehicle_wrap: project_vehicle_wrap
+      }
+    ) %>
+  </div>
+
+  <%= button_to "Add To Project", project_vehicle_wrap_print_job_creations_path(params[:project_id], vehicle_wrap_id: project_vehicle_wrap.id), class: "action-button" %> 
+</div>

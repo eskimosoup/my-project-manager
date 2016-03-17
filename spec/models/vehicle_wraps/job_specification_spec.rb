@@ -10,4 +10,14 @@ RSpec.describe VehicleWraps::JobSpecification, type: :model do
   describe "associations", :association do
     it { should belong_to(:vehicle_wrap) }
   end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      job_spec = build_stubbed(:vehicle_wraps_job_specification)
+      expect(job_spec.price_calculator).to be_an_instance_of(JobSpecificationPriceCalculator)
+    end
+
+    it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
+  end
 end

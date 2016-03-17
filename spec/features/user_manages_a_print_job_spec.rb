@@ -17,7 +17,8 @@ describe "User manages a print job", type: :feature do
 
   scenario "edit print job" do
     user = create(:user)
-    print_job = create(:print_job)
+    project = create(:project)
+    print_job = create(:print_job, project: project)
 
     visit print_job_path(print_job, as: user)
     click_link_by_href(edit_print_job_path(print_job))
@@ -30,7 +31,8 @@ describe "User manages a print job", type: :feature do
 
   scenario "remove print job" do
     user = create(:user)
-    print_job = create(:print_job)
+    project = create(:project)
+    print_job = create(:print_job, project: project)
 
     visit project_path(print_job.project, as: user)
     destroy_print_job(print_job)

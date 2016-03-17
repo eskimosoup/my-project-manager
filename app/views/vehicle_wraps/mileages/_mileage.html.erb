@@ -1,7 +1,7 @@
 <%= content_tag :div, class: "basic-listing #{cycle('odd', 'even', class: 'vehicle-wraps-mileage')}", id: dom_id(mileage) do %>
   <div class="vehicle-wraps-mileage-details">
     <%= link_to edit_vehicle_wraps_mileage_path(mileage) do %>
-      <%= [octicon('pencil'), pluralize(mileage.miles, 'mile')].join(" ") %>
+      <%= [octicon('pencil'), pluralize(mileage.miles, 'mile')].join(" ").html_safe %>
     <% end %>
   </div>
 

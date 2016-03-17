@@ -20,4 +20,19 @@ RSpec.describe VehicleWrap, type: :model do
   end
 
   it { should delegate_method(:name).to(:vehicle_type).with_prefix }
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      vehicle_wrap = build_stubbed(:vehicle_wrap)
+      expect(vehicle_wrap.price_calculator).to be_an_instance_of(VehicleWraps::PriceCalculator)
+    end
+
+    it { should delegate_method(:cost_without_labour_or_printer).to(:price_calculator) }
+    it { should delegate_method(:cost_without_mileage).to(:price_calculator) }
+    it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:trade_price).to(:price_calculator) }
+    it { should delegate_method(:my_price).to(:price_calculator) }
+    it { should delegate_method(:my_customer_price).to(:price_calculator) }
+  end
 end

@@ -1,0 +1,15 @@
+<div id="vehicle-wrap-prices">
+  <%= render(
+    partial: "vehicle_wraps/override_prices",
+    locals: {
+      vehicle_wrap: vehicle_wrap
+    }
+  ) %>
+
+  <%= render(
+    partial: "vehicle_wraps/calculated_prices",
+    locals: {
+      vehicle_wrap: vehicle_wrap
+    }
+  ) %>
+</div>

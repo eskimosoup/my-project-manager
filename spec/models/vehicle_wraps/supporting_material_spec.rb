@@ -14,4 +14,13 @@ RSpec.describe VehicleWraps::SupportingMaterial, type: :model do
   end
 
   it { should delegate_method(:name).to(:supporting_product) }
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      expect(subject.price_calculator).to be_an_instance_of(SupportingProductPriceCalculator)
+    end
+
+    it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
+  end
 end

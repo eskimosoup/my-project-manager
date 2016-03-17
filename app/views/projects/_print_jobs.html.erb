@@ -3,6 +3,7 @@
     <h3 class="inline-title">Print Items</h3>
     <% present @project do |presented_project| %>
       <%= presented_project.new_print_job_link('Add') %>
+      <%= presented_project.add_vehicle_wrap_link %>
     <% end %>
 
     <% if project.print_jobs.any? %>

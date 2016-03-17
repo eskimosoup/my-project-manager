@@ -11,4 +11,13 @@ RSpec.describe VehicleWraps::SundryItem, type: :model do
   describe "assocations", :association do
     it { should belong_to(:vehicle_wrap) }
   end
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      sundry_item = build_stubbed(:sundry_item)
+      expect(sundry_item.price_calculator).to be_an_instance_of(SundryItemPriceCalculator)
+    end
+
+    it { should delegate_method(:price).to(:price_calculator) }
+  end
 end

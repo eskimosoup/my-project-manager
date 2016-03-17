@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   scope :customer_id, ->(value) { where(customer_id: value) }
 
   delegate :name, to: :customer, prefix: true, allow_nil: true
-  delegate :logo, :colour, :my_brand?, to: :brand
+  delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand
   delegate :name, to: :brand, prefix: true
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,
     :brand_profit, :envisage_profit, :cost, to: :price_calculator

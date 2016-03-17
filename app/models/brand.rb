@@ -19,6 +19,10 @@ class Brand < ActiveRecord::Base
     MY_BRANDS.include?(brand_type)
   end
 
+  def vehicle_brand?
+    brand_type == "my_vehicle_wrap"
+  end
+
   def prefix
     if my_brand?
       "MY"
