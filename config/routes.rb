@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       resources :sundry_items, except: [:index, :show]
       resources :supporting_product_items, except: [:index, :show]
     end
+    resources :vehicle_wraps, only: :index, controller: "project_vehicle_wraps"
+    resources :vehicle_wrap_print_job_creations, only: [:create]
   end
   resources :vehicle_wraps, shallow: true do
     resources :vehicle_wraps_account_managements, except: [:show, :index], controller: "vehicle_wraps/account_managements"

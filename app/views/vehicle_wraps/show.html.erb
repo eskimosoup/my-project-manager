@@ -14,6 +14,13 @@
     </div>
 
     <%= render(
+      partial: "vehicle_wraps/prices",
+      locals: {
+        vehicle_wrap: @vehicle_wrap
+      }
+    ) %>
+
+    <%= render(
       partial: "vehicle_wraps/materials",
       locals: { 
         vehicle_wrap: @vehicle_wrap
@@ -24,8 +31,7 @@
       partial: "vehicle_wraps/supporting_materials",
       locals: { 
         vehicle_wrap: @vehicle_wrap
-      }
-    ) %>
+      }) %>
 
     <%= render(
       partial: "vehicle_wraps/labours",

@@ -3,6 +3,7 @@ require "rails_helper"
 feature "User manages vehicle wraps account managements", type: :feature do
   scenario "successfully creates a vehicle wrap account management" do
     user = create(:user)
+    brand = create(:my_vehicle_wrap_brand)
     vehicle_type = create(:vehicle_type)
     vehicle_wrap = create(:vehicle_wrap, vehicle_type: vehicle_type)
 
@@ -19,6 +20,7 @@ feature "User manages vehicle wraps account managements", type: :feature do
 
   scenario "successfully edits a vehicle wrap account management" do
     user = create(:user)
+    brand = create(:my_vehicle_wrap_brand)
     vehicle_type = create(:vehicle_type)
     vehicle_wrap = create(:vehicle_wrap, vehicle_type: vehicle_type)
     vehicle_wrap_account_management = create(:vehicle_wraps_account_management, vehicle_wrap: vehicle_wrap, hours: 3.0)
@@ -37,6 +39,7 @@ feature "User manages vehicle wraps account managements", type: :feature do
   scenario "successfully removes a vehicle wrap account management" do
     user = create(:user)
     vehicle_type = create(:vehicle_type)
+    brand = create(:my_vehicle_wrap_brand)
     vehicle_wrap = create(:vehicle_wrap, vehicle_type: vehicle_type)
     vehicle_wrap_account_management = create(:vehicle_wraps_account_management, vehicle_wrap: vehicle_wrap, hours: 5.0)
 

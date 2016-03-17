@@ -7,4 +7,9 @@ class VehicleWraps::Labour < ActiveRecord::Base
   validates :vehicle_wrap, presence: true
 
   delegate :name, to: :labour
+  delegate :price, :cost, to: :price_calculator
+
+  def price_calculator
+    @price_calculator ||= LabourPriceCalculator.new(labour: labour, hours: hours)
+  end
 end

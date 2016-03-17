@@ -10,4 +10,13 @@ RSpec.describe VehicleWraps::Mileage, type: :model do
   describe "associations", :association do
     it { should belong_to(:vehicle_wrap) }
   end
+
+  describe "#price_calculator" do
+    it "returns an instance of the price calculator" do
+      expect(subject.price_calculator).to be_an_instance_of(MileagePriceCalculator)
+    end
+
+    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:cost).to(:price_calculator) }
+  end
 end

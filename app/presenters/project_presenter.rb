@@ -59,19 +59,16 @@ class ProjectPresenter < BasePresenter
 
   def brand_profit_currency
     return "" unless project.brand_profit
-    # TODO: ?
     h.number_to_currency project.brand_profit
   end
 
   def envisage_price_currency
     return "" unless project.envisage_to_my_price
-    # TODO: ?
     h.number_to_currency project.envisage_to_my_price
   end
 
   def envisage_profit_currency
     return "" unless project.envisage_profit
-    # TODO: ?
     h.number_to_currency project.envisage_profit
   end
 
@@ -104,6 +101,11 @@ class ProjectPresenter < BasePresenter
   def invoices_link
     return unless show_invoices_link?
     h.link_to "Invoices", h.project_invoices_path(project), class: "action-button"
+  end
+
+  def add_vehicle_wrap_link
+    return nil unless project.vehicle_brand? && project.quoted?
+    h.link_to "Add Vehicle Wrap", h.project_vehicle_wraps_path(project), class: "action-button"
   end
 
   private

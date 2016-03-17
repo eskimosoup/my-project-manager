@@ -101,6 +101,28 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       it "#invoices_link" do
         expect(subject.invoices_link).to eq(nil)
       end
+
+      context "my vehicle wrap brand" do
+        it "#add_vehicle_wrap_link" do
+          brand = create(:my_vehicle_wrap_brand)
+          project = create(:quoted_project, brand: brand)
+          presenter = ProjectPresenter.new(object: project, view_template: view)
+
+          link = link_to "Add Vehicle Wrap", project_vehicle_wraps_path(project), class: "action-button"
+
+          expect(presenter.add_vehicle_wrap_link).to eq(link)
+        end
+      end
+
+      context "non my vehicle wrap brand" do
+        it "#add_vehicle_wrap_link" do
+          brand = create(:envisage_brand)
+          project = create(:quoted_project, brand: brand)
+          presenter = ProjectPresenter.new(object: project, view_template: view)
+
+          expect(presenter.add_vehicle_wrap_link).to eq(nil)
+        end
+      end
     end
 
     context 'sold project' do
@@ -127,6 +149,14 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it "#invoices_link" do
         expect(subject.invoices_link).to eq(nil)
+      end
+
+      it "#add_vehicle_wrap_link" do
+        brand = create(:envisage_brand)
+        project = create(:quoted_project, brand: brand)
+        presenter = ProjectPresenter.new(object: project, view_template: view)
+
+        expect(presenter.add_vehicle_wrap_link).to eq(nil)
       end
     end
 
@@ -162,6 +192,14 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         link = link_to("Invoices", project_invoices_path(project), class: "action-button")
         expect(subject.invoices_link).to eq(link)
       end
+
+      it "#add_vehicle_wrap_link" do
+        brand = create(:envisage_brand)
+        project = create(:quoted_project, brand: brand)
+        presenter = ProjectPresenter.new(object: project, view_template: view)
+
+        expect(presenter.add_vehicle_wrap_link).to eq(nil)
+      end
     end
 
     context 'completed project' do
@@ -187,6 +225,14 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       it "#invoices_link" do
         link = link_to("Invoices", project_invoices_path(project), class: "action-button")
         expect(subject.invoices_link).to eq(link)
+      end
+
+      it "#add_vehicle_wrap_link" do
+        brand = create(:envisage_brand)
+        project = create(:quoted_project, brand: brand)
+        presenter = ProjectPresenter.new(object: project, view_template: view)
+
+        expect(presenter.add_vehicle_wrap_link).to eq(nil)
       end
     end
   end

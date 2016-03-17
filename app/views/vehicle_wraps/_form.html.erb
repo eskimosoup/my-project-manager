@@ -1,6 +1,16 @@
 <%= simple_form_for @vehicle_wrap do |f| %>
+  <%= render(
+    partial: "vehicle_wraps/calculated_prices",
+    locals: {
+      vehicle_wrap: @vehicle_wrap
+    }
+  ) %>
   <%= f.input :name %>
   <%= f.input :description, as: :text %>
   <%= f.association :vehicle_type %>
+  <%= f.input :envisage_override_price, as: :decimal %>
+  <%= f.input :envisage_trade_override_price, as: :decimal %>
+  <%= f.input :envisage_to_my_override_price, as: :decimal %>
+  <%= f.input :my_override_price, as: :decimal %>
   <%= f.button :submit %>
 <% end %>

@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(email: "support@optimised.today", admin: true, password: "support")
+User.create!(email: "support@optimised.today", admin: true, first_name: "support", last_name: "support", password: "support")
 
 ["My Office Branding", "My Vehicle Wrap", "Envisage"].each do |brand|
-  Brand.create!(name: brand)
+  Brand.create!(name: brand, email: "talkprint@envisageprint.co.uk")
 end
 
 printer_cost = 0.50
@@ -55,4 +55,5 @@ labours.each do |l|
   Labour.create!(l)
 end
 
-vehicle_wrap = VehicleWrap.create!(name: "vehicle wrap 1", description: "Some vehicle wrap")
+vehicle_type = VehicleType.create!(name: "Large Van")
+vehicle_wrap = VehicleWrap.create!(name: "vehicle wrap 1", description: "Some vehicle wrap", vehicle_type: vehicle_type)

@@ -14,4 +14,12 @@ class VehicleWrap < ActiveRecord::Base
   validates :vehicle_type, presence: true
 
   delegate :name, to: :vehicle_type, prefix: true
+
+  delegate :cost_without_labour_or_printer, :cost_without_mileage, :cost,
+           :price, :trade_price, :my_price, :my_customer_price, 
+           to: :price_calculator
+
+  def price_calculator
+    @price_calculator ||= VehicleWraps::PriceCalculator.new(vehicle_wrap: self)
+  end
 end

@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="index">
+    <% unless @vehicle_wraps.blank? %>
+      <%= render(
+        partial: "project_vehicle_wraps/project_vehicle_wrap",
+        collection: @vehicle_wraps,
+        as: :project_vehicle_wrap
+      ) %>
+    <% else %>
+      Currently no preset vehicle wraps
+    <% end %>
+  </div>
+</div>

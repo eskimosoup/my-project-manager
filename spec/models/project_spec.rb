@@ -33,6 +33,7 @@ RSpec.describe Project, type: :model do
     it { should delegate_method(:name).to(:brand).with_prefix }
     it { should delegate_method(:colour).to(:brand) }
     it { should delegate_method(:my_brand?).to(:brand) }
+    it { should delegate_method(:vehicle_brand?).to(:brand) }
   end
 
   describe "price calculator" do

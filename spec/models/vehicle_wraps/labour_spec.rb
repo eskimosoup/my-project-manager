@@ -14,4 +14,14 @@ RSpec.describe VehicleWraps::Labour, type: :model do
   end
 
   it { should delegate_method(:name).to(:labour) }
+
+  describe "price calculator" do
+    it "#price_calculator" do
+      labour_item = build_stubbed(:vehicle_wraps_labour)
+      expect(labour_item.price_calculator).to be_an_instance_of(LabourPriceCalculator)
+    end
+
+    it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:price).to(:price_calculator) }
+  end
 end
