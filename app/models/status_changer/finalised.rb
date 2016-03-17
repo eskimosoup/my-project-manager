@@ -1,6 +1,8 @@
 module StatusChanger
   class Finalised
     include ActiveModel::Model
+    include ActiveAttr::TypecastedAttributes
+    attribute :delivery_deadline, type: Date
 
     attr_accessor :purchase_order, :name, :description, :delivery_deadline, :notes, :rush_job
 
