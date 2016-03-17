@@ -19,6 +19,7 @@ module StatusChanger
     def initialize(project, attributes = default_attributes(project))
       @project = project
       @print_jobs = project.print_jobs
+      attributes[:delivery_deadline] = Date.parse([attributes.delete("delivery_deadline(1i)"), attributes.delete("delivery_deadline(2i)"), attributes.delete("delivery_deadline(3i)")].join("-")) if attributes["delivery_deadline(1i)"]
       super(attributes)
     end
 
@@ -39,11 +40,13 @@ module StatusChanger
         if valid?
           update_project_and_print_jobs
           send_emails
+          true
         end
       else
       # TODO raise an error if project is not sold
       end
     rescue ActiveRecord::RecordInvalid => e
+      errors.add(:base, e)
       false
     end
 
@@ -56,7 +59,7 @@ module StatusChanger
         project.update!(purchase_order: purchase_order, name: name, description: description,
                         delivery_deadline: delivery_deadline, notes: notes, rush_job: rush_job, status: "finalised")
         print_jobs_form_objects.each do |pj|
-          pj.save
+          pj.save!
         end
       end
     end
