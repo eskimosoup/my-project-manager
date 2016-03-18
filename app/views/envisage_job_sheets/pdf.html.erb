@@ -30,12 +30,6 @@
   }
 ) %>
 
-<%= render(
-  partial: "envisage_job_sheets/print_job",
-  collection: project.print_jobs,
-  as: :print_job
-) %>
-
 <% if project.shipping_address && project.billing_address %>
   <%= render(
     partial: "job_sheets/address_details",
@@ -45,3 +39,9 @@
     }
   ) %>
 <% end %>
+
+<%= render(
+  partial: "envisage_job_sheets/print_job",
+  collection: project.print_jobs,
+  as: :print_job
+) %>
