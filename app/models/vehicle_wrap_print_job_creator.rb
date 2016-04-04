@@ -62,7 +62,7 @@ class VehicleWrapPrintJobCreator
 
   def labours
     @labours ||= vehicle_wrap.labours.map do |vehicle_wrap_labour|
-      print_job.labours.build(
+      print_job.labour_items.build(
         hours: vehicle_wrap_labour.hours,
         labour_id: vehicle_wrap_labour.labour_id
       )
