@@ -4,7 +4,6 @@ RSpec.describe Contact, type: :model do
   describe "validations", :validation do
     it { should validate_presence_of(:customer) }
     it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:role) }
 
     describe "uniqueness" do
       subject { build(:contact) }
