@@ -28,7 +28,7 @@ class Totalisers::Main
 
   def mileage_totaliser
     return nil unless mileages.present?
-    Totaliser::Mileage.new(mileages: mileages)
+    Totalisers::Mileage.new(mileages: mileages)
   end
 
   def product_totalisers
