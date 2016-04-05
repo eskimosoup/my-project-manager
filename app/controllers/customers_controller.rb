@@ -5,6 +5,29 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = find_customer
+  end
+
+  def edit
+    @customer = find_customer
+  end
+
+  def update
+    @customer = find_customer
+    if @customer.update(customer_params)
+      redirect_to @customer, notice: "Customer successfully updated"
+    else
+      render :edit
+    end
+  end 
+
+  private
+
+  def find_customer
+    Customer.find(params[:id])
+  end
+
+  def customer_params
+    params.require(:customer).permit(:name, :credit_limit)
   end
 end

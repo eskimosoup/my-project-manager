@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User manages customers", type: :feature do
-  scenario "creates customer" do
+  scenario "creates customer with main contact" do
     user = create(:user)
     visit new_customer_registration_path(as: user)
 
@@ -16,6 +16,21 @@ feature "User manages customers", type: :feature do
     click_on "Create Customer"
 
     expect(page).to have_css "h1", text: "Customer name"
+  end
+
+  scenario "editing customer" do
+    user = create(:user)
+    customer = create(:customer, name: "Joe Bloggs", credit_limit: 500)
+
+    visit customer_path(customer, as: user)
+    within "h1" do
+      click_link "Edit"
+    end
+    fill_form(:customer, { name: "Jane Bloggs" })
+    click_on "Update Customer"
+    
+    expect(page).to have_css "h1", text: "Jane Bloggs"
+    expect(current_path).to eq(customer_path(customer))
   end
 
   scenario "viewing customers" do
