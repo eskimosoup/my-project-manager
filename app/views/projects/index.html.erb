@@ -1,61 +1,14 @@
-<%= content_for :head do %>
-  <script>
-    // http://stackoverflow.com/a/9709425
-    $(document).on('click', 'input:checkbox', function() {
-      var $box = $(this);
-      if ($box.is(":checked")) {
-        var group = "input:checkbox[name='" + $box.attr("name") + "']";
-        $(group).prop("checked", false);
-        $box.prop("checked", true);
-      } else {
-        $box.prop("checked", false);
-      }
-    });
-  </script>
-<% end %>
-
 <div class="content">
   <div class="index">
     <h1>Projects</h1>
 
     <%= link_to "New Project", new_project_path, class: 'action-button' %>
-
-    <%= form_tag '', method: :get, class: 'index-form' do %>
-      <div class="index-search-terms">
-        <div class="index-search-item">
-          <%= label_tag :name_search, 'Project name search' %>
-          <%= text_field_tag :name_search, params[:name_search], class: 'autocomplete', placeholder: 'Enter project name', data: { path: "#{autocomplete_path(model: 'Project', field: 'name')}", select: 'log' } %>
-        </div>
-
-        <div class="index-search-pagination">
-          <%= label_tag :per_page, 'Per page' %>
-          <%= select_tag :per_page, options_for_select(['10', '20', '25', '50', '75', '100'], (params[:per_page] || '25')), class: 'inline-block' %>
-        </div>
-      </div>
-
-      <div class="index-search-filters">
-        <div class="quarters">
-          <%= select_tag :customer_id, options_for_select(Customer.pluck(:name, :id), params[:customer_id]), class: 'inline-block', prompt: 'All customers' %>
-        </div>
-
-        <div class="quarters">
-          <%= check_box_tag "project_type", Project.statuses[:quoted], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:quoted]), id: 'project_type_only_quote' %>
-          <%= label_tag :project_type_only_quote, "Only quoted projects" %>
-        </div>
-
-        <div class="quarters">
-          <%= check_box_tag "project_type", Project.statuses[:sold], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:sold]), id: 'project_type_only_sold' %>
-          <%= label_tag :project_type_only_sold, "Only sold projects" %>
-        </div>
-
-        <div class="quarters">
-          <%= check_box_tag "project_type", Project.statuses[:completed], (params[:project_type].present? && params[:project_type].to_i === Project.statuses[:completed]), id: 'project_type_only_completed' %>
-          <%= label_tag :project_type_only_completed, "Only completed projects" %>
-        </div>
-      </div>
-
-      <%= submit_tag 'Search', class: 'submit-button' %>
-    <% end %>
+    <%= render(
+      partial: "project_searches/form",
+      locals: {
+        project_search: @project_search
+      }
+    ) %>
 
     <div class="index-items">
       <%= render @projects %>

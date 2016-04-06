@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :vehicle_wraps, only: :index, controller: "project_vehicle_wraps"
     resources :vehicle_wrap_print_job_creations, only: [:create]
   end
+  resource :project_search, only: [:create, :show]
   resources :vehicle_wraps, shallow: true do
     resources :vehicle_wraps_account_managements, except: [:show, :index], controller: "vehicle_wraps/account_managements"
     resources :vehicle_wraps_designs, except: [:show, :index], controller: "vehicle_wraps/designs"

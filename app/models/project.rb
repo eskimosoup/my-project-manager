@@ -26,8 +26,9 @@ class Project < ActiveRecord::Base
 
   scope :alphabetical, -> { order(name: :asc) }
   scope :name_search, ->(keywords) { where('projects.name ILIKE ?', "%#{keywords}%").alphabetical if keywords.present? }
-  scope :project_type, ->(value) { where(status: value) }
-  scope :customer_id, ->(value) { where(customer_id: value) }
+  scope :project_type, ->(value) { where(status: value) if value.present? }
+  scope :customer_id, ->(value) { where(customer_id: value) if value.present? }
+  scope :brand_id, ->(value) { where(brand_id: value) if value.present? }
 
   delegate :name, to: :customer, prefix: true, allow_nil: true
   delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand

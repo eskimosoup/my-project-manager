@@ -1,0 +1,33 @@
+<%= form_for project_search, url: project_search_path, html: { class: 'index-form' } do |f| %>
+  <div class="index-search-terms">
+    <div class="index-search-item">
+      <%= f.label :name, 'Project name search' %>
+      <%= f.text_field :name, class: 'autocomplete', placeholder: 'Enter project name', data: { path: "#{autocomplete_path(model: 'Project', field: 'name')}", select: 'log' } %>
+    </div>
+
+    <div class="index-search-pagination">
+      <%= f.label :per_page, 'Per page' %>
+      <%= f.select :per_page, project_search.per_page_options, class: 'inline-block' %>
+    </div>
+  </div>
+
+  <div class="index-search-filters">
+    <div class="quarters">
+      <%= f.select :customer_id, Customer.pluck(:name, :id), class: 'inline-block', prompt: 'All customers' %>
+    </div>
+
+    <div class="quarters">
+      <%= f.select :brand_id, Brand.pluck(:name, :id), class: 'inline-block', prompt: 'All brands' %>
+    </div>
+
+    <% Project.statuses.keys.each do |status| %>
+      <div class="quarters">
+        <%= f.check_box status.to_sym %>
+        <%= f.label status.to_sym, "Only #{ status } projects" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit 'Search', class: 'submit-button' %>
+<% end %>
+

@@ -27,7 +27,8 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.filter(params.slice(:name_search, :customer_id, :project_type)).page(params[:page]).per(params[:per_page] || 15)
+    @project_search = ProjectSearch.new
+    @projects = Project.page(params[:page]).per(params[:per_page] || 15)
   end
 
   def show
