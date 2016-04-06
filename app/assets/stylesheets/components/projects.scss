@@ -19,10 +19,14 @@
 }
 
 .project-prices-summary {
-  @include grid-column(6);
+  @include grid-column(4);
 }
 
 .project-status {
+  @include grid-column(2);
+}
+
+.project-brand {
   @include grid-column(2);
 }
 
