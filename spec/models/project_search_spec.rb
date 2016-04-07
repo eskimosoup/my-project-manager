@@ -94,6 +94,16 @@ describe ProjectSearch, type: :model do
     end
   end
 
+  context "searching with no statuses checked" do
+    it "returns all projects" do
+      projects = create_project_of_each_status
+
+      search = ProjectSearch.new
+
+      expect(search.results.count).to eq(projects.size)
+    end
+  end
+
   context "combining search options" do
     it "returns only the appropriate projects" do
       brand = create(:my_vehicle_wrap_brand)

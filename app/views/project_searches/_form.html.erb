@@ -13,11 +13,11 @@
 
   <div class="index-search-filters">
     <div class="quarters">
-      <%= f.select :customer_id, Customer.pluck(:name, :id), class: 'inline-block', prompt: 'All customers' %>
+      <%= f.select :customer_id, Customer.pluck(:name, :id), class: 'inline-block', include_blank: 'All customers' %>
     </div>
 
     <div class="quarters">
-      <%= f.select :brand_id, Brand.pluck(:name, :id), class: 'inline-block', prompt: 'All brands' %>
+      <%= f.select :brand_id, Brand.pluck(:name, :id), class: 'inline-block', include_blank: 'All brands' %>
     </div>
 
     <% Project.statuses.keys.each do |status| %>

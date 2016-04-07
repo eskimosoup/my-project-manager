@@ -1,14 +1,14 @@
 class ProjectSearch
   include ActiveModel::Model
-  include ActiveAttr::TypecastedAttributes
+  include ActiveAttr::QueryAttributes
 
   attribute :name, type: String
   Project.statuses.keys.map(&:to_sym).each do |status|
-    attribute status, type: Boolean
+    attribute status
   end
-  attribute :customer_id, type: Integer
-  attribute :brand_id, type: Integer
-  attribute :per_page, type: Integer
+  attribute :customer_id
+  attribute :brand_id
+  attribute :per_page
 
   def initialize(attrs = {})
     @per_page = attrs.fetch(:per_page, 25)
@@ -36,12 +36,5 @@ class ProjectSearch
       statuses << integer if send("#{ status_name }?")
     end
     statuses
-  end
-
-  
-  Project.statuses.keys.each do |status|
-    define_method "#{ status }?" do
-      send(status)
-    end
   end
 end

@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 
 module MyProjectManager
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join("lib")
 
     config.generators do |generate|
       generate.helper false
