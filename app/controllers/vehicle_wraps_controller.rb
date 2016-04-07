@@ -1,5 +1,4 @@
 class VehicleWrapsController < ApplicationController
-
   def index
     @vehicle_wraps = VehicleWrap.includes(:vehicle_type).page(params[:page]).per(10)
   end
@@ -11,7 +10,7 @@ class VehicleWrapsController < ApplicationController
   def create
     @vehicle_wrap = VehicleWrap.new(vehicle_wrap_params)
     if @vehicle_wrap.save
-      redirect_to @vehicle_wrap, notice: "Vehicle Wrap created"
+      redirect_to @vehicle_wrap, notice: 'Vehicle Wrap created'
     else
       render :new
     end
@@ -24,7 +23,7 @@ class VehicleWrapsController < ApplicationController
   def update
     @vehicle_wrap = find_vehicle_wrap
     if @vehicle_wrap.update(vehicle_wrap_params)
-      redirect_to @vehicle_wrap, notice: "Vehicle Wrap updated"
+      redirect_to @vehicle_wrap, notice: 'Vehicle Wrap updated'
     else
       render :edit
     end
@@ -33,7 +32,6 @@ class VehicleWrapsController < ApplicationController
   def show
     @vehicle_wrap = find_vehicle_wrap
   end
-  
 
   private
 
@@ -42,7 +40,6 @@ class VehicleWrapsController < ApplicationController
   end
 
   def vehicle_wrap_params
-    params.require(:vehicle_wrap).permit(:name, :description, :vehicle_type_id)
+    params.require(:vehicle_wrap).permit(:name, :description, :vehicle_type_id, :envisage_override_price, :envisage_trade_override_price, :envisage_to_my_override_price, :my_override_price)
   end
-
 end
