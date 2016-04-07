@@ -79,7 +79,7 @@ class PrintJobPriceCalculator
   end
 
   def my_customer_price_mark_up
-    (my_price_without_mileage_or_job_specs * 1.2).round(2)
+    (my_price_without_mileage_or_job_specs * 1.4).round(2)
   end
   private :my_customer_price_mark_up
 
