@@ -13,7 +13,7 @@
 
   <div class="index-search-filters">
     <div class="quarters">
-      <%= f.select :customer_id, Customer.pluck(:name, :id), class: 'inline-block', include_blank: 'All customers' %>
+      <%= f.select :customer_id, Customer.order(name: :asc).pluck(:name, :id), class: 'inline-block', include_blank: 'All customers' %>
     </div>
 
     <div class="quarters">
@@ -30,4 +30,3 @@
 
   <%= f.submit 'Search', class: 'submit-button' %>
 <% end %>
-

@@ -1,7 +1,9 @@
 class Customer < ActiveRecord::Base
   include Filterable
 
-  has_one :main_contact, ->{ order(made_main_contact_at: :desc).first }, class_name: 'Contact'
+  # CHANGED 08/04/2016 - this seems broken
+  # has_one :main_contact, ->{ order(made_main_contact_at: :desc).first }, class_name: 'Contact'
+
   has_many :addresses
   has_many :contacts
   has_many :projects
@@ -12,7 +14,11 @@ class Customer < ActiveRecord::Base
 
   scope :alphabetical, -> { order(name: :asc) }
   scope :name_search, ->(keywords) { where('customers.name ILIKE ?', "%#{keywords}%").alphabetical if keywords.present? }
-  scope :project_type, ->(value) {
-    joins(:projects).where(projects: { status: value }).group("customers.id").having("count(projects.id) >= ?", 1)
+  scope :project_type, lambda { |value|
+    joins(:projects).where(projects: { status: value }).group('customers.id').having('count(projects.id) >= ?', 1)
   }
+
+  def main_contact
+    contacts.order(made_main_contact_at: :desc).first
+  end
 end

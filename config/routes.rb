@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "homes#show"
+  root to: 'homes#show'
 
   get '/autocomplete', to: 'utilities#autocomplete'
   resources :users, controller: :users, only: :create
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
     resource :project_finaliser, only: [:new, :create]
     resource :status_changer, only: [:create]
     resources :discounts, only: [:new, :create, :destroy], shallow: true
-    resources :invoices, only: [:index], shallow: true, controller: "project_invoices" do
+    resources :invoices, only: [:index], shallow: true, controller: 'project_invoices' do
       resource :invoice_download, only: [:show]
     end
     resources :percentage_invoices, only: [:new, :create]
@@ -34,19 +33,23 @@ Rails.application.routes.draw do
       resources :sundry_items, except: [:index, :show]
       resources :supporting_product_items, except: [:index, :show]
     end
-    resources :vehicle_wraps, only: :index, controller: "project_vehicle_wraps"
+    resources :vehicle_wraps, only: :index, controller: 'project_vehicle_wraps'
     resources :vehicle_wrap_print_job_creations, only: [:create]
   end
-  resource :project_search, only: [:create, :show]
+  resource :project_search, only: [:create, :show] do
+    collection do
+      get 'quoted_only', path: 'quoted-only'
+    end
+  end
   resources :vehicle_wraps, shallow: true do
-    resources :vehicle_wraps_account_managements, except: [:show, :index], controller: "vehicle_wraps/account_managements"
-    resources :vehicle_wraps_designs, except: [:show, :index], controller: "vehicle_wraps/designs"
-    resources :vehicle_wraps_job_specifications, except: [:show, :index], controller: "vehicle_wraps/job_specifications"
-    resources :vehicle_wraps_labours, except: [:show, :index], controller: "vehicle_wraps/labours"
-    resources :vehicle_wraps_materials, except: [:show, :index], controller: "vehicle_wraps/materials"
-    resources :vehicle_wraps_mileages, except: [:show, :index], controller: "vehicle_wraps/mileages"
-    resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: "vehicle_wraps/supporting_materials"
-    resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: "vehicle_wraps/sundry_items"
+    resources :vehicle_wraps_account_managements, except: [:show, :index], controller: 'vehicle_wraps/account_managements'
+    resources :vehicle_wraps_designs, except: [:show, :index], controller: 'vehicle_wraps/designs'
+    resources :vehicle_wraps_job_specifications, except: [:show, :index], controller: 'vehicle_wraps/job_specifications'
+    resources :vehicle_wraps_labours, except: [:show, :index], controller: 'vehicle_wraps/labours'
+    resources :vehicle_wraps_materials, except: [:show, :index], controller: 'vehicle_wraps/materials'
+    resources :vehicle_wraps_mileages, except: [:show, :index], controller: 'vehicle_wraps/mileages'
+    resources :vehicle_wraps_supporting_materials, except: [:show, :index], controller: 'vehicle_wraps/supporting_materials'
+    resources :vehicle_wraps_sundry_items, except: [:show, :index], controller: 'vehicle_wraps/sundry_items'
   end
 
   namespace :customer do
@@ -64,18 +67,18 @@ Rails.application.routes.draw do
   end
   # Clearance
   resources :passwords,
-      controller: 'clearance/passwords',
-      only: [:create, :new]
+            controller: 'clearance/passwords',
+            only: [:create, :new]
   resource :session,
-      controller: 'clearance/sessions',
-      only: [:create]
+           controller: 'clearance/sessions',
+           only: [:create]
   resources :users,
-      controller: 'clearance/users',
-      only: Clearance.configuration.user_actions do
-        resource :password,
-          controller: 'clearance/passwords',
-          only: [:create, :edit, :update]
-      end
+            controller: 'clearance/users',
+            only: Clearance.configuration.user_actions do
+    resource :password,
+             controller: 'clearance/passwords',
+             only: [:create, :edit, :update]
+  end
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   if Clearance.configuration.allow_sign_up?

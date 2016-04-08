@@ -26,14 +26,14 @@ class ProjectSearch
   private
 
   def find_projects
-    Project.name_search(name).project_type(statuses_to_search).
-      customer_id(customer_id).brand_id(brand_id)
+    Project.name_search(name).project_type(statuses_to_search)
+           .customer_id(customer_id).brand_id(brand_id).order(updated_at: :desc)
   end
 
   def statuses_to_search
     statuses = []
     Project.statuses.each do |status_name, integer|
-      statuses << integer if send("#{ status_name }?")
+      statuses << integer if send("#{status_name}?")
     end
     statuses
   end

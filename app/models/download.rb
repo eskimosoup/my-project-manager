@@ -1,4 +1,4 @@
-require "render_anywhere"
+require 'render_anywhere'
 
 class Download
   include RenderAnywhere
@@ -11,17 +11,17 @@ class Download
 
   def to_pdf
     kit = PDFKit.new(as_html, page_size: 'A4')
-    kit.to_file("tmp/download.pdf")
+    kit.to_file("#{Rails.root}/tmp/download.pdf")
   end
 
   def filename
-    "Quote-#{ project.brand_name }-#{ project.id + 100 }-#{ Date.today.to_s }.pdf"
+    "Quote-#{project.brand_name}-#{project.id + 100}-#{Date.today}.pdf"
   end
 
   def render_attributes
     {
-      template: "downloads/pdf",
-      layout: "pdf",
+      template: 'downloads/pdf',
+      layout: 'pdf',
       locals: { project: project, user: user, colour: colour }
     }
   end
