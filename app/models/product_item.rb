@@ -9,6 +9,8 @@ class ProductItem < ActiveRecord::Base
   delegate :quoted?, to: :print_job
   delegate :name, to: :product
   delegate :cost, to: :price_calculator
+  delegate :fixed_cost, to: :price_calculator
+  delegate :variable_cost, to: :price_calculator
   delegate :envisage_price, :envisage_rush_price, to: :price_calculator
   delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
   delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator

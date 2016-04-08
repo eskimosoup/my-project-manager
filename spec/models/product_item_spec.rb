@@ -26,6 +26,8 @@ RSpec.describe ProductItem, type: :model do
     end
     
     it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:fixed_cost).to(:price_calculator) }
+    it { should delegate_method(:variable_cost).to(:price_calculator) }
     it { should delegate_method(:envisage_price).to(:price_calculator) }
     it { should delegate_method(:envisage_trade_price).to(:price_calculator) }
     it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
