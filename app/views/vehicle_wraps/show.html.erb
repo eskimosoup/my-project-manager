@@ -1,9 +1,16 @@
 <div class="content">
   <div class="main">
     <h1 class="vehicle-wrap-name">
-      <%= link_to "Edit", edit_vehicle_wrap_path(@vehicle_wrap), class: "action-button" %>
       <%= @vehicle_wrap.name %>
     </h1>
+
+    <div class="delete-vehicle-wrap">
+      <%= link_to "Edit this vehicle wrap", edit_vehicle_wrap_path(@vehicle_wrap), class: "action-button" %>
+      <%= link_to "Delete this vehicle wrap", vehicle_wrap_path(@vehicle_wrap),
+                            class: "action-button",
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+    </div>
 
     <div class="vehicle-wrap-vehicle-type">
       <%= @vehicle_wrap.vehicle_type_name %>
@@ -22,55 +29,55 @@
 
     <%= render(
       partial: "vehicle_wraps/materials",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/supporting_materials",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }) %>
 
     <%= render(
       partial: "vehicle_wraps/labours",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/sundry_items",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/job_specifications",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/mileages",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/account_managements",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
 
     <%= render(
       partial: "vehicle_wraps/designs",
-      locals: { 
+      locals: {
         vehicle_wrap: @vehicle_wrap
       }
     ) %>
