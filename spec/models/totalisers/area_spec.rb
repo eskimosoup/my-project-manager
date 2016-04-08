@@ -9,8 +9,8 @@ describe Totalisers::Area, type: :model do
 
   it "#price" do
     products = [
-      instance_double("product", price: 2.91),
-      instance_double("product", price: 1.17)
+      instance_double("product", envisage_price: 2.91),
+      instance_double("product", envisage_price: 1.17)
     ]
     totaliser = Totalisers::Area.new(name: "", items: products)
 
@@ -19,8 +19,8 @@ describe Totalisers::Area, type: :model do
 
   it "#cost" do
     products = [
-      instance_double("product", price: 2.50),
-      instance_double("product", price: 1.17)
+      instance_double("product", envisage_price: 2.50),
+      instance_double("product", envisage_price: 1.17)
     ]
     totaliser = Totalisers::Area.new(name: "", items: products)
 

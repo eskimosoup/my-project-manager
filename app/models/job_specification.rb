@@ -6,20 +6,10 @@ class JobSpecification < ActiveRecord::Base
 
   delegate :quoted?, to: :print_job
   delegate :cost, to: :price_calculator
-  delegate :envisage_price, to: :price_calculator
-  delegate :envisage_trade_price, to: :price_calculator
-  delegate :envisage_to_my_price, to: :price_calculator
-  delegate :my_price, to: :price_calculator
-
-  def price
-    envisage_price
-  end
-
-  def old_price_calculator
-    @old_price_calculator ||= JobSpecificationPriceCalculator.new(hours: hours)
-  end
-
-  # TODO Clean Up
+  delegate :envisage_price, :envisage_rush_price, to: :price_calculator
+  delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
+  delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
+  delegate :my_price, :my_rush_price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::JobSpecification.new(hours: hours)

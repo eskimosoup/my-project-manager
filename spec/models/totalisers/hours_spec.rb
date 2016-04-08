@@ -14,8 +14,8 @@ describe Totalisers::Hours, type: :model do
 
     it "#price" do
       account_managements = [
-        instance_double("account_management", price: 5.25),
-        instance_double("account_management", price: 5.25)
+        instance_double("account_management", envisage_price: 5.25),
+        instance_double("account_management", envisage_price: 5.25)
       ]
       totaliser = Totalisers::Hours.new(name: "", items: account_managements)
 

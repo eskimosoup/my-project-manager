@@ -24,5 +24,9 @@ RSpec.describe JobSpecification, type: :model do
     it { should delegate_method(:envisage_trade_price).to(:price_calculator) }
     it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
     it { should delegate_method(:my_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_rush_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_trade_rush_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_rush_price).to(:price_calculator) }
+    it { should delegate_method(:my_rush_price).to(:price_calculator) }
   end
 end
