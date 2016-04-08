@@ -33,6 +33,12 @@ class VehicleWrapsController < ApplicationController
     @vehicle_wrap = find_vehicle_wrap
   end
 
+  def destroy
+    @vehicle_wrap = find_vehicle_wrap
+    @vehicle_wrap.destroy
+    redirect_to vehicle_wraps_url, notice: 'Vehicle wrap was successfully destroyed.'
+  end
+
   private
 
   def find_vehicle_wrap

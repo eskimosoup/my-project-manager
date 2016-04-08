@@ -1,0 +1,25 @@
+.vehicle-wrap-index-name {
+  @include grid-column(4);
+  font-weight: $lato-bold;
+}
+
+.vehicle-wrap-index-description {
+  @include grid-column(4);
+
+  p {
+    font-size: rem-calc(14px);
+    line-height: 1.25;
+    margin: 0;
+  }
+}
+
+.vehicle-wrap-index-vehicle-type {
+  @include grid-column(2);
+}
+
+.vehicle-wrap-controls {
+  display: block;
+  font-weight: 700;
+  margin: rem-calc(5px) 0;
+  text-transform: uppercase;
+}
