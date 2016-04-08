@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408140751) do
+ActiveRecord::Schema.define(version: 20160408143205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20160408140751) do
   end
 
   add_index "contacts", ["customer_id"], name: "index_contacts_on_customer_id", using: :btree
-  add_index "contacts", ["forename"], name: "index_contacts_on_forename", unique: true, using: :btree
   add_index "contacts", ["made_main_contact_at"], name: "index_contacts_on_made_main_contact_at", using: :btree
 
   create_table "customers", force: :cascade do |t|
