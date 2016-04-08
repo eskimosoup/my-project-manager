@@ -1,14 +1,14 @@
 <%= link_to vehicle_wrap, class: "basic-listing vehicle-wrap #{ cycle('odd', 'even', class: 'vehicle-wrap') }", id: dom_id(vehicle_wrap) do %>
-  <div class="vehicle-wrap-name">
+  <div class="vehicle-wrap-index-name">
     <%= octicon('eye') %>
     <%= vehicle_wrap.name %>
   </div>
 
-  <div class="vehicle-wrap-description">
-    <%= simple_format vehicle_wrap.description %>
+  <div class="vehicle-wrap-index-vehicle-type">
+    <%= vehicle_wrap.vehicle_type_name %>
   </div>
 
-  <div class="vehicle-wrap-vehicle-type">
-    <%= vehicle_wrap.vehicle_type_name %>
+  <div class="vehicle-wrap-index-description">
+    <%= simple_format vehicle_wrap.description %>
   </div>
 <% end %>
