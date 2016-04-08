@@ -8,10 +8,13 @@ class SupportingProductItem < ActiveRecord::Base
 
   delegate :quoted?, to: :print_job
   delegate :name, to: :supporting_product
-  delegate :cost, :price, to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, :envisage_rush_price, to: :price_calculator
+  delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
+  delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
+  delegate :my_price, :my_rush_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= SupportingProductPriceCalculator.new(supporting_product: supporting_product, area: area)
+    @price_calculator ||= PriceCalculator::SupportingProduct.new(supporting_product: supporting_product, area: area)
   end
-
 end

@@ -146,12 +146,12 @@ describe Totalisers::Main, type: :model do
 
     def build_labour_items
       [
-        instance_double("labour_item", name: "Standard Fitting", hours: 2, price: 5.25),
-        instance_double("labour_item", name: "Standard Fitting", hours: 3, price: 5.25),
-        instance_double("labour_item", name: "Standard Finishing", hours: 1, price: 8.27),
-        instance_double("labour_item", name: "Standard Finishing", hours: 1, price: 1.25),
-        instance_double("labour_item", name: "Out of hours fitting", hours: 5, price: 7.25),
-        instance_double("labour_item", name: "Out of hours fitting", hours: 2, price: 5.05),
+        instance_double("labour_item", name: "Standard Fitting", hours: 2, envisage_price: 5.25),
+        instance_double("labour_item", name: "Standard Fitting", hours: 3, envisage_price: 5.25),
+        instance_double("labour_item", name: "Standard Finishing", hours: 1, envisage_price: 8.27),
+        instance_double("labour_item", name: "Standard Finishing", hours: 1, envisage_price: 1.25),
+        instance_double("labour_item", name: "Out of hours fitting", hours: 5, envisage_price: 7.25),
+        instance_double("labour_item", name: "Out of hours fitting", hours: 2, envisage_price: 5.05),
       ]
     end
   end
@@ -203,12 +203,12 @@ describe Totalisers::Main, type: :model do
 
     def build_product_items
       [
-        instance_double("product_item", name: "Name 1", area: 2, price: 5.25, cost: 1),
-        instance_double("product_item", name: "Name 1", area: 3, price: 5.25, cost: 1),
-        instance_double("product_item", name: "Name 2", area: 1, price: 8.27, cost: 1),
-        instance_double("product_item", name: "Name 2", area: 1, price: 1.25, cost: 1),
-        instance_double("product_item", name: "Name 3", area: 5, price: 7.25, cost: 1),
-        instance_double("product_item", name: "Name 3", area: 2, price: 5.05, cost: 1),
+        instance_double("product_item", name: "Name 1", area: 2, envisage_price: 5.25, cost: 1),
+        instance_double("product_item", name: "Name 1", area: 3, envisage_price: 5.25, cost: 1),
+        instance_double("product_item", name: "Name 2", area: 1, envisage_price: 8.27, cost: 1),
+        instance_double("product_item", name: "Name 2", area: 1, envisage_price: 1.25, cost: 1),
+        instance_double("product_item", name: "Name 3", area: 5, envisage_price: 7.25, cost: 1),
+        instance_double("product_item", name: "Name 3", area: 2, envisage_price: 5.05, cost: 1),
       ]
     end
   end
@@ -260,12 +260,12 @@ describe Totalisers::Main, type: :model do
 
     def build_supporting_product_items
       [
-        instance_double("supporting_product_item", name: "Name 1", area: 2, price: 5.25, cost: 1),
-        instance_double("supporting_product_item", name: "Name 1", area: 3, price: 5.25, cost: 1),
-        instance_double("supporting_product_item", name: "Name 2", area: 1, price: 8.27, cost: 1),
-        instance_double("supporting_product_item", name: "Name 2", area: 1, price: 1.25, cost: 1),
-        instance_double("supporting_product_item", name: "Name 3", area: 5, price: 7.25, cost: 1),
-        instance_double("supporting_product_item", name: "Name 3", area: 2, price: 5.05, cost: 1),
+        instance_double("supporting_product_item", name: "Name 1", area: 2, envisage_price: 5.25, cost: 1),
+        instance_double("supporting_product_item", name: "Name 1", area: 3, envisage_price: 5.25, cost: 1),
+        instance_double("supporting_product_item", name: "Name 2", area: 1, envisage_price: 8.27, cost: 1),
+        instance_double("supporting_product_item", name: "Name 2", area: 1, envisage_price: 1.25, cost: 1),
+        instance_double("supporting_product_item", name: "Name 3", area: 5, envisage_price: 7.25, cost: 1),
+        instance_double("supporting_product_item", name: "Name 3", area: 2, envisage_price: 5.05, cost: 1),
       ]
     end
   end

@@ -37,6 +37,6 @@ class Project < ActiveRecord::Base
     :brand_profit, :envisage_profit, :cost, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= ProjectPriceCalculator.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)
+    @price_calculator ||= PriceCalculator::Project.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)
   end
 end

@@ -8,7 +8,7 @@ class Totalisers::Hours
   end
 
   def price
-    @price ||= items.map(&:price).reduce(0, :+)
+    @price ||= items.map(&:envisage_price).reduce(0, :+)
   end
 
   def cost

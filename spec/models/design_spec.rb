@@ -17,10 +17,17 @@ RSpec.describe Design, type: :model do
     it "#price_calculator" do
       design = build_stubbed(:design)
 
-      expect(design.price_calculator).to be_an_instance_of(DesignPriceCalculator)
+      expect(design.price_calculator).to be_an_instance_of(PriceCalculator::Design)
     end
 
-    it { should delegate_method(:price).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_trade_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
+    it { should delegate_method(:my_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_rush_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_trade_rush_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_rush_price).to(:price_calculator) }
+    it { should delegate_method(:my_rush_price).to(:price_calculator) }
   end
 end

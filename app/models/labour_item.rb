@@ -8,10 +8,13 @@ class LabourItem < ActiveRecord::Base
 
   delegate :name, to: :labour
   delegate :quoted?, to: :print_job
-  delegate :price, :cost, to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, :envisage_rush_price, to: :price_calculator
+  delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
+  delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
+  delegate :my_price, :my_rush_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= LabourPriceCalculator.new(labour: labour, hours: hours)
+    @price_calculator ||= PriceCalculator::Labour.new(labour: labour, hours: hours)
   end
-
 end
