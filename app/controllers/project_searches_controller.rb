@@ -1,9 +1,14 @@
 class ProjectSearchesController < ApplicationController
+  def quoted_only
+    @project_search = ProjectSearch.new(quoted: 1)
+    @projects = @project_search.results.page(params[:page]).per(@project_search.per_page)
+    render 'projects/index'
+  end
 
   def show
     @project_search = ProjectSearch.new(project_search_params)
     @projects = @project_search.results.page(params[:page]).per(@project_search.per_page)
-    render "projects/index"
+    render 'projects/index'
   end
 
   def create

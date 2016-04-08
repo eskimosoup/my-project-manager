@@ -1,9 +1,9 @@
 class CustomerRegistration
   include ActiveModel::Model
 
-  attr_accessor :customer_name, :customer_credit_limit, :contact_name,
-    :contact_email, :contact_phone, :contact_role
-  
+  attr_accessor :customer_name, :customer_credit_limit, :contact_forename,
+                :contact_surname, :contact_email, :contact_phone, :contact_role
+
   validate :validate_children
 
   def initialize(attributes = {})
@@ -27,8 +27,9 @@ class CustomerRegistration
   private
 
   def contact
-    @contact ||= customer.contacts.new(name: contact_name, email: contact_email, phone: contact_phone, 
-                                role: contact_role, made_main_contact_at: Time.zone.now)
+    @contact ||= customer.contacts.new(forename: contact_forename, surname: contact_surname,
+                                       email: contact_email, phone: contact_phone,
+                                       role: contact_role, made_main_contact_at: Time.zone.now)
   end
 
   def validate_children
@@ -38,7 +39,7 @@ class CustomerRegistration
 
   def promote_errors(child)
     child.errors.each do |attribute, message|
-      errors.add("#{ child.class.name.underscore }_#{ attribute }", message)
+      errors.add("#{child.class.name.underscore}_#{attribute}", message)
     end
   end
 
@@ -46,5 +47,4 @@ class CustomerRegistration
     return 0.00 if input.blank?
     input
   end
-
 end

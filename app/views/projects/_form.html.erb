@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :description, as: :text %>
   <%= f.association :brand %>
-  <%= f.association :customer %>
+  <%= f.association :customer, collection: Customer.order("name ASC") %>
   <%= f.input :purchase_order %>
   <%= f.input :delivery_deadline %>
   <%= f.input :notes, as: :text %>

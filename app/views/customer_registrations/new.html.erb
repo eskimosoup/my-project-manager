@@ -12,7 +12,8 @@
 
       <%= field_set_tag "Main Contact", class: 'fieldset-group' do %>
         <div class="equal-width-form">
-          <%= f.input :contact_name %>
+          <%= f.input :contact_forename %>
+          <%= f.input :contact_surname %>
           <%= f.input :contact_role %>
           <%= f.input :contact_email, as: :email %>
           <%= f.input :contact_phone, as: :tel %>
