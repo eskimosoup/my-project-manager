@@ -4,9 +4,13 @@ class VehicleWraps::Mileage < ActiveRecord::Base
   validates :miles, presence: true, numericality: { greater_than: 0.0 }
   validates :vehicle_wrap, presence: true
 
-  delegate :price, :cost, to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, to: :price_calculator
+  delegate :envisage_trade_price, to: :price_calculator
+  delegate :envisage_to_my_price, to: :price_calculator
+  delegate :my_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= MileagePriceCalculator.new(miles: miles)
+    @price_calculator ||= PriceCalculator::Mileage.new(miles: miles)
   end
 end

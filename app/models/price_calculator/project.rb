@@ -1,4 +1,4 @@
-class ProjectPriceCalculator
+class PriceCalculator::Project
 
   delegate :total_discount, :envisage_discount, :my_discount, to: :discount_assigner
 
@@ -51,7 +51,7 @@ class ProjectPriceCalculator
   end
 
   def envisage_to_my_price_no_discount
-    @envisage_to_my_price_no_discount ||= sum_array(:envisage_to_my_price)
+    @envisage_to_my_price_no_discount ||= sum_array(:envisage_to_my_sale_price)
   end
 
   def sum_array(attr)
@@ -70,4 +70,5 @@ class ProjectPriceCalculator
       cost: cost
     )
   end
+
 end

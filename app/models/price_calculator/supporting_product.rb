@@ -50,6 +50,6 @@ class PriceCalculator::SupportingProduct
   private
 
   def envisage_mark_up
-    mark_up / 100
+    mark_up.to_d / 100
   end
 end

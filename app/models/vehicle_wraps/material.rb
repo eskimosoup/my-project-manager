@@ -7,9 +7,13 @@ class VehicleWraps::Material < ActiveRecord::Base
   validates :vehicle_wrap, presence: true
 
   delegate :name, to: :product
-  delegate :variable_cost, :fixed_cost, :cost, :price, to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, to: :price_calculator
+  delegate :envisage_trade_price, to: :price_calculator
+  delegate :envisage_to_my_price, to: :price_calculator
+  delegate :my_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= ProductPriceCalculator.new(product: product, area: area)
+    @price_calculator ||= ::PriceCalculator::Product.new(product: product, area: area)
   end
 end

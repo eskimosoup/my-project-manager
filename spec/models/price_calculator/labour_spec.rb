@@ -50,7 +50,7 @@ describe PriceCalculator::Labour, type: :model do
       calc = PriceCalculator::Labour.new(labour: nil, hours: 3)
       allow(calc).to receive(:envisage_to_my_price).and_return(100)
 
-      expect(calc.my_price).to eq(120)
+      expect(calc.my_price).to eq(135)
     end
   end
 

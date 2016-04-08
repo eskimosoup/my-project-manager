@@ -21,11 +21,11 @@ class PriceCalculator::SundryItem
   alias_method :envisage_to_my_rush_price, :envisage_rush_price
 
   def my_price
-    my_mark_up * envisage_to_my_price
+    (my_mark_up * envisage_to_my_price).round(2)
   end
 
   def my_rush_price
-    rush_job_mark_up * my_price
+    (rush_job_mark_up * my_price).round(2)
   end
 
   private

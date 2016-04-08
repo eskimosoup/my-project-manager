@@ -20,10 +20,10 @@ RSpec.describe AccountManagement, type: :model do
       account_management = build_stubbed(:account_management)
       allow(account_management).to receive(:brand).and_return(build_stubbed(:brand))
 
-      expect(account_management.price_calculator).to be_an_instance_of(AccountManagementPriceCalculator)
+      expect(account_management.price_calculator).to be_an_instance_of(PriceCalculator::AccountManagement)
     end
 
-    it { should delegate_method(:price).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
   end
 end

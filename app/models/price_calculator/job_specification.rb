@@ -24,8 +24,9 @@ class PriceCalculator::JobSpecification
     envisage_to_my_discount * envisage_price
   end
 
+  # no mark up on job specifications
   def my_price
-    my_mark_up * envisage_to_my_price
+    envisage_to_my_price
   end
 
   def envisage_rush_price

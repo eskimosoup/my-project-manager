@@ -33,7 +33,7 @@ describe PriceCalculator::JobSpecification, type: :model do
       calc = PriceCalculator::JobSpecification.new(hours: 3)
       allow(calc).to receive(:envisage_to_my_price).and_return(100)
 
-      expect(calc.my_price).to eq(120)
+      expect(calc.my_price).to eq(100)
     end
   end
 

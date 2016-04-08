@@ -22,12 +22,10 @@ RSpec.describe ProductItem, type: :model do
   describe "product price calculator" do
     it "#product_price_calculator" do
       product_item = build_stubbed(:product_item)
-      expect(product_item.price_calculator).to be_an_instance_of(ProductPriceCalculator)
+      expect(product_item.price_calculator).to be_an_instance_of(PriceCalculator::Product)
     end
     
-    it { should delegate_method(:variable_cost).to(:price_calculator) }
-    it { should delegate_method(:fixed_cost).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }
-    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
   end
 end

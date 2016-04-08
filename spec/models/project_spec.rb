@@ -40,7 +40,7 @@ RSpec.describe Project, type: :model do
     it "#price_calculator" do
       project = build_stubbed(:project)
 
-      expect(project.price_calculator).to be_an_instance_of(ProjectPriceCalculator)
+      expect(project.price_calculator).to be_an_instance_of(PriceCalculator::Project)
     end
 
     it { should delegate_method(:vat).to(:price_calculator) }

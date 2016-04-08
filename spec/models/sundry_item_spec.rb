@@ -17,9 +17,12 @@ RSpec.describe SundryItem, type: :model do
   describe "price calculator" do
     it "#price_calculator" do
       sundry_item = build_stubbed(:sundry_item)
-      expect(sundry_item.price_calculator).to be_an_instance_of(SundryItemPriceCalculator)
+      expect(sundry_item.price_calculator).to be_an_instance_of(PriceCalculator::SundryItem)
     end
 
-    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_trade_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
+    it { should delegate_method(:my_price).to(:price_calculator) }
   end
 end

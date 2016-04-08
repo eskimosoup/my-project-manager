@@ -6,9 +6,13 @@ class SundryItem < ActiveRecord::Base
   validates :print_job, presence: true
 
   delegate :quoted?, to: :print_job
-  delegate :price, to: :price_calculator
+  delegate :envisage_price, to: :price_calculator
+  delegate :envisage_trade_price, to: :price_calculator
+  delegate :envisage_to_my_price, to: :price_calculator
+  delegate :my_price, to: :price_calculator
 
+  # TODO Clean Up
   def price_calculator
-    @price_calculator ||= SundryItemPriceCalculator.new(sundry_item: self)
+    @price_calculator ||= PriceCalculator::SundryItem.new(sundry_item: self)
   end
 end

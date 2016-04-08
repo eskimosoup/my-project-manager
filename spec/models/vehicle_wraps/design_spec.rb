@@ -15,10 +15,10 @@ RSpec.describe VehicleWraps::Design, type: :model do
     it "#price_calculator" do
       design = build_stubbed(:vehicle_wraps_design)
 
-      expect(design.price_calculator).to be_an_instance_of(DesignPriceCalculator)
+      expect(design.price_calculator).to be_an_instance_of(PriceCalculator::Design)
     end
 
-    it { should delegate_method(:price).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
   end
 end

@@ -7,7 +7,7 @@ module PricingDefaults
   end
 
   def my_mark_up
-    BigDecimal("1.2")
+    BigDecimal("1.35")
   end
 
   def envisage_trade_discount

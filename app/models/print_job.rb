@@ -1,4 +1,5 @@
 class PrintJob < ActiveRecord::Base
+  # TODO Clean Up
   belongs_to :project
   has_one :brand, through: :project
   has_many :account_managements
@@ -19,13 +20,14 @@ class PrintJob < ActiveRecord::Base
 
   delegate :brand_type, to: :brand
   delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
-  delegate :cost_without_labour_or_printer, :cost_without_mileage, :cost,
-           :price, :rush_job_price, :trade_price, :trade_rush_job_price, :my_price,
-           :my_rush_job_price, :my_customer_price, :my_customer_rush_job_price,
-           to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, :envisage_rush_price, to: :price_calculator
+  delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
+  delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
+  delegate :my_price, :my_rush_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= PrintJobPriceCalculator.new(print_job: self)
+    @price_calculator ||= PriceCalculator::PrintJob.new(print_job: self)
   end
 
   def brand_price
@@ -43,11 +45,12 @@ class PrintJob < ActiveRecord::Base
     update!(prices_hash)
   end
 
-  def envisage_to_my_price
+  def envisage_to_my_sale_price
+    return self[:envisage_to_my_sale_price] if self[:envisage_to_my_sale_price].present?
     if rush_job?
-      my_rush_job_price
+      envisage_to_my_rush_price
     else
-      my_price
+      envisage_to_my_price
     end
   end
 
@@ -56,36 +59,36 @@ class PrintJob < ActiveRecord::Base
   def envisage_brand_price
     return envisage_sale_price if envisage_sale_price.present?
     if rush_job?
-      rush_job_price
+      envisage_rush_price
     else
-      price
+      envisage_price
     end
   end
 
   def envisage_trade_brand_price
     return envisage_trade_sale_price if envisage_trade_sale_price.present?
     if rush_job?
-      trade_rush_job_price
+      envisage_trade_rush_price
     else
-      trade_price
+      envisage_trade_price
     end
   end
 
   def my_brand_price
     return my_sale_price if my_sale_price.present?
     if rush_job?
-      my_customer_rush_job_price
+      my_rush_price
     else
-      my_customer_price
+      my_price
     end
   end
 
   def prices_hash
     {
-      envisage_sale_price: price,
-      envisage_trade_sale_price: trade_price,
-      envisage_to_my_sale_price: my_price,
-      my_sale_price: my_customer_price
+      envisage_sale_price: envisage_brand_price,
+      envisage_trade_sale_price: envisage_trade_brand_price,
+      envisage_to_my_sale_price: envisage_to_my_sale_price,
+      my_sale_price: my_brand_price
     }
   end
 end

@@ -15,11 +15,13 @@ class VehicleWrap < ActiveRecord::Base
 
   delegate :name, to: :vehicle_type, prefix: true
 
-  delegate :cost_without_labour_or_printer, :cost_without_mileage, :cost,
-           :price, :trade_price, :my_price, :my_customer_price, 
-           to: :price_calculator
+  delegate :cost, to: :price_calculator
+  delegate :envisage_price, to: :price_calculator
+  delegate :envisage_trade_price, to: :price_calculator
+  delegate :envisage_to_my_price, to: :price_calculator
+  delegate :my_price, to: :price_calculator
 
   def price_calculator
-    @price_calculator ||= VehicleWraps::PriceCalculator.new(vehicle_wrap: self)
+    @price_calculator ||= PriceCalculator::VehicleWrap.new(vehicle_wrap: self)
   end
 end

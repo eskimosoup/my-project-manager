@@ -18,12 +18,13 @@ RSpec.describe VehicleWraps::Material, type: :model do
   describe "product price calculator" do
     it "#product_price_calculator" do
       material = build_stubbed(:vehicle_wraps_material)
-      expect(material.price_calculator).to be_an_instance_of(ProductPriceCalculator)
+      expect(material.price_calculator).to be_an_instance_of(PriceCalculator::Product)
     end
     
-    it { should delegate_method(:variable_cost).to(:price_calculator) }
-    it { should delegate_method(:fixed_cost).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }
-    it { should delegate_method(:price).to(:price_calculator) }
+    it { should delegate_method(:envisage_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_trade_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
+    it { should delegate_method(:my_price).to(:price_calculator) }
   end
 end

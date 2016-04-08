@@ -112,7 +112,7 @@ describe PriceCalculator::Product, type: :model do
       calc = PriceCalculator::Product.new(product: nil, area: nil)
       allow(calc).to receive(:envisage_to_my_price).and_return(100)
 
-      expect(calc.my_price).to eq(120)
+      expect(calc.my_price).to eq(135)
     end
   end
 
