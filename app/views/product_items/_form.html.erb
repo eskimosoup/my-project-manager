@@ -1,4 +1,6 @@
 <%= simple_form_for [@print_job, @product_item] do |f| %>
+  <%= render 'shared/area_calculator', area_input: '#product_item_area' %>
+
   <%= f.input :area %>
   <%= f.association :product %>
   <%= f.button :submit %>

@@ -1,0 +1,41 @@
+.area-calculator {
+  border: 1px solid $dark-grey;
+  border-radius: 12px;
+  padding: rem-calc(5px);
+
+  legend {
+    font-weight: 700;
+    padding: 0 rem-calc(12px);
+    margin: 0;
+  }
+
+  p {
+    margin: rem-calc(3px) rem-calc(5px);
+  }
+}
+
+.area-calculator-measurements {
+  @include grid-row;
+  border: 1px dotted $brown;
+  border-radius: 6px;
+  padding: rem-calc(6px) 0;
+  margin: rem-calc(5px);
+}
+
+.area-calculator-width,
+.area-calculator-height,
+.area-calculator-calculate {
+  @include  grid-column(2);
+}
+
+.area-calculator-calculate {
+  @include grid-column-end;
+}
+
+.area-calculator-button {
+  background: $green;
+  border-radius: 6px;
+  color: $white;
+  margin: rem-calc(25px) 0 0;
+  padding: rem-calc(12px);
+}
