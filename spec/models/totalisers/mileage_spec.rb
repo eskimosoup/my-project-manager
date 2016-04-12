@@ -13,8 +13,8 @@ describe Totalisers::Mileage, type: :model do
 
   it "#price" do
     mileages = [
-      instance_double("mileage", price: 5.25),
-      instance_double("mileage", price: 5.25)
+      instance_double("mileage", envisage_price: 5.25),
+      instance_double("mileage", envisage_price: 5.25)
     ]
     totaliser = Totalisers::Mileage.new(mileages: mileages)
 

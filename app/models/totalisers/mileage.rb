@@ -9,7 +9,7 @@ class Totalisers::Mileage
   end
 
   def price
-    @price ||= mileages.map(&:price).reduce(0, :+)
+    @price ||= mileages.map(&:envisage_price).reduce(0, :+)
   end
 
   def cost
