@@ -1,0 +1,36 @@
+<% present project do |presented_project| %>
+  <div id="delivery-deadline">
+    Delivery deadline: <%= presented_project.delivery_deadline %>
+  </div>
+
+  <div id="notes">
+    <%= presented_project.notes %>
+  </div>
+
+  <div class="project-menu">
+    <%= presented_project.description %>
+
+    <ul class="project-menu-descriptors">
+      <li>
+        <span class="project-menu-descriptor">
+          Customer:
+        </span>
+        <%= presented_project.customer_name %>
+      </li>
+
+      <li>
+        <span class="project-menu-descriptor">
+          Job type:
+        </span>
+        <%= presented_project.job_type %>
+      </li>
+
+      <li>
+        <span class="project-menu-descriptor">
+          Brand:
+        </span>
+        <%= presented_project.brand_name %>
+      </li>
+    </ul>
+  </div>
+<% end %>

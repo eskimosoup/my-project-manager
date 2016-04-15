@@ -1,0 +1,69 @@
+<% present @project do |presented_project| %>
+  <div class="content">
+    <div class="main">
+      <h1 class="project-main-title">
+        <%= presented_project.name %>
+        (<%= presented_project.reference_number %>)
+      </h1>
+
+      <%= button_to "Delete Project", @project, method: :delete, class: "action-button" %>
+
+      <span id="project-status">
+        <%= presented_project.status %>
+      </span>
+
+      <%= render "details", project: @project %>
+    </div>
+  </div>
+
+  <%= render "projects/print_jobs", project: @project %>
+  <%= render "projects/discounts", project: @project %>
+
+  <div class="project-summary-details">
+    <div class="project-address">
+      <h5 class="project-address-title">Shipping Address</h5>
+
+      <% if @project.shipping_address %>
+        <%= render(
+          partial: "shipping_addresses/show_shipping_address",
+          object: @project.shipping_address,
+          as: :shipping_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% end %>
+
+      <h5 class="project-address-title">Billing Address</h5>
+
+      <% if @project.billing_address %>
+        <%= render(
+          partial: "billing_addresses/show_billing_address",
+          object: @project.billing_address,
+          as: :billing_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% end %>
+    </div>
+
+    <div class="project-address">
+      <%= render(
+        partial: "projects/prices",
+        locals: { project: @project }
+      ) %>
+
+      <hr />
+    </div>
+
+    <div class="project-confirmation">
+      <%= render(
+        partial: "projects/price_breakdown",
+        locals: {
+          project: @project
+        }
+      ) %>
+    </div>
+  </div>
+<% end %>

@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = find_project
+    render template: "projects/#{ @project.status }"
   end
 
   def destroy

@@ -1,0 +1,88 @@
+<% present @project do |presented_project| %>
+  <div class="content">
+    <div class="main">
+      <h1 class="project-main-title">
+        <%= link_to "Edit", edit_project_path(@project), class: "action-button" %>
+        <%= presented_project.name %>
+        (<%= presented_project.reference_number %>)
+      </h1>
+
+      <%= button_to "Delete Project", @project, method: :delete, class: "action-button" %>
+
+      <span id="project-status">
+        <%= presented_project.status %>
+      </span>
+
+      <%= render "details", project: @project %>
+   </div>
+  </div>
+
+  <%= render "projects/print_jobs", project: @project %>
+  <%= render "projects/discounts", project: @project %>
+
+  <div class="project-summary-details">
+    <div class="project-address">
+      <h5 class="project-address-title">Shipping Address</h5>
+
+      <% if @project.shipping_address %>
+        <%= render(
+          partial: "shipping_addresses/show_shipping_address",
+          object: @project.shipping_address,
+          as: :shipping_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% else %>
+        <%= link_to "Set Shipping Address", new_project_shipping_address_path(@project), class: 'action-button' %>
+      <% end %>
+
+      <h5 class="project-address-title">Billing Address</h5>
+
+      <% if @project.billing_address %>
+        <%= render(
+          partial: "billing_addresses/show_billing_address",
+          object: @project.billing_address,
+          as: :billing_address,
+          locals: {
+            project: @project
+          }
+        ) %>
+      <% else %>
+        <%= link_to "Set Billing Address", new_project_billing_address_path(@project), class: 'action-button' %>
+      <% end %>
+    </div>
+
+    <div class="project-address">
+      <%= render(
+        partial: "projects/prices",
+        locals: { project: @project }
+      ) %>
+
+      <hr />
+    </div>
+
+    <div class="project-confirmation">
+      <% if presented_project.envisage_job_sheet_link.present? || presented_project.my_job_sheet_link.present? %>
+        <div class="project-job-sheets">
+          <%= presented_project.envisage_job_sheet_link('Download Envisage Job Sheet', class: 'action-button') %>
+          <%= presented_project.my_job_sheet_link('Download My Job Sheet', class: 'action-button') %>
+        </div>
+      <% end %>
+
+      <%= render(
+        partial: "projects/price_breakdown",
+        locals: {
+          project: @project
+        }
+      ) %>
+
+
+      <%= presented_project.download_pdf_link('Download Quote') %>
+
+      <%= presented_project.mark_sold %>
+
+      <%= presented_project.mark_finalised %>
+    </div>
+  </div>
+<% end %>

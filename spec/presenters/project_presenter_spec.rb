@@ -105,10 +105,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
 
-      it "#invoices_link" do
-        expect(subject.invoices_link).to eq(nil)
-      end
-
       context "my vehicle wrap brand" do
         it "#add_vehicle_wrap_link" do
           brand = create(:my_vehicle_wrap_brand)
@@ -158,10 +154,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.my_job_sheet_link).to eq(nil)
       end
 
-      it "#invoices_link" do
-        expect(subject.invoices_link).to eq(nil)
-      end
-
       it "#add_vehicle_wrap_link" do
         brand = create(:envisage_brand)
         project = create(:quoted_project, brand: brand)
@@ -203,11 +195,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
       end
 
-      it "#invoices_link" do
-        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
-        expect(subject.invoices_link).to eq(link)
-      end
-
       it "#add_vehicle_wrap_link" do
         brand = create(:envisage_brand)
         project = create(:quoted_project, brand: brand)
@@ -239,11 +226,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
-      end
-
-      it "#invoices_link" do
-        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
-        expect(subject.invoices_link).to eq(link)
       end
 
       it "#add_vehicle_wrap_link" do
@@ -279,20 +261,4 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
     expect(project_presenter.notes).to eq(simple_format("Some notes"))
   end
 
-  it "#delete_button" do
-    quoted = create(:quoted_project)
-    sold = create(:sold_project)
-    finalised = create(:finalised_project)
-    completed = create(:completed_project)
-
-    quoted_presenter = ProjectPresenter.new(object: quoted, view_template: view)
-    sold_presenter = ProjectPresenter.new(object: sold, view_template: view)
-    finalised_presenter = ProjectPresenter.new(object: finalised, view_template: view)
-    completed_presenter = ProjectPresenter.new(object: completed, view_template: view)
-
-    expect(quoted_presenter.delete_button).to eq(button_to("Delete Project", quoted, method: :delete, class: "action-button"))
-    expect(sold_presenter.delete_button).to eq(button_to("Delete Project", sold, method: :delete, class: "action-button"))
-    expect(finalised_presenter.delete_button).to eq(nil)
-    expect(completed_presenter.delete_button).to eq(nil)
-  end
 end

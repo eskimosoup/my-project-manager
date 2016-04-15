@@ -106,26 +106,12 @@ class ProjectPresenter < BasePresenter
     h.link_to content, h.project_my_job_sheet_path(project, format: 'pdf'), options if project.finalised?
   end
 
-  def invoices_link
-    return unless show_invoices_link?
-    h.link_to "Invoices", h.project_invoices_path(project), class: "action-button"
-  end
-
   def add_vehicle_wrap_link
     return nil unless project.vehicle_brand? && project.quoted?
     h.link_to "Add Vehicle Wrap", h.project_vehicle_wraps_path(project), class: "action-button"
   end
 
-  def delete_button
-    return nil unless allow_deletion?
-    h.button_to "Delete Project", project, method: :delete, class: "action-button"
-  end
-
   private
-
-  def show_invoices_link?
-    project.finalised? || project.completed?
-  end
 
   def project_status
     @project_status ||= project.status
@@ -133,9 +119,5 @@ class ProjectPresenter < BasePresenter
 
   def rush_job?
     project.rush_job?
-  end
-
-  def allow_deletion?
-    project.sold? || project.quoted?
   end
 end
