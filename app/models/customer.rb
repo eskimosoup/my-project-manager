@@ -1,8 +1,7 @@
 class Customer < ActiveRecord::Base
   include Filterable
 
-  # CHANGED 08/04/2016 - this seems broken
-  # has_one :main_contact, ->{ order(made_main_contact_at: :desc).first }, class_name: 'Contact'
+  has_one :main_contact, ->{ order(made_main_contact_at: :desc).limit(1) }, class_name: 'Contact'
 
   has_many :addresses
   has_many :contacts
@@ -18,7 +17,4 @@ class Customer < ActiveRecord::Base
     joins(:projects).where(projects: { status: value }).group('customers.id').having('count(projects.id) >= ?', 1)
   }
 
-  def main_contact
-    contacts.order(made_main_contact_at: :desc).first
-  end
 end

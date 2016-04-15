@@ -4,7 +4,7 @@ describe "User downloads invoice PDF" do
   scenario "after creating the invoice" do
     user = create(:user)
     project = create(:finalised_project)
-    print_job = create(:finalised_print_job, project: project)
+    print_job = create(:finalised_print_job, project: project, name: "Print Job 1", description: "Print Job Description")
 
     sign_in_with(user.email, user.password)
     go_to_project_page(project)
@@ -19,7 +19,8 @@ describe "User downloads invoice PDF" do
     expect(content_type).to eq("application/pdf")
     expect(content_disposition).to include("inline")
     expect(download_filename).to include("Invoice")
-    expect(pdf_body).to have_content(print_job.name)
+    expect(pdf_body).to have_content("Print Job 1")
+    expect(pdf_body).to have_content("Print Job Description")
     expect(pdf_body).to have_content(print_job.envisage_to_my_price)
     expect(pdf_body).to have_content(print_job.brand_price)
   end

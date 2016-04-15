@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th class="item">Item</th>
+      <th class="item">Description</th>
       <th class="price">Cost</th>
     </tr>
   </thead>
@@ -17,18 +18,19 @@
     <% project.print_jobs.each do |print_job| %>
       <tr>
         <td><%= simple_format print_job.name %></td>
+        <td><%= simple_format print_job.description %></td>
         <td><%= number_to_currency print_job.brand_price %></td>
       </tr>
     <% end %>
     <% project.discounts.each do |discount| %>
       <tr>
-        <td><%= discount.description %></td>
+        <td colspan="2"><%= discount.description %></td>
         <td><%= number_to_currency -discount.amount %></td>
       </tr>
     <% end %>
 
     <tr>
-      <td>
+      <td colspan="2">
         Total exc. VAT
       </td>
       <td>
@@ -37,7 +39,7 @@
     </tr>
 
     <tr>
-      <td>
+      <td colspan="2">
         VAT
       </td>
       <td>
@@ -46,7 +48,7 @@
     </tr>
 
     <tr>
-      <td>
+      <td colspan="2">
         Total inc. VAT
       </td>
       <td>

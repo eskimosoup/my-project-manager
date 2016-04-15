@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th class="item">Item</th>
+      <th class="item">Description</th>
       <th class="price">Cost</th>
     </tr>
   </thead>
@@ -15,18 +16,19 @@
     <% project.print_jobs.each do |print_job| %>
       <tr>
         <td><%= print_job.name %></td>
+        <td><%= simple_format print_job.description %></td>
         <td><%= number_to_currency print_job.brand_price %></td>
       </tr>
     <% end %>
     <% project.discounts.each do |discount| %>
       <tr>
-        <td><%= discount.description %></td>
+        <td colspan="2"><%= discount.description %></td>
         <td><%= number_to_currency -discount.amount %></td>
       </tr>
     <% end %>
 
     <tr>
-      <td>
+      <td colspan="2">
         Total exc. VAT
       </td>
       <td>
@@ -35,7 +37,7 @@
     </tr>
     <% if invoice.percentage < 100 %>
       <tr>
-        <td>
+        <td colspan="2">
           <%= number_to_percentage invoice.percentage, precision: 0 %> of total amount <%= number_to_currency project.brand_price %> due now
         </td>
         <td>
@@ -45,7 +47,7 @@
     <% end %>
 
     <tr>
-      <td>
+      <td colspan="2">
         VAT
       </td>
       <td>
@@ -54,7 +56,7 @@
     </tr>
 
     <tr>
-      <td>
+      <td colspan="2">
         Total inc. VAT
       </td>
       <td>
