@@ -38,7 +38,7 @@ class VehicleWrapPrintJobCreator
       envisage_sale_price: vehicle_wrap.envisage_override_price,
       envisage_trade_sale_price: vehicle_wrap.envisage_trade_override_price,
       envisage_to_my_sale_price: vehicle_wrap.envisage_to_my_override_price,
-      my_sale_price: vehicle_wrap.envisage_to_my_override_price
+      my_sale_price: vehicle_wrap.my_override_price
     )
   end
 
