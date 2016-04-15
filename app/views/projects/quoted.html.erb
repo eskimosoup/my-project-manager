@@ -7,50 +7,15 @@
         (<%= presented_project.reference_number %>)
       </h1>
 
-      <%= presented_project.delete_button %>
+      <%= button_to "Delete Project", @project, method: :delete, class: "action-button" %>
       <%= presented_project.mark_archived %>
 
       <span id="project-status">
         <%= presented_project.status %>
       </span>
 
-      <%= presented_project.invoices_link %>
-
-      <div id="delivery-deadline">
-        Delivery deadline: <%= presented_project.delivery_deadline %>
-      </div>
-
-      <div id="notes">
-        <%= presented_project.notes %>
-      </div>
-
-      <div class="project-menu">
-        <%= presented_project.description %>
-
-        <ul class="project-menu-descriptors">
-          <li>
-            <span class="project-menu-descriptor">
-              Customer:
-            </span>
-            <%= presented_project.customer_name %>
-          </li>
-
-          <li>
-            <span class="project-menu-descriptor">
-              Job type:
-            </span>
-            <%= presented_project.job_type %>
-          </li>
-
-          <li>
-            <span class="project-menu-descriptor">
-              Brand:
-            </span>
-            <%= presented_project.brand_name %>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <%= render "details", project: @project %>
+   </div>
   </div>
 
   <%= render "projects/print_jobs", project: @project %>

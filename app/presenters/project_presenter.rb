@@ -81,13 +81,21 @@ class ProjectPresenter < BasePresenter
   end
 
   def mark_sold
-    h.button_to 'Mark As Sold', h.project_status_changer_path(project), method: :post,
-      data: { disable_with: 'Processing...' }, params: { status: :sold },                                  class: 'secondary-action-button' if project.quoted?
+    return nil unless project.quoted?
+    h.button_to 'Mark As Sold', h.project_seller_path(project), method: :post,
+      data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
   end
 
   def mark_finalised
-    h.link_to 'Finalise Project', h.new_project_project_finaliser_path(project),
-              data: { disable_with: 'Processing...' }, class: 'secondary-action-button' if project.sold?
+    return nil unless project.sold?
+    h.link_to 'Finalise Project', h.new_project_finaliser_path(project),
+              data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
+  end
+
+  def mark_archived
+    return nil unless project.quoted?
+    h.button_to "Archive Project", h.project_archiver_path(project), method: :post,
+          data: { disable_with: "Processing..." }, class: "secondary-action-button"
   end
 
   def envisage_job_sheet_link(content = 'Download Envisage Job Sheet', options = {})
@@ -98,26 +106,12 @@ class ProjectPresenter < BasePresenter
     h.link_to content, h.project_my_job_sheet_path(project, format: 'pdf'), options if project.finalised?
   end
 
-  def invoices_link
-    return unless show_invoices_link?
-    h.link_to "Invoices", h.project_invoices_path(project), class: "action-button"
-  end
-
   def add_vehicle_wrap_link
     return nil unless project.vehicle_brand? && project.quoted?
     h.link_to "Add Vehicle Wrap", h.project_vehicle_wraps_path(project), class: "action-button"
   end
 
-  def delete_button
-    return nil unless allow_deletion?
-    h.button_to "Delete Project", project, method: :delete, class: "action-button"
-  end
-
   private
-
-  def show_invoices_link?
-    project.finalised? || project.completed?
-  end
 
   def project_status
     @project_status ||= project.status
@@ -125,9 +119,5 @@ class ProjectPresenter < BasePresenter
 
   def rush_job?
     project.rush_job?
-  end
-
-  def allow_deletion?
-    project.sold? || project.quoted?
   end
 end

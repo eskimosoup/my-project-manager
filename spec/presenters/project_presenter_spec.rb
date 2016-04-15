@@ -81,9 +81,16 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
       it '#mark_sold' do
-        button = button_to 'Mark As Sold', project_status_changer_path(project), method: :post,
-          data: { disable_with: 'Processing...' }, params: { status: :sold }, class: 'secondary-action-button'
+        button = button_to 'Mark As Sold', project_seller_path(project), method: :post,
+          data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
         expect(subject.mark_sold).to eq(button)
+      end
+
+      it "#mark_archived" do
+        button = button_to "Archive Project", project_archiver_path(project), method: :post,
+          data: { disable_with: "Processing..." }, class: "secondary-action-button"
+
+        expect(subject.mark_archived).to eq(button)
       end
 
       it '#mark_finalised' do
@@ -96,10 +103,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
-      end
-
-      it "#invoices_link" do
-        expect(subject.invoices_link).to eq(nil)
       end
 
       context "my vehicle wrap brand" do
@@ -134,9 +137,13 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       end
 
       it '#mark_finalised' do
-        link = link_to('Finalise Project', new_project_project_finaliser_path(project),
+        link = link_to('Finalise Project', new_project_finaliser_path(project),
                        data: { disable_with: 'Processing...' }, class: 'secondary-action-button')
         expect(subject.mark_finalised).to eq(link)
+      end
+
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
       end
 
       it '#envisage_job_sheet_link' do
@@ -145,10 +152,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
-      end
-
-      it "#invoices_link" do
-        expect(subject.invoices_link).to eq(nil)
       end
 
       it "#add_vehicle_wrap_link" do
@@ -172,6 +175,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(nil)
       end
 
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
+      end
+      
       it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
       end
@@ -186,11 +193,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#my_job_sheet_link with options' do
         expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
-      end
-
-      it "#invoices_link" do
-        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
-        expect(subject.invoices_link).to eq(link)
       end
 
       it "#add_vehicle_wrap_link" do
@@ -214,17 +216,16 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(nil)
       end
 
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
+      end
+
       it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(nil)
       end
 
       it '#my_job_sheet_link' do
         expect(subject.my_job_sheet_link).to eq(nil)
-      end
-
-      it "#invoices_link" do
-        link = link_to("Invoices", project_invoices_path(project), class: "action-button")
-        expect(subject.invoices_link).to eq(link)
       end
 
       it "#add_vehicle_wrap_link" do
@@ -260,20 +261,4 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
     expect(project_presenter.notes).to eq(simple_format("Some notes"))
   end
 
-  it "#delete_button" do
-    quoted = create(:quoted_project)
-    sold = create(:sold_project)
-    finalised = create(:finalised_project)
-    completed = create(:completed_project)
-
-    quoted_presenter = ProjectPresenter.new(object: quoted, view_template: view)
-    sold_presenter = ProjectPresenter.new(object: sold, view_template: view)
-    finalised_presenter = ProjectPresenter.new(object: finalised, view_template: view)
-    completed_presenter = ProjectPresenter.new(object: completed, view_template: view)
-
-    expect(quoted_presenter.delete_button).to eq(button_to("Delete Project", quoted, method: :delete, class: "action-button"))
-    expect(sold_presenter.delete_button).to eq(button_to("Delete Project", sold, method: :delete, class: "action-button"))
-    expect(finalised_presenter.delete_button).to eq(nil)
-    expect(completed_presenter.delete_button).to eq(nil)
-  end
 end

@@ -24,10 +24,15 @@ FactoryGirl.define do
       status 3
     end
 
+    trait :archived do
+      status 4
+    end
+
     factory :quoted_project, traits: [:quoted]
     factory :sold_project, traits: [:sold]
     factory :finalised_project, traits: [:finalised]
     factory :completed_project, traits: [:completed]
+    factory :archived_project, traits: [:archived]
   end
 
 end
