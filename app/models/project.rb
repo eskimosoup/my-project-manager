@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :shipping_address, class_name: 'Address'
   belongs_to :billing_address, class_name: 'Address'
   has_one :business_address, through: :brand, source: :brand_address
+  has_one :main_contact, through: :customer
   has_many :account_managements, through: :print_jobs
   has_many :designs, through: :print_jobs
   has_many :discounts
@@ -31,6 +32,7 @@ class Project < ActiveRecord::Base
   scope :brand_id, ->(value) { where(brand_id: value) if value.present? }
 
   delegate :name, to: :customer, prefix: true, allow_nil: true
+  delegate :forename, to: :main_contact, prefix: true, allow_nil: true
   delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand
   delegate :name, to: :brand, prefix: true
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,

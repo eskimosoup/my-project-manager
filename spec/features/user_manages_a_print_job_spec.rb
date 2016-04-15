@@ -9,21 +9,22 @@ describe "User manages a print job", type: :feature do
 
     click_on "Add"
 
-    fill_form(:print_job, { name: "My print job" })
+    fill_form(:print_job, { name: "My print job", description: "my description" })
     click_on "Create Print job"
 
     expect(page).to have_css "h1", text: "My print job"
+    expect(page).to have_css "p", text: "my description"
   end
 
   scenario "edit print job" do
     user = create(:user)
     project = create(:project)
-    print_job = create(:print_job, project: project)
+    print_job = create(:print_job, project: project, name: "old name")
 
     visit print_job_path(print_job, as: user)
     click_link_by_href(edit_print_job_path(print_job))
 
-    fill_in "Name", with: "New print job name"
+    fill_form(:print_job, { name: "New print job name" })
     click_on "Update Print job"
 
     expect(page).to have_css "h1", text: "New print job name"
@@ -32,12 +33,12 @@ describe "User manages a print job", type: :feature do
   scenario "remove print job" do
     user = create(:user)
     project = create(:project)
-    print_job = create(:print_job, project: project)
+    print_job = create(:print_job, project: project, name: "Blah")
 
     visit project_path(print_job.project, as: user)
     destroy_print_job(print_job)
 
-    expect(page).not_to have_css ".print-job", text: print_job.name
+    expect(page).not_to have_css ".print-job", text: "Blah"
   end
 
   def destroy_print_job(print_job)

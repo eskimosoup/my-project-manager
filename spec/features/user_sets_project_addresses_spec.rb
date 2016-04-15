@@ -10,7 +10,6 @@ feature "User sets project addresses" do
       visit project_path(project, as: user)
       click_on "Set Shipping Address"
       set_shipping_address(address)
-      click_on "Set Shipping Address"
       
       expect(page).to have_content address.line_1
     end
@@ -30,7 +29,6 @@ feature "User sets project addresses" do
     within "#shipping-address-#{ second_address.id }" do
       click_on "Use"
     end
-    click_on "Set Shipping Address"
 
     expect(page).to have_content second_address.line_1
   end
@@ -44,7 +42,6 @@ feature "User sets project addresses" do
       visit project_path(project, as: user)
       click_on "Set Billing Address"
       set_billing_address(address)
-      click_on "Set Billing Address"
 
       expect(page).to have_content address.line_1
     end
@@ -64,7 +61,6 @@ feature "User sets project addresses" do
     within "#billing-address-#{ second_address.id }" do
       click_on "Use"
     end
-    click_on "Set Billing Address"
 
     expect(page).to have_content second_address.line_1
   end

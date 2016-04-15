@@ -12,6 +12,7 @@ RSpec.describe Project, type: :model do
     it { should belong_to(:brand) }
     it { should belong_to(:shipping_address).class_name("Address") }
     it { should belong_to(:billing_address).class_name("Address") }
+    it { should have_one(:main_contact).through(:customer).class_name("Contact") }
     it { should have_one(:business_address).through(:brand) }
     it { should have_many(:account_managements).through(:print_jobs) }
     it { should have_many(:designs).through(:print_jobs) }
@@ -27,6 +28,7 @@ RSpec.describe Project, type: :model do
   end
 
   it { should delegate_method(:name).to(:customer).with_prefix }
+  it { should delegate_method(:forename).to(:main_contact).with_prefix }
 
   describe "#brand" do
     it { should delegate_method(:logo).to(:brand) }

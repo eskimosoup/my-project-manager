@@ -1,6 +1,6 @@
 module Features
   def go_to_project_page(project)
-    click_on "Projects"
-    click_on "project_#{ project.id }"
+    visit projects_path
+    click_link "project_#{ project.id }"
   end
 end

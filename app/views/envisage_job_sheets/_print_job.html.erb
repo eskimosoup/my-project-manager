@@ -1,5 +1,7 @@
 <h3><%= print_job.name %></h3>
 
+<%= simple_format print_job.description if print_job.description.present? %>
+
 <table>
   <thead>
     <tr>

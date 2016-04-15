@@ -5,6 +5,8 @@
       <%= link_to octicon('pencil'), edit_print_job_path(@print_job) %>
     </h1>
 
+    <%= simple_format @print_job.description if @print_job.description.present? %>
+
     <div class="summarised-content">
       <% present @print_job do |print_job_presenter| %>
         <h6><%= print_job_presenter.job_type %></h6>
