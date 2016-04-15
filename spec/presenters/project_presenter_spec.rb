@@ -81,9 +81,16 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
 
       it '#mark_sold' do
-        button = button_to 'Mark As Sold', project_status_changer_path(project), method: :post,
-          data: { disable_with: 'Processing...' }, params: { status: :sold }, class: 'secondary-action-button'
+        button = button_to 'Mark As Sold', project_seller_path(project), method: :post,
+          data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
         expect(subject.mark_sold).to eq(button)
+      end
+
+      it "#mark_archived" do
+        button = button_to "Archive Project", project_archiver_path(project), method: :post,
+          data: { disable_with: "Processing..." }, class: "secondary-action-button"
+
+        expect(subject.mark_archived).to eq(button)
       end
 
       it '#mark_finalised' do
@@ -134,9 +141,13 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       end
 
       it '#mark_finalised' do
-        link = link_to('Finalise Project', new_project_project_finaliser_path(project),
+        link = link_to('Finalise Project', new_project_finaliser_path(project),
                        data: { disable_with: 'Processing...' }, class: 'secondary-action-button')
         expect(subject.mark_finalised).to eq(link)
+      end
+
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
       end
 
       it '#envisage_job_sheet_link' do
@@ -172,6 +183,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(nil)
       end
 
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
+      end
+      
       it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
       end
@@ -212,6 +227,10 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
+      end
+
+      it "#mark_archived" do
+        expect(subject.mark_archived).to eq(nil)
       end
 
       it '#envisage_job_sheet_link' do

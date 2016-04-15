@@ -81,13 +81,21 @@ class ProjectPresenter < BasePresenter
   end
 
   def mark_sold
-    h.button_to 'Mark As Sold', h.project_status_changer_path(project), method: :post,
-      data: { disable_with: 'Processing...' }, params: { status: :sold },                                  class: 'secondary-action-button' if project.quoted?
+    return nil unless project.quoted?
+    h.button_to 'Mark As Sold', h.project_seller_path(project), method: :post,
+      data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
   end
 
   def mark_finalised
-    h.link_to 'Finalise Project', h.new_project_project_finaliser_path(project),
-              data: { disable_with: 'Processing...' }, class: 'secondary-action-button' if project.sold?
+    return nil unless project.sold?
+    h.link_to 'Finalise Project', h.new_project_finaliser_path(project),
+              data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
+  end
+
+  def mark_archived
+    return nil unless project.quoted?
+    h.button_to "Archive Project", h.project_archiver_path(project), method: :post,
+          data: { disable_with: "Processing..." }, class: "secondary-action-button"
   end
 
   def envisage_job_sheet_link(content = 'Download Envisage Job Sheet', options = {})

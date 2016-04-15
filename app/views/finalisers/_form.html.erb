@@ -1,4 +1,4 @@
-<%= form_for @finalised_status_changer, url: project_project_finaliser_path(@project) do |f| %>
+<%= form_for @finalised_status_changer, url: project_finaliser_path(@project) do |f| %>
   <% if @finalised_status_changer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize @finalised_status_changer.errors.count, 'error' %> prevented this project from being finalised</h2>

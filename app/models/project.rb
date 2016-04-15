@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   has_many :sundry_items, through: :print_jobs
   has_many :supporting_product_items, through: :print_jobs
 
-  enum status: %w( quoted sold finalised completed )
+  enum status: { archived: 4, quoted: 0, sold: 1, finalised: 2, completed: 3 }
 
   validates :brand, presence: true
   validates :customer, presence: true
