@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :show]
 
   def new
     @project = Project.new
@@ -15,9 +14,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = find_project
   end
 
   def update
+    @project = find_project
     if @project.update(project_params)
       redirect_to @project, notice: 'Updated project'
     else
@@ -31,6 +32,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = find_project
+  end
+
+  def destroy
+    @project = find_project
+    @project.destroy
+    redirect_to projects_path, notice: "Destroyed project"
   end
 
   private
@@ -40,7 +48,7 @@ class ProjectsController < ApplicationController
                                     :delivery_deadline, :notes)
   end
 
-  def set_project
-    @project = Project.find(params[:id])
+  def find_project
+    Project.find(params[:id])
   end
 end

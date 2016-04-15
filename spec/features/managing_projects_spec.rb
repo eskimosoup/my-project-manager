@@ -60,4 +60,28 @@ feature "User manages projects" do
     end
     expect(page).to have_link("Add", href: new_project_print_job_path(project))
   end
+
+  describe "destroying projects" do
+    scenario "quoted project" do
+      user = create(:user)
+      project = create(:quoted_project, name: "My project")
+
+      visit project_path(project, as: user)
+      click_button "Delete Project"
+
+      expect(current_path).to eq(projects_path)
+      expect(page).not_to have_content("My project")
+    end
+
+    scenario "sold project" do
+      user = create(:user)
+      project = create(:sold_project, name: "My project")
+
+      visit project_path(project, as: user)
+      click_button "Delete Project"
+
+      expect(current_path).to eq(projects_path)
+      expect(page).not_to have_content("My project")
+    end
+  end
 end
