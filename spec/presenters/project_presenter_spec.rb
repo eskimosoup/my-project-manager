@@ -86,13 +86,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_sold).to eq(button)
       end
 
-      it "#mark_archived" do
-        button = button_to "Archive Project", project_archiver_path(project), method: :post,
-          data: { disable_with: "Processing..." }, class: "secondary-action-button"
-
-        expect(subject.mark_archived).to eq(button)
-      end
-
       it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
       end
@@ -142,10 +135,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(link)
       end
 
-      it "#mark_archived" do
-        expect(subject.mark_archived).to eq(nil)
-      end
-
       it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(nil)
       end
@@ -175,10 +164,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(nil)
       end
 
-      it "#mark_archived" do
-        expect(subject.mark_archived).to eq(nil)
-      end
-      
       it '#envisage_job_sheet_link' do
         expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
       end
@@ -214,10 +199,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
-      end
-
-      it "#mark_archived" do
-        expect(subject.mark_archived).to eq(nil)
       end
 
       it '#envisage_job_sheet_link' do

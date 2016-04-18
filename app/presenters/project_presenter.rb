@@ -92,12 +92,6 @@ class ProjectPresenter < BasePresenter
               data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
   end
 
-  def mark_archived
-    return nil unless project.quoted?
-    h.button_to "Archive Project", h.project_archiver_path(project), method: :post,
-          data: { disable_with: "Processing..." }, class: "secondary-action-button"
-  end
-
   def envisage_job_sheet_link(content = 'Download Envisage Job Sheet', options = {})
     h.link_to content, h.project_envisage_job_sheet_path(project, format: 'pdf'), options if project.finalised?
   end

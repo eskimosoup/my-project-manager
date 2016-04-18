@@ -8,7 +8,8 @@
       </h1>
 
       <%= button_to "Delete Project", @project, method: :delete, class: "action-button" %>
-      <%= presented_project.mark_archived %>
+      <%= button_to "Archive Project", project_archiver_path(@project), method: :post,
+        data: { disable_with: "Processing..." }, class: "secondary-action-button" %>
 
       <span id="project-status">
         <%= presented_project.status %>

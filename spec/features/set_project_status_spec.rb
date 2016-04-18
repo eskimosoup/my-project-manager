@@ -1,6 +1,16 @@
 require "rails_helper"
 
 feature "set project status" do
+  scenario "from archived to quoted" do
+    user = create(:user)
+    project = create(:archived_project)
+
+    visit project_path(project, as: user)
+    click_button "Mark As Quoted"
+
+    expect(page).to have_content("Quoted")
+  end
+
   scenario "from quoted to sold" do
     user = create(:user)
     project = create(:quoted_project)
