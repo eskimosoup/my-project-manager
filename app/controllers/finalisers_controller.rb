@@ -7,11 +7,17 @@ class FinalisersController < ApplicationController
 
   def create
     @project = find_project
-    @finalised_status_changer = StatusChanger::Finalised.new(@project, status_changer_finalised_params)
-    if @finalised_status_changer.save
+
+    if @project.completed?
+      @project.finalised!
       redirect_to @project, notice: "Project successfully finalised"
     else
-      render :new
+      @finalised_status_changer = StatusChanger::Finalised.new(@project, status_changer_finalised_params)
+      if @finalised_status_changer.save
+        redirect_to @project, notice: "Project successfully finalised"
+      else
+        render :new
+      end
     end
   end
 

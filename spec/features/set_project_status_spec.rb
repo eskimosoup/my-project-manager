@@ -42,4 +42,24 @@ feature "set project status" do
 
     expect(page).to have_css "h1", text: "Project y"
   end
+
+  scenario "from finalised to completed" do
+    user = create(:user)
+    project = create(:finalised_project)
+    
+    visit project_path(project, as: user)
+    click_button "Complete Project"
+    
+    expect(page).to have_content("Completed")
+  end
+
+  scenario "from completed to finalised" do
+    user = create(:user)
+    project = create(:completed_project)
+
+    visit project_path(project, as: user)
+    click_button "Finalise Project"
+
+    expect(page).to have_content("Finalised")
+  end
 end
