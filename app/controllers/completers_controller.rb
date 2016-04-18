@@ -1,0 +1,11 @@
+class CompletersController < ApplicationController
+
+  def create
+    @project = Project.find(params[:project_id])
+    redirect_to @project unless @project.finalised?
+
+    @project.completed!
+    redirect_to @project, notice: "Project successfully completed"
+  end
+
+end

@@ -7,6 +7,9 @@
         (<%= presented_project.reference_number %>)
       </h1>
 
+      <%= button_to "Complete Project", project_completer_path(@project), method: :post,
+        data: { disable_with: "Processing..." }, class: "secondary-action-button" %>
+
       <span id="project-status">
         <%= presented_project.status %>
       </span>

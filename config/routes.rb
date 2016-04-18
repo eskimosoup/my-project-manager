@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :projects do
     # changing status
     resource :archiver, only: [:create]
+    resource :completer, only: [:create]
     resource :finaliser, only: [:new, :create]
     resource :quoter, only: [:create]
     resource :seller, only: [:create]
