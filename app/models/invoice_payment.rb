@@ -3,7 +3,7 @@ class InvoicePayment
   validates :invoice, presence: true
   validates :stripe_token, presence: true
 
-  attr_accessor :invoice, :stripe_token
+  attr_accessor :invoice, :stripe_token, :email
 
   def save
     return if invalid?
@@ -21,7 +21,8 @@ class InvoicePayment
       amount: amount_in_pence,
       currency: "gbp",
       source: stripe_token,
-      description: description
+      description: description,
+      receipt_email: email
     )
   end
 

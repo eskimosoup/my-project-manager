@@ -4,8 +4,13 @@ class Customer::PaymentsController < Customer::InvoicesController
   end
 
   def create
+    raise params.to_yaml
     @invoice = find_invoice
-    invoice_payment = InvoicePayment.new(invoice: @invoice, stripe_token: params["stripeToken"])
+    invoice_payment = InvoicePayment.new(
+      invoice: @invoice, 
+      stripe_token: params[:stripeToken], 
+      email: params[:email]
+    )
     if invoice_payment.save
       redirect_to customer_invoice_path(@invoice), notice: "Invoice Paid"
     else
