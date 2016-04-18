@@ -5,6 +5,7 @@
       <%= @customer.name %>
     </h1>
 
+    <%= link_to "Contacts", customer_contacts_path(@customer), class: "secondary-action-button" %>
     <%= render "customers/projects", customer: @customer %>
     <%= render "customers/addresses", customer: @customer %>
   </div>

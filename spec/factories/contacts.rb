@@ -6,5 +6,6 @@ FactoryGirl.define do
     email 'MyString'
     phone 'MyString'
     role 'MyString'
+    made_main_contact_at nil
   end
 end

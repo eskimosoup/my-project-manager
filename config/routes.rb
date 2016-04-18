@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :customer_registrations, only: [:new, :create]
   resources :customers, only: [:index, :show, :edit, :update] do
     resources :addresses, shallow: true
+    resources :contacts, shallow: true, except: [:show]
   end
   resources :invoices, only: [:update]
   resources :projects do
