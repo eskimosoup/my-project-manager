@@ -1,0 +1,8 @@
+<%= simple_form_for [@customer, @contact] do |f| %>
+  <%= f.input :forename %>
+  <%= f.input :surname %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :phone, as: :tel %>
+  <%= f.input :role %>
+  <%= f.button :submit %>
+<% end %>
