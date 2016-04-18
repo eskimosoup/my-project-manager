@@ -10,14 +10,17 @@ Rails.application.routes.draw do
   end
   resources :invoices, only: [:update]
   resources :projects do
+    # changing status
     resource :archiver, only: [:create]
+    resource :finaliser, only: [:new, :create]
+    resource :quoter, only: [:create]
+    resource :seller, only: [:create]
+
     resource :billing_address, only: [:new, :create, :edit, :update]
     resource :downloads, only: [:show]
     resource :envisage_job_sheet, only: [:show]
-    resource :finaliser, only: [:new, :create]
     resource :my_job_sheet, only: [:show]
     resource :shipping_address, only: [:new, :create, :edit, :update]
-    resource :seller, only: [:create]
     resources :discounts, only: [:new, :create, :destroy], shallow: true
     resources :invoices, only: [:index], shallow: true, controller: 'project_invoices' do
       resource :invoice_download, only: [:show]
