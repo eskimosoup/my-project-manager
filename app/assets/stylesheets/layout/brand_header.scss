@@ -1,18 +1,20 @@
-header.customer-header {
+.customer-header {
+  border-bottom: 1px solid $dark-grey;
+}
+
+.customer-header-inner {
   @include grid-row;
   @include border-bottom-radius(rem-calc(20));
-  margin: 0 auto rem-calc(12px);
-  overflow: hidden;
+  margin: rem-calc(12px) auto;
 }
 
 .brand-contact-details {
-  @include grid-column(8);
+  @include grid-column(4);
   list-style: none;
   font-size: rem-calc(12px);
   margin: 0;
   padding: 0;
   line-height: 1.25;
-  width: 75%;
   padding-right: rem-calc(60px);
 
   li {
@@ -32,7 +34,5 @@ header.customer-header {
 }
 
 .brand-logo {
-  @include grid-column(4);
-  width: 25%;
+  @include grid-column(8);
 }
-
