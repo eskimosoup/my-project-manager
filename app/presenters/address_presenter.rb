@@ -2,12 +2,12 @@ class AddressPresenter < BasePresenter
   presents :address
 
   def edit_link
-    h.link_to "Edit", h.edit_address_path(address)
+    h.link_to "Edit this address", h.edit_address_path(address), class: 'address-edit-link action-button'
   end
 
   def delete_link
     h.button_to "Remove", h.address_path(address), method: :delete,
-      data: { confirm: "Are you sure?", disable_with: "processing" }, 
+      data: { confirm: "Are you sure?", disable_with: "processing" },
       class: "secondary-action-button delete-address"
   end
 

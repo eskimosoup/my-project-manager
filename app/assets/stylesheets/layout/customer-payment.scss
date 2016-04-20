@@ -1,0 +1,45 @@
+.customer-payment {
+  margin: rem-calc(20px) auto;
+
+  .invoice-header-wrap {
+    @include grid-row;
+  }
+
+  .invoice-header {
+    @include grid-column(12);
+  }
+
+  .invoice-summary {
+    @include grid-row;
+  }
+
+  .invoice-details {
+    @include grid-column(4);
+  }
+
+  .pay-invoice-form {
+    @include grid-column(8);
+  }
+
+  .invoice-breakdown {
+    font-size: rem-calc(16px);
+    font-weight: $lato-bold;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  label span {
+    display: block;
+  }
+
+  input[type='text'],
+  input[type='email'] {
+    display: inline-block;
+    width: auto;
+  }
+
+  .action-button {
+    padding: rem-calc(10px);
+  }
+}

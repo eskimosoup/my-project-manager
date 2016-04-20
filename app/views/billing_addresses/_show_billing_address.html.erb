@@ -1,6 +1,8 @@
 <div id="billing-address-details" class="address">
   <% present billing_address do |address_presenter| %>
-    <%= address_presenter.name %>
+    <strong class="address-type">
+      <%= address_presenter.name %>
+    </strong>
     <%= address_presenter.line_1 %>
     <%= address_presenter.line_2 %>
     <%= address_presenter.line_3 %>
