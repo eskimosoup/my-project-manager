@@ -59,6 +59,11 @@
       <% end %>
     </div>
   </div>
-
-
 </div>
+
+<%= render(
+  partial: "customer/brands/footer",
+  locals: {
+    invoice: @invoice
+  }
+) %>

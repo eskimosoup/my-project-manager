@@ -1,0 +1,11 @@
+.brand-footer {
+  background: $offset-dark-grey;
+  color: $white;
+  text-align: center;
+
+  img {
+    display: inline-block;
+    margin: rem-calc(22px) rem-calc(30px) rem-calc(24px) 0;
+    width: 194px;
+  }
+}

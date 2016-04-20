@@ -1,0 +1,5 @@
+<div class="brand-footer">
+  <%= image_tag "logos/footer/#{@brands.first.brand_type.dasherize}-#{@brands.first == invoice.brand ? 'white' : 'black'}.png", alt: @brands.first.name %>
+  <%= image_tag "logos/footer/my-design-team-black.png", alt: 'My Design Team' %>
+  <%= image_tag "logos/footer/#{@brands.last.brand_type.dasherize}-#{@brands.last == invoice.brand ? 'white' : 'black'}.png", alt: @brands.last.name %>
+</div>
