@@ -2,7 +2,7 @@
   a {
     text-decoration: none;
   }
-  
+
   &:hover {
     background: lighten($dark-grey, 75%);
     border-color: $dark-grey;
@@ -24,4 +24,24 @@
 .customer-credit {
   font-size: rem-calc(12px);
   font-weight: normal;
+}
+
+.customer-addresses {
+  @include grid-row;
+
+  .address {
+    @include grid-column($columns: 4, $gutter: 10);
+  }
+
+  .delete-address {
+    font-size: rem-calc(14px);
+  }
+}
+
+.address-type {
+  display: block;
+}
+
+.address-edit-link {
+  margin: rem-calc(5px) 0;
 }

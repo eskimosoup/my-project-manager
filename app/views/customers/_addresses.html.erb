@@ -1,4 +1,4 @@
-<div class="addresses">
+<div class="customer-addresses">
   <h3>Addresses</h3>
 
   <% if customer.addresses.any? %>
@@ -8,5 +8,6 @@
       as: :address
     ) %>
   <% end %>
+
   <%= link_to "Add New Address", new_customer_address_path(customer) %>
 </div>

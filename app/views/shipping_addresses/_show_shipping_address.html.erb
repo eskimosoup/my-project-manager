@@ -1,11 +1,13 @@
 <div id="shipping-address-details" class="address">
   <% present shipping_address do |address_presenter| %>
-    <%= address_presenter.name %>
+    <strong class="address-type">
+      <%= address_presenter.name %>
+    </strong>
     <%= address_presenter.line_1 %>
     <%= address_presenter.line_2 %>
     <%= address_presenter.line_3 %>
     <%= address_presenter.city %>
     <%= address_presenter.postcode %>
   <% end %>
-  <%= link_to 'Edit', edit_project_shipping_address_path(@project), class: 'action-button' %> 
+  <%= link_to 'Edit', edit_project_shipping_address_path(@project), class: 'action-button' %>
 </div>

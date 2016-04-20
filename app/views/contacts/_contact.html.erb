@@ -1,8 +1,19 @@
 <div class="contact">
-  <%= link_to "Edit", edit_contact_path(contact), class: "action-button" %>
-  <%= contact.forename %>
-  <%= contact.surname %>
-  <%= contact.email %>
-  <%= contact.phone %>
-  <%= contact.role %>
+  <div class="contact-name">
+    <%= contact.forename %>
+    <%= contact.surname %>
+
+    <div class="contact-role">
+      <%= contact.role %>
+    </div>
+  </div>
+
+  <div class="contact-details">
+    <%= contact.email %>
+    <%= contact.phone %>
+  </div>
+
+  <div class="contact-edit">
+    <%= link_to "Edit", edit_contact_path(contact), class: "action-button" %>
+  </div>
 </div>

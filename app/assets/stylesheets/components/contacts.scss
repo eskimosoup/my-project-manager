@@ -1,0 +1,24 @@
+.contact {
+  @include grid-row;
+  border-bottom: 1px solid $pink;
+  padding: rem-calc(10px) 0;
+}
+
+.contact-name {
+  @include grid-column($columns: 4, $gutter: 10);
+  font-weight: 700;
+}
+
+.contact-details {
+  @include grid-column($columns: 4, $gutter: 10);
+}
+
+.contact-role {
+  font-size: rem-calc(14px);
+  font-weight: 400;
+}
+
+.contact-edit {
+  @include grid-column($columns: 4, $gutter: 10);
+  text-align: right;
+}
