@@ -19,7 +19,7 @@ class InvoicePayment
   def charge
     Stripe::Charge.create(
       amount: amount_in_pence,
-      currency: "gbp",
+      currency: 'gbp',
       source: stripe_token,
       description: description,
       receipt_email: email
@@ -31,15 +31,14 @@ class InvoicePayment
   end
 
   def amount
-    invoice.amount
+    invoice.amount_inc_vat
   end
 
   def description
-    "Payment for invoice: #{ invoice_ref }"
+    "Payment for invoice: #{invoice_ref}"
   end
 
   def invoice_ref
     invoice.slug
   end
-
 end

@@ -11,6 +11,7 @@
     <%= javascript_include_tag "payments" %>
     <%= tag :meta, name: "stripe-key", content: ENV['STRIPE_PUBLIC'] %>
     <%= csrf_meta_tags %>
+    <%= yield :head %>
   </head>
 
   <body>

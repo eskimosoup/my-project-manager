@@ -36,14 +36,14 @@
 
 <%= render(
   partial: 'invoices/project_details',
-  locals: { 
-  project: project, 
+  locals: {
+  project: project,
   invoice: invoice
   }
 ) %>
 
 <p>
-  You can pay online by clicking this <%= link_to "link", customer_invoice_url(invoice) %>
+  You can pay online by visiting <%= link_to customer_invoice_url(invoice), customer_invoice_url(invoice) %>.
 </p>
 
 <p>
