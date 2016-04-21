@@ -3,10 +3,12 @@ class Customer::PaymentsController < Customer::InvoicesController
 
   def new
     @invoice = find_invoice
+    @authorised = @invoice.project.billing_address.postcode.casecmp(params[:postcode].downcase).zero? if params[:postcode].present?
   end
 
   def create
-    raise params.to_yaml
+    # raise params.to_yaml
+    @authorised = true
     @invoice = find_invoice
     invoice_payment = InvoicePayment.new(
       invoice: @invoice,
@@ -14,7 +16,7 @@ class Customer::PaymentsController < Customer::InvoicesController
       email: params[:email]
     )
     if invoice_payment.save
-      redirect_to customer_invoice_path(@invoice), notice: "Invoice Paid"
+      redirect_to customer_invoice_path(@invoice), notice: 'Invoice Paid'
     else
       render :new
     end

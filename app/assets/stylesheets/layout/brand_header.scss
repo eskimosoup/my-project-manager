@@ -3,6 +3,15 @@
   overflow: auto;
 }
 
+.pdf .customer-header {
+  border: 0;
+  margin: 0 0 rem-calc(10px);
+}
+.pdf .brand-contact-details,
+.pdf .brand-logo {
+  @include grid-column(6);
+}
+
 .customer-header-inner {
   @include grid-row;
   @include border-bottom-radius(rem-calc(20));
