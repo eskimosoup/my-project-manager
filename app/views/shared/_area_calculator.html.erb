@@ -5,7 +5,7 @@
     function calculateMsq() {
       if(areaCalculatorHeight !== '' && areaCalculatorWidth !== '') {
         mmSq = areaCalculatorWidth * areaCalculatorHeight;
-        $('<%= area_input %>').val(mmSq / 1000000);
+        $('.required .numeric').val(mmSq / 1000000);
       }
     }
 

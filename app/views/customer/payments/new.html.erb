@@ -46,9 +46,17 @@
 
           <div class="form-row">
             <label>
-              <span>CVC number</span>
+              <span>CVC number <%= link_to 'What is this?', '#', class: 'long-tooltip' %></span>
               <input id="cc_cvc" type="text" size="4" data-stripe="cvc"/>
             </label>
+
+
+            <div class="long-tooltip-content">
+              <p>The card security code is a three digit number printed on your debit or credit card.</p>
+              <p>Some banks call it a 'Card Security Code', some a 'Personal Security Code' and others as 'Card Verification Value'.</p>
+              <p>For most UK-issued cards the security code can be found on the back of the card at the top right-hand side of the signature strip. In this case, the number required is the last three digits. </p>
+              <p>On other cards (e.g., American Express) a four-digit security code can be found above the full card number on the front of the card.</p>
+            </div>
           </div>
 
           <div class="form-row">

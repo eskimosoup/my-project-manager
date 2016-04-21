@@ -54,6 +54,7 @@
 // require jquery-ui/effect-slide
 // require jquery-ui/effect-transfer
 //= require components/sticky-internal-navigation
+//= require components/tooltip
 // require_tree .
 
 $(function() {
