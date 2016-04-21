@@ -55,6 +55,7 @@
 // require jquery-ui/effect-transfer
 //= require components/sticky-internal-navigation
 //= require components/tooltip
+//= require components/area-calculator
 // require_tree .
 
 $(function() {
