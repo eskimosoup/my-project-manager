@@ -1,0 +1,12 @@
+.long-tooltip-content {
+  display: none;
+}
+
+.tooltip {
+  background: $green;
+  border-radius: 10px;
+  color: $white;
+  max-width: 400px;
+  padding: 0 rem-calc(10px);
+  position: absolute;
+}
