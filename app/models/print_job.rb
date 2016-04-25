@@ -1,5 +1,4 @@
 class PrintJob < ActiveRecord::Base
-  # TODO Clean Up
   belongs_to :project
   has_one :brand, through: :project
   has_many :account_managements
@@ -8,6 +7,7 @@ class PrintJob < ActiveRecord::Base
   has_many :job_specifications
   has_many :labour_items
   has_many :mileages
+  has_many :my_print_services_items
   has_many :product_costs
   has_many :product_items
   has_many :sundry_costs
@@ -19,12 +19,14 @@ class PrintJob < ActiveRecord::Base
   validates :project, presence: true
 
   delegate :brand_type, to: :brand
+  delegate :my_print_services?, to: :brand
   delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
   delegate :cost, to: :price_calculator
   delegate :envisage_price, :envisage_rush_price, to: :price_calculator
   delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
   delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
   delegate :my_price, :my_rush_price, to: :price_calculator
+  delegate :my_print_services_price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::PrintJob.new(print_job: self)

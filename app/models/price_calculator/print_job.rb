@@ -6,6 +6,7 @@ class PriceCalculator::PrintJob
   delegate :job_specifications, to: :print_job
   delegate :labour_items, to: :print_job
   delegate :mileages, to: :print_job
+  delegate :my_print_services_items, to: :print_job
   delegate :product_items, to: :print_job
   delegate :sundry_items, to: :print_job
   delegate :supporting_product_items, to: :print_job
@@ -31,7 +32,11 @@ class PriceCalculator::PrintJob
   end
 
   def my_price
-    items.map(&:my_price).reduce(0, :+)
+    items.map(&:my_price).reduce(0, :+) + my_print_services_price
+  end
+
+  def my_print_services_price
+    my_print_services_items.map(&:cost).reduce(0, :+)
   end
 
   private
