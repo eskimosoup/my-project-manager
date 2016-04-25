@@ -41,7 +41,7 @@ class PrintJobsController < ApplicationController
   end
 
   def print_job_params
-    params.require(:print_job).permit(:name, :description)
+    params.require(:print_job).permit(:name, :description, :vat)
   end
 
   def set_print_job
