@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425104252) do
+ActiveRecord::Schema.define(version: 20160425135736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,14 +203,15 @@ ActiveRecord::Schema.define(version: 20160425104252) do
 
   create_table "print_jobs", force: :cascade do |t|
     t.integer  "project_id"
-    t.text     "name",                                               null: false
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.text     "name",                                                              null: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
     t.decimal  "envisage_sale_price",       precision: 10, scale: 2
     t.decimal  "envisage_trade_sale_price", precision: 10, scale: 2
     t.decimal  "envisage_to_my_sale_price", precision: 10, scale: 2
     t.decimal  "my_sale_price",             precision: 10, scale: 2
     t.text     "description"
+    t.boolean  "vat",                                                default: true, null: false
   end
 
   add_index "print_jobs", ["project_id", "name"], name: "index_print_jobs_on_project_id_and_name", unique: true, using: :btree

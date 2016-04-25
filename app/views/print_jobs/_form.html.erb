@@ -1,5 +1,6 @@
 <%= simple_form_for [@project, @print_job] do |f| %>
   <%= f.input :name %>
   <%= f.input :description, as: :text, hint: "Shown on quote and job sheet" %>
+  <%= f.input :vat, as: :boolean %>
   <%= f.button :submit %>
 <% end %>
