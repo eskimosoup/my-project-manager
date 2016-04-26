@@ -4,7 +4,10 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = false
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = { address: 'mail.eskimosoup.co.uk', authentication: :plain, user_name: 'tasks@eskimosoup.co.uk', password: 'poipoip' }
 
   config.action_controller.asset_host = 'http://192.168.0.26:5050'
 
