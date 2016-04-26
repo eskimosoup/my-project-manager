@@ -31,7 +31,7 @@ class InvoicePayment
   end
 
   def amount
-    invoice.amount_inc_vat
+    invoice.total_inc_vat
   end
 
   def description
