@@ -8,7 +8,7 @@ class PercentageInvoicesController < ApplicationController
     @project = find_project
     @percentage_invoice_creator = PercentageInvoiceCreator.new(invoice_params)
     if @percentage_invoice_creator.save
-      PercentageInvoiceMailer.invoice_created(@project, @project.invoices.order(created_at: :desc).first)
+      PercentageInvoiceMailer.invoice_created(@project, @project.invoices.order(created_at: :desc).first).deliver_now
       redirect_to project_invoices_path(@percentage_invoice_creator.project), notice: 'Invoice Created'
     else
       render :new
