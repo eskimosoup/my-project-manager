@@ -31,7 +31,7 @@ class PriceCalculator::Project
   end
 
   def vat
-    @vat ||= brand_price * 0.2
+    @vat ||= vatable_price * 0.2
   end
 
   def brand_price_inc_vat
@@ -45,6 +45,14 @@ class PriceCalculator::Project
   private
 
   attr_reader :print_jobs, :my_brand, :discounts
+
+  def vatable_price
+    @vatable_price ||= vatable_print_jobs.map(&:brand_price).reduce(0, :+)
+  end
+
+  def vatable_print_jobs
+    print_jobs.select(&:vat?)
+  end
 
   def brand_price_no_discount
     @brand_price_no_discount ||= sum_array(:brand_price)

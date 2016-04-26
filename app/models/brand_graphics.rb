@@ -15,6 +15,8 @@ class BrandGraphics
       MyOfficeBrandGraphics
     when "my_vehicle_wrap"
       MyVehicleWrapBrandGraphics
+    when "my_print_services"
+      MyPrintServicesBrandGraphics
     end
   end
 end

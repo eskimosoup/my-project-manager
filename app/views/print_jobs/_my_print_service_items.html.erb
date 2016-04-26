@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="main print-job-section" id="my-print-services-items">
+    <h3>My Print Services Items</h3>
+
+    <%= link_to "Add My Print Service Item", new_print_job_my_print_services_item_path(print_job), 
+      class: 'action-button' if print_job.quoted? %>
+
+    <% if print_job.my_print_services_items.any? %>
+      <%= render(
+        partial: "my_print_services_items/my_print_services_item",
+        collection: print_job.my_print_services_items,
+        as: :my_print_services_item
+      ) %>
+    <% end %>
+  </div>
+</div>

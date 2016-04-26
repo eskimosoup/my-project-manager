@@ -30,3 +30,4 @@
 <%= render "print_jobs/mileage", print_job: @presented_print_job %>
 <%= render "print_jobs/account_management", print_job: @presented_print_job %>
 <%= render "print_jobs/design", print_job: @presented_print_job %>
+<%= render "print_jobs/my_print_service_items", print_job: @print_job if @print_job.my_print_services? %>

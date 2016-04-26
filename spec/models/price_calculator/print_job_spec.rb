@@ -23,6 +23,12 @@ describe PriceCalculator::PrintJob, type: :model do
     it do
       calc = PriceCalculator::PrintJob.new(print_job: nil)
 
+      expect(calc).to delegate_method(:my_print_services_items).to(:print_job)
+    end
+
+    it do
+      calc = PriceCalculator::PrintJob.new(print_job: nil)
+
       expect(calc).to delegate_method(:product_items).to(:print_job)
     end
 

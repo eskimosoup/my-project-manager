@@ -20,10 +20,15 @@ FactoryGirl.define do
       brand_type 3
     end
 
+    trait :my_print_services do
+      brand_type 4
+    end
+
     factory :my_office_branding_brand, traits: [:my_office_branding]
     factory :envisage_brand, traits: [:envisage]
     factory :envisage_trade_brand, traits: [:envisage_trade]
     factory :my_vehicle_wrap_brand, traits: [:my_vehicle_wrap]
+    factory :my_print_services_brand, traits: [:my_print_services]
   end
 
 end

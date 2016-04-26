@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418142500) do
+ActiveRecord::Schema.define(version: 20160425135736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,16 +191,27 @@ ActiveRecord::Schema.define(version: 20160418142500) do
 
   add_index "mileages", ["print_job_id"], name: "index_mileages_on_print_job_id", using: :btree
 
+  create_table "my_print_services_items", force: :cascade do |t|
+    t.string   "name",                                  null: false
+    t.decimal  "cost",         precision: 15, scale: 2, null: false
+    t.integer  "print_job_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "my_print_services_items", ["print_job_id"], name: "index_my_print_services_items_on_print_job_id", using: :btree
+
   create_table "print_jobs", force: :cascade do |t|
     t.integer  "project_id"
-    t.text     "name",                                               null: false
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.text     "name",                                                              null: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
     t.decimal  "envisage_sale_price",       precision: 10, scale: 2
     t.decimal  "envisage_trade_sale_price", precision: 10, scale: 2
     t.decimal  "envisage_to_my_sale_price", precision: 10, scale: 2
     t.decimal  "my_sale_price",             precision: 10, scale: 2
     t.text     "description"
+    t.boolean  "vat",                                                default: true, null: false
   end
 
   add_index "print_jobs", ["project_id", "name"], name: "index_print_jobs_on_project_id_and_name", unique: true, using: :btree
@@ -455,6 +466,7 @@ ActiveRecord::Schema.define(version: 20160418142500) do
   add_foreign_key "labour_items", "print_jobs", on_delete: :cascade
   add_foreign_key "mileage_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "mileages", "print_jobs", on_delete: :cascade
+  add_foreign_key "my_print_services_items", "print_jobs", on_delete: :cascade
   add_foreign_key "print_jobs", "projects", on_delete: :cascade
   add_foreign_key "product_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "product_costs", "products", on_delete: :cascade

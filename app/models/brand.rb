@@ -1,9 +1,9 @@
 class Brand < ActiveRecord::Base
-  MY_BRANDS = %w( my_office_branding my_vehicle_wrap ).freeze 
+  MY_BRANDS = %w( my_office_branding my_vehicle_wrap my_print_services ).freeze 
 
   has_one :brand_address
 
-  enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap]
+  enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap, :my_print_services]
   validates :name, presence: true
   validates :email, presence: true
   validates :brand_type, presence: true
@@ -17,6 +17,10 @@ class Brand < ActiveRecord::Base
 
   def my_brand?
     MY_BRANDS.include?(brand_type)
+  end
+
+  def my_print_services?
+    brand_type == "my_print_services"
   end
 
   def vehicle_brand?
