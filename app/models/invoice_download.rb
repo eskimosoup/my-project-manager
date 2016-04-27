@@ -1,4 +1,4 @@
-require "render_anywhere"
+require 'render_anywhere'
 
 class InvoiceDownload
   include RenderAnywhere
@@ -11,17 +11,17 @@ class InvoiceDownload
 
   def to_pdf
     kit = PDFKit.new(as_html, page_size: 'A4')
-    kit.to_file("tmp/invoice_download.pdf")
+    kit.to_file('tmp/invoice_download.pdf')
   end
 
   def filename
-    "Invoice #{ invoice.id }.pdf"
+    "MY#{invoice.id + 500}.pdf"
   end
 
   def render_attributes
     {
-      template: "invoices/pdf",
-      layout: "pdf",
+      template: 'invoices/pdf',
+      layout: 'pdf',
       locals: { project: project, invoice: invoice, colour: colour }
     }
   end
