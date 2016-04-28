@@ -20,4 +20,14 @@ describe PercentageInvoiceCreator, type: :model do
       expect(ic.amount).to eq(50)
     end
   end
+
+  context "percentage vat" do
+    it "#vat" do
+      ic = PercentageInvoiceCreator.new(percentage: 50, project_id: 1)
+      allow(ic).to receive(:brand_price).and_return(100)
+      allow(ic).to receive(:project_vat).and_return(20)
+
+      expect(ic.vat).to eq(10)
+    end
+  end
 end
