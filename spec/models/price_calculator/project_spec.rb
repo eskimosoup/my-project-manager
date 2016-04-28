@@ -40,19 +40,29 @@ describe PriceCalculator::Project, type: :model do
 
   it "#vat" do
     calc = PriceCalculator::Project.new(print_jobs: [])
-    allow(calc).to receive(:brand_price).and_return(10.0)
+    allow(calc).to receive(:vatable_price).and_return(10.0)
 
     expect(calc.vat).to eq(2.00)
   end
 
   it "#brand_price_inc_vat" do
     print_jobs = [
-      instance_double("print_job", brand_price: 10.0)
+      instance_double("print_job", brand_price: 10.0, vat?: true)
     ]
     calc = PriceCalculator::Project.new(print_jobs: print_jobs)
     allow(calc).to receive(:total_discount).and_return(0)
 
     expect(calc.brand_price_inc_vat).to eq(12.00)
+  end
+
+  it "#envisage_to_my_vat" do
+    print_jobs = [
+      instance_double("print_job", envisage_to_my_sale_price: 10.0, vat?: true),
+      instance_double("print_job", envisage_to_my_sale_price: 10.0, vat?: false)
+    ]
+    calc = PriceCalculator::Project.new(print_jobs: print_jobs)
+
+    expect(calc.envisage_to_my_vat).to eq(2)
   end
 
 end

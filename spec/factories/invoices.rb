@@ -5,5 +5,6 @@ FactoryGirl.define do
     amount "9.99"
     percentage 100
     paid false
+    vat 20
   end
 end

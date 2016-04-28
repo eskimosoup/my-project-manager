@@ -1,0 +1,17 @@
+<div class="content">
+  <div class="index">
+    <h1>Envisage Invoices</h1>
+    <nav id="envisage-invoice">
+      <ul>
+        <li>
+          <%= link_to "All", envisage_invoices_path %>
+          <%= link_to "Paid", envisage_paid_invoices_path %>
+          <%= link_to "Unpaid", envisage_unpaid_invoices_path %>
+        </li>
+      </ul>
+    </nav>
+
+    <%= render @invoices %>
+    <%= paginate @invoices %>
+  </div>
+</div>

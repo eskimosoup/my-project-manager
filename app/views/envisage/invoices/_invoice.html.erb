@@ -1,4 +1,4 @@
-<div class="invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
+<div class="envisage-invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
   <div class="name">
     Name: <%= invoice.name %>
   </div>
@@ -16,11 +16,11 @@
   </div>
   <div class="action-buttons">
     <% if invoice.unpaid? %>
-      <%= button_to "Mark As Paid", invoice_path(invoice), method: :patch,
-        params: { :"invoice[paid]" => true }, class: "action-button" %>
+      <%= button_to "Mark As Paid", envisage_invoice_path(invoice), method: :patch,
+        params: { :"envisage_invoice[paid]" => true }, class: "action-button" %>
     <% else %>
       <strong>Paid</strong>
     <% end %>
-    <%= link_to "Download", invoice_invoice_download_path(invoice, format: :pdf), class: "action-button" %>
   </div>
+
 </div>

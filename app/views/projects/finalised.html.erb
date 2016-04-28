@@ -87,4 +87,9 @@
       <%= presented_project.mark_finalised %>
     </div>
   </div>
+
+  <%= render(
+    partial: "projects/envisage_invoices",
+    locals: { project: @project }
+  ) %>
 <% end %>

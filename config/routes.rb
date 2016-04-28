@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :addresses, shallow: true
     resources :contacts, shallow: true, except: [:show]
   end
+  namespace :envisage do
+    resources :invoices, only: [:index, :update]
+    resources :paid_invoices, only: [:index]
+    resources :unpaid_invoices, only: [:index]
+  end
   resources :invoices, only: [:update]
   resources :projects do
     # changing status
@@ -24,6 +29,7 @@ Rails.application.routes.draw do
     resource :my_job_sheet, only: [:show]
     resource :shipping_address, only: [:new, :create, :edit, :update]
     resources :discounts, only: [:new, :create, :destroy], shallow: true
+    resources :envisage_invoices, only: [:create], controller: 'project_envisage_invoices'
     resources :invoices, only: [:index], shallow: true, controller: 'project_invoices' do
       resource :invoice_download, only: [:show]
     end
