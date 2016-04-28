@@ -3,6 +3,7 @@ FactoryGirl.define do
     project
     sequence(:name) {|x| "Print Job #{ x }" }
     description "My description"
+    vat false
     trait :with_prices do
       envisage_sale_price 5.00
       envisage_trade_sale_price 10.00
