@@ -1,4 +1,6 @@
 class Envisage::Invoice < ActiveRecord::Base
+  self.table_name = "envisage_invoices"
+  
   belongs_to :project
   has_one :customer, through: :project
   has_one :brand, through: :project
