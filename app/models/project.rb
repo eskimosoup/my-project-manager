@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   has_many :designs, through: :print_jobs
   has_many :discounts
   has_many :envisage_invoices, class_name: "Envisage::Invoice"
-  has_many :invoices
+  has_many :invoices, class_name: "::Invoice"
   has_many :job_specifications, through: :print_jobs
   has_many :labour_items, through: :print_jobs
   has_many :mileages, through: :print_jobs

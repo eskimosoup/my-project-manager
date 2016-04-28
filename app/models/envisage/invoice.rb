@@ -23,4 +23,8 @@ class Envisage::Invoice < ActiveRecord::Base
   def unpaid?
     !paid?
   end
+
+  def number
+    "ENVS#{ id }"
+  end
 end

@@ -17,8 +17,8 @@ RSpec.describe Project, type: :model do
     it { should have_many(:account_managements).through(:print_jobs) }
     it { should have_many(:designs).through(:print_jobs) }
     it { should have_many(:discounts) }
-    it { should have_many(:envisage_invoices) }
-    it { should have_many(:invoices) }
+    it { should have_many(:envisage_invoices).class_name("Envisage::Invoice") }
+    it { should have_many(:invoices).class_name("::Invoice") }
     it { should have_many(:job_specifications).through(:print_jobs) }
     it { should have_many(:labour_items).through(:print_jobs) }
     it { should have_many(:mileages).through(:print_jobs) }
