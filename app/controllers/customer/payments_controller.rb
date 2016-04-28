@@ -3,7 +3,7 @@ class Customer::PaymentsController < Customer::InvoicesController
 
   def new
     @invoice = find_invoice
-    @authorised = @invoice.project.billing_address.postcode.casecmp(params[:postcode].downcase).zero? if params[:postcode].present?
+    @authorised = @invoice.project.billing_address.postcode.gsub(/\s+/, '').casecmp(params[:postcode].downcase.gsub(/\s+/, '')).zero? if params[:postcode].present?
   end
 
   def create

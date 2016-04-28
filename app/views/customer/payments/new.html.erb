@@ -40,14 +40,14 @@
           <div class="form-row">
             <label>
               <span>Card Number</span>
-              <input id="card_number" type="text" size="20" data-stripe="number"/>
+              <input id="card_number" type="text" size="20" maxlength="16" data-stripe="number"/>
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span>CVC number <%= link_to 'What is this?', '#', class: 'long-tooltip' %></span>
-              <input id="cc_cvc" type="text" size="4" data-stripe="cvc"/>
+              <input id="cc_cvc" type="text" size="4" maxlength="4" data-stripe="cvc"/>
             </label>
 
 
@@ -62,9 +62,9 @@
           <div class="form-row">
             <label>
               <span>Expiration (MM/YYYY)</span>
-              <input id="exp_month" type="text" size="2" data-stripe="exp-month"/>
+              <input id="exp_month" type="text" size="2" maxlength="2" data-stripe="exp-month"/>
               /
-              <input id="exp_year" type="text" size="4" data-stripe="exp-year"/>
+              <input id="exp_year" type="text" size="4" maxlength="4" data-stripe="exp-year"/>
             </label>
 
           </div>
@@ -72,7 +72,7 @@
           <div class="form-row">
             <label>
               <span>Email Address (<strong>payment receipt will be sent to this address</strong>)</span>
-              <input id="email" name="email" type="email" size="20" value="<%= @invoice.project.customer.main_contact.email %>" />
+              <input id="email" name="email" type="email" size="44" value="<%= @invoice.project.customer.main_contact.email %>" />
             </label>
           </div>
 
