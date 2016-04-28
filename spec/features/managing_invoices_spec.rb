@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "managing project invoices", type: :feature do
-  it "user creates a percentage invoice" do
+  scenario "user creates a percentage invoice" do
     user = create(:user)
     brand = create(:my_office_branding_brand)
     project = create(:finalised_project, brand: brand)

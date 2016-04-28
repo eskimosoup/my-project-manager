@@ -1,0 +1,10 @@
+<div class="envisage-invoices">
+  <% if project.envisage_invoices.any? %>
+    <%= render(
+      partial: "envisage/invoices/invoice",
+      collection: project.envisage_invoices
+    ) %>
+  <% else %>
+    <%= button_to "Create Envisage Invoice", project_envisage_invoices_path(project), class: "action-button" %>
+  <% end %>
+</div>

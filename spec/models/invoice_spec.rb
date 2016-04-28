@@ -17,16 +17,10 @@ RSpec.describe Invoice, type: :model do
   it { should delegate_method(:email).to(:brand) }
   it { should delegate_method(:website).to(:brand) }
 
-  it "#vat" do
-    invoice = build(:invoice)
-
-    expect(invoice.vat).to eq(invoice.amount * 0.2)
-  end
-
   it "#total_inc_vat" do
     invoice = build(:invoice)
 
-    expect(invoice.total_inc_vat).to eq(invoice.amount * 1.2)
+    expect(invoice.total_inc_vat).to eq(invoice.amount + invoice.vat)
   end
 
   it "#number" do

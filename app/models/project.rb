@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   has_many :account_managements, through: :print_jobs
   has_many :designs, through: :print_jobs
   has_many :discounts
+  has_many :envisage_invoices, class_name: "Envisage::Invoice"
   has_many :invoices
   has_many :job_specifications, through: :print_jobs
   has_many :labour_items, through: :print_jobs
@@ -36,7 +37,7 @@ class Project < ActiveRecord::Base
   delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand
   delegate :name, to: :brand, prefix: true
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,
-    :brand_profit, :envisage_profit, :cost, to: :price_calculator
+    :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::Project.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)

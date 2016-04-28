@@ -17,6 +17,7 @@ RSpec.describe Project, type: :model do
     it { should have_many(:account_managements).through(:print_jobs) }
     it { should have_many(:designs).through(:print_jobs) }
     it { should have_many(:discounts) }
+    it { should have_many(:envisage_invoices) }
     it { should have_many(:invoices) }
     it { should have_many(:job_specifications).through(:print_jobs) }
     it { should have_many(:labour_items).through(:print_jobs) }
@@ -49,6 +50,7 @@ RSpec.describe Project, type: :model do
     it { should delegate_method(:brand_price_inc_vat).to(:price_calculator) }
     it { should delegate_method(:brand_price).to(:price_calculator) }
     it { should delegate_method(:envisage_to_my_price).to(:price_calculator) }
+    it { should delegate_method(:envisage_to_my_vat).to(:price_calculator) }
     it { should delegate_method(:brand_profit).to(:price_calculator) }
     it { should delegate_method(:envisage_profit).to(:price_calculator) }
     it { should delegate_method(:cost).to(:price_calculator) }

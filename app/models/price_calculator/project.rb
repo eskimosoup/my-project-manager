@@ -30,6 +30,10 @@ class PriceCalculator::Project
     envisage_to_my_price - cost
   end
 
+  def envisage_to_my_vat
+    @envisage_to_my_vat ||= envisage_to_my_vatable_price * 0.2
+  end
+
   def vat
     @vat ||= vatable_price * 0.2
   end
@@ -48,6 +52,10 @@ class PriceCalculator::Project
 
   def vatable_price
     @vatable_price ||= vatable_print_jobs.map(&:brand_price).reduce(0, :+)
+  end
+
+  def envisage_to_my_vatable_price
+    @envisage_to_my_vatable_price ||= vatable_print_jobs.map(&:envisage_to_my_sale_price).reduce(0, :+)
   end
 
   def vatable_print_jobs
