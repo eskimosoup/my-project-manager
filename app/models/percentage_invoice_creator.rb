@@ -18,10 +18,15 @@ class PercentageInvoiceCreator
     brand_price * decimal_percentage
   end
 
+  def vat
+    project_vat * decimal_percentage
+  end
+
   def save
     return if invalid?
     project.invoices.create!(
       amount: amount,
+      vat: vat,
       percentage: percentage,
       name: name
     )
@@ -31,6 +36,10 @@ class PercentageInvoiceCreator
 
   def brand_price
     project.brand_price
+  end
+
+  def project_vat
+    project.vat
   end
 
   def decimal_percentage

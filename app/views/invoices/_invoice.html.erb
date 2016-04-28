@@ -8,6 +8,12 @@
   <div class="amount">
     <%= number_to_currency invoice.amount %>
   </div>
+  <div class="vat">
+    <%= number_to_currency invoice.vat %>
+  </div>
+  <div class="total">
+    <%= number_to_currency invoice.total_inc_vat %>
+  </div>
   <div class="action-buttons">
     <% if invoice.unpaid? %>
       <%= button_to "Mark As Paid", invoice_path(invoice), method: :patch,
