@@ -1,0 +1,9 @@
+<div>
+  <% @reports.each do |monthly_report| %>
+    <div class="monthly-report">
+      <h1><%= monthly_report.month %> <%= monthly_report.year %></h1>
+      Sales: <%= monthly_report.sales %>
+      Costs: <%= monthly_report.costs %>
+    </div>
+  <% end %>
+</div>

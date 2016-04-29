@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#show'
 
+  namespace :financial_reports do
+    resource :my_monthly, only: [:index]
+  end
+
   get '/autocomplete', to: 'utilities#autocomplete'
   resources :users, controller: :users, only: :create
   resources :customer_registrations, only: [:new, :create]
