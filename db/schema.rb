@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428104641) do
+ActiveRecord::Schema.define(version: 20160429133059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 20160428104641) do
     t.decimal  "my_sale_price",             precision: 10, scale: 2
     t.text     "description"
     t.boolean  "vat",                                                default: true, null: false
+    t.decimal  "cost",                      precision: 10, scale: 2
   end
 
   add_index "print_jobs", ["project_id", "name"], name: "index_print_jobs_on_project_id_and_name", unique: true, using: :btree

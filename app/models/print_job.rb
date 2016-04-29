@@ -21,7 +21,6 @@ class PrintJob < ActiveRecord::Base
   delegate :brand_type, to: :brand
   delegate :my_print_services?, to: :brand
   delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
-  delegate :cost, to: :price_calculator
   delegate :envisage_price, :envisage_rush_price, to: :price_calculator
   delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
   delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
@@ -54,6 +53,11 @@ class PrintJob < ActiveRecord::Base
     else
       envisage_to_my_price
     end
+  end
+
+  def cost
+    return self[:cost] if self[:cost].present?
+    price_calculator.cost
   end
 
   private

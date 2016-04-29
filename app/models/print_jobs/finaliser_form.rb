@@ -20,6 +20,7 @@ class PrintJobs::FinaliserForm
 
   def save!
     print_job.update!({
+      cost: print_job.cost
       envisage_sale_price: envisage_sale_price,
       envisage_trade_sale_price: envisage_trade_sale_price,
       envisage_to_my_sale_price: envisage_to_my_sale_price,
@@ -37,6 +38,5 @@ class PrintJobs::FinaliserForm
   private
 
   attr_reader :print_job
-
 
 end
