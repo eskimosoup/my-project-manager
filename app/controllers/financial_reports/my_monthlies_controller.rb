@@ -1,6 +1,6 @@
 module FinancialReports
-  class MyMonthlyController < ApplicationController
-    def index
+  class MyMonthliesController < ApplicationController
+    def show
       @reports = FinancialReports::MyMonthlyQuery.new.results
     end
   end

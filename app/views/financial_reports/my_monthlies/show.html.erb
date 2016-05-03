@@ -1,0 +1,32 @@
+<div class="content">
+  <div class="monthly-report headings">
+    <div class="month-year">
+      &nbsp;
+    </div>
+    <div class="sales">
+      Sales
+    </div>
+    <div class="costs">
+      Costs
+    </div>
+    <div class="profit">
+      Profit
+    </div>
+  </div>
+  <% @reports.each do |monthly_report| %>
+    <div class="monthly-report">
+      <div class="month-year">
+        <%= monthly_report.month %> <%= monthly_report.year %>
+      </div>
+      <div class="sales">
+        <%= number_to_currency monthly_report.sales %>
+      </div>
+      <div class="costs">
+        <%= number_to_currency monthly_report.costs %>
+      </div>
+      <div class="profit">
+        <%= number_to_currency monthly_report.profit %>
+      </div>
+    </div>
+  <% end %>
+</div>

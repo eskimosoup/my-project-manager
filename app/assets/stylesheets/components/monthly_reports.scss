@@ -1,0 +1,7 @@
+.monthly-report {
+  @include grid-row;
+
+  .month-year, .sales, .costs, .profit {
+    @include grid-column($columns: 3, $gutter: 10);
+  }
+}

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#show'
 
   namespace :financial_reports do
-    resource :my_monthly, only: [:index]
+    resource :my_monthly, only: [:show]
   end
 
   get '/autocomplete', to: 'utilities#autocomplete'

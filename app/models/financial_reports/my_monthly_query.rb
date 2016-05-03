@@ -3,7 +3,7 @@ class FinancialReports::MyMonthlyQuery
   end
 
   def results
-    PrintJob.select([sum_costs, sum_sales, extract_month.as("month"), extract_year.as("year")]).group([extract_month, extract_year]).order("year desc, month asc").map do |report_data|
+    PrintJob.select([sum_costs, sum_sales, extract_month.as("month"), extract_year.as("year")]).group([extract_month, extract_year]).order("year desc, month desc").map do |report_data|
       FinancialReports::MyMonthly.new(
         sales: report_data.sales,
         costs: report_data.costs,

@@ -7,5 +7,9 @@ class FinancialReports::MyMonthly
     @month = Date::MONTHNAMES[month]
     @year = year.to_i
   end
+
+  def profit
+    sales - costs
+  end
 end
 
