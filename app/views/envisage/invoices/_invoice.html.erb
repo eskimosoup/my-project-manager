@@ -1,4 +1,7 @@
 <div class="envisage-invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
+  <div class="date">
+    <%= invoice.created_at.strftime("%-d %B %Y") %>
+  </div>
   <div class="name">
     Name: <%= invoice.name %>
   </div>
