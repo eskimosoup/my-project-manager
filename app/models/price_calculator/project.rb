@@ -31,7 +31,7 @@ class PriceCalculator::Project
   end
 
   def envisage_to_my_vat
-    @envisage_to_my_vat ||= envisage_to_my_vatable_price * 0.2
+    @envisage_to_my_vat ||= envisage_to_my_vatable_price * 0.2 * (envisage_discount * (envisage_to_my_vatable_price / envisage_to_my_price_no_discount)))))
   end
 
   def vat
