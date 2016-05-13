@@ -13,7 +13,7 @@ module StatusChanger
     end
 
     def project_attributes_to_reject
-      %w(id created_at updated_at customer_id brand_id contact_id status shipping_address_id billing_address_id)
+      %w(id created_at updated_at customer_id brand_id contact_id status shipping_address_id billing_address_id finalised_at completed_at)
     end
 
     def initialize(project, attributes = default_attributes(project))
