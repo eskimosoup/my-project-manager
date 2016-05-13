@@ -56,7 +56,7 @@ module StatusChanger
 
     def update_project_and_print_jobs
       project.transaction do
-        project.update!(purchase_order: purchase_order, name: name, description: description,
+        project.update!(purchase_order: purchase_order, name: name, description: description, finalised_at: Date.today,
                         delivery_deadline: delivery_deadline, notes: notes, rush_job: rush_job, status: "finalised")
         print_jobs_form_objects.each do |pj|
           pj.save!
