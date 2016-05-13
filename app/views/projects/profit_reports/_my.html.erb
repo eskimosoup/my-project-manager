@@ -1,0 +1,20 @@
+<div class="project-report <%= cycle('odd', 'even') %>">
+  <div class="name">
+    <%= project.name %>
+  </div>
+  <div class="my-price">
+    <%= number_to_currency project.brand_price %>
+  </div>
+  <div class="my-profit">
+    <%= number_to_currency project.brand_profit %>
+  </div>
+  <div class="envisage-price">
+    <%= number_to_currency project.envisage_to_my_price %>
+  </div>
+  <div class="envisage-profit">
+    <%= number_to_currency project.envisage_profit %>
+  </div>
+  <div class="cost">
+    <%= number_to_currency project.cost %>
+  </div>
+</div>

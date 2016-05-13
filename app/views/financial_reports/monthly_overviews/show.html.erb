@@ -1,0 +1,106 @@
+<div class="content">
+  <div class="index">
+    <% if @my_projects.present? %>
+      <h2>My Projects</h2>
+      <div class="project-report heading">
+        <div class="name">
+          Name
+        </div>
+        <div class="my-price">
+          My Price
+        </div>
+        <div class="my-profit">
+          My Profit
+        </div>
+        <div class="envisage-price">
+          Envisage Price
+        </div>
+        <div class="envisage-profit">
+          Envisage Profit
+        </div>
+        <div class="cost">
+          Cost
+        </div>
+      </div>
+      <%= render(
+        partial: "projects/profit_reports/my",
+        collection: @my_projects,
+        as: :project
+      ) %>
+      <div class="project-report total">
+        <div class="name">
+          Total
+        </div>
+        <div class="my-price">
+          <%= number_to_currency @my_projects.map(&:brand_price).reduce(0, :+) %>
+        </div>
+        <div class="my-profit">
+          <%= number_to_currency @my_projects.map(&:brand_profit).reduce(0, :+) %>
+        </div>
+        <div class="envisage-price">
+          <%= number_to_currency @my_projects.map(&:envisage_to_my_price).reduce(0, :+) %>
+        </div>
+        <div class="envisage-profit">
+          <%= number_to_currency @my_projects.map(&:envisage_profit).reduce(0, :+) %>
+        </div>
+        <div class="cost">
+          <%= number_to_currency @my_projects.map(&:cost).reduce(0, :+) %>
+        </div>
+      </div>
+    <% else %>
+      No my projects for this timeframe
+    <% end %>
+
+    <% if @envisage_projects.present? %>
+      <h2>Envisage Projects</h2>
+      <div class="project-report heading">
+        <div class="name">
+          Name
+        </div>
+        <div class="my-price">
+          My Price
+        </div>
+        <div class="my-profit">
+          My Profit
+        </div>
+        <div class="envisage-price">
+          Envisage Price
+        </div>
+        <div class="envisage-profit">
+          Envisage Profit
+        </div>
+        <div class="cost">
+          Cost
+        </div>
+      </div>
+      <%= render(
+        partial: "projects/profit_reports/envisage",
+        collection: @envisage_projects,
+        as: :project
+      ) %>
+      <div class="project-report total">
+        <div class="name">
+          Total
+        </div>
+        <div class="my-price">
+          N/A
+        </div>
+        <div class="my-profit">
+          N/A
+        </div>
+        <div class="envisage-price">
+          <%= number_to_currency @envisage_projects.map(&:brand_price).reduce(0, :+) %>
+        </div>
+        <div class="envisage-profit">
+          <%= number_to_currency @envisage_projects.map(&:brand_profit).reduce(0, :+) %>
+        </div>
+        <div class="cost">
+          <%= number_to_currency @envisage_projects.map(&:cost).reduce(0, :+) %>
+        </div>
+      </div>
+    <% else %>
+      No envisage projects for this timeframe
+    <% end %>
+
+  </div>
+</div>

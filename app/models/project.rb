@@ -31,6 +31,10 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) if value.present? }
   scope :customer_id, ->(value) { where(customer_id: value) if value.present? }
   scope :brand_id, ->(value) { where(brand_id: value) if value.present? }
+  scope :finalised_year, ->(year) { where("extract(year from finalised_at) = ?", year) }
+  scope :finalised_month, ->(month) { where("extract(month from finalised_at) = ?", month) }
+  scope :my_brands, ->{ joins(:brand).where(brands: { brand_type: Brand::MY_BRANDS }) }
+  scope :envisage_brands, ->{ joins(:brand).where.not(brands: { brand_type: Brand::MY_BRANDS }) }
 
   delegate :name, to: :customer, prefix: true, allow_nil: true
   delegate :forename, to: :main_contact, prefix: true, allow_nil: true

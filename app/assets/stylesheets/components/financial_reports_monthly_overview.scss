@@ -1,0 +1,17 @@
+.project-report {
+  @include grid-row;
+
+  .name, .my-price, .my-profit, .envisage-price, .envisage-profit, .cost {
+    @include grid-column($columns: 2, $gutter: 10);
+  }
+  padding: rem-calc(5px 0);
+}
+
+.project-report.heading {
+  border-bottom: 2px solid $green;
+}
+
+.project-report.total {
+  border-top: 2px solid $green;
+  margin-bottom: rem-calc(20px);
+}

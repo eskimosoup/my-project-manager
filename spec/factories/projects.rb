@@ -18,10 +18,13 @@ FactoryGirl.define do
 
     trait :finalised do
       status 2
+      finalised_at { Date.today }
     end
 
     trait :completed do
       status 3
+      finalised_at { 3.days.ago }
+      completed_at { Date.today }
     end
 
     trait :archived do
