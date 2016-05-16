@@ -1,6 +1,9 @@
 class Brand < ActiveRecord::Base
   MY_BRANDS = %w( my_office_branding my_vehicle_wrap my_print_services ).freeze 
 
+  scope :my_brand, ->{ where(brand_type: Brand.brand_types.select{|x| Brand::MY_BRANDS.include?(x) }.values) }
+  scope :envisage_brand, ->{ where.not(brand_type: Brand.brand_types.select{|x| Brand::MY_BRANDS.include?(x) }.values) }
+
   has_one :brand_address
 
   enum brand_type: [:my_office_branding, :envisage, :envisage_trade, :my_vehicle_wrap, :my_print_services]
