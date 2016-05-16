@@ -35,7 +35,11 @@ class PriceCalculator::Project
   end
 
   def vat
-    @vat ||= (vatable_price - my_discount) * 0.2
+    @vat ||= begin
+               calculated_vat = (vatable_price - total_discount) * 0.2
+               return 0 if calculated_vat < 0
+               calculated_vat
+             end
   end
 
   def brand_price_inc_vat
