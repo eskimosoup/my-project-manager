@@ -11,7 +11,7 @@ class PercentageInvoiceMailer < ApplicationMailer
     invoice_pdf = InvoiceDownload.new(@invoice)
     attachments[invoice_pdf.filename] = File.read(invoice_pdf.to_pdf)
     if Rails.env.production?
-      mail to: 'purchasing@ludostudio.co.uk', cc: 'support@optimised.today', subject: "Invoice #{@invoice.number} has been created for #{brand.name}"
+      mail to: 'purchasing@ludostudio.co.uk', cc: 'george@optimised.today', subject: "Invoice #{@invoice.number} has been created for #{brand.name}"
     else
       mail to: 'support@optimised.today', subject: "Invoice #{@invoice.number} has been created for #{brand.name}"
     end
