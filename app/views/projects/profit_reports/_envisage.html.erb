@@ -1,6 +1,6 @@
 <div class="project-report <%= cycle('odd', 'even') %>">
   <div class="name">
-    <%= project.name %><br>
+    <%= link_to project.name, project %><br>
     <%= project.customer_name %>
   </div>
   <div class="my-price">
