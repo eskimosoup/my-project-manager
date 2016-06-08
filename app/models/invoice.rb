@@ -4,6 +4,9 @@ class Invoice < ActiveRecord::Base
   has_one :brand, through: :project
   has_one :business_address, through: :project
 
+  scope :paid, -> { where(paid: true) }
+  scope :unpaid, -> { where(paid: false) }
+
   delegate :name, to: :customer, prefix: true
   delegate :name, to: :project, prefix: true
   delegate :prefix, to: :brand, prefix: true

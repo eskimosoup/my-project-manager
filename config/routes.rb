@@ -21,6 +21,13 @@ Rails.application.routes.draw do
     resources :paid_invoices, only: [:index]
     resources :unpaid_invoices, only: [:index]
   end
+
+  namespace :my do
+    resources :invoices, only: [:index, :update]
+    resources :paid_invoices, only: [:index]
+    resources :unpaid_invoices, only: [:index]
+  end
+
   resources :invoices, only: [:update]
   resources :projects do
     # changing status

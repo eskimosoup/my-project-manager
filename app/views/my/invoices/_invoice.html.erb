@@ -19,7 +19,7 @@
   </div>
   <div class="action-buttons">
     <% if invoice.unpaid? %>
-      <%= button_to "Mark As Paid", invoice_path(invoice), method: :patch,
+      <%= button_to "Mark As Paid", my_invoice_path(invoice), method: :patch,
         params: { :"invoice[paid]" => true }, class: "action-button" %>
     <% else %>
       <strong>Paid</strong>
