@@ -33,5 +33,8 @@
       </div>
     </div>
     <%= render @invoices %>
+    <div>
+      <strong>Total</strong><%= number_to_currency @total %>
+    </div>
   </div>
 </div>

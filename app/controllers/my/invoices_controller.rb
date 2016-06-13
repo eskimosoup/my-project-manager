@@ -1,6 +1,7 @@
 class My::InvoicesController < ApplicationController
   def index
     @invoices = Invoice.order(updated_at: :desc).page(params[:page]).per(50)
+    @total = Invoice.pluck(:amount, :vat).flatten.reduce(0, :+)
   end
 
   def update

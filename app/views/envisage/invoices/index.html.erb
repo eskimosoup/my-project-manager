@@ -1,17 +1,41 @@
 <div class="content">
   <div class="index">
     <h1>Envisage Invoices</h1>
-    <nav id="envisage-invoice">
-      <ul>
-        <li>
-          <%= link_to "All", envisage_invoices_path %>
-          <%= link_to "Paid", envisage_paid_invoices_path %>
-          <%= link_to "Unpaid", envisage_unpaid_invoices_path %>
-        </li>
-      </ul>
-    </nav>
+    <%= render "envisage/invoices/navigation" %>
+    <div class="invoice-header">
+      <div class="download">
+        &nbsp;
+      </div>
+      <div class="number">
+        Number
+      </div>
+      <div class="customer-and-project">
+        Customer &amp; Project
+      </div>
+      <div class="name">
+        Name
+      </div>
+      <div class="percentage">
+        Percentage
+      </div>
+      <div class="amount">
+        Total
+      </div>
+      <div class="vat">
+        VAT
+      </div>
+      <div class="total">
+        Total inc VAT
+      </div>
+      <div class="pay-info">
+        Paid
+      </div>
+    </div>
 
     <%= render @invoices %>
     <%= paginate @invoices %>
+    <div>
+      <strong>Total</strong><%= number_to_currency @total %>
+    </div>
   </div>
 </div>

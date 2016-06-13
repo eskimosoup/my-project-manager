@@ -1,33 +1,26 @@
-<div class="invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
-  <div class="download">
-    &nbsp;
-  </div>
+<div class="envisage-invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
   <div class="date">
     <%= invoice.created_at.strftime("%-d %B %Y") %>
   </div>
   <div class="name">
-    <%= invoice.name %>
-  </div>
-  <div class="customer-and-project">
-    <%= invoice.customer_name %>
-    <%= invoice.project_name %>
+    Name: <%= invoice.name %>
   </div>
   <div class="number">
-    <%= invoice.number %>
+    Number: <%= invoice.number %>
   </div>
   <div class="percentage">
-    <%= number_to_percentage invoice.percentage, precision: 0 %>
+    Percentage: <%= number_to_percentage invoice.percentage, precision: 0 %>
   </div>
   <div class="amount">
-    <%= number_to_currency invoice.amount %>
+    Total: <%= number_to_currency invoice.amount %>
   </div>
   <div class="vat">
-    <%= number_to_currency invoice.vat %>
+    Vat: <%= number_to_currency invoice.vat %>
   </div>
   <div class="total">
-    <%= number_to_currency invoice.total_inc_vat %>
+    Total inc Vat: <%= number_to_currency invoice.total_inc_vat %>
   </div>
-  <div class="pay-info">
+  <div class="action-buttons">
     <% if invoice.unpaid? %>
       <%= button_to "Mark As Paid", envisage_invoice_path(invoice), method: :patch,
         params: { :"envisage_invoice[paid]" => true }, class: "action-button" %>
@@ -35,4 +28,5 @@
       <strong>Paid</strong>
     <% end %>
   </div>
+
 </div>

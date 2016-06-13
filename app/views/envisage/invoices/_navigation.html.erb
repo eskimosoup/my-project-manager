@@ -1,0 +1,14 @@
+<nav id="envisage-invoice">
+  <ul>
+    <%= content_tag :li, class: invoice_nav_classes("envisage/invoices") do %>
+      <%= link_to "All", envisage_invoices_path %>
+    <% end %>
+    <%= content_tag :li, class: invoice_nav_classes("envisage/paid_invoices") do %>
+      <%= link_to "Paid", envisage_paid_invoices_path %>
+    <% end %>
+    <%= content_tag :li, class: invoice_nav_classes("envisage/unpaid_invoices") do %>
+      <%= link_to "Unpaid", envisage_unpaid_invoices_path %>
+    <% end %>
+  </ul>
+</nav>
+

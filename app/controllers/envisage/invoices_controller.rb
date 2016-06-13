@@ -2,6 +2,7 @@ class Envisage::InvoicesController < ApplicationController
 
   def index
     @invoices = Envisage::Invoice.order_by_latest.page(params[:page]).per(10)
+    @total = Envisage::Invoice.pluck(:amount, :vat).flatten.reduce(0, :+)
   end
 
   def update

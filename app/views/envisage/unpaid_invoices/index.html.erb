@@ -1,13 +1,10 @@
 <div class="content">
   <div class="index">
-    <h1>My Invoices</h1>
-    <%= render "my/invoices/navigation" %>
+    <h1>Envisage Unpaid Invoices</h1>
+    <%= render "envisage/invoices/navigation" %>
     <div class="invoice-header">
       <div class="download">
         &nbsp;
-      </div>
-      <div class="date">
-        Date
       </div>
       <div class="number">
         Number
@@ -34,12 +31,11 @@
         Paid
       </div>
     </div>
-    
-    <%= render @invoices %>
-    <%= paginate @invoices %>
 
+    <%= render @invoices %>
     <div>
       <strong>Total</strong><%= number_to_currency @total %>
     </div>
   </div>
 </div>
+

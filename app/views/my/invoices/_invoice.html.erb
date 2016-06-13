@@ -2,6 +2,9 @@
   <div class="download">
     <%= link_to "Download", invoice_invoice_download_path(invoice, format: :pdf), class: "action-button" %>
   </div>
+  <div class="date">
+    <%= invoice.created_at.strftime("%-d %B %Y") %>
+  </div>
   <div class="number">
     <%= invoice.number %>
   </div>
