@@ -1,16 +1,37 @@
 <div class="content">
   <div class="index">
     <h1>My Invoices</h1>
-    <nav id="my-invoice">
-      <ul>
-        <li>
-          <%= link_to "All", my_invoices_path %>
-          <%= link_to "Paid", my_paid_invoices_path %>
-          <%= link_to "Unpaid", my_unpaid_invoices_path %>
-        </li>
-      </ul>
-    </nav>
-
+    <%= render "my/invoices/navigation" %>
+    <div class="invoice-header">
+      <div class="download">
+        &nbsp;
+      </div>
+      <div class="number">
+        Number
+      </div>
+      <div class="customer-and-project">
+        Customer &amp; Project
+      </div>
+      <div class="name">
+        Name
+      </div>
+      <div class="percentage">
+        Percentage
+      </div>
+      <div class="amount">
+        Total
+      </div>
+      <div class="vat">
+        VAT
+      </div>
+      <div class="total">
+        Total inc VAT
+      </div>
+      <div class="pay-info">
+        Paid
+      </div>
+    </div>
+    
     <%= render @invoices %>
     <%= paginate @invoices %>
   </div>

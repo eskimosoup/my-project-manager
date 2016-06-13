@@ -1,0 +1,43 @@
+.invoice, .invoice-header {
+  @include grid-row;
+  .number, .percentage, .download, .name, .vat, .amount, .total {
+    @include grid-column(1);
+  }
+  .pay-info {
+    @include grid-column(2);
+  } 
+  .customer-and-project {
+    @include grid-column(3);
+  }
+}
+
+nav#my-invoice {
+  ul { 
+    list-style-type: none;
+  }
+
+  ul li {
+    display: inline;
+    background-color: $dark-green;
+    margin: 0 2px;
+    padding: 5px 8px;
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  ul li.current {
+    background-color: $green;
+  }
+}
+
+.invoice {
+  padding: 5px 0;
+  border-bottom: 1px solid $green;
+}
+
+.invoice-header {
+  background-color: $green; 
+  color: $white;
+}

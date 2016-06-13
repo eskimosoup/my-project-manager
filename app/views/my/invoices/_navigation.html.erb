@@ -1,0 +1,14 @@
+<nav id="my-invoice">
+  <ul>
+    <%= content_tag :li, class: invoice_nav_classes("my/invoices") do %>
+      <%= link_to "All", my_invoices_path %>
+    <% end %>
+    <%= content_tag :li, class: invoice_nav_classes("my/paid_invoices") do %>
+      <%= link_to "Paid", my_paid_invoices_path %>
+    <% end %>
+    <%= content_tag :li, class: invoice_nav_classes("my/unpaid_invoices") do %>
+      <%= link_to "Unpaid", my_unpaid_invoices_path %>
+    <% end %>
+  </ul>
+</nav>
+

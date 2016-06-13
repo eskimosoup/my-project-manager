@@ -18,4 +18,8 @@ module ApplicationHelper
     klass ||= "#{object.first.class}Presenter".constantize if object.present?
     BaseCollectionPresenter.new(collection: object, view_template: self, presenter: klass)
   end
+
+  def invoice_nav_classes(controller_name)
+    "current" if controller_name == params[:controller]
+  end
 end

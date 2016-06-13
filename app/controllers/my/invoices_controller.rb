@@ -1,6 +1,6 @@
 class My::InvoicesController < ApplicationController
   def index
-    @invoices = Invoice.order(updated_at: :desc).page(params[:page]).per(10)
+    @invoices = Invoice.order(updated_at: :desc).page(params[:page]).per(50)
   end
 
   def update
