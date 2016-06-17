@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513125617) do
+ActiveRecord::Schema.define(version: 20160617152249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160513125617) do
     t.decimal  "amount_on_credit", precision: 7, scale: 2, default: 0.0
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
+    t.integer  "payment_days",                             default: 0
   end
 
   add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
@@ -149,6 +150,7 @@ ActiveRecord::Schema.define(version: 20160513125617) do
     t.datetime "updated_at",                                                null: false
     t.string   "stripe_charge_id"
     t.decimal  "vat",              precision: 10, scale: 2, default: 0.0
+    t.date     "due_date",                                                  null: false
   end
 
   add_index "invoices", ["project_id"], name: "index_invoices_on_project_id", using: :btree

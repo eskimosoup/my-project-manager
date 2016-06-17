@@ -15,9 +15,9 @@ class CustomerRegistrationsController < ApplicationController
   private
 
   def customer_registration_params
-    params.require(:customer_registration).permit(:customer_name, :customer_credit_limit,
-                                                  :contact_forename, :contact_surname,
-                                                  :contact_email, :contact_phone,
-                                                  :contact_role)
+    params.require(:customer_registration).permit(
+      :customer_name, :customer_credit_limit, :customer_payment_days,
+      :contact_forename, :contact_surname, :contact_email, 
+      :contact_phone, :contact_role)
   end
 end

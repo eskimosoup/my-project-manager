@@ -43,6 +43,10 @@
 ) %>
 
 <p>
+  Payment due on <%= l invoice.due_date %>
+</p>
+
+<p>
   You can pay online by visiting <%= link_to customer_invoice_url(invoice), customer_invoice_url(invoice) %>.
 </p>
 

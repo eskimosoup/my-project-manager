@@ -61,6 +61,7 @@ describe PriceCalculator::Project, type: :model do
       instance_double("print_job", envisage_to_my_sale_price: 10.0, vat?: false)
     ]
     calc = PriceCalculator::Project.new(print_jobs: print_jobs)
+    allow(calc).to receive(:envisage_discount).and_return(0)
 
     expect(calc.envisage_to_my_vat).to eq(2)
   end

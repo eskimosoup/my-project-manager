@@ -1,8 +1,7 @@
 <h1>Add Percentage Invoice</h1>
-
 <%= simple_form_for @percentage_invoice_creator, url: project_percentage_invoices_path(@project) do |f| %>
-  <%= f.full_error :project %>
   <%= f.input :name, as: :string %>
+  <%= f.input :days_to_pay, as: :integer %>
   <%= f.input :percentage, as: :integer %>
   <%= f.button :submit, "Create Invoice" %>
 <% end %>

@@ -24,6 +24,9 @@
   <div class="total">
     <%= number_to_currency invoice.total_inc_vat %>
   </div>
+  <div class="due-date">
+    <%= l invoice.due_date %>
+  </div>
   <div class="pay-info">
     <% if invoice.unpaid? %>
       <%= button_to "Mark As Paid", invoice_path(invoice), method: :patch,

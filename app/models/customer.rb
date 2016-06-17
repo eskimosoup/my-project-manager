@@ -9,6 +9,7 @@ class Customer < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :credit_limit, numericality: { greater_than_or_equal_to: 0.0 }
+  validates :payment_days, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :amount_on_credit, numericality: { less_than_or_equal_to: :credit_limit }
 
   scope :alphabetical, -> { order(name: :asc) }

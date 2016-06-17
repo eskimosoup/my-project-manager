@@ -18,7 +18,8 @@ class PercentageInvoicesController < ApplicationController
   private
 
   def invoice_params
-    params.require(:percentage_invoice_creator).permit(:percentage, :name).merge(project_id: find_project.id)
+    params.require(:percentage_invoice_creator).permit(
+      :percentage, :name, :days_to_pay).merge(project_id: find_project.id)
   end
 
   def find_project

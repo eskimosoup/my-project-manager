@@ -5,18 +5,21 @@ feature 'User manages customers', type: :feature do
     user = create(:user)
     visit new_customer_registration_path(as: user)
 
-    fill_form(:customer_registration, { customer_name: 'Customer name',
-                                        customer_credit_limit: 500.00,
-                                        contact_forename: 'Joe',
-                                        contact_surname: 'Bloggs',
-                                        contact_email: 'joe.bloggs@example.com',
-                                        contact_phone: '01482 999 999',
-                                        contact_role: 'Sales'
+    fill_form(:customer_registration, {
+      customer_name: 'Customer name',
+      customer_credit_limit: 500.00,
+      customer_payment_days: 30,
+      contact_forename: 'Joe',
+      contact_surname: 'Bloggs',
+      contact_email: 'joe.bloggs@example.com',
+      contact_phone: '01482 999 999',
+      contact_role: 'Sales'
     })
 
     click_on 'Create Customer'
 
     expect(page).to have_css 'h1', text: 'Customer name'
+    expect(page).to have_css '.customer-details .payment-days', text: '30 days'
   end
 
   scenario 'editing customer' do

@@ -5,6 +5,12 @@
       <%= @customer.name %>
     </h1>
 
+    <div class="customer-details">
+      <div class="payment-days">
+        <strong>Payment days:</strong> <%= pluralize @customer.payment_days, 'day' %>
+      </div>
+    </div>
+
     <%= link_to "Contacts", customer_contacts_path(@customer), class: "secondary-action-button" %>
     <%= render "customers/projects", customer: @customer %>
     <%= render "customers/addresses", customer: @customer %>
