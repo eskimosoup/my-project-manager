@@ -121,3 +121,12 @@ thead {
   font-style: italic;
 }
 
+// http://stackoverflow.com/a/18551618
+tr,
+td,
+th,
+tbody,
+thead,
+tfoot {
+  page-break-inside: avoid !important;
+}
