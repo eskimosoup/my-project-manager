@@ -5,7 +5,8 @@
       collection: project.envisage_invoices,
       as: :invoice
     ) %>
-  <% else %>
-    <%= button_to "Create Envisage Invoice", project_envisage_invoices_path(project), class: "action-button" %>
+  <% elsif !project.envisage_to_my_price.zero? %>
+    <%= button_to I18n.t('views.projects.envisage_invoices.create_envisage_invoice'),
+      project_envisage_invoices_path(project), class: "action-button" %>
   <% end %>
 </div>

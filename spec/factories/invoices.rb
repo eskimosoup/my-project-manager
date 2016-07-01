@@ -6,5 +6,6 @@ FactoryGirl.define do
     percentage 100
     paid false
     vat 20
+    due_date { Date.today }
   end
 end

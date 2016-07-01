@@ -203,3 +203,8 @@ en:
       long: "%d %B, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+
+  views:
+    projects:
+      envisage_invoices:
+        create_envisage_invoice: "Create Envisage Invoice"

@@ -7,7 +7,7 @@ feature "Managing envisage invoices", type: :feature do
     project = create(:finalised_project, name: "Test", brand: brand)
     print_job = create(:finalised_print_job, project: project, vat: false, envisage_to_my_sale_price: 100.00)
     print_job = create(:finalised_print_job, project: project, vat: true, envisage_to_my_sale_price: 100.00)
-    
+
     sign_in_with(user.email, user.password)
     go_to_project_page(project)
     click_button "Create Envisage Invoice"
