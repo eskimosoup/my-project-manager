@@ -7,6 +7,7 @@ class PercentageInvoiceCreator
   validates :days_to_pay, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :project, presence: true
   validates :name, presence: true
+  validate :project_has_billing_address
 
   def initialize(attributes = {})
     super
@@ -64,5 +65,13 @@ class PercentageInvoiceCreator
 
   def due_date
     Date.today + days_to_pay
+  end
+
+  def billing_address
+    project.billing_address
+  end
+
+  def project_has_billing_address
+    errors.add(:base, "Project has no billing address") if billing_address.blank?
   end
 end
