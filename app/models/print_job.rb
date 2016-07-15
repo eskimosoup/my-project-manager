@@ -7,7 +7,7 @@ class PrintJob < ActiveRecord::Base
   has_many :job_specifications
   has_many :labour_items
   has_many :mileages
-  has_many :my_print_services_items
+  has_many :my_service_items
   has_many :product_costs
   has_many :product_items
   has_many :sundry_costs

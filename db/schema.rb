@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617152249) do
+ActiveRecord::Schema.define(version: 20160715121631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,7 +207,7 @@ ActiveRecord::Schema.define(version: 20160617152249) do
 
   add_index "mileages", ["print_job_id"], name: "index_mileages_on_print_job_id", using: :btree
 
-  create_table "my_print_services_items", force: :cascade do |t|
+  create_table "my_service_items", force: :cascade do |t|
     t.string   "name",                                  null: false
     t.decimal  "cost",         precision: 15, scale: 2, null: false
     t.integer  "print_job_id"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 20160617152249) do
     t.datetime "updated_at",                            null: false
   end
 
-  add_index "my_print_services_items", ["print_job_id"], name: "index_my_print_services_items_on_print_job_id", using: :btree
+  add_index "my_service_items", ["print_job_id"], name: "index_my_service_items_on_print_job_id", using: :btree
 
   create_table "print_jobs", force: :cascade do |t|
     t.integer  "project_id"
@@ -486,7 +486,7 @@ ActiveRecord::Schema.define(version: 20160617152249) do
   add_foreign_key "labour_items", "print_jobs", on_delete: :cascade
   add_foreign_key "mileage_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "mileages", "print_jobs", on_delete: :cascade
-  add_foreign_key "my_print_services_items", "print_jobs", on_delete: :cascade
+  add_foreign_key "my_service_items", "print_jobs", on_delete: :cascade
   add_foreign_key "print_jobs", "projects", on_delete: :cascade
   add_foreign_key "product_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "product_costs", "products", on_delete: :cascade

@@ -3,7 +3,8 @@ require "rails_helper"
 describe "User downloads invoice PDF" do
   scenario "after creating the invoice" do
     user = create(:user)
-    project = create(:finalised_project)
+    address = create(:address)
+    project = create(:finalised_project, billing_address: address)
     print_job = create(:finalised_print_job, project: project, name: "Print Job 1", description: "Print Job Description")
 
     sign_in_with(user.email, user.password)

@@ -1,13 +1,13 @@
-class MyPrintServicesItemPresenter < BasePresenter
-  presents :my_print_services_item
-  delegate :name, :cost, :quoted?, to: :my_print_services_item
+class MyServiceItemPresenter < BasePresenter
+  presents :my_service_item
+  delegate :name, :cost, :quoted?, to: :my_service_item
 
   def edit_link_content(content = 'Edit', options = {})
     h.link_to content, edit_path, options
   end
 
   def edit_path
-    h.edit_my_print_services_item_path(my_print_services_item)
+    h.edit_my_service_item_path(my_service_item)
   end
 
   def cost_currency
@@ -24,7 +24,7 @@ class MyPrintServicesItemPresenter < BasePresenter
 
   def delete_link
     return nil unless quoted?
-    h.button_to 'Remove', h.my_print_services_item_path(my_print_services_item), method: :delete,
+    h.button_to 'Remove', h.my_service_item_path(my_service_item), method: :delete,
       data: { confirm: 'Are you sure?', disable_with: 'processing...' },
       class: 'secondary-action-button'
   end

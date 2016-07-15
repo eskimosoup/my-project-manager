@@ -68,6 +68,7 @@ class PercentageInvoiceCreator
   end
 
   def billing_address
+    return if project.blank?
     project.billing_address
   end
 

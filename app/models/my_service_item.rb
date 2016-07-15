@@ -1,4 +1,4 @@
-class MyPrintServicesItem < ActiveRecord::Base
+class MyServiceItem < ActiveRecord::Base
   belongs_to :print_job
 
   validates :name, presence: true

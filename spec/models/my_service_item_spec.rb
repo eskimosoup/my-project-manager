@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MyPrintServicesItem, type: :model do
+RSpec.describe MyServiceItem, type: :model do
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:cost) }
@@ -9,8 +9,4 @@ RSpec.describe MyPrintServicesItem, type: :model do
   end
 
   it { should delegate_method(:quoted?).to(:print_job) }
-
-  describe "associations" do
-    it { should belong_to(:print_job) }
-  end
 end

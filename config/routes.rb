@@ -55,7 +55,7 @@ Rails.application.routes.draw do
       resources :job_specifications, except: [:index, :show]
       resources :labour_items, except: [:index, :show]
       resources :mileages, except: [:index, :show]
-      resources :my_print_services_items, except: [:index, :show]
+      resources :my_service_items, except: [:index, :show]
       resources :product_items, except: [:index, :show]
       resources :sundry_items, except: [:index, :show]
       resources :supporting_product_items, except: [:index, :show]

@@ -17,7 +17,7 @@ RSpec.describe PrintJob, type: :model do
     it { should have_many(:job_specifications) }
     it { should have_many(:labour_items) }
     it { should have_many(:mileages) }
-    it { should have_many(:my_print_services_items) }
+    it { should have_many(:my_service_items) }
     it { should have_many(:product_costs) }
     it { should have_many(:product_items) }
     it { should have_many(:sundry_costs) }
