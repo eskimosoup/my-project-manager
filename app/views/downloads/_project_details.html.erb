@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% project.print_jobs.each do |print_job| %>
+    <% project.print_jobs.order(created_at: :asc).each do |print_job| %>
       <tr>
         <td><%= simple_format print_job.name %></td>
         <td><%= simple_format print_job.description %></td>
