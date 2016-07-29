@@ -25,7 +25,7 @@ class PrintJob < ActiveRecord::Base
   delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
   delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator
   delegate :my_price, :my_rush_price, to: :price_calculator
-  delegate :my_print_services_price, to: :price_calculator
+  delegate :my_service_price, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::PrintJob.new(print_job: self)

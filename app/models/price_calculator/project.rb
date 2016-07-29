@@ -15,7 +15,7 @@ class PriceCalculator::Project
   def brand_profit
     return nil unless brand_price.present?
     if my_brand?
-      brand_price - envisage_to_my_price
+      brand_price - envisage_to_my_price - my_service_cost
     else
       brand_price - cost
     end
@@ -72,6 +72,11 @@ class PriceCalculator::Project
 
   def envisage_to_my_price_no_discount
     @envisage_to_my_price_no_discount ||= sum_array(:envisage_to_my_sale_price)
+  end
+
+  def my_service_cost
+    return 0 unless my_brand?
+    sum_array(:my_service_price)
   end
 
   def sum_array(attr)
