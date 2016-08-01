@@ -56,8 +56,16 @@ module StatusChanger
 
     def update_project_and_print_jobs
       project.transaction do
-        project.update!(purchase_order: purchase_order, name: name, description: description, finalised_at: Date.today,
-                        delivery_deadline: delivery_deadline, notes: notes, rush_job: rush_job, status: "finalised")
+        project.update!(
+          purchase_order: purchase_order,
+          name: name,
+          description: description,
+          finalised_at: Date.today,
+          delivery_deadline: delivery_deadline,
+          notes: notes,
+          rush_job: rush_job,
+          status: "finalised"
+        )
         print_jobs_form_objects.each do |pj|
           pj.save!
         end
@@ -71,10 +79,14 @@ module StatusChanger
     end
 
     def print_job_finaliser_attributes(print_job)
-      print_job.attributes.slice("envisage_sale_price", "envisage_trade_sale_price",
-                                 "envisage_to_my_sale_price", "my_sale_price")
+      print_job.attributes.slice(
+        "envisage_sale_price",
+        "envisage_trade_sale_price",
+        "envisage_to_my_sale_price",
+        "my_sale_price"
+      )
     end
-    
+
     def validate_print_job_forms
       print_jobs_form_objects.each do |print_job_form|
         promote_print_job_errors(print_job_form) if print_job_form.invalid?

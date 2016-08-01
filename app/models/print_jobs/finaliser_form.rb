@@ -24,7 +24,8 @@ class PrintJobs::FinaliserForm
       envisage_sale_price: envisage_sale_price,
       envisage_trade_sale_price: envisage_trade_sale_price,
       envisage_to_my_sale_price: envisage_to_my_sale_price,
-      my_sale_price: my_sale_price
+      my_sale_price: my_sale_price,
+      my_service_item_cost: my_service_item_costs,
     })
   end
 
@@ -38,5 +39,13 @@ class PrintJobs::FinaliserForm
   private
 
   attr_reader :print_job
+
+  def my_service_items
+    print_job.my_service_items
+  end
+
+  def my_service_items_costs
+    my_service_items.sum(:cost)
+  end
 
 end
