@@ -25,7 +25,7 @@ class PrintJobs::FinaliserForm
       envisage_trade_sale_price: envisage_trade_sale_price,
       envisage_to_my_sale_price: envisage_to_my_sale_price,
       my_sale_price: my_sale_price,
-      my_service_item_cost: my_service_item_costs,
+      my_service_item_cost: my_service_items_costs,
     })
   end
 
