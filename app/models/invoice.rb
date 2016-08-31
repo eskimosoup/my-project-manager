@@ -6,6 +6,7 @@ class Invoice < ActiveRecord::Base
 
   scope :paid, -> { where(paid: true) }
   scope :unpaid, -> { where(paid: false) }
+  scope :for_customer, ->(customer_id) { joins(:customer).where(customers: { id: customer_id }) if customer_id.present? }
 
   delegate :name, to: :customer, prefix: true
   delegate :name, to: :project, prefix: true

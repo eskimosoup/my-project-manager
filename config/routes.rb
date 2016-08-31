@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :invoices, only: [:index, :update]
     resources :paid_invoices, only: [:index]
     resources :unpaid_invoices, only: [:index]
+    resources :invoice_searches, only: [:create]
   end
 
   resources :invoices, only: [:update]

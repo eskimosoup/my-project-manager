@@ -6,6 +6,7 @@ class Customer < ActiveRecord::Base
   has_many :addresses
   has_many :contacts
   has_many :projects
+  has_many :invoices, through: :projects
 
   validates :name, presence: true, uniqueness: true
   validates :credit_limit, numericality: { greater_than_or_equal_to: 0.0 }
