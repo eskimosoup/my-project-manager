@@ -1,5 +1,5 @@
 <%= simple_form_for @invoice_search do |f| %>
   <%= f.input :paid, collection: InvoiceSearch::STATUSES %>
-  <%= f.input :customer_id, collection: Customer.joins(:invoices).order(:name).pluck(:name, :id) %>
+  <%= f.input :customer_id, collection: Customer.joins(:invoices).order(:name).uniq.pluck(:name, :id) %>
   <%= f.button :submit, "Search", class: 'submit-button' %>
 <% end %>
