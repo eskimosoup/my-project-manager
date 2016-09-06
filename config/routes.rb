@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     resources :invoices, only: [:index], shallow: true, controller: 'project_invoices' do
       resource :invoice_download, only: [:show]
     end
+    resources :amount_invoices, only: [:new, :create]
     resources :percentage_invoices, only: [:new, :create]
     resources :print_jobs, except: [:index], shallow: true do
       resources :multiple_product_additions, only: [:new, :create]

@@ -1,0 +1,38 @@
+<div class="invoice <%= amount_invoice.paid? ? 'paid' : 'unpaid' %>">
+  <div class="download">
+    <%= link_to "Download", invoice_invoice_download_path(amount_invoice, format: :pdf), class: "action-button" %>
+  </div>
+  <div class="number">
+    <%= amount_invoice.number %>
+  </div>
+  <div class="customer-and-project">
+    <%= amount_invoice.customer_name %>
+    <%= amount_invoice.project_name %>
+  </div>
+  <div class="name">
+    <%= amount_invoice.name %>
+  </div>
+  <div class="percentage">
+    &nbsp;
+  </div>
+  <div class="amount">
+    <%= number_to_currency amount_invoice.amount %>
+  </div>
+  <div class="vat">
+    <%= number_to_currency amount_invoice.vat %>
+  </div>
+  <div class="total">
+    <%= number_to_currency amount_invoice.total_inc_vat %>
+  </div>
+  <div class="date">
+    <%= l amount_invoice.due_date %>
+  </div>
+  <div class="pay-info">
+    <% if amount_invoice.unpaid? %>
+      <%= button_to "Mark As Paid", invoice_path(amount_invoice), method: :patch,
+        params: { :"invoice[paid]" => true }, class: "action-button" %>
+    <% else %>
+      <strong>Paid</strong>
+    <% end %>
+  </div>
+</div>

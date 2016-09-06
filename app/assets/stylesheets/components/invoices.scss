@@ -1,6 +1,6 @@
 .invoice, .invoice-header {
   @include grid-row;
-  .number, .percentage, .download, .pay-info, .date, .name, .vat, .amount, .total {
+  .number, .percentage, .download, .pay-info, .date, .due-date, .name, .vat, .amount, .total {
     @include grid-column(1);
   }
   .customer-and-project {
@@ -8,8 +8,26 @@
   }
 }
 
+.amount-invoice-details {
+  @include grid-column(12);
+}
+.amount-items {
+  @include grid-row;
+  .vat, .non-vat {
+    @include grid-column(6);
+    display: flex;
+    .description {
+      flex-basis: calc(100% / 3 * 2);
+    }
+    .total {
+      flex-basis: calc(100% / 3 );
+      text-align: center;
+    }
+  }
+}
+
 nav#my-invoice, nav#envisage-invoice {
-  ul { 
+  ul {
     list-style-type: none;
   }
 
@@ -35,6 +53,6 @@ nav#my-invoice, nav#envisage-invoice {
 }
 
 .invoice-header {
-  background-color: $green; 
+  background-color: $green;
   color: $white;
 }

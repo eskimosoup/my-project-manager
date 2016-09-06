@@ -10,8 +10,10 @@ class Project < ActiveRecord::Base
   has_many :account_managements, through: :print_jobs
   has_many :designs, through: :print_jobs
   has_many :discounts
-  has_many :envisage_invoices, class_name: "Envisage::Invoice"
   has_many :invoices, class_name: "::Invoice"
+  has_many :envisage_invoices, class_name: "Envisage::Invoice"
+  has_many :percentage_invoices, class_name: "::PercentageInvoice"
+  has_many :amount_invoices, class_name: "::AmountInvoice"
   has_many :job_specifications, through: :print_jobs
   has_many :labour_items, through: :print_jobs
   has_many :mileages, through: :print_jobs

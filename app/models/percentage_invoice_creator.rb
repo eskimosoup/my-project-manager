@@ -11,7 +11,6 @@ class PercentageInvoiceCreator
 
   def initialize(attributes = {})
     super
-    @project_id = attributes[:project_id]
     @percentage = Integer(attributes.fetch(:percentage, 100))
     @days_to_pay = Integer(attributes.fetch(:days_to_pay, payment_days))
   end
@@ -30,7 +29,11 @@ class PercentageInvoiceCreator
 
   def save
     return if invalid?
-    project.invoices.create!(
+    percentage_invoice.save
+  end
+
+  def percentage_invoice
+    @percentage_invoice ||= project.percentage_invoices.build(
       amount: amount,
       vat: vat,
       percentage: percentage,

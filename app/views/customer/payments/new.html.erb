@@ -81,7 +81,7 @@
 
         <div class="pay-invoice-breakdown">
           <%= render(
-            partial: 'invoices/project_details',
+            partial: "invoices/#{ @invoice.type.underscore }_project_details",
             locals: {
             project: @invoice.project,
             invoice: @invoice

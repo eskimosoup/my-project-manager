@@ -42,6 +42,4 @@ class Invoice < ActiveRecord::Base
   def number
     "#{ brand_prefix }#{ id + 500 }"
   end
-
-
 end

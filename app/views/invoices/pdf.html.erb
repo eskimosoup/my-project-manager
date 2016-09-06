@@ -35,10 +35,10 @@
 <% end %>
 
 <%= render(
-  partial: 'invoices/project_details',
+  partial: "invoices/#{ invoice.type.underscore }_project_details",
   locals: {
-  project: project,
-  invoice: invoice
+    project: project,
+    invoice: invoice
   }
 ) %>
 

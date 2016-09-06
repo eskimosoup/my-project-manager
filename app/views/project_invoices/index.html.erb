@@ -9,11 +9,21 @@
   ) %>
 
   <%= link_to "Add Percentage Invoice", new_project_percentage_invoice_path(@project), class: "action-button" %>
+  <%= link_to "Add Amount Invoice", new_project_amount_invoice_path(@project), class: "action-button" %>
 
-  <% unless @invoices.blank? %>
+  <% unless @percentage_invoices.blank? %>
     <%= render(
-      partial: "invoices/invoice",
-      collection: @invoices
+      partial: "invoices/percentage_invoice",
+      collection: @percentage_invoices,
+      as: :invoice
+    ) %>
+  <% end %>
+
+  <% unless @amount_invoices.blank? %>
+    <%= render(
+      partial: "invoices/amount_invoice",
+      collection: @amount_invoices,
+      as: :invoice
     ) %>
   <% end %>
 </div>

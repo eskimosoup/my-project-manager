@@ -1,7 +1,8 @@
 class ProjectInvoicesController < ApplicationController
   def index
     @project = find_project
-    @invoices = @project.invoices
+    @percentage_invoices = @project.percentage_invoices
+    @amount_invoices = @project.amount_invoices
   end
 
   private

@@ -93,11 +93,11 @@ class ProjectPresenter < BasePresenter
   end
 
   def envisage_job_sheet_link(content = 'Download Envisage Job Sheet', options = {})
-    h.link_to content, h.project_envisage_job_sheet_path(project, format: 'pdf'), options if project.finalised?
+    h.link_to content, h.project_envisage_job_sheet_path(project, format: 'pdf'), options
   end
 
   def my_job_sheet_link(content = 'Download My Job Sheet', options = {})
-    h.link_to content, h.project_my_job_sheet_path(project, format: 'pdf'), options if project.finalised?
+    h.link_to content, h.project_my_job_sheet_path(project, format: 'pdf'), options
   end
 
   def add_vehicle_wrap_link

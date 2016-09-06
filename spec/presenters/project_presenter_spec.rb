@@ -58,6 +58,22 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
       expect(project_presenter.brand_price_currency).to eq(number_to_currency project.brand_price)
     end
 
+    it '#envisage_job_sheet_link' do
+      expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
+    end
+
+    it '#envisage_job_sheet_link with options' do
+      expect(subject.envisage_job_sheet_link('Envisage Job Sheet', class: 'action-button')).to eq(link_to 'Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'), class: 'action-button')
+    end
+
+    it '#my_job_sheet_link' do
+      expect(subject.my_job_sheet_link).to eq(link_to 'Download My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'))
+    end
+
+    it '#my_job_sheet_link with options' do
+      expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
+    end
+
     context 'normal project' do
       let(:project) { build(:project, rush_job: false) }
       subject(:project_presenter) { ProjectPresenter.new(object: project, view_template: view) }
@@ -88,14 +104,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
-      end
-
-      it '#envisage_job_sheet_link' do
-        expect(subject.envisage_job_sheet_link).to eq(nil)
-      end
-
-      it '#my_job_sheet_link' do
-        expect(subject.my_job_sheet_link).to eq(nil)
       end
 
       context "my vehicle wrap brand" do
@@ -135,14 +143,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(link)
       end
 
-      it '#envisage_job_sheet_link' do
-        expect(subject.envisage_job_sheet_link).to eq(nil)
-      end
-
-      it '#my_job_sheet_link' do
-        expect(subject.my_job_sheet_link).to eq(nil)
-      end
-
       it "#add_vehicle_wrap_link" do
         brand = create(:envisage_brand)
         project = create(:quoted_project, brand: brand)
@@ -164,21 +164,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
         expect(subject.mark_finalised).to eq(nil)
       end
 
-      it '#envisage_job_sheet_link' do
-        expect(subject.envisage_job_sheet_link).to eq(link_to 'Download Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'))
-      end
-
-      it '#envisage_job_sheet_link with options' do
-        expect(subject.envisage_job_sheet_link('Envisage Job Sheet', class: 'action-button')).to eq(link_to 'Envisage Job Sheet', project_envisage_job_sheet_path(project, format: 'pdf'), class: 'action-button')
-      end
-
-      it '#my_job_sheet_link' do
-        expect(subject.my_job_sheet_link).to eq(link_to 'Download My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'))
-      end
-
-      it '#my_job_sheet_link with options' do
-        expect(subject.my_job_sheet_link('My Job Sheet', class: 'action-button')).to eq(link_to 'My Job Sheet', project_my_job_sheet_path(project, format: 'pdf'), class: 'action-button')
-      end
 
       it "#add_vehicle_wrap_link" do
         brand = create(:envisage_brand)
@@ -199,14 +184,6 @@ RSpec.describe ProjectPresenter, type: :presenter, project_presenter: true do
 
       it '#mark_finalised' do
         expect(subject.mark_finalised).to eq(nil)
-      end
-
-      it '#envisage_job_sheet_link' do
-        expect(subject.envisage_job_sheet_link).to eq(nil)
-      end
-
-      it '#my_job_sheet_link' do
-        expect(subject.my_job_sheet_link).to eq(nil)
       end
 
       it "#add_vehicle_wrap_link" do

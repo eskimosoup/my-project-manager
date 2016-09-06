@@ -1,0 +1,52 @@
+<h2>Job Description:</h2>
+
+<p><%= project.name %></p>
+
+<table class="print-jobs">
+  <thead>
+    <th class="item">Item</th>
+    <th class="price">Cost</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= invoice.vat_items_description %>
+      </td>
+      <td>
+        <%= number_to_currency invoice.vat_items_total %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= invoice.non_vat_items_description %>
+      </td>
+      <td>
+        <%= number_to_currency invoice.non_vat_items_total %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Total exc. VAT
+      </td>
+      <td>
+        <%= number_to_currency invoice.amount %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        VAT
+      </td>
+      <td>
+        <%= number_to_currency invoice.vat %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Total inc. VAT
+      </td>
+      <td>
+        <strong><%= number_to_currency invoice.total_inc_vat %></strong>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -18,13 +18,13 @@ RSpec.describe Invoice, type: :model do
   it { should delegate_method(:website).to(:brand) }
 
   it "#total_inc_vat" do
-    invoice = build(:invoice)
+    invoice = build(:percentage_invoice)
 
     expect(invoice.total_inc_vat).to eq(invoice.amount + invoice.vat)
   end
 
   it "#number" do
-    invoice = build_stubbed(:invoice)
+    invoice = build_stubbed(:percentage_invoice)
     allow(invoice).to receive(:brand_prefix).and_return("MY")
 
     invoice_number = "MY#{ invoice.id + 500 }"

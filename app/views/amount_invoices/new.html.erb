@@ -1,16 +1,19 @@
 <div class="content">
   <div class="main">
-    <h1>Add Percentage Invoice</h1>
+    <h1>Add Amount Invoice</h1>
     <%= render(
       partial: "print_jobs/uneditable_print_job",
       collection: @project.print_jobs,
       as: :print_job
     ) %>
-    <%= simple_form_for @percentage_invoice_creator, url: project_percentage_invoices_path(@project) do |f| %>
+    <%= simple_form_for @amount_invoice_creator, url: project_amount_invoices_path(@project) do |f| %>
       <%= f.error :base %>
       <%= f.input :name, as: :string %>
       <%= f.input :days_to_pay, as: :integer %>
-      <%= f.input :percentage, as: :integer %>
+      <%= f.input :vat_items_description, as: :text %>
+      <%= f.input :vat_items_total, as: :decimal %>
+      <%= f.input :non_vat_items_description, as: :text %>
+      <%= f.input :non_vat_items_total, as: :decimal %>
       <%= f.button :submit, "Create Invoice" %>
     <% end %>
   </div>

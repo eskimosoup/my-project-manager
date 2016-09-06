@@ -4,8 +4,8 @@ RSpec.feature 'user searches invoices' do
   scenario 'searching paid invoices' do
     user = create(:user)
     project = create(:project)
-    paid_invoice = create(:invoice, paid: true, project: project, name: "Paid invoice") 
-    unpaid_invoice = create(:invoice, paid: false, project: project, name: "Unpaid invoice") 
+    paid_invoice = create(:percentage_invoice, paid: true, project: project, name: "Paid invoice")
+    unpaid_invoice = create(:percentage_invoice, paid: false, project: project, name: "Unpaid invoice")
 
     visit root_path(as: user)
     click_link "My Invoices"
@@ -19,8 +19,8 @@ RSpec.feature 'user searches invoices' do
   scenario 'searching unpaid invoices' do
     user = create(:user)
     project = create(:project)
-    paid_invoice = create(:invoice, paid: true, project: project, name: "Paid invoice") 
-    unpaid_invoice = create(:invoice, paid: false, project: project, name: "Unpaid invoice") 
+    paid_invoice = create(:percentage_invoice, paid: true, project: project, name: "Paid invoice")
+    unpaid_invoice = create(:percentage_invoice, paid: false, project: project, name: "Unpaid invoice")
 
     visit root_path(as: user)
     click_link "My Invoices"

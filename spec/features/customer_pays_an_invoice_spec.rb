@@ -1,9 +1,9 @@
 require "rails_helper"
 
 feature "customer pays an invoice", type: :feature do
-  scenario "allows payment when invoice is unpaid", js: true, billy: true, skip: true do
+  scenario "allows payment when invoice is unpaid", js: true, skip: true do
     project = create(:finalised_project)
-    invoice = create(:invoice, project: project, paid: false)
+    invoice = create(:percentage_invoice, project: project, paid: false)
 
     visit customer_invoice_path(invoice)
     click_on "Pay Invoice"
@@ -19,7 +19,7 @@ feature "customer pays an invoice", type: :feature do
 
   scenario "does not allow payment when an invoice is paid" do
     project = create(:finalised_project)
-    invoice = create(:invoice, project: project, paid: true)
+    invoice = create(:percentage_invoice, project: project, paid: true)
 
     visit customer_invoice_path(invoice)
 

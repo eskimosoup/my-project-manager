@@ -7,7 +7,6 @@ class Customer::PaymentsController < Customer::InvoicesController
   end
 
   def create
-    # raise params.to_yaml
     @authorised = true
     @invoice = find_invoice
     invoice_payment = InvoicePayment.new(

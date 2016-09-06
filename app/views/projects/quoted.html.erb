@@ -7,7 +7,7 @@
         (<%= presented_project.reference_number %>)
       </h1>
 
-      <%= button_to "Delete Project", @project, method: :delete, 
+      <%= button_to "Delete Project", @project, method: :delete,
         data: { disable_with: "Processing..." }, class: "action-button" %>
       <%= button_to "Archive Project", project_archiver_path(@project), method: :post,
         data: { disable_with: "Processing..." }, class: "secondary-action-button" %>

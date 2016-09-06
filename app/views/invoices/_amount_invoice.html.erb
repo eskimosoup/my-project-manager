@@ -1,0 +1,60 @@
+<div class="invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
+  <div class="download">
+    <%= link_to "Download", invoice_invoice_download_path(invoice, format: :pdf), class: "action-button" %>
+  </div>
+  <div class="number">
+    <%= invoice.number %>
+  </div>
+  <div class="customer-and-project">
+    <%= invoice.customer_name %>
+    <%= invoice.project_name %>
+  </div>
+  <div class="name">
+    <%= invoice.name %>
+  </div>
+  <div class="percentage">
+    &nbsp;
+  </div>
+  <div class="amount">
+    <%= number_to_currency invoice.amount %>
+  </div>
+  <div class="vat">
+    <%= number_to_currency invoice.vat %>
+  </div>
+  <div class="total">
+    <%= number_to_currency invoice.total_inc_vat %>
+  </div>
+  <div class="due-date">
+    <%= l invoice.due_date %>
+  </div>
+  <div class="pay-info">
+    <% if invoice.unpaid? %>
+      <%= button_to "Mark As Paid", invoice_path(invoice), method: :patch,
+        params: { :"invoice[paid]" => true }, class: "action-button" %>
+    <% else %>
+      <strong>Paid</strong>
+    <% end %>
+  </div>
+  <div class="amount-invoice-details">
+    <div class="amount-items">
+      <div class="vat">
+        <div class="description">
+          <h4>VAT</h4>
+          <%= invoice.vat_items_description %>
+        </div>
+        <div class="total">
+          <%= number_to_currency invoice.vat_items_total %>
+        </div>
+      </div>
+      <div class="non-vat">
+        <div class="description">
+          <h4>No VAT</h4>
+          <%= invoice.non_vat_items_description %>
+        </div>
+        <div class="total">
+          <%= number_to_currency invoice.non_vat_items_total %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
