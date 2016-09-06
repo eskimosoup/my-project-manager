@@ -18,7 +18,7 @@ class InvoiceSearch
 
   def self.model_name
     ActiveModel::Name.new(self, nil, "My::InvoiceSearch")
-  end 
+  end
 
   private
 
@@ -31,12 +31,13 @@ class InvoiceSearch
   end
 
   def cast_to_integer(input)
-    return if input.nil? || input.empty?
+    return if input.nil? || input.blank?
     Integer(input)
   end
 
   def cast_to_boolean(input)
-    return if input.nil? || input.empty?
+    return if input.nil?
+    return input if [true, false].include?(input)
     if input == "true"
       true
     else

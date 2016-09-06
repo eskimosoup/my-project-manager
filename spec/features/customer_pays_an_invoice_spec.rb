@@ -12,7 +12,7 @@ feature "customer pays an invoice", type: :feature do
     fill_in_card_expiry(month:  date.month, year: date.year)
     fill_in_card_cvc
     click_button "Submit Payment"
-    
+
     expect(page).to have_css "#paid-notice", text: "This invoice has been paid"
     expect(current_path).to eq(customer_invoice_path(invoice))
   end

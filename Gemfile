@@ -27,8 +27,9 @@ gem 'sprockets-rails', '2.2.3'
 gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'simple_form'
-gem 'administrate', '~> 0.2.0'
+gem 'administrate', '~> 0.2.2'
 gem "administrate-field-image"
+gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'clearance', '~> 1.12.0'
 gem 'email_validator', '~> 1.6.0'
 gem 'lograge', '~> 0.3.5'
@@ -54,7 +55,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', github: 'rails/web-console'
+  gem 'web-console', '~> 3.2.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   gem 'quiet_assets'
