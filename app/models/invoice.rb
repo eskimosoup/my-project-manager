@@ -42,4 +42,8 @@ class Invoice < ActiveRecord::Base
   def number
     "#{ brand_prefix }#{ id + 500 }"
   end
+
+  def to_partial_path
+    "invoices/#{ type.underscore }"
+  end
 end
