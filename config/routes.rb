@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root to: 'homes#show'
 
   namespace :financial_reports do
-    get ':year/:month', to: 'monthly_overviews#show', 
-      constraints: { year: /\d{4}/, month: /\d{1,2}/ },
-      as: :monthly_overview
+    get ':year/:month', to: 'monthly_overviews#show',
+                        constraints: { year: /\d{4}/, month: /\d{1,2}/ },
+                        as: :monthly_overview
+    get 'archive', to: 'monthly_overviews#archive'
     resource :my_monthly, only: [:show]
   end
 
