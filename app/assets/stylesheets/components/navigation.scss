@@ -5,6 +5,8 @@
 .primary-navigation-links {
   @include links($white, $white, $blue, $blue);
   list-style: none;
+  margin: rem-calc(10px 0 5px);
+  padding: 0;
 
   a {
     display: block;

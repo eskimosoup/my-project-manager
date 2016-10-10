@@ -28,7 +28,7 @@ gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'simple_form'
 gem 'administrate', '~> 0.2.2'
-gem "administrate-field-image"
+gem 'administrate-field-image'
 gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'clearance', '~> 1.12.0'
 gem 'email_validator', '~> 1.6.0'

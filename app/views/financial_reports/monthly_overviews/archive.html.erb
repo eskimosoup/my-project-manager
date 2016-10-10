@@ -1,0 +1,18 @@
+<div class="content">
+  <h1>Monthly Reports Archive</h1>
+  <% archive_dates.reverse.group_by{|x| x.year}.each do |year| %>
+    <h2><%= link_to year.first, '#', class: 'toggle-class', data: { class: 'hide', container: ".archive-#{year.first}", return: false } %></h2>
+
+    <ul class="archive-<%= year.first %> <%= "hide" unless year.first == Date.today.year %>">
+      <% year.last.each do |archive_date| %>
+        <li>
+          <%= link_to archive_date.strftime("%B %Y"),
+                      financial_reports_monthly_overview_path(
+                        archive_date.year, archive_date.month
+                      ),
+                      title: "View monthly reports for #{archive_date.strftime("%B %Y")}" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
