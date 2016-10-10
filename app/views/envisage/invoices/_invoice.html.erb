@@ -1,6 +1,7 @@
 <div class="invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
   <div class="download">
-    <%= link_to 'Download', download_invoice_envisage_invoice_path(invoice),
+    <%= link_to 'Download',
+                download_invoice_envisage_invoice_path(invoice, format: :pdf),
                 class: 'action-button' %>
   </div>
   <div class="date">
