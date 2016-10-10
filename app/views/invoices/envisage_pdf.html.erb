@@ -77,10 +77,13 @@
       </tr>
     <% end %>
 
+    <% discount = invoice.amount - project.print_jobs.map{|x| x.envisage_to_my_price}.sum %>
+    <% if discount > 0 %>
       <tr>
         <td colspan="2">Discount</td>
-        <td><%= number_to_currency -(invoice.amount - project.print_jobs.map{|x| x.envisage_to_my_price}.sum) %></td>
+        <td><%= number_to_currency -discount %></td>
       </tr>
+    <% end %>
 
   </tbody>
 </table>
