@@ -78,7 +78,6 @@
     <% end %>
 
     <% discount = (project.print_jobs.map{|x| x.envisage_to_my_price}.sum - invoice.amount) %>
-    <%= discount %>
     <% if discount > 0 %>
       <tr>
         <td colspan="2">Discount</td>
