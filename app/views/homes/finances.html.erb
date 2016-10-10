@@ -1,0 +1,18 @@
+<div class="content">
+  <h1>Finances</h1>
+
+  <ul>
+    <li>
+      <%= link_to "My Invoices", my_invoices_path %>
+    </li>
+    <li>
+      <%= link_to "Envisage Invoices", envisage_invoices_path %>
+    </li>
+    <li>
+      <%= link_to "Monthly Reports Archive", financial_reports_archive_path %>
+    </li>
+    <li>
+      <%= link_to "Monthly Reports (#{Time.zone.now.strftime("%B")})", financial_reports_monthly_overview_path(Time.zone.now.year, Time.zone.now.month) %>
+    </li>
+  </ul>
+</div>
