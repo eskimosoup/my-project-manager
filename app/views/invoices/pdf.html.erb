@@ -35,16 +35,18 @@
 <% end %>
 
 <%= render(
-  partial: "invoices/#{ invoice.type.underscore }_project_details",
+  partial: "invoices/#{ invoice.has_attribute?(:type) ? invoice.type.underscore : 'percentage_invoice' }_project_details",
   locals: {
     project: project,
     invoice: invoice
   }
 ) %>
 
-<p>
-  Payment due on <%= l invoice.due_date %>
-</p>
+<% if invoice.has_attribute? :due_date %>
+  <p>
+    Payment due on <%= l invoice.due_date %>
+  </p>
+<% end %>
 
 <p>
   You can pay online by visiting <%= link_to customer_invoice_url(invoice), customer_invoice_url(invoice) %>.

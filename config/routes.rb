@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :contacts, shallow: true, except: [:show]
   end
   namespace :envisage do
-    resources :invoices, only: [:index, :update]
+    resources :invoices, only: [:index, :update] do
+      get 'download-invoice', on: :member
+    end
     resources :paid_invoices, only: [:index]
     resources :unpaid_invoices, only: [:index]
   end
