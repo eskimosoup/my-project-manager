@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#show'
 
+  get 'finances', to: 'homes#finances'
+
   namespace :financial_reports do
     get ':year/:month', to: 'monthly_overviews#show',
                         constraints: { year: /\d{4}/, month: /\d{1,2}/ },

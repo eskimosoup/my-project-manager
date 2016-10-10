@@ -18,18 +18,8 @@
         <%= link_to "Preset Vehicle Wraps", vehicle_wraps_path %>
       </li>
       <li>
-        <%= link_to "My Invoices", my_invoices_path %>
+        <%= link_to 'Finances', finances_path %>
       </li>
-      <li>
-        <%= link_to "Envisage Invoices", envisage_invoices_path %>
-      </li>
-      <li>
-        <%= link_to "Monthly Reports Archive", financial_reports_archive_path %>
-      </li>
-      <li>
-        <%= link_to "Monthly Reports (#{Time.zone.now.strftime("%B")})", financial_reports_monthly_overview_path(Time.zone.now.year, Time.zone.now.month) %>
-      </li>
-    </ul>
   </nav>
 
   <div class="user-navigation">
