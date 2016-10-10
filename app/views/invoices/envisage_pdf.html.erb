@@ -1,0 +1,133 @@
+<header class="customer-header">
+  <div class="brand-logo">
+    <%= image_tag "logos/envisage.png", class: "logo" %>
+  </div>
+
+  <ul class="brand-contact-details">
+    <li>
+      <div class="brand-contact-type">A:</div>
+
+      <strong class="accent">
+
+      </strong>
+    </li>
+    <li>
+      <div class="brand-contact-type">T:</div>
+      <strong class="accent"></strong>
+    </li>
+    <li>
+      <div class="brand-contact-type">E:</div>
+      <strong class="accent"></strong>
+    </li>
+    <li>
+      <div class="brand-contact-type">W:</div>
+      <strong class="accent"></strong>
+    </li>
+  </ul>
+
+</header>
+
+
+<div class="clear"></div>
+
+<div class="quote-details">
+  <h1 class="quote-title">
+    Invoice
+  </h1>
+
+  <div class="quote-reference">
+    Invoice Number: <%= invoice.number %><br />
+    <% if project.purchase_order.present? %>
+      Purchase Order Number: <%= project.purchase_order %><br />
+    <% end %>
+    Date: <%= l invoice.created_at.to_date %>
+  </div>
+</div>
+
+<h2>
+  Ludo Studio
+</h2>
+
+<p>
+  156 High Street<br />
+  Hull<br />
+  HU1 1NQ
+</p>
+
+<h2>Job Description:</h2>
+
+<p><%= project.name %></p>
+
+<h3>Costs:</h3>
+
+<table class="print-jobs">
+  <thead>
+    <tr>
+      <th class="item">Name</th>
+      <th class="item">Description</th>
+      <th class="price">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% project.print_jobs.each do |print_job| %>
+      <tr>
+        <td><%= print_job.name %></td>
+        <td><%= simple_format print_job.description %></td>
+        <td><%= number_to_currency print_job.envisage_price %></td>
+      </tr>
+    <% end %>
+    <% project.discounts.each do |discount| %>
+      <tr>
+        <td colspan="2"><%= discount.description %></td>
+        <td><%= number_to_currency -discount.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if invoice.percentage < 100 %>
+  <tr>
+    <td colspan="2">
+      <%= number_to_percentage invoice.percentage, precision: 0 %> of total amount <%= number_to_currency project.brand_price %> due now
+    </td>
+    <td>
+      <%= number_to_currency invoice.amount %>
+    </td>
+  </tr>
+<% end %>
+
+<table class="print-jobs">
+  <thead>
+    <tr>
+      <th class="item"></th>
+      <th class="price">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Total exc. VAT
+      </td>
+      <td>
+        <%= number_to_currency invoice.amount %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        VAT
+      </td>
+      <td>
+        <%= number_to_currency invoice.vat %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Total inc. VAT
+      </td>
+      <td>
+        <strong><%= number_to_currency invoice.total_inc_vat %></strong>
+      </td>
+    </tr>
+  </tobdy>
+</table>

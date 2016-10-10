@@ -3,8 +3,9 @@ require 'render_anywhere'
 class InvoiceDownload
   include RenderAnywhere
 
-  def initialize(invoice)
+  def initialize(invoice, envisage_invoice = false)
     @invoice = invoice
+    @envisage_invoice = envisage_invoice
     @project = invoice.project
     @colour = project.colour
   end
@@ -20,7 +21,7 @@ class InvoiceDownload
 
   def render_attributes
     {
-      template: 'invoices/pdf',
+      template: (@envisage_invoice === false ? 'invoices/pdf' : 'invoices/envisage_pdf'),
       layout: 'pdf',
       locals: { project: project, invoice: invoice, colour: colour }
     }

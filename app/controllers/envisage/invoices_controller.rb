@@ -30,7 +30,7 @@ class Envisage::InvoicesController < ApplicationController
 
   def download
     invoice = find_envisage_invoice
-    InvoiceDownload.new(invoice)
+    InvoiceDownload.new(invoice, true)
   end
 
   def send_pdf
