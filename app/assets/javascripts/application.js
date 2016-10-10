@@ -56,6 +56,7 @@
 //= require components/sticky-internal-navigation
 //= require components/tooltip
 //= require components/area-calculator
+//= require components/toggle-class
 // require_tree .
 
 $(function() {
