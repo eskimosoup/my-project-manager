@@ -1,6 +1,7 @@
 <div class="invoice <%= invoice.paid? ? 'paid' : 'unpaid' %>">
   <div class="download">
-    &nbsp;
+    <%= link_to 'Download', download_invoice_envisage_invoice_path(invoice),
+                class: 'action-button' %>
   </div>
   <div class="date">
     <%= invoice.created_at.strftime("%-d %B %Y") %>
