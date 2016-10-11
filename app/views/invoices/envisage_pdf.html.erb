@@ -6,6 +6,7 @@
   </div>
 
   <ul class="brand-contact-details envisage">
+    <% if brand.brand_address.present? %>
     <li>
       <div class="brand-contact-type">A:</div>
 
@@ -13,18 +14,24 @@
         <%= brand.brand_address.single_line %>
       </strong>
     </li>
-    <li>
-      <div class="brand-contact-type">T:</div>
-      <strong class="accent"><%= brand.telephone %></strong>
-    </li>
-    <li>
-      <div class="brand-contact-type">E:</div>
-      <strong class="accent"><%= brand.email %></strong>
-    </li>
-    <li>
-      <div class="brand-contact-type">W:</div>
-      <strong class="accent"><%= brand.website %></strong>
-    </li>
+    <% end %>
+    <% if brand.telephone.present? %>
+      <li>
+        <div class="brand-contact-type">T:</div>
+        <strong class="accent"><%= brand.telephone %></strong>
+      </li>
+    <% end %>
+    <% if brand.email.present? %>
+      <li>
+        <div class="brand-contact-type">E:</div>
+        <strong class="accent"><%= brand.email %></strong>
+      </li>
+    <% if brand.website.present? %>
+      <li>
+        <div class="brand-contact-type">W:</div>
+        <strong class="accent"><%= brand.website %></strong>
+      </li>
+    <% end %>
   </ul>
 
 </header>
