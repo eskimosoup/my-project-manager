@@ -7,7 +7,7 @@ class InvoiceDownload
     @invoice = invoice
     @envisage_invoice = envisage_invoice
     @project = invoice.project
-    @colour = project.colour
+    @colour = (envisage_invoice == false ? project.colour : '#56331a')
   end
 
   def to_pdf

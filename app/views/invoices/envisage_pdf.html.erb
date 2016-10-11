@@ -1,10 +1,11 @@
 <% brand = Brand.find_by(name: 'Envisage') %>
+<% colour = 'red' %>
 <header class="customer-header">
   <div class="brand-logo">
     <%= image_tag brand.logo, class: "logo" %>
   </div>
 
-  <ul class="brand-contact-details">
+  <ul class="brand-contact-details envisage">
     <li>
       <div class="brand-contact-type">A:</div>
 
