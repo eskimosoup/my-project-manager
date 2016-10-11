@@ -45,7 +45,7 @@ class Envisage::InvoicesController < ApplicationController
     {
       filename: download.filename,
       type: 'application/pdf',
-      disposition: 'inline'
+      disposition: 'attachment'
     }
   end
 end

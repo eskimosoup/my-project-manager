@@ -7,7 +7,7 @@ class InvoiceDownload
     @invoice = invoice
     @envisage_invoice = envisage_invoice
     @project = invoice.project
-    @colour = project.colour
+    @colour = (envisage_invoice == false ? project.colour : '#56331a')
   end
 
   def to_pdf
@@ -16,7 +16,7 @@ class InvoiceDownload
   end
 
   def filename
-    "MY#{invoice.id + 500}.pdf"
+    @envisage_invoice == false ? "MY#{invoice.id + 500}.pdf" : "ENVS#{invoice.id}.pdf"
   end
 
   def render_attributes
