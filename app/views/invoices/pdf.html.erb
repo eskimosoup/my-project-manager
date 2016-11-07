@@ -25,6 +25,8 @@
   <%= project.customer_name %>
 </h2>
 
+<%= simple_format project.description %>
+
 <% if project.billing_address %>
   <%= render(
     partial: 'job_sheets/address',
