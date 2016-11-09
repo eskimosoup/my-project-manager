@@ -55,4 +55,8 @@ nav#my-invoice, nav#envisage-invoice {
 .invoice-header {
   background-color: $green;
   color: $white;
+
+  h1 {
+    color: $white;
+  }
 }
