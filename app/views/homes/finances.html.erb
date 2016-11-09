@@ -14,5 +14,11 @@
     <li>
       <%= link_to "Monthly Reports (#{Time.zone.now.strftime("%B")})", financial_reports_monthly_overview_path(Time.zone.now.year, Time.zone.now.month) %>
     </li>
+    <li>
+      <%= link_to "Projects not paid in full", not_paid_in_full_financial_reports_projects_path %>
+    </li>
+    <li>
+      <%= link_to "Projects not invoiced in full", not_invoiced_in_full_financial_reports_projects_path %>
+    </li>
   </ul>
 </div>
