@@ -10,8 +10,18 @@
     @include grid-column($columns: 4, $gutter: 10);
   }
 
+  .price-field {
+    @include grid-column($columns: 1, $gutter: 5);
+    text-align: center;
+    
+    &:last-of-type {
+      @include grid-column-end;
+    }
+  }
+
   .invoice-field {
     @include grid-column($columns: 2, $gutter: 10);
+    text-align: center;
 
     &:last-of-type {
       @include grid-column-end;
@@ -24,6 +34,11 @@
 
 .project-report.heading {
   border-bottom: 2px solid $green;
+
+  .price-field,
+  .invoice-field {
+    text-align: center;
+  }
 }
 
 .project-report.total {

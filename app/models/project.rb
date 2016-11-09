@@ -45,7 +45,9 @@ class Project < ActiveRecord::Base
   delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand
   delegate :name, to: :brand, prefix: true
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,
-           :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost, to: :price_calculator
+           :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost,
+           :envisage_profit_without_labour, :envisage_cost_without_labour,
+           to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::Project.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)

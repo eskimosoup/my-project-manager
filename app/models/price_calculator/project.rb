@@ -50,6 +50,18 @@ class PriceCalculator::Project
     @cost ||= sum_array(:cost)
   end
 
+  def envisage_profit_without_labour
+    envisage_profit - print_job_labour_costs
+  end
+
+  def envisage_cost_without_labour
+    cost - print_job_labour_costs
+  end
+
+  def print_job_labour_costs
+    print_jobs.map{|x| x.labour_items.map(&:cost) }.flatten.sum
+  end
+
   private
 
   attr_reader :print_jobs, :my_brand, :discounts

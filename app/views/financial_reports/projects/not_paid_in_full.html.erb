@@ -22,5 +22,23 @@
     <%= render partial: 'financial_reports/projects/project_paid',
                collection: @projects,
                as: :project %>
+
+   <div class="project-report total">
+     <div class="full-name">
+       Total
+     </div>
+     <div class="invoice-field">
+       <%= number_to_currency @projects.map(&:brand_price).reduce(0, :+) %>
+     </div>
+     <div class="invoice-field">
+       <%= number_to_currency @projects.map{|x| x.invoices.map(&:amount).sum }.reduce(0, :+) %>
+     </div>
+     <div class="invoice-field">
+       <%= number_to_currency @projects.map(&:total_not_invoiced).reduce(0, :+) %>
+     </div>
+     <div class="invoice-field">
+       <%= number_to_currency @projects.map{|x| x.invoices.paid.map(&:amount).sum }.reduce(0, :+) %>
+     </div>
+   </div>
   </div>
 </div>

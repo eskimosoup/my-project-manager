@@ -6,20 +6,28 @@
         <div class="name">
           Name
         </div>
-        <div class="my-price">
+        <div class="price-field">
           My Price
         </div>
-        <div class="my-profit">
+        <div class="price-field">
           My Profit
         </div>
-        <div class="envisage-price">
+        <div class="price-field">
           Envisage Price
         </div>
-        <div class="envisage-profit">
+        <div class="price-field">
           Envisage Profit
         </div>
-        <div class="cost">
+        <div class="price-field">
           Cost
+        </div>
+        <div class="invoice-field">
+          Envisage Profit <br />
+          without Labour
+        </div>
+        <div class="invoice-field">
+          Envisage Cost <br />
+          without Labour
         </div>
       </div>
       <%= render(
@@ -31,20 +39,26 @@
         <div class="name">
           Total
         </div>
-        <div class="my-price">
+        <div class="price-field">
           <%= number_to_currency @my_projects.map(&:brand_price).reduce(0, :+) %>
         </div>
-        <div class="my-profit">
+        <div class="price-field">
           <%= number_to_currency @my_projects.map(&:brand_profit).reduce(0, :+) %>
         </div>
-        <div class="envisage-price">
+        <div class="price-field">
           <%= number_to_currency @my_projects.map(&:envisage_to_my_price).reduce(0, :+) %>
         </div>
-        <div class="envisage-profit">
+        <div class="price-field">
           <%= number_to_currency @my_projects.map(&:envisage_profit).reduce(0, :+) %>
         </div>
-        <div class="cost">
+        <div class="price-field">
           <%= number_to_currency @my_projects.map(&:cost).reduce(0, :+) %>
+        </div>
+        <div class="invoice-field">
+          <%= number_to_currency @my_projects.map(&:envisage_profit_without_labour).reduce(0, :+) %>
+        </div>
+        <div class="invoice-field">
+          <%= number_to_currency @my_projects.map(&:envisage_cost_without_labour).reduce(0, :+) %>
         </div>
       </div>
     <% else %>
