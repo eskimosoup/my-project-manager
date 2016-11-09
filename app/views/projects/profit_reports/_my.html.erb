@@ -3,19 +3,25 @@
     <%= link_to project.name, project %><br>
     <%= project.customer_name %>
   </div>
-  <div class="my-price">
+  <div class="price-field">
     <%= number_to_currency project.brand_price %>
   </div>
-  <div class="my-profit">
+  <div class="price-field">
     <%= number_to_currency project.brand_profit %>
   </div>
-  <div class="envisage-price">
+  <div class="price-field">
     <%= number_to_currency project.envisage_to_my_price %>
   </div>
-  <div class="envisage-profit">
+  <div class="price-field">
     <%= number_to_currency project.envisage_profit %>
   </div>
-  <div class="cost">
+  <div class="price-field">
     <%= number_to_currency project.cost %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.envisage_profit_without_labour %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.envisage_cost_without_labour %>
   </div>
 </div>
