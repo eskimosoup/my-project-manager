@@ -10,10 +10,13 @@ class Project < ActiveRecord::Base
   has_many :account_managements, through: :print_jobs
   has_many :designs, through: :print_jobs
   has_many :discounts
-  has_many :invoices, class_name: "::Invoice"
-  has_many :envisage_invoices, class_name: "Envisage::Invoice"
-  has_many :percentage_invoices, class_name: "::PercentageInvoice"
-  has_many :amount_invoices, class_name: "::AmountInvoice"
+  has_many :invoices, class_name: '::Invoice'
+
+  has_many :paid_invoices, -> { merge(Invoice.paid) }, through: :invoices, source: :project
+
+  has_many :envisage_invoices, class_name: 'Envisage::Invoice'
+  has_many :percentage_invoices, class_name: '::PercentageInvoice'
+  has_many :amount_invoices, class_name: '::AmountInvoice'
   has_many :job_specifications, through: :print_jobs
   has_many :labour_items, through: :print_jobs
   has_many :mileages, through: :print_jobs
@@ -33,18 +36,22 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) if value.present? }
   scope :customer_id, ->(value) { where(customer_id: value) if value.present? }
   scope :brand_id, ->(value) { where(brand_id: value) if value.present? }
-  scope :finalised_year, ->(year) { where("extract(year from finalised_at) = ?", year) }
-  scope :finalised_month, ->(month) { where("extract(month from finalised_at) = ?", month) }
-  scope :my_brands, ->{ joins(:brand).merge( Brand.my_brand ) }
-  scope :envisage_brands, ->{ joins(:brand).merge( Brand.envisage_brand) }
+  scope :finalised_year, ->(year) { where('extract(year from finalised_at) = ?', year) }
+  scope :finalised_month, ->(month) { where('extract(month from finalised_at) = ?', month) }
+  scope :my_brands, -> { joins(:brand).merge(Brand.my_brand) }
+  scope :envisage_brands, -> { joins(:brand).merge(Brand.envisage_brand) }
   delegate :name, to: :customer, prefix: true, allow_nil: true
   delegate :forename, to: :main_contact, prefix: true, allow_nil: true
   delegate :logo, :colour, :my_brand?, :vehicle_brand?, to: :brand
   delegate :name, to: :brand, prefix: true
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,
-    :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost, to: :price_calculator
+           :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost, to: :price_calculator
 
   def price_calculator
     @price_calculator ||= PriceCalculator::Project.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)
+  end
+
+  def total_not_invoiced
+    brand_price - invoices.sum(:amount)
   end
 end

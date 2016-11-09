@@ -1,24 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  describe "validations", :validation do
+  describe 'validations', :validation do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:customer) }
     it { should validate_presence_of(:brand) }
   end
 
-  describe "associations", :association do
+  describe 'associations', :association do
     it { should belong_to(:customer) }
     it { should belong_to(:brand) }
-    it { should belong_to(:shipping_address).class_name("Address") }
-    it { should belong_to(:billing_address).class_name("Address") }
-    it { should have_one(:main_contact).through(:customer).class_name("Contact") }
+    it { should belong_to(:shipping_address).class_name('Address') }
+    it { should belong_to(:billing_address).class_name('Address') }
+    it { should have_one(:main_contact).through(:customer).class_name('Contact') }
     it { should have_one(:business_address).through(:brand) }
     it { should have_many(:account_managements).through(:print_jobs) }
     it { should have_many(:designs).through(:print_jobs) }
     it { should have_many(:discounts) }
-    it { should have_many(:envisage_invoices).class_name("Envisage::Invoice") }
-    it { should have_many(:invoices).class_name("::Invoice") }
+    it { should have_many(:envisage_invoices).class_name('Envisage::Invoice') }
+    it { should have_many(:invoices).class_name('::Invoice') }
+    it { should have_many(:paid_invoices).through(:invoices) }
     it { should have_many(:job_specifications).through(:print_jobs) }
     it { should have_many(:labour_items).through(:print_jobs) }
     it { should have_many(:mileages).through(:print_jobs) }
@@ -31,7 +32,7 @@ RSpec.describe Project, type: :model do
   it { should delegate_method(:name).to(:customer).with_prefix }
   it { should delegate_method(:forename).to(:main_contact).with_prefix }
 
-  describe "#brand" do
+  describe '#brand' do
     it { should delegate_method(:logo).to(:brand) }
     it { should delegate_method(:name).to(:brand).with_prefix }
     it { should delegate_method(:colour).to(:brand) }
@@ -39,8 +40,8 @@ RSpec.describe Project, type: :model do
     it { should delegate_method(:vehicle_brand?).to(:brand) }
   end
 
-  describe "price calculator" do
-    it "#price_calculator" do
+  describe 'price calculator' do
+    it '#price_calculator' do
       project = build_stubbed(:project)
 
       expect(project.price_calculator).to be_an_instance_of(PriceCalculator::Project)

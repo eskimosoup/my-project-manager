@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="index">
+    <h2>My Projects - Not Invoiced in Full</h2>
+    <div class="project-report heading">
+      <div class="full-name">
+        Name
+      </div>
+      <div class="invoice-field">
+        My Price
+      </div>
+      <div class="invoice-field">
+        Total Invoiced
+      </div>
+      <div class="invoice-field">
+        Total Not Invoiced
+      </div>
+    </div>
+
+    <%= render partial: 'financial_reports/projects/project_invoice',
+               collection: @projects,
+               as: :project %>
+  </div>
+</div>

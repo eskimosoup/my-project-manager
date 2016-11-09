@@ -1,0 +1,18 @@
+<div class="project-report <%= cycle('odd', 'even') %>">
+  <div class="full-name">
+    <%= link_to project.name, project %><br>
+    <%= project.customer_name %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.brand_price %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.invoices.sum(:amount) %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.total_not_invoiced %>
+  </div>
+  <div class="invoice-field">
+    <%= number_to_currency project.paid_invoices.sum(:amount) %>
+  </div>
+</div>
