@@ -10,6 +10,11 @@ Rails.application.routes.draw do
                         as: :monthly_overview
     get 'archive', to: 'monthly_overviews#archive'
     resource :my_monthly, only: [:show]
+
+    resource :projects, only: [] do
+      get 'not-invoiced-in-full', to: 'projects#not_invoiced_in_full'
+      get 'not-paid-in-full', to: 'projects#not_paid_in_full'
+    end
   end
 
   get '/autocomplete', to: 'utilities#autocomplete'

@@ -4,6 +4,21 @@
   .name, .my-price, .my-profit, .envisage-price, .envisage-profit, .cost {
     @include grid-column($columns: 2, $gutter: 10);
   }
+
+
+  .full-name {
+    @include grid-column($columns: 4, $gutter: 10);
+  }
+
+  .invoice-field {
+    @include grid-column($columns: 2, $gutter: 10);
+
+    &:last-of-type {
+      @include grid-column-end;
+    }
+  }
+
+
   padding: rem-calc(5px 0);
 }
 
