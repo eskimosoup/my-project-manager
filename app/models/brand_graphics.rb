@@ -9,14 +9,18 @@ class BrandGraphics
 
   def self.klass_for(brand_type)
     case brand_type
-    when "envisage", "envisage_trade"
+    when 'envisage', 'envisage_trade'
       EnvisageBrandGraphics
-    when "my_office_branding"
+    when 'my_office_branding'
       MyOfficeBrandGraphics
-    when "my_vehicle_wrap"
+    when 'my_vehicle_wrap'
       MyVehicleWrapBrandGraphics
-    when "my_print_services"
+    when 'my_print_services'
       MyPrintServicesBrandGraphics
+    when 'my_design'
+      MyDesignBrandGraphics
+    when 'my_internet_marketing'
+      MyInternetMarketingBrandGraphics
     end
   end
 end
