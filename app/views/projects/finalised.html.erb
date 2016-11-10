@@ -92,4 +92,8 @@
     partial: "projects/envisage_invoices",
     locals: { project: @project }
   ) %>
+
+  <hr />
+
+  <%= render "projects/print_job_costs", project: @project %>
 <% end %>

@@ -2,6 +2,11 @@
   <div class="full-name">
     <%= link_to project.name, project %><br>
     <%= project.customer_name %>
+
+    <div class="project-finalised-at">
+      Finalised
+      <%= l project.finalised_at %>
+    </div>
   </div>
   <div class="invoice-field">
     <%= number_to_currency project.brand_price %>

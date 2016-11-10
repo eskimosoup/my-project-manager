@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="index">
+    <h3>Print Item Costs</h3>
+
+    <% project.print_jobs.each_with_index do |print_job, index| %>
+      <% next if print_job.chargable_items.blank? %>
+      <div>
+        <%= link_to print_job.name,
+                    '#',
+                    class: 'toggle-class',
+                    data: {
+                      class: 'hide',
+                      container: ".print-job-costs-#{index}",
+                      return: false
+                    } %>
+        <ul class="hide print-job-costs-<%= index %>">
+          <% print_job.chargable_items.each do |labour_item| %>
+            <li>
+              <%= labour_item.name.gsub(/[a-zA-Z](?=[A-Z])/, '\0 ') %>
+              <%= number_to_currency labour_item.map(&:cost).reduce(0, :+) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <ul>
+      <li>
+        <strong>Total costs:</strong>
+        <%= number_to_currency project.print_jobs.map{|x| x.chargable_items.map{ |x| x.map(&:cost).reduce(0, :+) }.reduce(0, :+) }.reduce(0, :+) %>
+      </li>
+
+      <li>
+        <strong>Total costs without labour:</strong>
+        <% labour_costs = project.print_jobs.map{|x| x.labour_items.map(&:cost).reduce(0, :+) }.reduce(0, :+) %>
+        <%= number_to_currency project.print_jobs.map{|x| x.chargable_items.map{ |x| x.map(&:cost).reduce(0, :+) }.reduce(0, :+) }.reduce(0, :+) - labour_costs %>
+      </li>
+
+      <li>
+        <strong>Total labour costs:</strong>
+        <%= number_to_currency labour_costs %>
+      </li>
+    </ul>
+  </div>
+</div>

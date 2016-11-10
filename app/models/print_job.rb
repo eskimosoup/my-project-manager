@@ -60,6 +60,19 @@ class PrintJob < ActiveRecord::Base
     price_calculator.cost
   end
 
+  def chargable_items
+    [
+      account_managements,
+      designs,
+      job_specifications,
+      labour_items,
+      mileages,
+      product_items,
+      sundry_items,
+      supporting_product_items
+    ].reject(&:blank?)
+  end
+
   private
 
   def envisage_brand_price
