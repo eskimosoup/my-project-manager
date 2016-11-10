@@ -88,4 +88,6 @@
       <%= presented_project.mark_finalised %>
     </div>
   </div>
+
+  <%= render "projects/print_job_costs", project: @project if @project.print_jobs.present? %>
 <% end %>
