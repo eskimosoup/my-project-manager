@@ -1,5 +1,4 @@
 class PriceCalculator::Project
-
   delegate :total_discount, :envisage_discount, :my_discount, to: :discount_assigner
 
   def initialize(print_jobs:, my_brand: true, discounts: [])
@@ -51,7 +50,7 @@ class PriceCalculator::Project
   end
 
   def envisage_profit_without_labour
-    envisage_profit - print_job_labour_costs
+    envisage_to_my_price - envisage_cost_without_labour
   end
 
   def envisage_cost_without_labour
@@ -59,7 +58,7 @@ class PriceCalculator::Project
   end
 
   def print_job_labour_costs
-    print_jobs.map{|x| x.labour_items.map(&:cost) }.flatten.sum
+    print_jobs.map { |x| x.labour_items.map(&:cost) }.flatten.sum
   end
 
   private
@@ -107,5 +106,4 @@ class PriceCalculator::Project
       cost: cost
     )
   end
-
 end
