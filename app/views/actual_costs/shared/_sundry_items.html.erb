@@ -1,0 +1,8 @@
+<%= simple_form_for sundry_item, remote: true do |f| %>
+  <%= f.input :name, disabled: true %>
+  <%= f.input :cost, disabled: true %>
+
+  <%= f.input :actual_cost %>
+
+  <%= f.button :submit %>
+<% end %>

@@ -20,10 +20,18 @@ class JobSpecificationsController < ApplicationController
   end
 
   def update
-    if @job_specification.update(job_specification_params)
-      redirect_to @job_specification.print_job, notice: 'Job specification successfully updated'
-    else
-      render :edit
+    @updated = @job_specification.update(job_specification_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @job_specification.print_job, notice: 'Job specification successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 

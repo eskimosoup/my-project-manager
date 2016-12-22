@@ -20,10 +20,18 @@ class LabourItemsController < ApplicationController
   end
 
   def update
-    if @labour_item.update(labour_item_params)
-      redirect_to @labour_item.print_job, notice: 'Labour item successfully updated'
-    else
-      render :edit
+    @updated = @labour_item.update(labour_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @labour_item.print_job, notice: 'Labour item successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 

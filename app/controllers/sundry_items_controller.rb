@@ -20,10 +20,18 @@ class SundryItemsController < ApplicationController
   end
 
   def update
-    if @sundry_item.update(sundry_item_params)
-      redirect_to @sundry_item.print_job, notice: 'Sundry item successfully updated'
-    else
-      render :edit
+    @updated = @sundry_item.update(sundry_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @sundry_item.print_job, notice: 'Sundry item successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 

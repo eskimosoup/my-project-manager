@@ -20,10 +20,18 @@ class ProductItemsController < ApplicationController
   end
 
   def update
-    if @product_item.update(product_item_params)
-      redirect_to @product_item.print_job, notice: 'Product updated successfully'
-    else
-      render :edit
+    @updated = @product_item.update(product_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @product_item.print_job, notice: 'Product updated successfully'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 

@@ -20,10 +20,18 @@ class AccountManagementsController < ApplicationController
   end
 
   def update
-    if @account_management.update(account_management_params)
-      redirect_to @account_management.print_job, notice: 'Account management successfully updated'
-    else
-      render :edit
+    @updated = @account_management.update(account_management_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @account_management.print_job, notice: 'Account management successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 

@@ -1,0 +1,7 @@
+var object = '#edit_mileage_' + <%= @mileage.id %>;
+$(object + ' .flash-message').remove();
+<% if @updated %>
+  $(object).prepend('<div class="flash-message notice">Success</div>');
+<% else %>
+  $(object).prepend('<div class="flash-message alert">Failure, please try again</div>');
+<% end %>

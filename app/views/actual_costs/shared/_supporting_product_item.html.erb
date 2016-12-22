@@ -1,0 +1,9 @@
+<%= simple_form_for supporting_product_item, remote: true do |f| %>
+  <%= f.input :area, disabled: true %>
+  <%= f.association :supporting_product, disabled: true %>
+
+  <%= f.input :actual_area %>
+  <%= f.input :actual_cost %>
+
+  <%= f.button :submit %>
+<% end %>

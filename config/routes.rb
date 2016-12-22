@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :amount_invoices, only: [:new, :create]
     resources :percentage_invoices, only: [:new, :create]
     resources :print_jobs, except: [:index], shallow: true do
+      resources :actual_costs, only: :index
       resources :multiple_product_additions, only: [:new, :create]
       resources :account_managements, except: [:index, :show]
       resources :designs, except: [:index, :show]

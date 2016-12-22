@@ -1,0 +1,7 @@
+<%= simple_form_for labour_item, remote: true do |f| %>
+  <%= f.input :hours, disabled: true %>
+  <%= f.association :labour, disabled: true %>
+  <%= f.input :actual_hours %>
+  <%= f.input :actual_cost %>
+  <%= f.button :submit %>
+<% end %>

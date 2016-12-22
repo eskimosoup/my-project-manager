@@ -1,0 +1,5 @@
+<%= simple_form_for mileage, remote: true do |f| %>
+  <%= f.input :miles, disabled: true %>
+  <%= f.input :actual_miles %>
+  <%= f.button :submit %>
+<% end %>
