@@ -44,6 +44,8 @@ class MyServiceItemsController < ApplicationController
   end
 
   def my_service_item_params
-    params.require(:my_service_item).permit(:name, :cost)
+    params.require(:my_service_item).permit(
+      :name, :cost, :actual_cost
+    )
   end
 end

@@ -10,7 +10,7 @@ class JobSpecificationsController < ApplicationController
     @job_specification = @print_job.job_specifications.new(job_specification_params)
     if @job_specification.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @print_job, notice: "Job specification successfully added"
+      redirect_to @print_job, notice: 'Job specification successfully added'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class JobSpecificationsController < ApplicationController
 
   def update
     if @job_specification.update(job_specification_params)
-      redirect_to @job_specification.print_job, notice: "Job specification successfully updated"
+      redirect_to @job_specification.print_job, notice: 'Job specification successfully updated'
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class JobSpecificationsController < ApplicationController
 
   def destroy
     @job_specification.destroy
-    redirect_to @job_specification.print_job, notice: "Job specification successfully destroyed"
+    redirect_to @job_specification.print_job, notice: 'Job specification successfully destroyed'
   end
 
   private
@@ -43,6 +43,8 @@ class JobSpecificationsController < ApplicationController
   end
 
   def job_specification_params
-    params.require(:job_specification).permit(:hours)
+    params.require(:job_specification).permit(
+      :hours, :actual_hours
+    )
   end
 end

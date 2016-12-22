@@ -20,7 +20,7 @@ class PrintJob < ActiveRecord::Base
 
   delegate :brand_type, to: :brand
   delegate :my_print_services?, to: :brand
-  delegate :rush_job?, :status, :quoted?, :sold?, :completed?, to: :project
+  delegate :rush_job?, :status, :quoted?, :sold?, :completed?, :finalised?, to: :project
   delegate :envisage_price, :envisage_rush_price, to: :price_calculator
   delegate :envisage_trade_price, :envisage_trade_rush_price, to: :price_calculator
   delegate :envisage_to_my_price, :envisage_to_my_rush_price, to: :price_calculator

@@ -10,7 +10,7 @@ class DesignsController < ApplicationController
     @design = @print_job.designs.new(design_params)
     if @design.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @print_job, notice: "Design successfully created"
+      redirect_to @print_job, notice: 'Design successfully created'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class DesignsController < ApplicationController
 
   def update
     if @design.update(design_params)
-      redirect_to @design.print_job, notice: "Design successfully updated"
+      redirect_to @design.print_job, notice: 'Design successfully updated'
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class DesignsController < ApplicationController
 
   def destroy
     @design.destroy
-    redirect_to @design.print_job, notice: "Design successfully destroyed"
+    redirect_to @design.print_job, notice: 'Design successfully destroyed'
   end
 
   private
@@ -43,6 +43,8 @@ class DesignsController < ApplicationController
   end
 
   def design_params
-    params.require(:design).permit(:hours)
+    params.require(:design).permit(
+      :hours, :actual_hours
+    )
   end
 end

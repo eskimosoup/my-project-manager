@@ -10,7 +10,7 @@ class AccountManagementsController < ApplicationController
     @account_management = @print_job.account_managements.new(account_management_params)
     if @account_management.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @print_job, notice: "Account management successfully added"
+      redirect_to @print_job, notice: 'Account management successfully added'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class AccountManagementsController < ApplicationController
 
   def update
     if @account_management.update(account_management_params)
-      redirect_to @account_management.print_job, notice: "Account management successfully updated"
+      redirect_to @account_management.print_job, notice: 'Account management successfully updated'
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class AccountManagementsController < ApplicationController
 
   def destroy
     @account_management.destroy
-    redirect_to @account_management.print_job, notice: "Account management successfully destroyed"
+    redirect_to @account_management.print_job, notice: 'Account management successfully destroyed'
   end
 
   private
@@ -43,6 +43,8 @@ class AccountManagementsController < ApplicationController
   end
 
   def account_management_params
-    params.require(:account_management).permit(:hours)
+    params.require(:account_management).permit(
+      :hours, :actual_hours
+    )
   end
 end

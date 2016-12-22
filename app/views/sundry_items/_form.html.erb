@@ -1,5 +1,8 @@
 <%= simple_form_for [@print_job, @sundry_item] do |f| %>
   <%= f.input :name %>
-  <%= f.input :cost %>
+  <%= f.input :cost, disabled: disabled_form_field(@sundry_item.print_job) %>
+
+  <%= f.input :actual_cost if show_actualised_fields(@sundry_item.print_job) %>
+
   <%= f.button :submit %>
 <% end %>

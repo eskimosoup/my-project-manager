@@ -3,19 +3,24 @@
     <td>
       <%= product_item.area %> sqm
 
-      <% if product_item.actual_area.present? %>
-        <strong class="actualised">(actual: <%= product_item.actual_area %> sqm)</strong>
-      <% end %>
+      <!--
+        <% if product_item.actual_area.present? %>
+          <strong class="actualised">(actual: <%= product_item.actual_area %> sqm)</strong>
+        <% end %>
+      -->
     </td>
     <td>
       <%= product_item.name %>
     </td>
     <td>
       <%= number_to_currency product_item.cost %>
-      <% if product_item.actual_cost.present? %>
-        <br />
-        <strong class="actualised">(actual: <%= number_to_currency product_item.actual_cost %>)</strong>
-      <% end %>
+
+      <!--
+        <% if product_item.actual_cost.present? %>
+          <br />
+          <strong class="actualised">(actual: <%= number_to_currency product_item.actual_cost %>)</strong>
+        <% end %>
+      -->
     </td>
     <td>
       <%= number_to_currency product_item.envisage_price %>
