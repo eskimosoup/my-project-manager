@@ -41,12 +41,18 @@
   padding-bottom: rem-calc(5px);
 }
 
-.actual-costs-overview {
-  border: 1px dotted $pink;
-  padding-bottom: rem-calc(15px);
-  padding-top: rem-calc(15px);
+.actual-costs {
+  form {
+    @include grid-row;
+    border-bottom: 1px dotted $blue;
+    margin-bottom: rem-calc(5px);
 
-  p {
-    margin: 0;
+    .input {
+      @include grid-column(3);
+
+      &:last-of-type {
+        @include grid-column-end;
+      }
+    }
   }
 }
