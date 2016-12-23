@@ -1,0 +1,130 @@
+<%= content_for :head do %>
+  <script>
+    $(document).on('click', '.actual-costs-save', function() {
+      $('.actual-costs input[type="submit"]').click();
+      return false;
+    });
+  </script>
+<% end %>
+
+<div class="content">
+  <div class="main actual-costs">
+    <h1>Actual Costs</h1>
+
+    <h2><%= @print_job.name %></h2>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3><%= Product::VIEW_STRING.pluralize %></h3>
+
+        <%= render partial: 'actual_costs/shared/product_item',
+                   collection: @print_job.product_items,
+                   as: :product_item %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3><%= SupportingProduct::VIEW_STRING.pluralize %></h3>
+
+          <%= render(
+            partial: "actual_costs/shared/supporting_product_item",
+            collection: @print_job.supporting_product_items,
+            as: :supporting_product_item
+          ) %>
+      </div>
+    </div>
+
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Labour</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/labour_item",
+            collection: @print_job.labour_items,
+            as: :labour_item
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Sundry Items</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/sundry_items",
+            collection: @print_job.sundry_items,
+            as: :sundry_item
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Job Specifications</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/job_specification",
+            collection: @print_job.job_specifications,
+            as: :job_specification
+          ) %>
+      </div>
+    </div>
+
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Mlieage</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/mileage",
+            collection: @print_job.mileages,
+            as: :mileage
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Account Managements</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/account_management",
+            collection: @print_job.account_managements,
+            as: :account_management
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Design</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/design",
+            collection: @print_job.designs,
+            as: :design
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>My Service Items</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/my_service_item",
+            collection: @print_job.my_service_items,
+            as: :my_service_item
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main">
+        <%= button_tag 'Save all', class: 'submit-button actual-costs-save' %>
+      </div>
+    </div>
+  </div>
+</div>

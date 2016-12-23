@@ -1,5 +1,12 @@
 <%= simple_form_for [@print_job, @labour_item] do |f| %>
-  <%= f.input :hours %>
-  <%= f.association :labour %>
+
+  <%= f.input :hours, disabled: disabled_form_field(@labour_item.print_job) %>
+  <%= f.association :labour, disabled: disabled_form_field(@labour_item.print_job) %>
+
+  <% if show_actualised_fields(@labour_item.print_job) %>
+    <%= f.input :actual_hours %>
+    <%= f.input :actual_cost %>
+  <% end %>
+
   <%= f.button :submit %>
 <% end %>

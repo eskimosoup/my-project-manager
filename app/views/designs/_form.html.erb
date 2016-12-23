@@ -1,4 +1,6 @@
 <%= simple_form_for [@print_job, @design] do |f| %>
-  <%= f.input :hours %>
+  <%= f.input :hours, disabled: disabled_form_field(@design.print_job)  %>
+  <%= f.input :actual_hours if show_actualised_fields(@design.print_job) %>
+
   <%= f.button :submit %>
 <% end %>

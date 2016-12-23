@@ -11,27 +11,27 @@ class MileagePresenter < BasePresenter
   end
 
   def octicon_edit_link
-    if quoted?
-      edit_link_content(edit_octicon_content, class: 'basic-listing-link')
-    else
-      mileage_text
-    end
+    # if quoted?
+    edit_link_content(edit_octicon_content, class: 'basic-listing-link')
+    # else
+    #  mileage_text
+    # end
   end
 
   def mileage_text
-    h.pluralize(miles, "mile")
+    h.pluralize(miles, 'mile')
   end
 
   def delete_link
     return nil unless quoted?
     h.button_to 'Remove', h.mileage_path(mileage), method: :delete,
-      data: { confirm: 'Are you sure?', disable_with: 'processing...' },
-      class: 'secondary-action-button'
+                                                   data: { confirm: 'Are you sure?', disable_with: 'processing...' },
+                                                   class: 'secondary-action-button'
   end
 
   private
 
   def edit_octicon_content
-    [ octicon('pencil'), mileage_text ].join(' ').html_safe
+    [octicon('pencil'), mileage_text].join(' ').html_safe
   end
 end

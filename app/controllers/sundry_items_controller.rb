@@ -10,7 +10,7 @@ class SundryItemsController < ApplicationController
     @sundry_item = @print_job.sundry_items.new(sundry_item_params)
     if @sundry_item.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @print_job, notice: "Sundry item successfully added"
+      redirect_to @print_job, notice: 'Sundry item successfully added'
     else
       render :new
     end
@@ -20,16 +20,24 @@ class SundryItemsController < ApplicationController
   end
 
   def update
-    if @sundry_item.update(sundry_item_params)
-      redirect_to @sundry_item.print_job, notice: "Sundry item successfully updated"
-    else
-      render :edit
+    @updated = @sundry_item.update(sundry_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @sundry_item.print_job, notice: 'Sundry item successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 
   def destroy
     @sundry_item.destroy
-    redirect_to @sundry_item.print_job, notice: "Sundry item successfully destroyed"
+    redirect_to @sundry_item.print_job, notice: 'Sundry item successfully destroyed'
   end
 
   private
@@ -43,6 +51,8 @@ class SundryItemsController < ApplicationController
   end
 
   def sundry_item_params
-    params.require(:sundry_item).permit(:name, :cost)
+    params.require(:sundry_item).permit(
+      :name, :cost, :actual_cost
+    )
   end
 end

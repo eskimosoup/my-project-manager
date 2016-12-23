@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906094940) do
+ActiveRecord::Schema.define(version: 20161221160629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.decimal  "hours",        precision: 15, scale: 2, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_hours", precision: 15, scale: 2
   end
 
   add_index "account_managements", ["print_job_id"], name: "index_account_managements_on_print_job_id", using: :btree
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.decimal  "hours",        precision: 15, scale: 2, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_hours", precision: 15, scale: 2
   end
 
   add_index "designs", ["print_job_id"], name: "index_designs_on_print_job_id", using: :btree
@@ -167,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "print_job_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_hours", precision: 15, scale: 2
   end
 
   add_index "job_specifications", ["print_job_id"], name: "index_job_specifications_on_print_job_id", using: :btree
@@ -177,6 +180,8 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.decimal  "hours",        precision: 15, scale: 2, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_cost",  precision: 10, scale: 2
+    t.decimal  "actual_hours", precision: 15, scale: 2
   end
 
   add_index "labour_items", ["labour_id"], name: "index_labour_items_on_labour_id", using: :btree
@@ -208,6 +213,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "print_job_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_miles", precision: 15, scale: 2
   end
 
   add_index "mileages", ["print_job_id"], name: "index_mileages_on_print_job_id", using: :btree
@@ -218,6 +224,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "print_job_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_cost",  precision: 10, scale: 2
   end
 
   add_index "my_service_items", ["print_job_id"], name: "index_my_service_items_on_print_job_id", using: :btree
@@ -259,6 +266,8 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "product_id",                            null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_cost",  precision: 10, scale: 2
+    t.decimal  "actual_area",  precision: 15, scale: 3
   end
 
   add_index "product_items", ["print_job_id"], name: "index_product_items_on_print_job_id", using: :btree
@@ -323,6 +332,7 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "print_job_id",                          null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.decimal  "actual_cost",  precision: 10, scale: 2
   end
 
   add_index "sundry_items", ["print_job_id"], name: "index_sundry_items_on_print_job_id", using: :btree
@@ -345,6 +355,8 @@ ActiveRecord::Schema.define(version: 20160906094940) do
     t.integer  "print_job_id",                                   null: false
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.decimal  "actual_area",           precision: 15, scale: 3
+    t.decimal  "actual_cost",           precision: 10, scale: 2
   end
 
   add_index "supporting_product_items", ["print_job_id"], name: "index_supporting_product_items_on_print_job_id", using: :btree

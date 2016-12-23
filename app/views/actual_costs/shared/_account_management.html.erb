@@ -1,0 +1,5 @@
+<%= simple_form_for account_management, remote: true do |f| %>
+  <%= f.input :hours, disabled: true %>
+  <%= f.input :actual_hours  %>
+  <%= f.button :submit %>
+<% end %>

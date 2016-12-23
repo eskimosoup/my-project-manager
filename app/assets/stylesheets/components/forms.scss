@@ -113,7 +113,7 @@ label {
   font-size: rem-calc(14px);
   padding: rem-calc(5px) rem-calc(3px);
   text-decoration: none;
-  
+
   &:link,
   &:visited,
   &:hover,
@@ -160,4 +160,10 @@ label {
     width: 45%;
     margin: 0 5% 0 0;
   }
+}
+
+.actual-costs-save {
+  font-size: rem-calc(20px);
+  padding: rem-calc(10px, 20px);
+  margin: rem-calc(20px 0);
 }

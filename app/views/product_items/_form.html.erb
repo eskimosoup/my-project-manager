@@ -1,7 +1,13 @@
 <%= simple_form_for [@print_job, @product_item] do |f| %>
   <%= render 'shared/area_calculator', area_input: '#product_item_area' %>
 
-  <%= f.input :area %>
-  <%= f.association :product %>
+  <%= f.input :area, disabled: disabled_form_field(@product_item.print_job) %>
+  <%= f.association :product, disabled: disabled_form_field(@product_item.print_job) %>
+
+  <% if show_actualised_fields(@product_item.print_job) %>
+    <%= f.input :actual_area %>
+    <%= f.input :actual_cost %>
+  <% end %>
+
   <%= f.button :submit %>
 <% end %>

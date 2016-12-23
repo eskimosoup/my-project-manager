@@ -10,7 +10,7 @@ class MileagesController < ApplicationController
     @mileage = @print_job.mileages.new(mileage_params)
     if @mileage.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @mileage.print_job, notice: "Mileage successfully created"
+      redirect_to @mileage.print_job, notice: 'Mileage successfully created'
     else
       render :new
     end
@@ -20,16 +20,24 @@ class MileagesController < ApplicationController
   end
 
   def update
-    if @mileage.update(mileage_params)
-      redirect_to @mileage.print_job, notice: "Mileage successully updated"
-    else
-      render :edit
+    @updated = @mileage.update(mileage_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @mileage.print_job, notice: 'Mileage successully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 
   def destroy
     @mileage.destroy
-    redirect_to @mileage.print_job, notice: "Mileage successfully destroyed"
+    redirect_to @mileage.print_job, notice: 'Mileage successfully destroyed'
   end
 
   private
@@ -43,6 +51,8 @@ class MileagesController < ApplicationController
   end
 
   def mileage_params
-    params.require(:mileage).permit(:miles)
+    params.require(:mileage).permit(
+      :miles, :actual_miles
+    )
   end
 end

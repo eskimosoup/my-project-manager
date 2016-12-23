@@ -25,19 +25,27 @@ module ApplicationHelper
 
   # http://stackoverflow.com/a/926092
   def archive_dates
-    date = Date.new(2016, 04, 01)
+    date = Date.new(2016, 0o4, 0o1)
     laterdate = Date.today
 
     dates = []
 
     (date.year..laterdate.year).each do |y|
-      mo_start = (date.year == y) ? date.month : 1
-      mo_end = (laterdate.year == y) ? laterdate.month : 12
+      mo_start = date.year == y ? date.month : 1
+      mo_end = laterdate.year == y ? laterdate.month : 12
 
       (mo_start..mo_end).each do |m|
-        dates << Date.new(y, m, 01)
+        dates << Date.new(y, m, 0o1)
       end
     end
     dates
+  end
+
+  def disabled_form_field(print_job)
+    print_job.present? && !print_job.finalised? || print_job.blank? ? false : true
+  end
+
+  def show_actualised_fields(print_job)
+    print_job.present? && print_job.finalised? ? true : false
   end
 end

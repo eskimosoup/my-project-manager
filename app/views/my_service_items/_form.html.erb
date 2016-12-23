@@ -1,5 +1,6 @@
 <%= simple_form_for [@print_job, @my_service_item] do |f| %>
   <%= f.input :name %>
-  <%= f.input :cost %>
+  <%= f.input :cost, disabled: disabled_form_field(@my_service_item.print_job) %>
+  <%= f.input :actual_cost if show_actualised_fields(@my_service_item.print_job) %>
   <%= f.button :submit %>
 <% end %>

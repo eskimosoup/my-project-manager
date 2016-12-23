@@ -10,7 +10,7 @@ class SupportingProductItemsController < ApplicationController
     @supporting_product_item = @print_job.supporting_product_items.new(supporting_product_item_params)
     if @supporting_product_item.save
       Discount.where(id: @print_job.discount_ids).delete_all
-      redirect_to @print_job, notice: "Supporting product item successfully added"
+      redirect_to @print_job, notice: 'Supporting product item successfully added'
     else
       render :new
     end
@@ -20,16 +20,24 @@ class SupportingProductItemsController < ApplicationController
   end
 
   def update
-    if @supporting_product_item.update(supporting_product_item_params)
-      redirect_to @supporting_product_item.print_job, notice: "Supporting product item successfully updated"
-    else
-      render :edit
+    @updated = @supporting_product_item.update(supporting_product_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @supporting_product_item.print_job, notice: 'Supporting product item successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 
   def destroy
     @supporting_product_item.destroy
-    redirect_to @supporting_product_item.print_job, notice: "Supporting product item successfully destroyed"
+    redirect_to @supporting_product_item.print_job, notice: 'Supporting product item successfully destroyed'
   end
 
   private
@@ -43,6 +51,8 @@ class SupportingProductItemsController < ApplicationController
   end
 
   def supporting_product_item_params
-    params.require(:supporting_product_item).permit(:area, :supporting_product_id)
+    params.require(:supporting_product_item).permit(
+      :area, :supporting_product_id, :actual_cost, :actual_area
+    )
   end
 end

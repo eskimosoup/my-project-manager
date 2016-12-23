@@ -20,10 +20,18 @@ class MyServiceItemsController < ApplicationController
 
   def update
     @my_service_item = find_my_service_item
-    if @my_service_item.update(my_service_item_params)
-      redirect_to print_job_path(@my_service_item.print_job_id)
-    else
-      render :edit
+    @updated = @my_service_item.update(my_service_item_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to print_job_path(@my_service_item.print_job_id)
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 
@@ -44,6 +52,8 @@ class MyServiceItemsController < ApplicationController
   end
 
   def my_service_item_params
-    params.require(:my_service_item).permit(:name, :cost)
+    params.require(:my_service_item).permit(
+      :name, :cost, :actual_cost
+    )
   end
 end
