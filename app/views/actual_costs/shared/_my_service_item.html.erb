@@ -1,0 +1,6 @@
+<%= simple_form_for my_service_item, remote: true do |f| %>
+  <%= f.input :name %>
+  <%= f.input :cost, disabled: true %>
+  <%= f.input :actual_cost %>
+  <%= f.button :submit %>
+<% end %>

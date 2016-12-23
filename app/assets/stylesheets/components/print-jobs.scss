@@ -40,3 +40,13 @@
   padding-top: rem-calc(5px);
   padding-bottom: rem-calc(5px);
 }
+
+.actual-costs-overview {
+  border: 1px dotted $pink;
+  padding-bottom: rem-calc(15px);
+  padding-top: rem-calc(15px);
+
+  p {
+    margin: 0;
+  }
+}

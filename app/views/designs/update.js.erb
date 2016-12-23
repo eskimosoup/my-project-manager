@@ -1,8 +1,7 @@
-var object = '#edit_labour_item_<%= @labour_item.id %>';
+var object = '#edit_design_<%= @design.id %>';
 $(object + ' .flash-message').remove();
 <% if @updated %>
   $(object).prepend('<div class="flash-message notice">Success</div>');
-  $(object + ' #labour_item_actual_cost').val('<%= @labour_item.actual_cost %>');
 <% else %>
   $(object).prepend('<div class="flash-message alert">Failure, please try again</div>');
 <% end %>

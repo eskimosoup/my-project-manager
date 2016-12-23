@@ -18,9 +18,18 @@
     </div>
 
     <%= link_to "Back To Project", project_path(@print_job.project_id) %>
+
   </div>
 </div>
 
+<% if @print_job.project.finalised? %>
+  <div class="content">
+    <div class="main actual-costs-overview">
+      <p>This project is finalised, you can now add actual costs.</p>
+      <%= link_to 'Add actual costs', print_job_actual_costs_path(@print_job), class: 'action-button' %>
+    </div>
+  </div>
+<% end %>
 
 <%= render "print_jobs/products", print_job: @presented_print_job %>
 <%= render "print_jobs/supporting_products", print_job: @presented_print_job %>

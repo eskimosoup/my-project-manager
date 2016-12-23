@@ -1,4 +1,4 @@
-var object = '#edit_job_specification_' + <%= @job_specification.id %>;
+var object = '#edit_job_specification_<%= @job_specification.id %>';
 $(object + ' .flash-message').remove();
 <% if @updated %>
   $(object).prepend('<div class="flash-message notice">Success</div>');

@@ -2,6 +2,6 @@
   <%= f.input :hours, disabled: true %>
   <%= f.association :labour, disabled: true %>
   <%= f.input :actual_hours %>
-  <%= f.input :actual_cost %>
+  <%= f.input :actual_cost, label: 'Actual cost (automatically calculated if left empty)' %>
   <%= f.button :submit %>
 <% end %>

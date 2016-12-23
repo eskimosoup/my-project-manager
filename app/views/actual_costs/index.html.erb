@@ -1,5 +1,14 @@
+<%= content_for :head do %>
+  <script>
+    $(document).on('click', '.actual-costs-save', function() {
+      $('.actual-costs input[type="submit"]').click();
+      return false;
+    });
+  </script>
+<% end %>
+
 <div class="content">
-  <div class="main">
+  <div class="main actual-costs">
     <h1>Actual Costs</h1>
 
     <h2><%= @print_job.name %></h2>
@@ -88,6 +97,34 @@
       </div>
     </div>
 
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>Design</h3>
 
+          <%= render(
+            partial: "actual_costs/shared/design",
+            collection: @print_job.designs,
+            as: :design
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main print-job-section">
+        <h3>My Service Items</h3>
+
+          <%= render(
+            partial: "actual_costs/shared/my_service_item",
+            collection: @print_job.my_service_items,
+            as: :my_service_item
+          ) %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="main">
+        <%= button_tag 'Save all', class: 'submit-button actual-costs-save' %>
+      </div>
+    </div>
   </div>
 </div>

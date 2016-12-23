@@ -20,10 +20,18 @@ class DesignsController < ApplicationController
   end
 
   def update
-    if @design.update(design_params)
-      redirect_to @design.print_job, notice: 'Design successfully updated'
-    else
-      render :edit
+    @updated = @design.update(design_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @design.print_job, notice: 'Design successfully updated'
+        else
+          render :edit
+        end
+      end
+
+      format.js { render :update }
     end
   end
 
