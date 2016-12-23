@@ -13,6 +13,9 @@
 
     <h2><%= @print_job.name %></h2>
 
+    <%= link_to "Back To Project", project_path(@print_job.project_id) %> |
+    <%= link_to "Back To Print Job", print_job_path(@print_job) %>
+
     <div class="content">
       <div class="main print-job-section">
         <h3><%= Product::VIEW_STRING.pluralize %></h3>
@@ -124,6 +127,9 @@
     <div class="content">
       <div class="main">
         <%= button_tag 'Save all', class: 'submit-button actual-costs-save' %>
+
+        <%= link_to "Back To Project", project_path(@print_job.project_id) %> |
+        <%= link_to "Back To Print Job", print_job_path(@print_job) %>
       </div>
     </div>
   </div>
