@@ -39,7 +39,7 @@ class PriceCalculator::SundryItem
   end
 
   def envisage_mark_up
-    if sundry_item.print_job.project.created_at > 1145 || sundry_item.print_job.project.id == 1077
+    if sundry_item.print_job.project.id > 1145 || sundry_item.print_job.project.id == 1077
       BigDecimal('1')
     else
       BigDecimal('1.2')
