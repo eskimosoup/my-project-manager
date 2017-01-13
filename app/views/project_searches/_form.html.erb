@@ -21,10 +21,8 @@
     </div>
 
     <% Project.statuses.keys.each do |status| %>
-      <div class="quarters">
-        <%= f.check_box status.to_sym %>
-        <%= f.label status.to_sym, "Only #{ status } projects" %>
-      </div>
+      <%= f.check_box status.to_sym %>
+      <%= f.label status.to_sym, status.humanize %>
     <% end %>
   </div>
 

@@ -290,14 +290,14 @@ ActiveRecord::Schema.define(version: 20170113111635) do
   create_table "projects", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "brand_id"
-    t.string   "name",                                null: false
+    t.string   "name",                                   null: false
     t.text     "description"
-    t.integer  "status",              default: 0
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "status",                 default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "shipping_address_id"
     t.integer  "billing_address_id"
-    t.boolean  "rush_job",            default: false
+    t.boolean  "rush_job",               default: false
     t.string   "purchase_order"
     t.date     "delivery_deadline"
     t.text     "notes"
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 20170113111635) do
     t.date     "finalised_at"
     t.date     "completed_at"
     t.integer  "quote_stage_id"
+    t.datetime "quote_stage_updated_at"
   end
 
   add_index "projects", ["billing_address_id"], name: "index_projects_on_billing_address_id", using: :btree

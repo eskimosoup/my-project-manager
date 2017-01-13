@@ -1,5 +1,12 @@
 <h2><%= quote_stage.name %></h2>
 
-<%= render partial: 'projects/shared/quote_stage',
+Profit all: <strong><%= number_to_currency quote_stage.projects.map(&:profit).reduce(0, :+) %></strong>
+
+Profit expected:
+<strong class="project-price">
+  <%= number_to_currency (quote_stage.projects.map(&:profit).reduce(0, :+) * quote_stage.multiplier) %>
+</strong>
+
+<%= render(partial: 'projects/shared/quote_stage',
           collection: quote_stage.projects,
-          as: :project %>
+          as: :project) || 'No projects' %>

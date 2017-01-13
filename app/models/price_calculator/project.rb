@@ -61,6 +61,10 @@ class PriceCalculator::Project
     print_jobs.map { |x| x.labour_items.map(&:cost) }.flatten.sum
   end
 
+  def profit
+    brand_profit + envisage_profit_without_labour
+  end
+
   private
 
   attr_reader :print_jobs, :my_brand, :discounts

@@ -1,11 +1,13 @@
 <% present project do |project_presenter| %>
   <div class="basic-listing <%= cycle('odd', 'even', class: 'project') %>" id="<%= project_presenter.dom_id %>">
     <div class="project-name">
-      <%= project_presenter.name %>
+      <%= link_to project do %>
+        <%= project_presenter.name %>
 
-      <div class="project-print-jobs-count">
-        <%= project_presenter.customer_name %>: <%= project_presenter.print_jobs_count %> print items.
-      </div>
+        <div class="project-print-jobs-count">
+          <%= project_presenter.customer_name %>: <%= project_presenter.print_jobs_count %> print items.
+        </div>
+      <% end %>
     </div>
 
     <div class="project-prices-summary">
@@ -17,7 +19,7 @@
     </div>
 
     <div class="project-status">
-      <%= link_to 'Change quote status',
+      <%= link_to "#{octicon('pencil')} #{project.quote_stage.name}".html_safe,
                   '#',
                   class: 'toggle-class',
                   data: {

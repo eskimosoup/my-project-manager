@@ -8,7 +8,7 @@
 
 <div class="content">
   <div class="index">
-    <%= form_tag quote_stages_path, method: :get do %>
+    <%= form_tag quote_stage_path(@quote_stage), method: :get do %>
       <%= label_tag :brand_id, 'Brand' %>
       <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any' %>
     <% end %>
