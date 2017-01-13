@@ -1,0 +1,5 @@
+<h2><%= quote_stage.name %></h2>
+
+<%= render partial: 'projects/shared/quote_stage',
+          collection: quote_stage.projects,
+          as: :project %>

@@ -8,6 +8,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'associations', :association do
+    it { should belong_to(:quote_stage) }
     it { should belong_to(:customer) }
     it { should belong_to(:brand) }
     it { should belong_to(:shipping_address).class_name('Address') }

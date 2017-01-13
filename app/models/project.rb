@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   include Filterable
 
+  belongs_to :quote_stage
   belongs_to :brand
   belongs_to :customer
   belongs_to :shipping_address, class_name: 'Address'

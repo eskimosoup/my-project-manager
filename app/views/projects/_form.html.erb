@@ -3,9 +3,11 @@
   <%= f.input :description, as: :text %>
   <%= f.association :brand %>
   <%= f.association :customer, collection: Customer.order("name ASC") %>
+  <%= f.association :quote_stage if @project.status == 'quoted' || @project.new_record? %>
   <%= f.input :purchase_order %>
   <%= f.input :delivery_deadline %>
   <%= f.input :notes, as: :text %>
   <%= f.input :rush_job %>
+
   <%= f.button :submit %>
 <% end %>

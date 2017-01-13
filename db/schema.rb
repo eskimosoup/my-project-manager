@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113110235) do
+ActiveRecord::Schema.define(version: 20170113111635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -304,12 +304,14 @@ ActiveRecord::Schema.define(version: 20170113110235) do
     t.integer  "contact_id"
     t.date     "finalised_at"
     t.date     "completed_at"
+    t.integer  "quote_stage_id"
   end
 
   add_index "projects", ["billing_address_id"], name: "index_projects_on_billing_address_id", using: :btree
   add_index "projects", ["brand_id"], name: "index_projects_on_brand_id", using: :btree
   add_index "projects", ["contact_id"], name: "index_projects_on_contact_id", using: :btree
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["quote_stage_id"], name: "index_projects_on_quote_stage_id", using: :btree
   add_index "projects", ["shipping_address_id"], name: "index_projects_on_shipping_address_id", using: :btree
   add_index "projects", ["status"], name: "completed", where: "(status = 2)", using: :btree
   add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
@@ -522,6 +524,7 @@ ActiveRecord::Schema.define(version: 20170113110235) do
   add_foreign_key "projects", "brands", on_delete: :cascade
   add_foreign_key "projects", "contacts"
   add_foreign_key "projects", "customers", on_delete: :cascade
+  add_foreign_key "projects", "quote_stages"
   add_foreign_key "sundry_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "sundry_items", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_costs", "print_jobs", on_delete: :cascade

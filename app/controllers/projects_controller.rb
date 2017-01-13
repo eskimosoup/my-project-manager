@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   def new
     @project = Project.new
   end
@@ -33,13 +32,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = find_project
-    render template: "projects/#{ @project.status }"
+    render template: "projects/#{@project.status}"
   end
 
   def destroy
     @project = find_project
     @project.destroy
-    redirect_to projects_path, notice: "Destroyed project"
+    redirect_to projects_path, notice: 'Destroyed project'
   end
 
   private
@@ -47,7 +46,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(
       :name, :description, :brand_id, :customer_id, :delivery_deadline, :notes,
-      :purchase_order
+      :purchase_order, :quote_stage_id
     )
   end
 

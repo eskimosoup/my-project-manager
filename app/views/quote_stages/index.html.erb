@@ -1,0 +1,17 @@
+<%= content_for :head do %>
+  <script>
+    $(document).on('change', '#quote_stage_id', function() {
+      $(this).parent().submit();
+    });
+  </script>
+<% end %>
+
+<div class="content">
+  <div class="index">
+    <%= form_tag quote_stages_path, method: :get do %>
+      <%= select_tag :quote_stage_id, options_for_select(QuoteStage.ordered_by_chance.pluck(:name, :id), selected: params[:quote_stage_id]), include_blank: 'All' %>
+    <% end %>
+
+    <%= render @quote_stages %>
+  </div>
+</div>
