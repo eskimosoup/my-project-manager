@@ -18,10 +18,18 @@ class ProjectsController < ApplicationController
 
   def update
     @project = find_project
-    if @project.update(project_params)
-      redirect_to @project, notice: 'Updated project'
-    else
-      render :edit
+    @updated = @project.update(project_params)
+
+    respond_to do |format|
+      format.html do
+        if @updated
+          redirect_to @project, notice: 'Updated project'
+        else
+          render :edit
+        end
+      end
+
+      format.js
     end
   end
 

@@ -1,5 +1,5 @@
 <% present project do |project_presenter| %>
-  <%= link_to project_presenter.link, class: "basic-listing project #{cycle('odd', 'even', class: 'project')}", id: project_presenter.dom_id do %>
+  <div class="basic-listing <%= cycle('odd', 'even', class: 'project') %>" id="<%= project_presenter.dom_id %>">
     <div class="project-name">
       <%= project_presenter.name %>
 
@@ -15,5 +15,24 @@
     <div class="project-brand">
       <%= project_presenter.brand_name %>
     </div>
-  <% end %>
+
+    <div class="project-status">
+      <%= link_to 'Change quote status',
+                  '#',
+                  class: 'toggle-class',
+                  data: {
+                    class: 'hide',
+                    container: ".project-#{project.id}",
+                    return: false
+                  } %>
+
+      <div class="quote-status-change-form hide project-<%= project.id %>">
+        <%= simple_form_for project, remote: true do |f| %>
+          <%= f.association :quote_stage, include_blank: false %>
+
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
