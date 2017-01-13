@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221160629) do
+ActiveRecord::Schema.define(version: 20170113110235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,13 +143,13 @@ ActiveRecord::Schema.define(version: 20161221160629) do
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "project_id",                                                                       null: false
-    t.string   "slug"
     t.string   "name",                                                                             null: false
     t.integer  "percentage"
     t.decimal  "amount",                    precision: 10, scale: 2,                               null: false
     t.boolean  "paid",                                               default: false,               null: false
     t.datetime "created_at",                                                                       null: false
     t.datetime "updated_at",                                                                       null: false
+    t.string   "slug"
     t.string   "stripe_charge_id"
     t.decimal  "vat",                       precision: 10, scale: 2, default: 0.0
     t.date     "due_date",                                                                         null: false
@@ -315,6 +315,13 @@ ActiveRecord::Schema.define(version: 20161221160629) do
   add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
   add_index "projects", ["status"], name: "quoted", where: "(status = 0)", using: :btree
   add_index "projects", ["status"], name: "sold", where: "(status = 1)", using: :btree
+
+  create_table "quote_stages", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "chance",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sundry_costs", force: :cascade do |t|
     t.string   "name",                                  null: false
