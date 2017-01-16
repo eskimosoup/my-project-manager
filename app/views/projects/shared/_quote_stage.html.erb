@@ -1,0 +1,40 @@
+<% present project do |project_presenter| %>
+  <div class="basic-listing <%= cycle('odd', 'even', class: 'project') %>" id="<%= project_presenter.dom_id %>">
+    <div class="project-name">
+      <%= link_to project do %>
+        <%= project_presenter.name %>
+
+        <div class="project-print-jobs-count">
+          <%= project_presenter.customer_name %>: <%= project_presenter.print_jobs_count %> print items.
+        </div>
+      <% end %>
+    </div>
+
+    <div class="project-prices-summary">
+      <%= render 'projects/prices', project: project %>
+    </div>
+
+    <div class="project-brand">
+      <%= project_presenter.brand_name %>
+    </div>
+
+    <div class="project-status">
+      <%= link_to "#{octicon('pencil')} #{project.quote_stage.name}".html_safe,
+                  '#',
+                  class: 'toggle-class',
+                  data: {
+                    class: 'hide',
+                    container: ".project-#{project.id}",
+                    return: false
+                  } %>
+
+      <div class="quote-status-change-form hide project-<%= project.id %>">
+        <%= simple_form_for project, remote: true do |f| %>
+          <%= f.association :quote_stage, include_blank: false %>
+
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

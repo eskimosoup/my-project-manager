@@ -1,6 +1,6 @@
 class ProjectPresenter < BasePresenter
   presents :project
-  delegate :name, :brand_price, :brand_rush_job_price, to: :project
+  delegate :name, :brand_price, :brand_rush_job_price, :brand_profit, :envisage_profit_without_labour, :profit, to: :project
 
   def reference_number
     "#{project.customer_id}-#{project.id + 100}"
@@ -19,7 +19,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def delivery_deadline
-    return "No deadline" unless project.delivery_deadline
+    return 'No deadline' unless project.delivery_deadline
     h.l project.delivery_deadline
   end
 
@@ -57,18 +57,22 @@ class ProjectPresenter < BasePresenter
     h.number_to_currency brand_price
   end
 
+  def profit_currency
+    h.number_to_currency profit
+  end
+
   def brand_profit_currency
-    return "" unless project.brand_profit
+    return '' unless project.brand_profit
     h.number_to_currency project.brand_profit
   end
 
   def envisage_price_currency
-    return "" unless project.envisage_to_my_price
+    return '' unless project.envisage_to_my_price
     h.number_to_currency project.envisage_to_my_price
   end
 
   def envisage_profit_currency
-    return "" unless project.envisage_profit
+    return '' unless project.envisage_profit
     h.number_to_currency project.envisage_profit
   end
 
@@ -83,7 +87,7 @@ class ProjectPresenter < BasePresenter
   def mark_sold
     return nil unless project.quoted?
     h.button_to 'Mark As Sold', h.project_seller_path(project), method: :post,
-      data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
+                                                                data: { disable_with: 'Processing...' }, class: 'secondary-action-button'
   end
 
   def mark_finalised
@@ -102,7 +106,7 @@ class ProjectPresenter < BasePresenter
 
   def add_vehicle_wrap_link
     return nil unless project.vehicle_brand? && project.quoted?
-    h.link_to "Add Vehicle Wrap", h.project_vehicle_wraps_path(project), class: "action-button"
+    h.link_to 'Add Vehicle Wrap', h.project_vehicle_wraps_path(project), class: 'action-button'
   end
 
   private

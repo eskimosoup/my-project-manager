@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     resources :invoice_searches, only: [:create]
   end
 
+  resources :quote_stages, path: 'quote-stages'
+
   resources :invoices, only: [:update]
   resources :projects do
     # changing status

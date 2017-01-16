@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   include Filterable
 
+  belongs_to :quote_stage
   belongs_to :brand
   belongs_to :customer
   belongs_to :shipping_address, class_name: 'Address'
@@ -36,6 +37,7 @@ class Project < ActiveRecord::Base
   scope :project_type, ->(value) { where(status: value) if value.present? }
   scope :customer_id, ->(value) { where(customer_id: value) if value.present? }
   scope :brand_id, ->(value) { where(brand_id: value) if value.present? }
+  scope :quote_stage_id, ->(value) { where(quote_stage_id: value) if value.present? }
   scope :finalised_year, ->(year) { where('extract(year from finalised_at) = ?', year) }
   scope :finalised_month, ->(month) { where('extract(month from finalised_at) = ?', month) }
   scope :my_brands, -> { joins(:brand).merge(Brand.my_brand) }
@@ -47,7 +49,10 @@ class Project < ActiveRecord::Base
   delegate :vat, :brand_price_inc_vat, :brand_price, :envisage_to_my_price,
            :envisage_to_my_vat, :brand_profit, :envisage_profit, :cost,
            :envisage_profit_without_labour, :envisage_cost_without_labour,
+           :profit,
            to: :price_calculator
+
+  before_save :update_project_quote_updated_at, if: proc { |x| x.quoted? }
 
   def price_calculator
     @price_calculator ||= PriceCalculator::Project.new(print_jobs: print_jobs, my_brand: my_brand?, discounts: discounts)
@@ -55,5 +60,9 @@ class Project < ActiveRecord::Base
 
   def total_not_invoiced
     brand_price - invoices.sum(:amount)
+  end
+
+  def update_project_quote_updated_at
+    self.quote_stage_updated_at = DateTime.now
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113110235) do
+ActiveRecord::Schema.define(version: 20170113111635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -290,26 +290,29 @@ ActiveRecord::Schema.define(version: 20170113110235) do
   create_table "projects", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "brand_id"
-    t.string   "name",                                null: false
+    t.string   "name",                                   null: false
     t.text     "description"
-    t.integer  "status",              default: 0
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "status",                 default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "shipping_address_id"
     t.integer  "billing_address_id"
-    t.boolean  "rush_job",            default: false
+    t.boolean  "rush_job",               default: false
     t.string   "purchase_order"
     t.date     "delivery_deadline"
     t.text     "notes"
     t.integer  "contact_id"
     t.date     "finalised_at"
     t.date     "completed_at"
+    t.integer  "quote_stage_id"
+    t.datetime "quote_stage_updated_at"
   end
 
   add_index "projects", ["billing_address_id"], name: "index_projects_on_billing_address_id", using: :btree
   add_index "projects", ["brand_id"], name: "index_projects_on_brand_id", using: :btree
   add_index "projects", ["contact_id"], name: "index_projects_on_contact_id", using: :btree
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["quote_stage_id"], name: "index_projects_on_quote_stage_id", using: :btree
   add_index "projects", ["shipping_address_id"], name: "index_projects_on_shipping_address_id", using: :btree
   add_index "projects", ["status"], name: "completed", where: "(status = 2)", using: :btree
   add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
@@ -522,6 +525,7 @@ ActiveRecord::Schema.define(version: 20170113110235) do
   add_foreign_key "projects", "brands", on_delete: :cascade
   add_foreign_key "projects", "contacts"
   add_foreign_key "projects", "customers", on_delete: :cascade
+  add_foreign_key "projects", "quote_stages"
   add_foreign_key "sundry_costs", "print_jobs", on_delete: :cascade
   add_foreign_key "sundry_items", "print_jobs", on_delete: :cascade
   add_foreign_key "supporting_product_costs", "print_jobs", on_delete: :cascade

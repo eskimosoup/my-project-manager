@@ -7,4 +7,8 @@ RSpec.describe QuoteStage, type: :model do
     it { should validate_presence_of(:chance) }
     it { should validate_uniqueness_of(:name) }
   end
+
+  describe 'associations', :association do
+    it { should have_many(:projects) }
+  end
 end

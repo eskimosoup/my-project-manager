@@ -7,6 +7,7 @@ class ProjectSearch
     attribute status
   end
   attribute :customer_id
+  attribute :quote_stage_id
   attribute :brand_id
   attribute :per_page
 
@@ -26,8 +27,12 @@ class ProjectSearch
   private
 
   def find_projects
-    Project.name_search(name).project_type(statuses_to_search)
-           .customer_id(customer_id).brand_id(brand_id).order(updated_at: :desc)
+    Project.name_search(name)
+           .project_type(statuses_to_search)
+           .customer_id(customer_id)
+           .brand_id(brand_id)
+           .quote_stage_id(quote_stage_id)
+           .order(updated_at: :desc)
   end
 
   def statuses_to_search
