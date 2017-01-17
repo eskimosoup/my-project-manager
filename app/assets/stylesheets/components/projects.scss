@@ -106,3 +106,223 @@
 .project-finalised-at {
   font-size: rem-calc(12px);
 }
+
+.quote-type {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 0;
+  text-align: center;
+  li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+  text-transform: uppercase;
+}
+
+
+.quote-type-link {
+  &:link,
+  &:visited {
+    background: $green;
+    border-radius: 5px;
+    color: $white;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: $white;
+    border-radius: 5px;
+    color: $green;
+    padding: 10px;
+  }
+
+  &.active {
+    text-decoration: none;
+    background: $white;
+    border-radius: 5px;
+    color: $green;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  &.red {
+    background: $red-flat;
+    &.active {
+      background: white;
+      color: $red-flat;
+    }
+    &:hover {
+      background: $red-flat2;
+      color: $white;
+    }
+  }
+  &.amber {
+    background: $amber-flat;
+    &.active {
+      background: white;
+      color: $amber-flat;
+    }
+    &:hover {
+      background: $amber-flat2;
+      color: $white;
+    }
+  }
+  &.green {
+    background: $green-flat;
+    &.active {
+      background: white;
+      color: $green-flat;
+    }
+    &:hover {
+      background: $green-flat2;
+      color: $white;
+    }
+  }
+}
+
+.quote-type-edit-link {
+  display: inline-block;
+  
+  &:link,
+  &:visited {
+    background: $green;
+    border-radius: 5px;
+    color: $white;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: $white;
+    border-radius: 5px;
+    color: $green;
+    padding: 10px;
+  }
+
+  &.active {
+    text-decoration: none;
+    background: $white;
+    border-radius: 5px;
+    color: $green;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  &.red {
+    background: $red-flat;
+    &.active {
+      background: white;
+      color: $red-flat;
+    }
+    &:hover {
+      background: $red-flat2;
+      color: $white;
+    }
+  }
+  &.amber {
+    background: $amber-flat;
+    &.active {
+      background: white;
+      color: $amber-flat;
+    }
+    &:hover {
+      background: $amber-flat2;
+      color: $white;
+    }
+  }
+  &.green {
+    background: $green-flat;
+    &.active {
+      background: white;
+      color: $green-flat;
+    }
+    &:hover {
+      background: $green-flat2;
+      color: $white;
+    }
+  }
+}
+
+.category-quote-container {
+  background: $green;
+  border-radius: 10px;
+  margin: 0 0 20px 0;
+  @include grid-row;
+}
+
+.category-container {
+  @include grid-column(4);
+  padding-top: 12px;
+}
+
+.quote-container {
+  @include grid-column(8);
+}
+
+.category-brand {
+  display: inline-block;
+  padding-right: 10px;
+  color: $white;
+  text-transform: uppercase;
+}
+
+.category-selector {
+  display: inline-block;
+  width: auto;
+}
+
+.profit-stats-wrapper {
+  @include grid-row;
+  background: $grey-flat;
+}
+
+.profit-stats-container {
+  @include grid-column(12);
+}
+
+.profit-stats-content-container {
+  @include grid-row;
+  background: $red-flat2;
+  color: $white;
+  margin: 10px 0;
+  padding: 7px 0 0;
+
+}
+
+.profit-stats-title {
+  @include grid-column(4);
+}
+
+.profit-stats-content {
+  @include grid-column(4);
+}
+
+.profit-type{
+  color: $white;
+  font-size: 14px;
+  margin: 2px 0 0;
+}
+.quote-title-red {
+background: $red-flat;
+}
+
+.quote-title-amber {
+  background: $amber-flat;
+  color: $white;
+}
+
+.quote-title-green {
+  background: $green-flat;
+  color: $white;
+}
+
+.profile-stats-columns {
+  @include grid-column(3);
+
+  @media screen and (min-width: 40em) {
+    padding: 0;
+  }
+}
