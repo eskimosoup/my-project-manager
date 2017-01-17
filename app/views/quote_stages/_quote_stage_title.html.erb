@@ -1,0 +1,16 @@
+<div class="profile-stats-columns">
+  <div class="profit-stats-content-container quote-title-<%= quote_stage.name.parameterize %>">
+    <div class="profit-stats-title">
+      <h2 class="profit-type"><%= quote_stage.name %></h2>
+    </div>
+    <div class="profit-stats-content">
+      Profit all: <strong><%= number_to_currency quote_stage.projects.map(&:profit).reduce(0, :+) %></strong>
+    </div>
+      <div class="profit-stats-content">
+      expected:
+          <strong>
+        <%= number_to_currency (quote_stage.projects.map(&:profit).reduce(0, :+) * quote_stage.multiplier) %>
+      </strong>
+    </div>
+  </div>
+</div>

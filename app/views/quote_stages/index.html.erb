@@ -1,25 +1,33 @@
 <%= content_for :head do %>
   <script>
     $(document).on('change', '#brand_id', function() {
-      $(this).parent().submit();
-    });
+                      $(this).parent().submit();
+                    });
   </script>
 <% end %>
-
 <div class="content">
   <div class="index">
-    <%= form_tag quote_stages_path, method: :get do %>
-      <%= label_tag :brand_id, 'Brand' %>
-      <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any' %>
-    <% end %>
-
-    <ul>
-      <li>
-        <%= link_to 'All', quote_stages_path(brand_id: params[:brand_id]) %>
-      </li>
-      <%= render partial: 'quote_stages/shared/link', collection: @quote_stages, as: :quote_stage %>
-    </ul>
-
+    <div class="category-quote-container">
+      <div class="quote-container">
+        <ul class="quote-type">
+          <li>
+            <%= link_to 'All', quote_stages_path(brand_id: params[:brand_id]), class: 'quote-type-link active' %>
+          </li>
+          <%= render partial: 'quote_stages/shared/link', collection: @quote_stages, as: :quote_stage %>
+        </ul>
+      </div>
+      <div class="category-container">
+        <%= form_tag quote_stages_path, method: :get do %>
+          <%= label_tag :brand_id, 'Brand:', class: "category-brand"%>
+          <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any', class: "category-selector" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="profit-stats-wrapper">
+      <div class="profit-stats-container">
+        <%= render partial: 'quote_stages/quote_stage_title', collection: @quote_stage_projects, as: :quote_stage %>
+      </div>
+    </div>
     <%= render @quote_stage_projects %>
   </div>
 </div>
