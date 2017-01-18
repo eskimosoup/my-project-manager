@@ -31,5 +31,7 @@
     </div>
 
     <%= render partial: 'projects/shared/quote_stage', collection: @projects, as: :project %>
+
+    <%= paginate @projects, params: { brand_id: params[:brand_id] } %>
   </div>
 </div>
