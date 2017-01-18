@@ -28,6 +28,7 @@
         <%= render partial: 'quote_stages/quote_stage_title', collection: @quote_stage_projects, as: :quote_stage %>
       </div>
     </div>
-    <%= render @quote_stage_projects %>
+
+    <%= render partial: 'projects/shared/quote_stage', collection: @projects, as: :project %>
   </div>
 </div>
