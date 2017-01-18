@@ -31,6 +31,7 @@ class Project < ActiveRecord::Base
   validates :brand, presence: true
   validates :customer, presence: true
   validates :name, presence: true
+  validates :quote_stage, presence: true
 
   scope :alphabetical, -> { order(name: :asc) }
   scope :name_search, ->(keywords) { where('projects.name ILIKE ?', "%#{keywords}%").alphabetical if keywords.present? }
