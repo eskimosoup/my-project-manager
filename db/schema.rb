@@ -143,13 +143,13 @@ ActiveRecord::Schema.define(version: 20170113111635) do
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "project_id",                                                                       null: false
+    t.string   "slug"
     t.string   "name",                                                                             null: false
     t.integer  "percentage"
     t.decimal  "amount",                    precision: 10, scale: 2,                               null: false
     t.boolean  "paid",                                               default: false,               null: false
     t.datetime "created_at",                                                                       null: false
     t.datetime "updated_at",                                                                       null: false
-    t.string   "slug"
     t.string   "stripe_charge_id"
     t.decimal  "vat",                       precision: 10, scale: 2, default: 0.0
     t.date     "due_date",                                                                         null: false

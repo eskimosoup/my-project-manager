@@ -4,7 +4,6 @@ class QuoteStagesController < ApplicationController
   def index
     @quote_stages = quote_stages
     @quote_stage_projects = quote_stage_projects
-
     @projects = projects
   end
 
@@ -23,7 +22,17 @@ class QuoteStagesController < ApplicationController
   end
 
   def quote_stages
-    QuoteStage.includes(:projects).ordered_by_chance
+    QuoteStage.includes(
+      :projects,
+      projects: [
+        :brand, :print_jobs, :discounts,
+        print_jobs: [
+          :brand, :account_managements, :designs, :job_specifications,
+          :mileages, :labour_items, :product_items, :sundry_items,
+          :supporting_product_items, :my_service_items
+        ]
+      ]
+    ).ordered_by_chance
   end
 
   def quote_stage_projects
@@ -33,7 +42,7 @@ class QuoteStagesController < ApplicationController
   end
 
   def projects(quote_stage_id = nil)
-    projects = Project.quoted
+    projects = Project.includes(:customer, :quote_stage).quoted
     projects = quote_stage_id.present? ? projects.where(quote_stage_id: quote_stage_id) : projects.where.not(quote_stage_id: nil)
     projects = projects.where(brand_id: params[:brand_id]) if params[:brand_id].present?
     projects = projects.order(quote_stage_updated_at: :desc)
