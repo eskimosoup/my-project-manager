@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   end
   resource :project_search, only: [:create, :show] do
     collection do
+      get 'sold_and_finalised', path: 'sold-and-finalised'
       get 'quoted_only', path: 'quoted-only'
     end
   end
