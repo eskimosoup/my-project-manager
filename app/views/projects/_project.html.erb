@@ -1,24 +1,26 @@
 <% present project do |project_presenter| %>
-  <%= link_to project_presenter.link, class: "basic-listing project #{cycle('odd', 'even', class: 'project')}", id: project_presenter.dom_id do %>
+  <div class="basic-listing <%= cycle('odd', 'even', class: 'project') %>" id="<%= project_presenter.dom_id %>">
     <div class="project-name">
-      <%= octicon('eye') %>
-      <%= project_presenter.name %>
-
-      <div class="project-print-jobs-count">
-        <%= project_presenter.customer_name %>: <%= project_presenter.print_jobs_count %> print items.
+      <%= link_to project_presenter.link do %>
+        <%= octicon('eye') %>
+        <%= project_presenter.name %>
+        <div class="project-print-jobs-count">
+          <%= project_presenter.customer_name %>: <%= project_presenter.print_jobs_count %> print items.
       </div>
+      <% end %>
     </div>
-
     <div class="project-prices-summary">
       <%= render 'projects/prices', project: project %>
     </div>
-
     <div class="project-brand">
       <%= project_presenter.brand_name %>
     </div>
-
     <div class="project-status">
-      <%= project_presenter.status %>
+      <% if project_presenter.status == 'Quoted' %>
+        <%= render 'projects/shared/quote_stage_button', project: project %>
+      <% else %>
+        <%= project_presenter.status %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 <% end %>

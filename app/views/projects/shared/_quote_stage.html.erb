@@ -19,22 +19,7 @@
     </div>
 
     <div class="project-status">
-      <%= link_to "#{octicon('pencil')} #{project.quote_stage.name}".html_safe,
-                  '#',
-                  class: "toggle-class quote-type-edit-link #{project.quote_stage.name.parameterize}",
-                  data: {
-                    class: 'hide',
-                    container: ".project-#{project.id}",
-                    return: false
-                  } %>
-
-      <div class="quote-status-change-form hide project-<%= project.id %>">
-        <%= simple_form_for project, remote: true do |f| %>
-          <%= f.association :quote_stage, include_blank: false %>
-
-          <%= f.button :submit %>
-        <% end %>
-      </div>
+      <%= render 'projects/shared/quote_stage', project: project %>
     </div>
   </div>
 <% end %>

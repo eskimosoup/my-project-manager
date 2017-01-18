@@ -184,7 +184,7 @@
 
 .quote-type-edit-link {
   display: inline-block;
-  
+
   &:link,
   &:visited {
     background: $green;
@@ -325,4 +325,8 @@ background: $red-flat;
   @media screen and (min-width: 40em) {
     padding: 0;
   }
+}
+
+.quote-stage-updated-at {
+  font-size: em(12px);
 }
