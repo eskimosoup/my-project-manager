@@ -287,7 +287,6 @@
   @include grid-row;
   background: $red-flat2;
   color: $white;
-  margin: 10px 0;
   padding: 7px 0 0;
 
 }
@@ -317,6 +316,26 @@ background: $red-flat;
 .quote-title-green {
   background: $green-flat;
   color: $white;
+}
+
+.quote-title-hold {
+  background: lighten($red-flat, 15%);
+  color: $white;
+}
+
+
+.expected-value {
+  @include grid-column-end;
+
+  &.profile-stats-columns:last-child:not(:first-child) {
+    float: left;
+  }
+}
+
+.quote-title-expected {
+  background: $pink;
+  color: $white;
+  padding: 8px 15px 0;
 }
 
 .profile-stats-columns {

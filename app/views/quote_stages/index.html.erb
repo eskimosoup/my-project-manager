@@ -23,10 +23,27 @@
         <% end %>
       </div>
     </div>
+
     <div class="profit-stats-wrapper">
+      <% @quote_stage_projects.in_groups_of(4, false) do |group| %>
       <div class="profit-stats-container">
-        <%= render partial: 'quote_stages/quote_stage_title', collection: @quote_stage_projects, as: :quote_stage %>
+        <% group.each do |quote_stage_title| %>
+            <%= render 'quote_stages/quote_stage_title',  quote_stage: quote_stage_title %>
+
+            <% if quote_stage_title == @quote_stage_projects.last %>
+              <div class="profile-stats-columns expected-value">
+                <div class="profit-stats-content-container quote-title-expected">
+                  <h2 class="profit-type">
+                    Estimated pipe line value
+                  </h2>
+                  <%= number_to_currency @quote_stage_projects.map{ |x| x.projects.map(&:profit).reduce(0, :+) * x.multiplier }.reduce(0, :+) %>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
       </div>
+      <% end %>
+
     </div>
 
     <%= render partial: 'projects/shared/quote_stage', collection: @projects, as: :project %>
