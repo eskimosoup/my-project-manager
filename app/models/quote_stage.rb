@@ -1,4 +1,6 @@
 class QuoteStage < ActiveRecord::Base
+  default_scope { order(:position) }
+
   has_many :projects, -> { quoted }
 
   scope :ordered_by_chance, -> { order(:chance) }
