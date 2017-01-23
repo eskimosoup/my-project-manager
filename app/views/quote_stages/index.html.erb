@@ -33,7 +33,7 @@
             <% if quote_stage_title == @quote_stage_projects.last %>
               <div class="profile-stats-columns expected-value">
                 <div class="profit-stats-content-container quote-title-expected">
-                  <h2 class="profit-type">
+                  <h2 class="profit-type-low-priority">
                     Estimated pipe line value
                   </h2>
                   <%= number_to_currency @quote_stage_projects.map{ |x| x.projects.map(&:profit).reduce(0, :+) * x.multiplier }.reduce(0, :+) %>

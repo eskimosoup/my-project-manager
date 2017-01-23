@@ -1,6 +1,19 @@
 .basic-listing {
   @include grid-row;
   @include listing;
+  .quote-type-edit-link {
+    display: inline-block;
+    margin: 5px;
+
+
+    &:hover {
+      text-decoration: none;
+      background: $grey-flat;
+      border-radius: 5px;
+      color: $green;
+      padding: 10px;
+    }
+  }
 }
 
 .index {

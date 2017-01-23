@@ -9,6 +9,7 @@ class QuoteStageDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    position: Field::Number,
     name: Field::String,
     chance: Field::Number,
     created_at: Field::DateTime,
@@ -34,6 +35,7 @@ class QuoteStageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :position,
     :name,
     :chance
   ].freeze
