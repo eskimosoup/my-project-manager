@@ -4,6 +4,6 @@
                 quote_stage,
                 brand_id: params[:brand_id]
               ),
-              class: "quote-type-link #{quote_stage.name.parameterize} #{'active' if current_page?(quote_stage_path(quote_stage, brand_id: params[:brand_id]))}"
+              class: "quote-type-link #{quote_stage.name.parameterize} quote-type-link-#{quote_stage.position} #{'active' if current_page?(quote_stage_path(quote_stage, brand_id: params[:brand_id]))}"
   %>
 </li>

@@ -2,7 +2,7 @@
   <% profit = quote_stage.projects.map(&:profit).reduce(0, :+) %>
 
   <div class="profile-stats-columns">
-    <div class="profit-stats-content-container quote-title-<%= quote_stage.name.parameterize %>">
+    <div class="profit-stats-content-container quote-title-<%= quote_stage.name.parameterize %> quote-title-<%= quote_stage.position %>">
       <div class="profit-stats-title">
         <h2 class="profit-type"><%= quote_stage.name %></h2>
         <%= quote_stage.chance %> %
