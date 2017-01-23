@@ -5,6 +5,9 @@
     width: $indent - 20px;
     text-align: right;
     margin: 2px 10px;
+    .select {
+      cursor: default;
+    }
     &.radio, &.checkbox {
       float: none;
       margin: 0;

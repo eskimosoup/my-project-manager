@@ -1,7 +1,7 @@
 <div class="quote-stage-button-<%= project.id %>">
   <%= link_to "#{octicon('pencil')} #{project.quote_stage.name}".html_safe,
               '#',
-              class: "toggle-class quote-type-edit-link #{project.quote_stage.name.parameterize}",
+              class: "toggle-class quote-type-edit-link #{project.quote_stage.name.parameterize} quote-type-button-#{project.quote_stage.position}",
               data: {
                 class: 'hide',
                 container: ".project-#{project.id}",

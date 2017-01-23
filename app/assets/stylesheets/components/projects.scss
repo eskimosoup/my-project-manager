@@ -299,6 +299,9 @@
 
 .profit-stats-title {
   @include grid-column(4);
+  @media screen and (min-width: 40em) {
+    padding-right: 0;
+  }
 }
 
 .profit-stats-content {
@@ -331,7 +334,7 @@ background: $red-flat;
   color: $white;
 }
 
-.quote-title-hold {
+.quote-title-5 {
   background: none;
   color: $black;
 
