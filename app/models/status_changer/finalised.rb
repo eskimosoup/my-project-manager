@@ -4,12 +4,12 @@ module StatusChanger
     include ActiveAttr::TypecastedAttributes
     attribute :delivery_deadline, type: Date
 
-    attr_accessor :purchase_order, :name, :description, :delivery_deadline, :notes, :rush_job
+    attr_accessor :purchase_order, :name, :description, :delivery_deadline, :notes, :rush_job, :quote_stage_id, :quote_stage_updated_at
 
     validate :validate_print_job_forms
 
     def default_attributes(project)
-      project.attributes.reject{|k,v| project_attributes_to_reject.include?(k)}
+      project.attributes.reject { |k, _v| project_attributes_to_reject.include?(k) }
     end
 
     def project_attributes_to_reject
@@ -19,16 +19,16 @@ module StatusChanger
     def initialize(project, attributes = default_attributes(project))
       @project = project
       @print_jobs = project.print_jobs
-      attributes[:delivery_deadline] = Date.parse([attributes.delete("delivery_deadline(1i)"), attributes.delete("delivery_deadline(2i)"), attributes.delete("delivery_deadline(3i)")].join("-")) if attributes["delivery_deadline(1i)"]
+      attributes[:delivery_deadline] = Date.parse([attributes.delete('delivery_deadline(1i)'), attributes.delete('delivery_deadline(2i)'), attributes.delete('delivery_deadline(3i)')].join('-')) if attributes['delivery_deadline(1i)']
       super(attributes)
     end
 
     def print_jobs_form_objects
       @print_jobs_form_objects ||= print_jobs.map do |print_job|
-        PrintJobs::FinaliserForm.new(print_job, print_job_finaliser_attributes(print_job)) 
+        PrintJobs::FinaliserForm.new(print_job, print_job_finaliser_attributes(print_job))
       end
     end
-    
+
     def print_jobs_form_objects_attributes=(print_jobs_form_objects_attributes)
       print_jobs_form_objects_attributes.each do |index, attributes|
         print_jobs_form_objects[index.to_i].update(attributes)
@@ -42,8 +42,6 @@ module StatusChanger
           send_emails
           true
         end
-      else
-      # TODO raise an error if project is not sold
       end
     rescue ActiveRecord::RecordInvalid => e
       errors.add(:base, e)
@@ -64,11 +62,9 @@ module StatusChanger
           delivery_deadline: delivery_deadline,
           notes: notes,
           rush_job: rush_job,
-          status: "finalised"
+          status: 'finalised'
         )
-        print_jobs_form_objects.each do |pj|
-          pj.save!
-        end
+        print_jobs_form_objects.each(&:save!)
       end
     end
 
@@ -80,10 +76,10 @@ module StatusChanger
 
     def print_job_finaliser_attributes(print_job)
       print_job.attributes.slice(
-        "envisage_sale_price",
-        "envisage_trade_sale_price",
-        "envisage_to_my_sale_price",
-        "my_sale_price"
+        'envisage_sale_price',
+        'envisage_trade_sale_price',
+        'envisage_to_my_sale_price',
+        'my_sale_price'
       )
     end
 
@@ -95,10 +91,8 @@ module StatusChanger
 
     def promote_print_job_errors(print_job_form)
       print_job_form.errors.each do |attr, message|
-        errors.add("#{ print_job_form.name } #{ attr }", message)
+        errors.add("#{print_job_form.name} #{attr}", message)
       end
     end
-
   end
 end
-
