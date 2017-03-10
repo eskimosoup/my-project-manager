@@ -1,0 +1,6 @@
+<div class="notes-form-output"></div>
+<%= simple_form_for @project, remote: true, html: { class: 'notes-form' } do |f| %>
+  <%= f.input :notes, as: :text, input_html: { class: 'notes-field' } %>
+
+  <%= f.button :submit %>
+<% end %>

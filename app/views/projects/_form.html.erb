@@ -6,7 +6,7 @@
   <%= f.association :quote_stage, prompt: 'Please select' if @project.status == 'quoted' || @project.new_record? %>
   <%= f.input :purchase_order %>
   <%= f.input :delivery_deadline %>
-  <%= f.input :notes, as: :text %>
+  <%= f.input :notes, as: :text, input_html: { class: 'notes-field' } %>
   <%= f.input :rush_job %>
 
   <%= f.button :submit %>
