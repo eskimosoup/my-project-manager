@@ -53,6 +53,8 @@
       <% else %>
         <%= link_to "Set Billing Address", new_project_billing_address_path(@project), class: 'action-button' %>
       <% end %>
+
+      <%= presented_project.notes %>
     </div>
 
     <div class="project-address">

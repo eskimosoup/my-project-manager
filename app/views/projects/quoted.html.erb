@@ -89,5 +89,11 @@
     </div>
   </div>
 
+  <div class="content">
+    <div class="main">
+      <%= render 'notes_form' %>
+    </div>
+  </div>
+
   <%= render "projects/print_job_costs", project: @project if @project.print_jobs.present? %>
 <% end %>

@@ -1,3 +1,4 @@
 <% if @updated %>
   $('.quote-stage-button-<%= @project.id %>').replaceWith("<%= j render 'projects/shared/quote_stage_button', project: @project %>");
+  $('.notes-form-output').html("Notes updated!");
 <% end %>
