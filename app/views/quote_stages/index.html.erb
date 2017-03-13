@@ -1,7 +1,7 @@
 <%= content_for :head do %>
   <script>
-    $(document).on('change', '#brand_id', function() {
-                      $(this).parent().submit();
+    $(document).on('change', '.category-selector', function() {
+                      $(this).parent().parent().submit();
                     });
   </script>
 <% end %>
@@ -18,8 +18,15 @@
       </div>
       <div class="category-container">
         <%= form_tag quote_stages_path, method: :get do %>
-          <%= label_tag :brand_id, 'Brand:', class: "category-brand"%>
-          <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any', class: "category-selector" %>
+          <div class="field">
+            <%= label_tag :brand_id, 'Brand:', class: "category-brand"%><br />
+            <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any', class: "category-selector" %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :custom_id, 'Customer:', class: "category-brand"%><br />
+            <%= select_tag :customer_id, options_for_select(Customer.all.order(:name).pluck(:name, :id), selected: params[:customer_id]), include_blank: 'Any', class: "category-selector" %>
+          </div>
         <% end %>
       </div>
     </div>
