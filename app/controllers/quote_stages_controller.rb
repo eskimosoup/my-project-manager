@@ -45,6 +45,7 @@ class QuoteStagesController < ApplicationController
     projects = Project.includes(:customer, :quote_stage).quoted
     projects = quote_stage_id.present? ? projects.where(quote_stage_id: quote_stage_id) : projects.where.not(quote_stage_id: nil)
     projects = projects.where(brand_id: params[:brand_id]) if params[:brand_id].present?
+    projects = projects.where(customer_id: params[:customer_id]) if params[:customer_id].present?
     projects = projects.order(quote_stage_updated_at: :desc)
     projects.page(params[:page]).per(params[:per_page] || 15)
   end
