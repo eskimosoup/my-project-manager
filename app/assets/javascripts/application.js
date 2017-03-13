@@ -23,11 +23,11 @@
 // require jquery-ui/selectable
 // require jquery-ui/sortable
 // require jquery-ui/accordion
-//= require jquery-ui/autocomplete
+//= require jquery-ui/widgets/autocomplete
 // require jquery-ui/button
 // require jquery-ui/datepicker
 // require jquery-ui/dialog
-//= require jquery-ui/menu
+//= require jquery-ui/widgets/menu
 // require jquery-ui/progressbar
 // require jquery-ui/selectmenu
 // require jquery-ui/slider
