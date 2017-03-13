@@ -62,7 +62,8 @@ class PriceCalculator::Project
   end
 
   def profit
-    brand_profit + envisage_profit_without_labour
+    profit = brand_profit + envisage_profit_without_labour
+    profit.nan? ? 0 : profit
   end
 
   private
