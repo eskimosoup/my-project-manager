@@ -257,8 +257,9 @@
 }
 
 .category-container {
-  @include grid-column(4);
+  @include grid-column(12);
   padding-top: 12px;
+  padding-right: 70px;
 }
 
 .quote-container {
@@ -268,6 +269,7 @@
 .category-brand {
   display: inline-block;
   padding-right: 10px;
+  padding-left: 13px;
   color: $white;
   text-transform: uppercase;
 }
@@ -294,7 +296,6 @@
   background: $blue;
   color: $white;
   padding: 7px 0 0;
-
 }
 
 .profit-stats-title {
@@ -308,7 +309,7 @@
   @include grid-column(4);
 }
 
-.profit-type{
+.profit-type {
   color: $white;
   font-size: 14px;
   margin: 2px 0 0;
@@ -321,7 +322,7 @@
 }
 
 .quote-title-red {
-background: $red-flat;
+  background: $red-flat;
 }
 
 .quote-title-amber {
@@ -377,4 +378,12 @@ background: $red-flat;
 
 .notes-field {
   height: 385px;
+}
+
+.category-container .field {
+  display: inline-block;
+}
+
+.catergory-wrapper {
+  padding-left: 94px;
 }
