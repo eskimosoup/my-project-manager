@@ -12,24 +12,26 @@
         <ul class="quote-type">
           <li>
             <%= link_to 'All', quote_stages_path(brand_id: params[:brand_id]), class: 'quote-type-link active' %>
-          </li>
+        </li>
           <%= render partial: 'quote_stages/shared/link', collection: @quote_stages, as: :quote_stage %>
         </ul>
       </div>
+      <div class="catergory-wrapper">
       <div class="category-container">
         <%= form_tag quote_stages_path, method: :get do %>
           <div class="field">
-            <%= label_tag :brand_id, 'Brand:', class: "category-brand"%><br />
+            <%= label_tag :brand_id, 'Brand:', class: "category-brand"%>
             <%= select_tag :brand_id, options_for_select(Brand.all.pluck(:name, :id), selected: params[:brand_id]), include_blank: 'Any', class: "category-selector" %>
           </div>
 
           <div class="field">
-            <%= label_tag :custom_id, 'Customer:', class: "category-brand"%><br />
+            <%= label_tag :custom_id, 'Customer:', class: "category-brand"%>
             <%= select_tag :customer_id, options_for_select(Customer.all.order(:name).pluck(:name, :id), selected: params[:customer_id]), include_blank: 'Any', class: "category-selector" %>
           </div>
         <% end %>
       </div>
     </div>
+  </div>
 
     <div class="profit-stats-wrapper">
       <% @quote_stage_projects.in_groups_of(4, false) do |group| %>
