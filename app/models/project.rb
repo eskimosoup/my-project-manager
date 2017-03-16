@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
   has_many :job_specifications, through: :print_jobs
   has_many :labour_items, through: :print_jobs
   has_many :mileages, through: :print_jobs
-  has_many :print_jobs
+  has_many :print_jobs, -> { order('print_jobs.created_at ASC') }
   has_many :product_items, through: :print_jobs
   has_many :sundry_items, through: :print_jobs
   has_many :supporting_product_items, through: :print_jobs
