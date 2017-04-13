@@ -3,11 +3,12 @@ require 'render_anywhere'
 class InvoiceDownload
   include RenderAnywhere
 
-  def initialize(invoice, envisage_invoice = false)
+  def initialize(invoice, envisage_invoice = false, template_file = nil)
     @invoice = invoice
     @envisage_invoice = envisage_invoice
     @project = invoice.project
     @colour = (envisage_invoice == false ? project.colour : '#56331a')
+    @template_file = template_file
   end
 
   def to_pdf
@@ -21,10 +22,15 @@ class InvoiceDownload
 
   def render_attributes
     {
-      template: (@envisage_invoice === false ? 'invoices/pdf' : 'invoices/envisage_pdf'),
+      template: template_file,
       layout: 'pdf',
       locals: { project: project, invoice: invoice, colour: colour }
     }
+  end
+
+  def template_file
+    return @template_file if @template_file.present?
+    @envisage_invoice == false ? 'invoices/pdf' : 'invoices/envisage_pdf'
   end
 
   private

@@ -6,8 +6,12 @@
     <%= invoice.number %>
   </div>
   <div class="customer-and-project">
-    <%= invoice.customer_name %>
-    <%= invoice.project_name %>
+    <div>
+      <%= invoice.customer_name %>
+      <%= invoice.project_name %>
+    </div>
+
+    <%= link_to "Download summary invoice", summarised_invoice_invoice_download_path(invoice, format: :pdf), class: "action-button" %>
   </div>
   <div class="name">
     <%= invoice.name %>

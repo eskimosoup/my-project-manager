@@ -1,0 +1,136 @@
+<%= render(
+  partial: "downloads/header",
+  locals: {
+    project: project
+  }
+) %>
+
+<div class="clear"></div>
+
+<div class="quote-details">
+  <h1 class="quote-title">
+    Invoice
+  </h1>
+
+  <div class="quote-reference">
+    Invoice Number: <%= invoice.number %><br />
+    <% if project.purchase_order.present? %>
+      Purchase Order Number: <%= project.purchase_order %><br />
+    <% end %>
+    Date: <%= l invoice.created_at.to_date %>
+  </div>
+</div>
+
+<h2>
+  <%= project.customer_name %>
+</h2>
+
+<%= simple_format project.description %>
+
+<% if project.billing_address %>
+  <%= render(
+    partial: 'job_sheets/address',
+    locals: {
+      address: project.billing_address
+    }
+  ) %>
+<% end %>
+
+<h2>Job Description:</h2>
+
+<p><%= project.name %></p>
+
+<h3>Costs:</h3>
+
+<table class="print-jobs">
+  <thead>
+    <tr>
+      <th class="item">Item</th>
+      <th class="item">Description</th>
+      <th class="price">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% project.discounts.each do |discount| %>
+      <tr>
+        <td colspan="2"><%= discount.description %></td>
+        <td><%= number_to_currency -discount.amount %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td colspan="2">
+        Total exc. VAT
+      </td>
+      <td>
+        <%#= number_to_currency project.brand_price %>
+        <%= number_to_currency invoice.amount %>        
+      </td>
+    </tr>
+
+    <!--
+    <% if invoice.percentage < 100 %>
+      <tr>
+        <td colspan="2">
+          <%= number_to_percentage invoice.percentage, precision: 0 %> of total amount <%= number_to_currency project.brand_price %> due now
+        </td>
+        <td>
+          <%= number_to_currency invoice.amount %>
+        </td>
+      </tr>
+    <% end %>
+    -->
+
+    <tr>
+      <td colspan="2">
+        VAT
+      </td>
+      <td>
+        <%= number_to_currency invoice.vat %>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        Total inc. VAT
+      </td>
+      <td>
+        <strong><%= number_to_currency invoice.total_inc_vat %></strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<% if invoice.has_attribute? :due_date %>
+  <p>
+    Payment due on <%= l invoice.due_date %>
+  </p>
+<% end %>
+
+<p>
+  You can pay online by visiting <%= link_to customer_invoice_url(invoice), customer_invoice_url(invoice) %>.
+</p>
+
+<p>
+  Please make all cheques payable to Ludo Studio LTD
+</p>
+
+<p>
+  Bacs Payment<br/>
+  Sort Code: 20-43-47<br/>
+  Account Number - 63034607
+</p>
+
+<p>
+  Payment terms are immediate - unless otherwise specified on invoice
+  all goods / services remain the property of Ludo Studio LTD
+  until payment is made in full
+</p>
+
+<%= render(
+  partial: "downloads/terms_and_conditions",
+  locals: { brand: project.brand }
+) %>
