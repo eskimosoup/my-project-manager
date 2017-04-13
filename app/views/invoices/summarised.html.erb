@@ -40,7 +40,6 @@
 
 <p><%= project.name %></p>
 
-<p><%= invoice.name %></p>
 
 <h3>Costs:</h3>
 
@@ -48,11 +47,19 @@
   <thead>
     <tr>
       <th class="item">Item</th>
-      <th class="item">Description</th>
+      <th class="item"></th>
       <th class="price">Cost</th>
     </tr>
   </thead>
   <tbody>
+
+    <tr>
+      <td colspan="2">
+        <%= invoice.name %>
+      </td>
+      <td>
+      </td>
+    </tr>
 
     <% project.discounts.each do |discount| %>
       <tr>
