@@ -1,10 +1,20 @@
 class InvoiceDownloadsController < ApplicationController
   def show
     respond_to do |format|
-      format.pdf { send_pdf }
+      format.pdf { send_pdf(full: true) }
 
       if Rails.env.development?
-        format.html { render_sample_html }
+        format.html { render_sample_html(full: true) }
+      end
+    end
+  end
+
+  def summarised
+    respond_to do |format|
+      format.pdf { send_pdf(full: false) }
+
+      if Rails.env.development?
+        format.html { render_sample_html(full: false) }
       end
     end
   end
@@ -15,19 +25,29 @@ class InvoiceDownloadsController < ApplicationController
     @invoice = Invoice.friendly.find(params[:invoice_id])
   end
 
-  def download
+  def full_download
     InvoiceDownload.new(invoice)
   end
 
-  def send_pdf
-    send_file download.to_pdf, download_attributes
+  def summarised_download
+    InvoiceDownload.new(invoice, false, 'invoices/summarised')
   end
 
-  def render_sample_html
+  def download_type(full)
+    full == true ? full_download : summarised_download
+  end
+
+  def send_pdf(full: true)
+    download = download_type(full)
+    send_file download.to_pdf, download_attributes(download)
+  end
+
+  def render_sample_html(full: true)
+    download = download_type(full)
     render download.render_attributes
   end
 
-  def download_attributes
+  def download_attributes(download)
     {
       filename: download.filename,
       type: "application/pdf",

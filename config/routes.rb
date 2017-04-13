@@ -58,7 +58,9 @@ Rails.application.routes.draw do
     resources :discounts, only: [:new, :create, :destroy], shallow: true
     resources :envisage_invoices, only: [:create], controller: 'project_envisage_invoices'
     resources :invoices, only: [:index], shallow: true, controller: 'project_invoices' do
-      resource :invoice_download, only: [:show]
+      resource :invoice_download, only: [:show] do
+        get 'summarised', on: :member
+      end
     end
     resources :amount_invoices, only: [:new, :create]
     resources :percentage_invoices, only: [:new, :create]
