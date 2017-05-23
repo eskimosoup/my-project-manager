@@ -1,17 +1,41 @@
+<%= content_for :head do %>
+  <script>
+    $(document).ready(function() {
+      $('.print-jobs-ordering').sortable({
+        items: '.basic-listing',
+        containment: 'parent',
+        axis: 'y',
+        update: function() {
+          $.ajax({
+            type: "post",
+            //data: $(this).sortable("serialize"),
+            data: 'model=PrintJob&' + $(this).sortable("serialize"),
+            dataType: "script",
+            url: "<%= order_project_print_jobs_path(@project) %>"
+          });
+        }
+      });
+    });
+  </script>
+<% end %>
+
 <div class="content">
   <div class="index">
     <h3 class="inline-title">Print Items</h3>
+
     <% present @project do |presented_project| %>
       <%= presented_project.new_print_job_link('Add') %>
       <%= presented_project.add_vehicle_wrap_link %>
     <% end %>
 
     <% if project.print_jobs.any? %>
-      <%= render(
-        partial: "print_jobs/print_job",
-        collection: project.print_jobs.order(created_at: :asc),
-        as: :print_job
-      ) %>
+      <div class="print-jobs-ordering">
+        <%= render(
+          partial: "print_jobs/print_job",
+          collection: project.print_jobs.order(created_at: :asc),
+          as: :print_job
+        ) %>
+      </div>
     <% end %>
   </div>
 </div>

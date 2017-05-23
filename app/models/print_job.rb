@@ -1,4 +1,6 @@
 class PrintJob < ActiveRecord::Base
+  default_scope { order(:position) }
+
   belongs_to :project
   has_one :brand, through: :project
   has_many :account_managements

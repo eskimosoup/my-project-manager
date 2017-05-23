@@ -1,6 +1,6 @@
 class PrintJobsController < ApplicationController
-  before_action :set_project, only: [:new, :create]
-  before_action :set_print_job, except: [:new, :create]
+  before_action :set_project, only: [:new, :create, :position]
+  before_action :set_print_job, except: [:new, :create, :order]
 
   def new
     @print_job = PrintJob.new
@@ -32,6 +32,13 @@ class PrintJobsController < ApplicationController
   end
 
   def show
+  end
+
+  def order
+    params[:print_job].each_with_index do |id, index|
+      PrintJob.find(id).update_columns(position: index + 1)
+    end
+    head :ok
   end
 
   private
