@@ -21,7 +21,7 @@
 // require jquery-ui/droppable
 // require jquery-ui/resizable
 // require jquery-ui/selectable
-// require jquery-ui/sortable
+//= require jquery-ui/widgets/sortable
 // require jquery-ui/accordion
 //= require jquery-ui/widgets/autocomplete
 // require jquery-ui/button

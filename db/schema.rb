@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123110803) do
+ActiveRecord::Schema.define(version: 20170523141259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 20170123110803) do
     t.boolean  "vat",                                                default: true, null: false
     t.decimal  "cost",                      precision: 10, scale: 2
     t.decimal  "my_service_item_costs",                              default: 0.0
+    t.integer  "position"
   end
 
   add_index "print_jobs", ["project_id", "name"], name: "index_print_jobs_on_project_id_and_name", unique: true, using: :btree
