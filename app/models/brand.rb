@@ -1,5 +1,5 @@
 class Brand < ActiveRecord::Base
-  MY_BRANDS = %w( my_office_branding my_vehicle_wrap my_print_services my_design my_internet_marketing ).freeze
+  MY_BRANDS = %w( my_office_branding my_vehicle_wrap my_print_services my_design my_internet_marketing my_team ).freeze
 
   scope :my_brand, -> { where(brand_type: Brand.brand_types.select { |x| Brand::MY_BRANDS.include?(x) }.values) }
   scope :envisage_brand, -> { where.not(brand_type: Brand.brand_types.select { |x| Brand::MY_BRANDS.include?(x) }.values) }
@@ -13,7 +13,8 @@ class Brand < ActiveRecord::Base
     :my_vehicle_wrap,
     :my_print_services,
     :my_design,
-    :my_internet_marketing
+    :my_internet_marketing,
+    :my_team
   ]
   validates :name, presence: true
   validates :email, presence: true

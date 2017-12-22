@@ -55,18 +55,18 @@
 </p>
 
 <p>
-  Please make all cheques payable to Ludo Studio LTD
+  Please make all cheques payable to <%= project.brand.company_name %>
 </p>
 
 <p>
   Bacs Payment<br/>
-  Sort Code: 20-43-47<br/>
-  Account Number - 63034607
+  Sort Code: <%= project.brand.bank_sort_code %><br/>
+  Account Number - <%= project.brand.bank_account_number %>
 </p>
 
 <p>
   Payment terms are immediate - unless otherwise specified on invoice
-  all goods / services remain the property of Ludo Studio LTD
+  all goods / services remain the property of <%= project.brand.company_name %>
   until payment is made in full
 </p>
 
