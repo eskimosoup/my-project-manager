@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523141259) do
+ActiveRecord::Schema.define(version: 20171222091552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,12 @@ ActiveRecord::Schema.define(version: 20170523141259) do
     t.string   "website"
     t.string   "terms_conditions_link"
     t.decimal  "account_management_rate", precision: 6, scale: 2, default: 0.0,  null: false
+    t.string   "vat_no"
+    t.string   "company_name"
+    t.string   "company_reg_no"
+    t.string   "address_text"
+    t.string   "bank_sort_code"
+    t.string   "bank_account_number"
   end
 
   add_index "brands", ["name"], name: "index_brands_on_name", unique: true, using: :btree

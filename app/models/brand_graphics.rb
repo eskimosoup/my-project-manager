@@ -21,6 +21,8 @@ class BrandGraphics
       MyDesignBrandGraphics
     when 'my_internet_marketing'
       MyInternetMarketingBrandGraphics
+    when 'my_team'
+      MyTeamGraphics
     end
   end
 end

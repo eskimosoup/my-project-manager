@@ -19,6 +19,12 @@ class BrandDashboard < Administrate::BaseDashboard
     display: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    vat_no: Field::String,
+    company_name: Field::String,
+    company_reg_no: Field::String,
+    # address_text: Field::Text,
+    bank_sort_code: Field::String,
+    bank_account_number: Field::String
   }
 
   # COLLECTION_ATTRIBUTES
@@ -48,6 +54,12 @@ class BrandDashboard < Administrate::BaseDashboard
     :terms_conditions_link,
     :brand_type,
     :account_management_rate,
+    :vat_no,
+    :company_name,
+    :company_reg_no,
+    # :address_text,
+    :bank_sort_code,
+    :bank_account_number,
     :display,
   ]
 
