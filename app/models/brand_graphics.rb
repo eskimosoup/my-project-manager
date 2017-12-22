@@ -23,6 +23,8 @@ class BrandGraphics
       MyInternetMarketingBrandGraphics
     when 'my_team'
       MyTeamGraphics
+    when 'optimised'
+      OptimisedGraphics
     end
   end
 end
