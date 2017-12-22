@@ -7,6 +7,7 @@
 <% end %>
 
 <p>
-  <%= brand.name %> is a trading name of <%= brand.company_name %>.<br />
-  <%= brand.company_name %> is registered as a company in England &amp; Wales Company Reg No <%= brand.company_reg_no %> VAT NO: <%= brand.vat_no %>
+  <%= brand.name %> is a trading name of <%= brand.company_name? ? brand.company_name : 'Ludo Studio Ltd' %>.<br />
+  <%= brand.company_name? ? brand.company_name : 'Ludo Studio Ltd' %> is registered as a company in England &amp; Wales
+  Company Reg No <%= brand.company_reg_no? ? brand.company_reg_no : '6447854' %> VAT NO: <%= brand.vat_no? ? brand.vat_no : '932110570' %>
 </p>
