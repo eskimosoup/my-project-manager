@@ -24,6 +24,10 @@ class Brand < ActiveRecord::Base
 
   delegate :logo, :colour, to: :brand_graphics
 
+  delegate :name, :base_invoice_number, to: :company, prefix: true, allow_nil: true
+
+  belongs_to :company
+
   def brand_graphics
     @brand_graphics ||= BrandGraphics.klass_for(brand_type).new
   end
@@ -42,7 +46,7 @@ class Brand < ActiveRecord::Base
 
   def prefix
     if my_brand?
-      'MY'
+      company.prefix
     else
       'EN'
     end
