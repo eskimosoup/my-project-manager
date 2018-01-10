@@ -42,10 +42,10 @@ class Invoice < ActiveRecord::Base
 
   def number
     return slug.upcase if slug.present?
-    brand.company.increment!(:base_invoice_number)
     if company_base_invoice_number.blank?
       "#{ brand_prefix }#{ id + 500 }"
     else
+      brand.company.increment!(:base_invoice_number)
       "#{ brand_prefix }#{ company_base_invoice_number }"
     end
   end
