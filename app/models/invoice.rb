@@ -16,6 +16,7 @@ class Invoice < ActiveRecord::Base
   delegate :telephone, to: :brand
   delegate :email, to: :brand
   delegate :website, to: :brand
+  delegate :company_base_invoice_number, to: :brand
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
@@ -40,7 +41,13 @@ class Invoice < ActiveRecord::Base
   end
 
   def number
-    "#{ brand_prefix }#{ id + 500 }"
+    return slug.upcase if slug.present?
+    brand.company.increment!(:base_invoice_number)
+    if company_base_invoice_number.blank?
+      "#{ brand_prefix }#{ id + 500 }"
+    else
+      "#{ brand_prefix }#{ company_base_invoice_number }"
+    end
   end
 
   def to_partial_path

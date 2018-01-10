@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222091552) do
+ActiveRecord::Schema.define(version: 20180110115231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,9 +71,18 @@ ActiveRecord::Schema.define(version: 20171222091552) do
     t.string   "address_text"
     t.string   "bank_sort_code"
     t.string   "bank_account_number"
+    t.integer  "company_id"
   end
 
+  add_index "brands", ["company_id"], name: "index_brands_on_company_id", using: :btree
   add_index "brands", ["name"], name: "index_brands_on_name", unique: true, using: :btree
+
+  create_table "companies", force: :cascade do |t|
+    t.integer  "base_invoice_number"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "name"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "customer_id",          null: false
@@ -512,6 +521,7 @@ ActiveRecord::Schema.define(version: 20171222091552) do
   add_foreign_key "account_managements", "print_jobs", on_delete: :cascade
   add_foreign_key "addresses", "customers", on_delete: :cascade
   add_foreign_key "brand_addresses", "brands", on_delete: :cascade
+  add_foreign_key "brands", "companies"
   add_foreign_key "contacts", "customers", on_delete: :cascade
   add_foreign_key "designs", "print_jobs", on_delete: :cascade
   add_foreign_key "discounts", "projects", on_delete: :cascade

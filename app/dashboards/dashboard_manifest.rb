@@ -13,6 +13,7 @@ class DashboardManifest
     :products,
     :supporting_products,
     :labours,
+    :companies,
     :brands,
     :brand_addresses,
     :users,

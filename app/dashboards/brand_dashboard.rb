@@ -9,6 +9,7 @@ class BrandDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    company: Field::BelongsTo.with_options(class_name: 'Company'),
     name: Field::String,
     telephone: Field::String,
     email: Field::String,
@@ -34,6 +35,7 @@ class BrandDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
+    :company_name,
     :account_management_rate,
     :display,
     :created_at,
@@ -48,6 +50,7 @@ class BrandDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :company,
     :telephone,
     :email,
     :website,
