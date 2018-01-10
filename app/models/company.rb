@@ -12,7 +12,7 @@ class Company < ActiveRecord::Base
     when COMPANY_NAMES[0]
       'MY'
     when COMPANY_NAMES[1]
-      'MYT'
+      'MY-T'
     end
   end
 end
