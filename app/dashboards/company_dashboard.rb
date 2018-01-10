@@ -41,7 +41,7 @@ class CompanyDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :base_invoice_number,
+    # :base_invoice_number,
     :name,
   ].freeze
 
