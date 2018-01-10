@@ -17,6 +17,7 @@ class Brand < ActiveRecord::Base
     :my_team,
     :optimised
   ]
+  validates :company_name, presence: true, inclusion: { in: Company::COMPANY_NAMES }
   validates :name, presence: true
   validates :email, presence: true
   validates :brand_type, presence: true
@@ -24,7 +25,7 @@ class Brand < ActiveRecord::Base
 
   delegate :logo, :colour, to: :brand_graphics
 
-  delegate :name, :base_invoice_number, to: :company, prefix: true, allow_nil: true
+  delegate :base_invoice_number, to: :company, prefix: true, allow_nil: true
 
   belongs_to :company
 
