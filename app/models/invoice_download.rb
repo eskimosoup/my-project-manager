@@ -18,7 +18,7 @@ class InvoiceDownload
 
   def filename
     # @envisage_invoice == false ? "MY#{invoice.id + 500}.pdf" : "ENVS#{invoice.id}.pdf"
-    invoice.number
+    "#{invoice.number}.pdf"
   end
 
   def render_attributes
