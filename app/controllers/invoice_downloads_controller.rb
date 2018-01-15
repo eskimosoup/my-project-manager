@@ -51,7 +51,7 @@ class InvoiceDownloadsController < ApplicationController
     {
       filename: download.filename,
       type: "application/pdf",
-      disposition: "inline"
+      disposition: "attachment"
     }
   end
 end
