@@ -76,7 +76,7 @@
             </label>
           </div>
 
-          <!-- <button type="submit" class="action-button">Submit Payment</button> -->
+          <button type="submit" class="action-button">Submit Payment</button>
         <% end %>
 
         <div class="pay-invoice-breakdown">
@@ -93,7 +93,16 @@
           <h1>Error</h1>
           <p><strong>This is not the correct post code</strong>. Please try again, copying from the invoice ensuring spaces are included.</p>
         <% end %>
-        <p>Online payments are no longer available. Please contact us for other payment methods.</p>
+        <%= form_tag '', method: :get do %>
+          <div class="field">
+            <%= label_tag :postcode, "Please enter the postcode as it appears on the invoice." %>
+            <%= text_field_tag :postcode, params[:postcode] %>
+          </div>
+
+          <div class="actions">
+            <%= submit_tag 'Confirm', class: 'action-button' %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
