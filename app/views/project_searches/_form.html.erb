@@ -20,6 +20,14 @@
       <%= f.select :brand_id, Brand.pluck(:name, :id), class: 'inline-block', include_blank: 'All brands' %>
     </div>
 
+    <div class="quarters">
+      <%= f.select :order_by, [['Updated at', 'updated_at'], ['Completed at', 'completed_at'], ['Created at', 'created_at'], ['Finalised at', 'finalised_at']], class: 'inline-block', prompt: 'Order by' %>
+    </div>
+
+    <div class="quarters">
+      <%= f.select :order_type, [['ASC', 'asc'], ['DESC', 'desc']], class: 'inline-block', prompt: 'Order type' %>
+    </div>
+
     <% Project.statuses.keys.each do |status| %>
       <%= f.check_box status.to_sym %>
       <%= f.label status.to_sym, status.humanize %>
