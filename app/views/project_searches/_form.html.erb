@@ -28,8 +28,6 @@
       <%= f.select :order_type, [['ASC', 'asc'], ['DESC', 'desc']], class: 'inline-block', prompt: 'Order type' %>
     </div>
 
-    <%= project_search.order %>
-
     <% Project.statuses.keys.each do |status| %>
       <%= f.check_box status.to_sym %>
       <%= f.label status.to_sym, status.humanize %>
