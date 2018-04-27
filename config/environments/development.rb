@@ -11,7 +11,7 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = { address: 'mail.eskimosoup.co.uk', authentication: :plain, user_name: 'tasks@eskimosoup.co.uk', password: 'poipoip' }
 
-  # config.action_controller.asset_host = 'http://192.168.0.26:5050'
+  # config.action_controller.asset_host = 'http://192.168.0.26:3000'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
