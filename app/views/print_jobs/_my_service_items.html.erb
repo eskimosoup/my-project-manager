@@ -2,11 +2,11 @@
   <div class="main print-job-section" id="my-print-services-items">
     <h3>My Service Items</h3>
     <p>
-      Only use My service items for costs that Ludo Studio will be paying.
+      Only use My service items for costs that My Team will be paying.
       Any costs that Envisage is paying should be put in Sundry items.
     </p>
 
-    <%= link_to "Add My Service Item", new_print_job_my_service_item_path(print_job), 
+    <%= link_to "Add My Service Item", new_print_job_my_service_item_path(print_job),
       class: 'action-button' if print_job.quoted? %>
 
     <% if print_job.my_service_items.any? %>
