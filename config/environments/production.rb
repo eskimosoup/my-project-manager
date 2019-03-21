@@ -1,4 +1,12 @@
 Rails.application.configure do
+  config.cache_store = :file_store, Rails.root.join('tmp', 'cache'), { expires_in: 6.hours }
+
+  config.logger = ActiveSupport::Logger.new(
+    config.paths['log'].first,
+    3,
+    524_288_0
+  )
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.action_controller.asset_host = "https://projects.wearemy.co.uk"
