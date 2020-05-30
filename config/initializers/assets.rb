@@ -15,5 +15,4 @@ Rails.application.config.assets.precompile += %w(
   payments.js
   jquery-ui/*
   bootstrap/*
-  administrate/*
 )
