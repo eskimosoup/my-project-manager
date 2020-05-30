@@ -1,0 +1,1 @@
+function setBillingAddress(s){$("#billing_address_billing_address_id").val(s),$(".billing-address").removeClass("current"),$("#billing-address-"+s).addClass("current"),$(".billing-address").closest("form").submit()}

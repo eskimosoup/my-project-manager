@@ -1,0 +1,1 @@
+function setShippingAddress(s){$("#shipping_address_shipping_address_id").val(s),$(".shipping-address").removeClass("current"),$("#shipping-address-"+s).addClass("current"),$(".shipping-address").closest("form").submit()}
