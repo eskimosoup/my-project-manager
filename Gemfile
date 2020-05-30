@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2', '>= 4.2.5'
+gem 'rails', '~> 4.2.11'
 gem 'sass-rails'
 
 # Use postgresql as the database for Active Record
@@ -60,6 +60,7 @@ group :development do
   # gem 'spring'
   gem 'quiet_assets'
   # gem 'spring-commands-rspec'
+  gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
 
 group :test do
@@ -79,3 +80,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-ui-rails'
 gem 'kaminari'
+
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-passenger', require: false
+end

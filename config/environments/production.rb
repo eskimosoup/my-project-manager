@@ -12,6 +12,15 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://projects.wearemy.co.uk"
   Rails.application.routes.default_url_options = { host: "projects.wearemy.co.uk" }
 
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'mail.optimised.today',
+    authentication: :plain,
+    user_name: 'noreply@optimised.today',
+    password: ENV['NOREPLY_PASSWORD'],
+    enable_starttls_auto: false
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
