@@ -6,7 +6,7 @@ namespace :db do
 
   dumpfile = 'db.dump'
   env_to_pull_from = 'production'
-  host = 'postgres.allofmy.co.uk'
+  host = 'my3.allofmy.co.uk'
 
   desc 'Dump remote postgres database'
   task :dump do
@@ -16,8 +16,8 @@ namespace :db do
     puts "Running PG_DUMP on #{env_to_pull_from}"
 
     system "ssh root@#{host} -t '#{export_dump_file_command}'"
-    system "scp root@#{host}:/var/lib/pgsql/#{dumpfile} #{Rails.root}"
-    system "ssh root@#{host} -t 'rm -f /var/lib/pgsql/#{dumpfile}'"
+    system "scp root@#{host}:/var/lib/postgresql/#{dumpfile} #{Rails.root}"
+    system "ssh root@#{host} -t 'rm -f /var/lib/postgresql/#{dumpfile}'"
   end
 
   namespace :restore do

@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: my_project_manager_development
-  host: 192.168.0.41
+  host: localhost
   username: postgres
   password: tmedia
 
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: my_project_manager_test
-  host: 192.168.0.41
+  host: localhost
   username: postgres
   password: tmedia
 

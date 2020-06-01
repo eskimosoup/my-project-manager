@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.11'
 gem 'sass-rails'
+gem 'optimadmin', git: 'git@github.com:eskimosoup/optimadmin.git'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -39,6 +40,7 @@ gem 'sidekiq', '~> 4.1'
 gem 'friendly_id', '~> 5.1'
 gem 'active_attr', '~> 0.9.0'
 gem 'stripe', '~> 1.36', '>= 1.36.1'
+gem 'wkhtmltopdf'
 
 group :development, :test do
   gem 'puma'
