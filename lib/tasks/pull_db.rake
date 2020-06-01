@@ -2,7 +2,7 @@
 
 namespace :db do
   desc 'Pull production db to development'
-  task pull: %i[dump restore:local yarn_integrity site_settings remote_assets]
+  task pull: %i[dump restore:local site_settings remote_assets]
 
   dumpfile = 'db.dump'
   env_to_pull_from = 'production'
@@ -40,14 +40,6 @@ namespace :db do
       system restore_command
       File.delete(dumpfile)
     end
-  end
-
-  desc 'Check integrity of assets before proceeding to restore database'
-  task :yarn_integrity do
-    return unless File.directory?('node_modules')
-
-    integrity = `yarn check --integrity`
-    `yarn install` unless integrity.include?('success')
   end
 
   desc 'Set database environment and update any environment based settings'

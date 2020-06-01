@@ -40,7 +40,7 @@ gem 'sidekiq', '~> 4.1'
 gem 'friendly_id', '~> 5.1'
 gem 'active_attr', '~> 0.9.0'
 gem 'stripe', '~> 1.36', '>= 1.36.1'
-gem 'wkhtmltopdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'puma'
@@ -63,6 +63,7 @@ group :development do
   gem 'quiet_assets'
   # gem 'spring-commands-rspec'
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
+  gem 'thin'
 end
 
 group :test do
