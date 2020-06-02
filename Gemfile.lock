@@ -156,7 +156,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
-    em-http-request (1.1.5)
+    em-http-request (1.1.6)
       addressable (>= 2.3.4)
       cookiejar (!= 0.3.1)
       em-socksify (>= 0.3)
@@ -171,7 +171,6 @@ GEM
     erubi (1.9.0)
     erubis (2.7.0)
     eventmachine (1.2.7)
-    eventmachine (1.2.7-x86-mingw32)
     eventmachine_httpserver (0.2.1)
     execjs (2.7.0)
     extlib (0.9.16)
@@ -184,7 +183,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastimage (2.1.7)
     ffi (1.13.0)
-    ffi (1.13.0-x86-mingw32)
     formulaic (0.4.1)
       activesupport
       capybara
@@ -278,8 +276,6 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.9-x86-mingw32)
-      mini_portile2 (~> 2.4.0)
     normalize-rails (3.0.3)
     os (1.1.0)
     parallel (1.19.1)
@@ -293,7 +289,6 @@ GEM
       ttfunk
     pdfkit (0.8.4.2)
     pg (0.21.0)
-    pg (0.21.0-x86-mingw32)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -359,12 +354,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rest-client (2.1.0-x86-mingw32)
-      ffi (~> 1.9)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     retriable (1.4.1)
     rexml (3.2.4)
     rspec-core (3.9.2)
@@ -384,10 +373,11 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    rubocop (0.84.0)
+    rubocop (0.85.0)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.7)
       rexml
       rubocop-ast (>= 0.0.3)
       ruby-progressbar (~> 1.7)
@@ -454,14 +444,11 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2020.1)
-      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    unf_ext (0.0.7.7-x86-mingw32)
     unicode-display_width (1.7.0)
     uniform_notifier (1.13.0)
     web-console (3.2.1)
@@ -474,13 +461,12 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
     with_advisory_lock (4.6.0)
       activerecord (>= 4.2)
-    wkhtmltopdf-binary (0.12.4)
+    wkhtmltopdf-binary (0.12.5.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   active_attr (~> 0.9.0)

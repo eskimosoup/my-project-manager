@@ -6,7 +6,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = false
   # Settings specified here will take precedence over those in config/application.rb.
 
-    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   Rails.application.routes.default_url_options[:protocol] = 'https'
 
   config.action_mailer.default_url_options = {
@@ -15,6 +15,13 @@ Rails.application.configure do
   }
 
   config.action_mailer.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
+
+  # Serve assets from different domain or PDF generation
+  config.action_controller.asset_host = [
     Rails.application.routes.default_url_options[:protocol],
     '://',
     Rails.application.routes.default_url_options[:host]
