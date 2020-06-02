@@ -12,7 +12,7 @@ class InvoiceDownload
   end
 
   def to_pdf
-    PDFKit.new('test', page_size: 'A4').to_file("#{Rails.root}/tmp/invoice_download.pdf")
+    PDFKit.new(as_html, page_size: 'A4').to_file("#{Rails.root}/tmp/invoice_download.pdf")
   end
 
   def filename
@@ -38,6 +38,6 @@ class InvoiceDownload
   attr_reader :project, :invoice, :colour
 
   def as_html
-    # render render_attributes
+    render render_attributes
   end
 end
