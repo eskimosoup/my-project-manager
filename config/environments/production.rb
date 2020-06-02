@@ -23,6 +23,12 @@ Rails.application.configure do
     Rails.application.routes.default_url_options[:host]
   ].join
 
+  # Serve assets from different domain or PDF generation
+  config.action_controller.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
