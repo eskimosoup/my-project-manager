@@ -1,6 +1,7 @@
 <header class="customer-header">
   <div class="brand-logo">
     <img src="<%= root_url %><%= image_path project.logo %>" />
+    <%= raise "#{root_url}#{image_path project.logo}".to_yaml %>
   </div>
 
   <ul class="brand-contact-details">
