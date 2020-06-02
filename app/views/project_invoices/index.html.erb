@@ -1,6 +1,8 @@
 <div class="content">
   <h1><%= @project.name %> Invoices</h1>
 
+  <img src="<%= root_url %><%= image_path @project.logo %>" />
+
   <%= render(
     partial: "projects/price_breakdown",
     locals: {
