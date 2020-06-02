@@ -30,7 +30,7 @@ Rails.application.configure do
     authentication: :plain,
     user_name: 'noreply@optimised.today',
     password: ENV['NOREPLY_PASSWORD'],
-    enable_starttls_auto: false
+    enable_starttls_auto: true
   }
 
   # Code is not reloaded between requests.

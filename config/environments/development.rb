@@ -2,14 +2,26 @@ Rails.application.configure do
   config.active_support.deprecation = :raise
 
   config.web_console.whitelisted_ips = '192.168.0.0/16'
-  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = false
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = { address: 'mail.eskimosoup.co.uk', authentication: :plain, user_name: 'tasks@eskimosoup.co.uk', password: 'poipoip' }
+    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
+
+  config.action_mailer.default_url_options = {
+    host: Rails.application.routes.default_url_options[:host],
+    protocol: Rails.application.routes.default_url_options[:protocol]
+  }
+
+  config.action_mailer.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
+
+  #ActionMailer::Base.delivery_method = :smtp
+  #ActionMailer::Base.smtp_settings = { address: 'mail.eskimosoup.co.uk', authentication: :plain, user_name: 'tasks@eskimosoup.co.uk', password: 'poipoip' }
 
   # config.action_controller.asset_host = 'http://192.168.0.26:3000'
 
