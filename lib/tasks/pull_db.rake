@@ -44,9 +44,9 @@ namespace :db do
 
   desc 'Set database environment and update any environment based settings'
   task :site_settings do
-    system("rails runner \"Optimadmin::SiteSetting.where(environment: 'development').destroy_all\"")
-    system("rails runner \"Optimadmin::SiteSetting.where(environment: '#{env_to_pull_from}').update_all(environment: 'development')\"")
-    system('RAILS_ENV=development bin/rails db:environment:set')
+    #system("rails runner \"Optimadmin::SiteSetting.where(environment: 'development').destroy_all\"")
+    #system("rails runner \"Optimadmin::SiteSetting.where(environment: '#{env_to_pull_from}').update_all(environment: 'development')\"")
+    #system('RAILS_ENV=development bin/rails db:environment:set')
   end
 
   desc 'Pull remote assets if Capistrano is available'

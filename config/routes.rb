@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   get 'finances', to: 'homes#finances'
 
+  resources :exports, only: :index do
+    collection do
+      get 'invoices'
+    end
+  end
+
   namespace :financial_reports do
     get ':year/:month', to: 'monthly_overviews#show',
                         constraints: { year: /\d{4}/, month: /\d{1,2}/ },
