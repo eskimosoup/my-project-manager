@@ -8,7 +8,8 @@ class Invoice < ActiveRecord::Base
   scope :unpaid, -> { where(paid: false) }
   scope :for_customer, ->(customer_id) { joins(:customer).where(customers: { id: customer_id }) if customer_id.present? }
 
-  delegate :name, to: :customer, prefix: true
+  delegate :main_contact_phone, :main_contact_email, to: :customer, prefix: true, allow_nil: true
+  delegate :name, :id, to: :customer, prefix: true
   delegate :name, to: :project, prefix: true
   delegate :prefix, to: :brand, prefix: true
   delegate :single_line, to: :business_address, prefix: true, allow_nil: true

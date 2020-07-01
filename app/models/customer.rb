@@ -3,6 +3,9 @@ class Customer < ActiveRecord::Base
 
   has_one :main_contact, ->{ order(made_main_contact_at: :desc).limit(1) }, class_name: 'Contact'
 
+  delegate :email, to: :main_contact, prefix: true, allow_nil: true
+  delegate :phone, to: :main_contact, prefix: true, allow_nil: true
+
   has_many :addresses
   has_many :contacts
   has_many :projects

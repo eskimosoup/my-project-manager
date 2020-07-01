@@ -24,7 +24,13 @@ module CsvExports
     # @return [array]
     #
     def index_column_names
-      collection.first.class.column_names.reject { |column| index_rejected_columns.include?(column) }
+      [
+        'customer_name',
+        'customer_main_contact_phone',
+        'customer_main_contact_email',
+        'project_name',
+        collection.first.class.column_names.reject { |column| index_rejected_columns.include?(column) }
+      ].flatten
     end
 
     #
@@ -33,7 +39,7 @@ module CsvExports
     # @return [array]
     #
     def index_rejected_columns
-      %w[id]
+      %w[id customer_id stripe_charge_id]
     end
   end
 end
