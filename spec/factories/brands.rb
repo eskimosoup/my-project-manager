@@ -1,3 +1,35 @@
+# == Schema Information
+#
+# Table name: brands
+#
+#  id                      :integer          not null, primary key
+#  account_management_rate :decimal(6, 2)    default(0.0), not null
+#  address_text            :string
+#  bank_account_number     :string
+#  bank_sort_code          :string
+#  brand_type              :integer          default(0), not null
+#  company_name            :string
+#  company_reg_no          :string
+#  display                 :boolean          default(TRUE)
+#  email                   :string
+#  name                    :string           not null
+#  telephone               :string
+#  terms_conditions_link   :string
+#  vat_no                  :string
+#  website                 :string
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  company_id              :integer
+#
+# Indexes
+#
+#  index_brands_on_company_id  (company_id)
+#  index_brands_on_name        (name) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#
 FactoryGirl.define do
   factory :brand do
     sequence(:name){ |n| "My Brand #{ n }" }

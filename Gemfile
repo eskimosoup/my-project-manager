@@ -50,8 +50,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'i18n-tasks'
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.4'
 end
 
@@ -64,6 +62,7 @@ group :development do
   # gem 'spring-commands-rspec'
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'thin'
+  gem 'annotate'
 end
 
 group :test do

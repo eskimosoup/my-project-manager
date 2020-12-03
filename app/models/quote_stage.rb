@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: quote_stages
+#
+#  id         :integer          not null, primary key
+#  chance     :integer          not null
+#  name       :string           not null
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class QuoteStage < ActiveRecord::Base
   default_scope { order(:position) }
 
