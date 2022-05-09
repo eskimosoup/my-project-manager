@@ -1,0 +1,50 @@
+<%= content_for :head do %>
+  <style>
+    <%= Rails.application.assets.find_asset('download_pdf').to_s %>
+  </style>
+<% end %>
+
+<div class="customer-payment content">
+  <%= render(
+    partial: "customer/brands/header",
+    locals: {
+      invoice: @invoice
+    }
+  ) %>
+
+  <div class="invoice-header-wrap">
+    <div class="invoice-header">
+      <h1>
+        Online Payment
+      </h1>
+    </div>
+  </div>
+
+  <div class="invoice-summary">
+    <div class="invoice-details">
+      <h2>
+        <%= @invoice.project.customer_name %>
+      </h2>
+
+      <ul class="invoice-breakdown">
+        <li>Invoice: <%= @invoice.number %></li>
+        <li>Amount (inc. VAT): <%= number_to_currency @invoice.total_inc_vat %></li>
+      </ul>
+    </div>
+
+    <div class="pay-invoice-form">
+      <% if @complete.present? %>
+        <p>Thank you for your payment.</p>
+      <% else %>
+        <p>This invoice is still pending payment.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render(
+  partial: "customer/brands/footer",
+  locals: {
+    invoice: @invoice
+  }
+) %>

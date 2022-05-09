@@ -106,7 +106,9 @@ Rails.application.routes.draw do
 
   namespace :customer do
     resources :invoices, only: [:show] do
-      resource :payment, only: [:new, :create]
+      resource :payment, only: [:new, :create] do
+        get 'complete'
+      end
     end
   end
 

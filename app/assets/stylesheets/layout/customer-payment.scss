@@ -43,3 +43,19 @@
     padding: rem-calc(10px);
   }
 }
+
+#payment-form {
+  #error-message {
+    color: $red-flat2;
+    font-weight: 700;
+    padding: 10px 0;
+  }
+
+  #submit {
+    background-color: $green-flat;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px 0;
+  }
+}

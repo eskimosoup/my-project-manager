@@ -14,10 +14,11 @@
     {
       "label": "beautify",
       "type": "shell",
-      "command": "htmlbeautifier \"${relativeFile}\" --keep-blank-lines 1",
+      "command": "htmlbeautifier \"${relativeFile}\" --keep-blank-lines 1 --stop-on-errors",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },
@@ -38,13 +39,36 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "rubocop unsafe",
+      "type": "shell",
+      "command": "rubocop --require rubocop-rails --require rubocop-performance --auto-correct-all \"${relativeFile}\"",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        // "close": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "erb-lint",
+      "type": "shell",
+      "command": "erblint --autocorrect \"${relativeFile}\"",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },
     {
       "label": "configure",
       "type": "shell",
-      "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 solargraph rubocop rubocop-rails rubocop-performance fastri htmlbeautifier scss_lint --no-document",
+      "command": "gem install ruby-debug-ide debase solargraph rubocop rubocop-rails rubocop-performance fastri htmlbeautifier scss_lint erb_lint --no-document",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

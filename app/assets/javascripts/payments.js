@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
   Stripe.setPublishableKey($("meta[name='stripe-key']").attr("content"));
   $('#payment-form').submit(function(event) {
@@ -29,3 +30,4 @@ function stripeResponseHandler(status, response) {
     $form.get(0).submit();
   }
 };
+*/

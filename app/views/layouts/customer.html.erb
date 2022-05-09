@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/octicons/3.3.0/octicons.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_include_tag "payments" %>
     <%= tag :meta, name: "stripe-key", content: ENV['MY_TEAM_STRIPE_PUBLIC'] %>
     <%= csrf_meta_tags %>

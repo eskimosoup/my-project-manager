@@ -14,16 +14,31 @@ class InvoicePayment
     false
   end
 
-  private
-
   def charge
-    Stripe::Charge.create(
+    Stripe::PaymentIntent.create(
+      customer: customer_id,
       amount: amount_in_pence,
       currency: 'gbp',
-      source: stripe_token,
       description: description,
       receipt_email: email
     )
+  end
+
+  private
+
+  def customer_id
+    customers = Stripe::Customer.search({ query: "email:'#{email}'" })
+
+    if customers.blank?
+      customer = Stripe::Customer.create(
+        name: [invoice.project.customer.main_contact.forename, invoice.project.customer.main_contact.surname].reject(&:blank?).join(' '),
+        email: email
+      )
+    else
+      customer = customers.first
+    end
+
+    customer.id
   end
 
   def amount_in_pence
