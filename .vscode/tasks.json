@@ -14,7 +14,7 @@
     {
       "label": "beautify",
       "type": "shell",
-      "command": "htmlbeautifier \"${relativeFile}\" --keep-blank-lines 1 --stop-on-errors",
+      "command": "bundle exec htmlbeautifier \"${relativeFile}\" --keep-blank-lines 1 --stop-on-errors",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -25,7 +25,7 @@
     {
       "label": "batch rubocop",
       "type": "shell",
-      "command": "rubocop --require rubocop-rails --require rubocop-performance app/ lib/",
+      "command": "bundle exec rubocop --require rubocop-rails --require rubocop-performance app/ lib/",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -35,7 +35,7 @@
     {
       "label": "rubocop",
       "type": "shell",
-      "command": "rubocop --require rubocop-rails --require rubocop-performance --auto-correct \"${relativeFile}\"",
+      "command": "bundle exec rubocop --require rubocop-rails --require rubocop-performance --auto-correct \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -46,7 +46,7 @@
     {
       "label": "rubocop unsafe",
       "type": "shell",
-      "command": "rubocop --require rubocop-rails --require rubocop-performance --auto-correct-all \"${relativeFile}\"",
+      "command": "bundle exec rubocop --require rubocop-rails --require rubocop-performance --auto-correct-all \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -57,7 +57,7 @@
     {
       "label": "erb-lint",
       "type": "shell",
-      "command": "erblint --autocorrect \"${relativeFile}\"",
+      "command": "bundle exec erblint --autocorrect \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -68,7 +68,7 @@
     {
       "label": "configure",
       "type": "shell",
-      "command": "gem install ruby-debug-ide debase solargraph rubocop rubocop-rails rubocop-performance fastri htmlbeautifier scss_lint erb_lint --no-document",
+      "command": "gem install ruby-debug-ide debase solargraph fastri scss_lint --no-document",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

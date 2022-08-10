@@ -20,11 +20,15 @@ class InvoicePayment
       amount: amount_in_pence,
       currency: 'gbp',
       description: description,
-      receipt_email: email
+      receipt_email: email_valid? ? email : nil
     )
   end
 
   private
+
+  def email_valid?
+    email.include?('@')
+  end
 
   def customer_id
     customers = Stripe::Customer.search({ query: "email:'#{email}'" })
@@ -32,7 +36,7 @@ class InvoicePayment
     if customers.blank?
       customer = Stripe::Customer.create(
         name: [invoice.project.customer.main_contact.forename, invoice.project.customer.main_contact.surname].reject(&:blank?).join(' '),
-        email: email
+        email: email_valid? ? email : nil
       )
     else
       customer = customers.first
