@@ -42,7 +42,7 @@ class Invoice < ActiveRecord::Base
 
   delegate :main_contact_phone, :main_contact_email, to: :customer, prefix: true, allow_nil: true
   delegate :name, :id, to: :customer, prefix: true
-  delegate :name, to: :project, prefix: true
+  delegate :name, :billing_address_address_fields, to: :project, prefix: true
   delegate :prefix, to: :brand, prefix: true
   delegate :single_line, to: :business_address, prefix: true, allow_nil: true
   delegate :logo, to: :brand

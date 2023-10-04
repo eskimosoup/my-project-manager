@@ -29,7 +29,7 @@ module CsvExports
         'customer_main_contact_phone',
         'customer_main_contact_email',
         'project_name',
-        'project_billing_address_fields',
+        'project_billing_address_address_fields',
         collection.first.class.column_names.reject { |column| index_rejected_columns.include?(column) }
       ].flatten
     end
