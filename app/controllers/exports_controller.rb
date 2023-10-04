@@ -6,7 +6,7 @@ class ExportsController < ApplicationController
   def invoices
     respond_to do |format|
       format.csv do
-        csv = ::CsvExports::InvoiceExportService.new(Invoice.all.order(created_at: :desc).limit(250), 'index').to_csv
+        csv = ::CsvExports::InvoiceExportService.new(Invoice.all.order(created_at: :desc).limit(1000), 'index').to_csv
         send_data csv,
                   type: 'text/csv; charset=iso-8859-1; header=present',
                   disposition: 'attachment',
