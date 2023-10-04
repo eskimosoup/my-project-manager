@@ -28,4 +28,13 @@ class Address < ActiveRecord::Base
   validates :city, presence: true
   validates :line_1, presence: true
   validates :postcode, presence: true
+
+  #
+  # Address fields
+  #
+  # @return [string]
+  #
+  def address_fields
+    [name, line_1, line_2, line_3, city, postcode].reject(&:blank?).join(', ')
+  end
 end

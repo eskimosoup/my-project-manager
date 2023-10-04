@@ -51,7 +51,10 @@ class Project < ActiveRecord::Base
   belongs_to :brand
   belongs_to :customer
   belongs_to :shipping_address, class_name: 'Address'
+
   belongs_to :billing_address, class_name: 'Address'
+  delegate :address_fields, to: :billing_address, prefix: true, allow_nil: true
+
   has_one :business_address, through: :brand, source: :brand_address
   has_one :main_contact, through: :customer
   has_many :account_managements, through: :print_jobs
