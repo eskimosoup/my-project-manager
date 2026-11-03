@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@optimised.today"
+  default from: "noreply@website-mail.co.uk"
   layout 'mailer'
 end

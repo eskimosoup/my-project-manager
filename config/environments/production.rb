@@ -32,12 +32,13 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    address: 'mail.optimised.today',
-    authentication: :plain,
-    user_name: 'noreply@optimised.today',
-    password: ENV['NOREPLY_PASSWORD'],
-    enable_starttls_auto: false,
-    port: 587
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'website-mail.co.uk',
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   # Code is not reloaded between requests.
